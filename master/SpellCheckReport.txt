@@ -34,7 +34,6 @@ output/pp-template-release-linkable.html: duplicative
 output/pp-template-release-linkable.html: iPhones
 output/pp-template-release-linkable.html: macOS
 output/pp-template-release-linkable.html: microarchitecture
-output/pp-template-release-linkable.html: ocnfiguration
 output/pp-template-release-linkable.html: supersets
 output/pp-template-release-linkable.html: virtualized
 output/pp-template-release.html: 4C
@@ -73,7 +72,6 @@ output/pp-template-release.html: duplicative
 output/pp-template-release.html: iPhones
 output/pp-template-release.html: macOS
 output/pp-template-release.html: microarchitecture
-output/pp-template-release.html: ocnfiguration
 output/pp-template-release.html: supersets
 output/pp-template-release.html: virtualized
 output/pp-template.html: 4C
