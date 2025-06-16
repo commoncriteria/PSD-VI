@@ -1,0 +1,4 @@
+* https://commoncriteria.github.io/PSD-VI/main/PSD-VI-release-linkable.html[PSD-VI-release-linkable.html]
+* https://commoncriteria.github.io/PSD-VI/main/PSD-VI-release.html[PSD-VI-release.html]
+* https://commoncriteria.github.io/PSD-VI/main/PSD-VI-sd.html[PSD-VI-sd.html]
+* https://commoncriteria.github.io/PSD-VI/main/PSD-VI.html[PSD-VI.html]
