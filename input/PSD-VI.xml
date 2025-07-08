@@ -1,1590 +1,1344 @@
 <?xml version="1.0" encoding="utf-8"?>
-<?xml-stylesheet type="text/xsl" href="../transforms/pp2html.xsl"?>
+<?xml-stylesheet type="text/xsl" href="..\transforms\module2html.xsl"?>
+<?xml-model href="../transforms/schemas/CCModule.rng" type="application/xml"?>
 
-<PP xmlns="https://niap-ccevs.org/cc/v1"
-    xmlns:sec="https://niap-ccevs.org/cc/v1/section"
-    xmlns:h="http://www.w3.org/1999/xhtml">
-  <boilerplate>yes</boilerplate>
+<Module
+  name="Video/Display Devices"
+  xmlns="https://niap-ccevs.org/cc/v1"
+  xmlns:h="http://www.w3.org/1999/xhtml"
+  xmlns:sec="https://niap-ccevs.org/cc/v1/section"
+  target-product="Video/Display Device"
+  target-products="Video/Display Devices"
+  boilerplate="yes"
+  short="VI">  
   <!-- <inline-comment color='green'>Initial PSD-VI Template on 5/8.</inline-comment> -->
   <!-- <inline-comment color='blue' linebreak='yes'> Hello World QQQQ </inline-comment> -->
-  <product_class>QQQQ</product_class>
+ 
+  <PPReference>
+    <ReferenceTable>      
+      <PPVersion>2.0</PPVersion>
+      <PPAuthor>National Information Assurance Partnership</PPAuthor>
+      <PPPubDate>2025-07-11</PPPubDate>
+      <Keywords>PSD, VI</Keywords>      
+    </ReferenceTable>
+  </PPReference>
+  
   <RevisionHistory>
     <entry>
-      <version>Round 1</version>
-      <date>2025-05-08</date>
-      <subject>First draft of version 1.0 for comment</subject>
+      <version>1.0</version>
+      <date>2019-07-19</date>
+      <subject>Initial draft</subject>
     </entry>
   </RevisionHistory>
   <RevisionHistory>
     <entry>
-      <version>1.0</version>
-      <date>2015-08-14</date>
-      <subject>Release - first version released</subject>
+      <version>2.0</version>
+      <date>2025-07-11</date>
+      <subject>Updates for CC:2022</subject>
     </entry>
   </RevisionHistory>
 
   <sec:Introduction>
     <section title="Overview" id="ppoverview">
-
-      
-      The scope of this Protection Profile (PP) is to
-      describe the security functionality of QQQQ products in terms of <xref g='CC'/>
-      and to define functional and assurance requirements for such products.
-      <choice>An operating system is software that manages computer hardware and software
-      resources, and provides common services for application programs. The hardware
-      it manages may be <selectables><selectable id="physical">physical</selectable>
-		                             <selectable id="virtual">virtual</selectable><selectable id="imgi">imaginary</selectable></selectables>.</choice>
-      <h:div> Something</h:div>
-      <h:p> This is going to show some tests:
- 	<h:ul>
-	  <h:li> Terms with abbrs like ASLR, or API, should be found a linked automatically.</h:li>
-          <h:li> And components can be refered to by their name: FQQ_QQQ.1 </h:li>
-          <h:li> And so can requirements: FQQ_QQQ.1.1 or by their unique identifier: <xref to="a-unique-id"/></h:li>
- 
-   	  <h:li> Or you can stop them <no-link>ASLR</no-link> </h:li>
-          <h:li> This is how you do a picture: 
-                <figure entity="images/niaplogo.png" title="Niap's Logo " id="fig-logo"/> </h:li>
-          <h:li> And this is how you reference it: <xref to="fig-logo"/></h:li>
-          <h:li> This is how you do an equation with an arbitrary counter:  
-              <equation id="quadeq">x=\frac{-b\pm\sqrt{b^{2}-4ac}}{2a}</equation>
-
-</h:li> 
-          <h:li> And this is how you reference it: <xref to="quadeq"/> </h:li>
-          <h:li> <h:div><depends on="aaa"/>
-                    Some text </h:div> </h:li> 
-  		<h:li> <h:div><depends on="a-feature-id"/>
-                    Someting dependent on a feature</h:div> </h:li> 
-           
-          <h:li> And here's the audit event table for mandatory requirements. 
-           
-			 <xref to="at-mandatory"/> for more information.
-<!-- 
-                 <audit-events table="mandatory"/> -->
-          </h:li>
-          <h:li> Test for an xref to section <xref to="Threats"/> </h:li>
-        </h:ul>
-        And this is another sentence (or fragment). I added this sentence and deleted the next one. 
-		This uses the plural acronym OSes. 
-
-      </h:p>
+      The scope of this Protection Profile (PP)‐Module is to describe the security functionality of a specific type
+      of Peripheral Sharing Device (PSD) product in terms of Common Criteria for Information Technology
+      Security Evaluation, version 3.1, Release 5 [CC] and to define functional and assurance requirements for
+      such products.<h:br/><h:br/>
+      A Target of Evaluation (TOE) claiming conformance to this PP‐Module must also claim conformance to the
+      Peripheral Sharing Device Protection Profile (PSD PP) as its Base‐PP. This is because the PSD PP is a generic
+      Protection Profile aimed at defining baseline requirements and Evaluation Activities for a wide variety of
+      PSD products, but additional specific requirements and Evaluation Activities apply depending on the types
+      of physical and logical interfaces a PSD includes. Therefore, this PP‐Module defines additional Security
+      Functional Requirements (SFRs) for security functionality unique to a PSD that includes the ability to
+      manipulate or assign video source inputs to video or display output devices.      
     </section>
+    
     <tech-terms>
-      <term abbr='AES' full="Advanced Encryption Standard"/>
-      <term abbr='API' full="Application Programming Interface"/>
-      <term full="Address Space Layout Randomization" abbr="ASLR">
-	An anti-exploitation feature which loads memory mappings into unpredictable
-	locations. ASLR makes it more difficult for an attacker to redirect control to code
-	that they have introduced into the address space of a process.
+      <term full="Audio Return Channel" abbr="ARC"/>
+      <term full="Consumer Electronics Control" abbr="CEC"/>      
+      <term full="Combiner/Multi-viewer">
+        A PSD that can integrate video output from multiple connected systems and output
+        on a single display.
       </term>
-      <term full="Administrator">
-	An administrator is responsible for management activities, including setting policies that are 
-	applied by the enterprise on the operating system.
-	This administrator could be acting remotely through a management server, from which the system
-	receives configuration policies.
-	An administrator can enforce settings on the system which cannot be overridden by non-administrator users.
+      <term full="Display">
+        A device such as a monitor, projector, or touchscreen, which visually outputs user
+        data.
       </term>
-      <term full="Application" abbr="app">
-	Software that runs on a platform and performs tasks on behalf of the user
-	or owner of the platform, as well as its supporting documentation. 
+      <term full="Digital Visual Interface (standard)" abbr="DVI"/>
+      <term full="Extended Display Identificatin Data" abbr="EDID"/>
+      
+      <term full="Guard">
+        A PSD function that requires multiple express user actions in order to switch between
+        Connected Computers using Connected Peripherals.
       </term>
-      <term full="Application Programming Interface" abbr="API">
-	A specification of routines, data structures, object classes, and variables
-	that allows an application to make use of services provided by another software
-	component, such as a library. APIs are often provided for a set of libraries included
-	with the platform.
+      <term full="High-bandwidth Digital Content Protection" abbr="HDCP"/>
+      <term full="High-Definition Multimedia Interface (standard)" abbr="HDMI"/>
+      <term full="HDMI Ethernet and Audio Return Channel" abbr="HEAC"/>
+      <term full="HDMI Ethernet Channel" abbr="HEC"/>
+      <term full="Hot Plug Detect" abbr="HPD"/>
+      <term full="Keyboard, video, mouse" abbr="KVM"/>
+      <term full="Monitor Control Command Set" abbr="MCCS"/>
+      <term full="Organizational Security Policies" abbr="OSP"/>
+      <term full="Protection Profile" abbr="PP"/>
+      <term full="Peripheral Sharing Device" abbr="PSD"/>
+      <term full="Protocol">
+        A set of rules or procedures for transmitting data between electronic devices.
       </term>
-      <term abbr='CESG' full="Communications-Electronics Security Group"/>
-      <term abbr='CMC' full="Certificate Management over CMS"/>
-      <term abbr='CMS' full="Cryptographic Message Syntax"/>
-      <term abbr='CN' full="Common Names"/>
-      <term full="Credential">
-	Data that establishes the identity of a user, e.g. a cryptographic key or
-	password.
+      <term full="Security Assurance Requirement" abbr="SAR"/>
+      <term full="Security Functional Requirement" abbr="SFR"/>
+      <term full="Sub-Protocol">
+        A set of common commands flowing within a protocol.
       </term>
-      <term abbr='CRL' full="Certificate Revocation List"/>
-      <term abbr='CSA' full="Computer Security Act"/>
-      <term full="Critical Security Parameters" abbr="CSP">
-	Information that is either user or system defined and
-	is used to operate a cryptographic module in processing encryption functions including
-	cryptographic keys and authentication data, such as passwords, the disclosure or modification
-	of which can compromise the security of a cryptographic module or the security of the
-	information protected by the module.
+      <term full="TOE Computer Video Interface">
+        TOE port used to connect the computer or other video source.
       </term>
-      <term full="Data At Rest" abbr="DAR" />
-      <term full="DAR Protection">
-	Countermeasures that prevent attackers, even those with physical access,
-	from extracting data from non-volatile storage.
-	Common techniques include data encryption and wiping.
+      <term full="Universal Serial Bus" abbr="USB"/>
+      <term full="USB Type-C">
+        Universal Serial Bus (USB) interface that supports DisplayPort video output as an
+        alternate mode.
       </term>
-      <term full="Data Execution Prevention" abbr="DEP">
-	An anti-exploitation feature of modern operating systems executing on
-	modern computer hardware, which enforces a non-execute permission on pages of memory.
-	DEP prevents pages of memory from containing both data and instructions, which makes
-	it more difficult for an attacker to introduce and execute code.
+      <term full="Video Graphics Array (standard)" abbr="VGA"/>
+      <term full="Video Data">
+        Visual and audio information presented to the user through the display device
       </term>
-      <term abbr='DES' full="Data Encryption Standard"/>
-      <term full="Developer">
-	An entity that writes OS software. For the purposes of this document,
-	vendors and developers are the same.
+      <term full="Video Wall">
+        A tiled or overlapping set of displays that allow the video output from a single
+        selected computer to be spanned across multiple individual displays.
       </term>
-      <term full="General Purpose Operating System">
-	A class of OSes designed to support a wide-variety of workloads consisting of many concurrent applications or services.
-	Typical characteristics for OSes in this class include support for third-party applications,
-	support for multiple users, and security separation between users and their respective resources.
-	General Purpose Operating Systems also lack the real-time constraint that defines Real Time Operating Systems (RTOS).
-	RTOSes typically power routers, switches, and embedded devices.
-      </term>
-      <term abbr='DHE' full="Diffie-Hellman Ephemeral"/>
-      <term abbr='DNS' full="Domain Name System"/>
-      <term abbr='DRBG' full="Deterministic Random Bit Generator"/>
-      <term abbr='DSS' full="Digital Signature Standard"/>
-      <term abbr='DT' full="Date/Time Vector"/>
-      <term abbr='DTLS' full="Datagram Transport Layer Security"/>
-      <term abbr='EAP' full="Extensible Authentication Protocol"/>
-      <term abbr='ECDHE' full="Elliptic Curve Diffie-Hellman Ephemeral"/>
-      <term abbr='ECDSA' full="Elliptic Curve Digital Signature Algorithm"/>
-      <term abbr='EST' full="Enrollment over Secure Transport"/>
-      <term abbr='FIPS' full="Federal Information Processing Standards"/>
-      <term abbr='HMAC' full="Hash-based Message Authentication Code"/>
-      <term full="Host-based Firewall">
-	A software-based firewall implementation running on the OS for filtering inbound and
-	outbound network traffic to and from processes running on the OS.
-      </term>
-      <term abbr='HTTP' full="Hypertext Transfer Protocol"/>
-      <term abbr='HTTPS' full="Hypertext Transfer Protocol Secure"/>
-      <term abbr='DSS' full="Digital Signature Standard"/>
-      <term abbr='IETF' full="Internet Engineering Task Force"/>
-      <term abbr='IP' full="Internet Protocol"/>
-      <term abbr='ISO' full="International Organization for Standardization"/>
-      <term abbr='IT' full="Information Technology"/>
-      <term abbr='ITSEF' full="Information Technology Security Evaluation Facility"/>
-      <term abbr='NIAP' full="National Information Assurance Partnership"/>
-      <term abbr='NIST' full="National Institute of Standards and Technology"/>
-      <term abbr='OCSP' full="Online Certificate Status Protocol"/>
-      <term abbr='OID' full="Object Identifier"/>
-      <term abbr='OMB' full="Office of Management and Budget"/>
-      <term full="Operating System" abbr="OS" plural="OSes">
-	Software that manages physical and logical resources and provides services
-	for applications. The terms <h:i>TOE</h:i> and <h:i>OS</h:i> are interchangeable in this
-	document. 
-      </term>
-      <term abbr='PKI' full="Public Key Infrastructure"/>
-      <term abbr='PP' full="Protection Profile"/>
-      <term abbr='RBG' full="Random Bit Generator"/>
-      <term abbr='RFC' full="Request for Comment"/>
-      <term abbr='RNG' full="Random Number Generator"/>
-      <term abbr='RNGVS' full="Random Number Generator Validation System"/>
-      <term full="Personally Identifiable Information" abbr="PII">
-	Any information about an individual maintained by an agency, including, but
-	not limited to, education, financial transactions, medical history, and criminal or
-	employment history and information which can be used to distinguish or trace an
-	individual's identity, such as their name, social security number, date and place of
-	birth, mother's maiden name, biometric records, etc., including any other personal
-	information which is linked or linkable to an individual.<xref to="bibOMB"/>
-      </term>
-      <term abbr='SAN' full="Subject Alternative Name"/>
-      <term abbr='SHA' full="Secure Hash Algorithm"/>
-      <term abbr='S/MIME' full="Secure/Multi-purpose Internet Mail Extensions"/>
-      <term full="Sensitive Data">
-	Sensitive data may include all user or enterprise data or may be specific
-	application data such as PII, emails, messaging, documents, calendar items, and contacts.
-	Sensitive data must minimally include credentials and keys. Sensitive data shall
-	be identified in the OS's TSS by the ST author. 
-      </term>
-      <term abbr='SIP' full="Session Initiation Protocol"/>
-      <term abbr='SWID' full="Software Identification"/>
-      <term abbr='TLS' full="Transport Layer Security"/>
-      <term abbr='URI' full="Uniform Resource Identifier"/>
-      <term abbr='URL' full="Uniform Resource Locator"/>
-      <term abbr='USB' full="Universal Serial Bus"/>
-      <term full="User">
-	A user is subject to configuration policies applied
-	to the operating system by administrators.  On some systems under certain
-	configurations, a normal user can temporarily elevate privileges to that of an administrator.
-	At that time, such a user should be considered an administrator.
-      </term>
-	  <term abbr="VM" full="Virtual Machine">Blah Blah Blah</term>
-      <term abbr='XCCDF' full="eXtensible Configuration Checklist Description Format"/>
-      <term abbr='XOR' full="Exclusive Or"/>
     </tech-terms>    
+    
     <section title="Compliant Targets of Evaluation" id="TOEdescription">
+      A compliant Target of Evaluation (TOE) for this PP‐Module is any PSD that supports connectivity for one or
+      more video output peripheral devices. All of the requirements and restrictions that the PSD PP defines
+      apply to a conformant TOE. A conformant TOE satisfies all of the specific data protection/isolation
+      capabilities that the PSD PP requires. A conformant TOE embodies one or more of the use cases defined
+      in the PSD PP.<h:br/><h:br/>
+      A candidate TOE for claiming conformance to this PP‐Module is any TOE that conforms to the PSD PP and
+      includes video and display functionality as connected peripherals. In particular, a conformant TOE should
+      support one or more video sources and one or more video display devices.<h:br/><h:br/>
+      The TOE may include functionality for additional types of computer interfaces (e.g. keyboard/mouse, user
+      authentication device). When this is the case, the TOE will claim conformance to all applicable PP‐Modules
+      that extend the PSD PP.
+    </section>      
       <section title="TOE Boundary" id="TOEboundary">
-        <figure entity="images/Toe.png" title="General TOE " id="toe"/>
-      </section>
-      <section title="TOE Platform" id="TOEplatform">
-      </section>
-    </section>
-    <section title="Use Cases" id="usecases">Requirements in this Protection Profile are designed to
-      address the security problems in at least the following use cases. These use cases are intentionally
-      very broad, as many specific use cases exist for an operating system. These use cases may also
-      overlap with one another.  An operating system's functionality may even be effectively extended by
-      privileged applications installed onto it.  However, these are out of scope of this PP. 
-      <usecases>
-      <usecase title="Elephant-own device" id="elephant">
-        <description>This is everything we need to describe in words about this use case.</description>	
-	  <config>
-                <ref-id>soup</ref-id><not><ref-id>ratatouille</ref-id><ref-id>pizza</ref-id></not>
-                <not><ref-id>table2</ref-id></not> <!-- This says you can't choose this selectable-->
-                <ref-id>optional-comp-example</ref-id><!-- Inclusion of an optional/objective requirement -->
-	  </config>
-      </usecase>
-      </usecases>
-    </section>
+        The TOE boundary is a PSD. Refer to the PSD PP for an outline of the TOE boundary. When claiming
+        conformance to this PP‐Module, the TOE boundary will include one or more each of peripheral and
+        computer interfaces that can be used to transmit video signals. It is permissible to use this PP‐Module in
+        conjunction with other PP‐Modules that also extend the PSD PP by claiming conformance to a PPConfiguration
+        that includes all applicable PP‐Modules. In this manner, a single TOE may support multiple
+        different types of peripherals.<h:br/><h:br/>
+        A conformant TOE may simultaneously present the video output of one or more computers per peripheral
+        port; it is not required to be a one‐to‐one relationship. Section 1.4 below defines specific methods of
+        supported video display.
+      </section>      
+    <section title="Use Cases" id="usecases">
+      This PP‐Module does not define additional use cases beyond what the PSD PP defines. The TOE should
+      embody one or more use cases from the PSD PP. This PP‐Module’s functionality defines
+      implementation-independent
+      functionality (i.e., not tied to any specific use cases) and relates entirely to the specific
+      security requirements related to security of the physical and logical interfaces for assigning video and
+      display devices. Specifically, the TOE may perform any of the following functions:<h:ul>
+        <h:li>Display PSD – Output from one or more connected computers to be presented on a single display</h:li>
+        <h:li>Keyboard, video, and mouse (KVM) PSD – Output from one or more connected computers to be
+      presented on one or more displays along with keyboard and mouse user interaction—in this case,
+      the TOE boundary would also include the requirements of the PP‐Module for Keyboard/Mouse
+      (KM) Input Devices</h:li>
+        <h:li>Combiner/Multi‐viewer – Output from multiple computers to be shown simultaneously on one or
+      more displays along with keyboard and mouse user interaction</h:li>
+        <h:li>Video Wall – Output from one or more computers to be shown across multiple displays</h:li>
+    </h:ul>
+    </section>    
   </sec:Introduction>
 
-  <sec:cclaims title="Conformance Claims"/>
-  <sec:spd title="Security Problem Description">The security problem is described in terms
-    of the threats that the OS is expected to address, assumptions about the
-    operational environment, and any organizational security policies that the OS
-    is expected to enforce.
-    <sec:Threats>
+  <section title="Conformance Claims" id="sec-cclaims" boilerplate="no">
+    <CClaimsInfo
+      cc-version="cc-2022r1"
+      cc-approach="direct-rationale"
+      display="yes">
+      <cc-st-conf>exact</cc-st-conf>
+      <cc-pt2-conf>extended</cc-pt2-conf>           
+      <cc-pt3-conf>conformant</cc-pt3-conf> 
+      <cc-pp-conf/>
+      <cc-pp-config-with>
+        <PP-cc-ref>Protection Profile for Peripheral Sharing Device, Version 5.0</PP-cc-ref>
+        <Mod-cc-ref>PP-Module for Analog Audio Output Devices, Version 2.0</Mod-cc-ref>
+        <Mod-cc-ref>PP-Module for Keyboard/Mouse Devices, Version 2.0</Mod-cc-ref>
+        <Mod-cc-ref>PP-MOdule for User Authentication Devices, Version 2.0</Mod-cc-ref>
+      </cc-pp-config-with>        
+      <cc-pkg-claim/>
+    </CClaimsInfo>
+  </section>
+  
+  <sec:Security_Problem_Definition>    
+    This PP‐Module describes the security problem in terms of the threats the TOE is expected to address,
+    assumptions about its operational environment, and any organizational security policies (OSPs) that the
+    TOE is expected to enforce.<h:br/><h:br/>
+    Note that as a PP‐Module of the PSD PP, all threats, assumptions, and OSPs defined in the PSD PP also
+    apply to the TOE, its usage and deployment, and its operational environment unless otherwise specified.
+    
+    <sec:Threats>      
       <threats>
-        <threat name="T.NETWORK_ATTACK">
-          <description> An attacker is positioned on a communications channel or elsewhere on the
-            network infrastructure. Attackers may engage in communications with applications and
-            services running on or part of the OS with the intent of compromise. Engagement may
-            consist of altering existing legitimate communications.</description>
-          <objective-refer ref="O.PROTECTED_COMMS">
-            <rationale>The threat T.NETWORK_ATTACK is countered by O.PROTECTED_COMMS as this
-              provides for integrity of transmitted data.</rationale>
-          </objective-refer>
-          <objective-refer ref="O.INTEGRITY">
-            <rationale>The threat T.NETWORK_ATTACK is countered by O.INTEGRITY as this provides for
-              integrity of software that is installed onto the system from the network.</rationale>
-          </objective-refer>
-          <objective-refer ref="O.MANAGEMENT">
-            <rationale>The threat T.NETWORK_ATTACK is countered by O.MANAGEMENT as this provides for
-              the ability to configure the OS to defend against network attack.</rationale>
-          </objective-refer>
-          <objective-refer ref="O.ACCOUNTABILITY">
-            <rationale>The threat T.NETWORK_ATTACK is countered by O.ACCOUNTABILITY as this
-              provides a mechanism for the OS to report behavior that may indicate a network
-              attack has occurred.</rationale>
-          </objective-refer>
+        <threat name="T.DATA_LEAK">
+          <from base="bpp-psd"/>
+          <description>This threat from the PSD PP also applies to the functionality defined in this PP-Module.</description>
+          <addressed-by>FDP_APC_EXT.1 (modified)</addressed-by><rationale>Mitigates this threat by
+            ensuring only user-selected data is routed to an interface.</rationale>
+          <addressed-by>FDP_PDC_EXT.1 (modified)</addressed-by><rationale>Mitigates this threat by
+            specifying authorized USB devices and adding testing for those devices.</rationale>          
         </threat>
-        <threat name="T.NETWORK_EAVESDROP">
-          <description> An attacker is positioned on a communications channel or elsewhere on the
-            network infrastructure. Attackers may monitor and gain access to data exchanged between
-            applications and services that are running on or part of the OS. </description>
-          <objective-refer ref="O.PROTECTED_COMMS">
-            <rationale>The threat T.NETWORK_EAVESDROP is countered by O.PROTECTED_COMMS as this
-              provides for confidentiality of transmitted data.</rationale>
-          </objective-refer>
-          <objective-refer ref="O.MANAGEMENT">
-            <rationale>The threat T.NETWORK_EAVESDROP is countered by O.MANAGEMENT as this provides
-              for the ability to configure the OS to protect the confidentiality of its transmitted
-              data.</rationale>
-          </objective-refer>
+        <threat name="T.RESIDUAL_LEAK">
+          <from base="bpp-psd"/>
+          <description>This threat from the PSD PP also applies to the functionality defined in this PP-Module.</description>
+          <addressed-by>FDP_UDF_EXT.1/VI</addressed-by><rationale>Mitigates this threat by ensuring
+            video data transits unidirectionally between interfaces.</rationale>
         </threat>
-        <threat name="T.LOCAL_ATTACK">
-          <description> An attacker may compromise applications running on the OS. The
-            compromised application may provide maliciously formatted input to the OS through a
-            variety of channels including unprivileged system calls and messaging via the
-            file system. </description>
-          <objective-refer ref="O.INTEGRITY">
-            <rationale>The objective O.INTEGRITY protects against the use of mechanisms that weaken
-              the TOE with regard to attack by other software on the
-              platform.</rationale>
-          </objective-refer>
-          <objective-refer ref="O.ACCOUNTABILITY">
-            <rationale>The objective O.ACCOUNTABILITY protects against local attacks by providing
-              a mechanism to report behavior that may indicate a local attack is occurring or
-              has occurred.</rationale>
-          </objective-refer>
+        <threat name="T.SIGNAL_LEAK">
+          <from base="bpp-psd"/>
+          <description>This threat from the PSD PP also applies to the functionality defined in this PP-Module.</description>
+          <addressed-by>FDP_APC_EXT.1 (modified)</addressed-by><rationale>Mitigates this threat by
+            requiring only user-selected data to be routed and ensuring no data or electrical
+            signals flow.</rationale>
+          <addressed-by>FDP_PDC_EXT.1 (modified)</addressed-by><rationale>Mitigates this threat by
+            ensuring only authorized peripheral devices are connected during power up and when a new
+          peripheral devices is connected.</rationale>
         </threat>
-        <threat name="T.LIMITED_PHYSICAL_ACCESS">
-          <description> An attacker may attempt to access data on the OS while having a limited
-            amount of time with the physical device. </description>
-          <objective-refer ref="O.PROTECTED_STORAGE">
-            <rationale>The objective O.PROTECTED_STORAGE protects against unauthorized attempts to
-              access physical storage used by the TOE.</rationale>
-          </objective-refer>
+        <threat name="T.UNAUTHORIZED_DEVICES">
+          <from base="bpp-psd"/>
+          <description>This threat from the PSD PP also applies to the functionality defined in this PP-Module.</description>          
+          <addressed-by>FDP_PDC_EXT.2/VI</addressed-by><rationale>Mitigates this threat by ensuring only authorized devices are allowed to connect based on a specified
+            standard.</rationale>
+          <addressed-by>FDP_PDC_EXT.3/VI</addressed-by><rationale>Mitigates this threat by applying
+            rules to the protocols the interface supports to prevent unauthorized connections.</rationale>
+          <addressed-by>FDP_IPC_EXT.1 (selection-based)</addressed-by><rationale>Mitigates this
+            threat by ensuring the specified protocol is converted  from within the TOE.</rationale>
+          <addressed-by>FDP_SPR_EXT.1/DP (selection-based)</addressed-by><rationale>Mitigates this
+            threat by ensuring the TSF applies the specified rules for the DP protocol.</rationale>
+          <addressed-by>FDP_SPR_EXT.1/DVI-D (selection-based)</addressed-by><rationale>Mitigates
+            this threat by ensuring the TSF applies the specified rules for the DVI-D protocol.</rationale>
+          <addressed-by>FDP_SPR_EXT.1/DVI-I (selection-based)</addressed-by><rationale>Mitigates
+            this threat by ensuring the TSF applies the specified rules for the DVI-I protocol.</rationale>
+          <addressed-by>FDP_SPR_EXT.1/HDMI (selection-based)</addressed-by><rationale>Mitigates this
+            threat by ensuring the TSF applies the specified rules for the HDMI protocol.</rationale>
+          <addressed-by>FDP_SPR_EXT.1/USB (selection-based)</addressed-by><rationale>Mitigates this
+            threat by ensuring the TSF applies the specified rules for the USB protocol.</rationale>
+          <addressed-by>FDP_SPR_EXT.1/VGA (selection-based)</addressed-by><rationale>Mitigates this
+            threat by ensuring the TSF applies the specified rules for the VGA protocol.</rationale>
         </threat>
-      </threats>
+      <threat name="T.UNINTENDED_USE">
+        <from base="bpp-psd"/>
+        <description>This threat from the PSD PP also applies to the functionality defined in this PP-Module.</description>
+        <addressed-by>FTA_CIN_EXT.1 (modified)</addressed-by><rationale>Mitigates this threat by
+          requiring visible markings for each video source to ensure the correct display is being
+          used.
+          </rationale>
+        <addressed-by>FDP_CDS_EXT.1 (selection-based)</addressed-by><rationale>Mitigates this threat
+          by choosing whether to support one or multiple displays to ensure there is no unauthorized
+          connections.</rationale>
+      </threat>
+      </threats> 
     </sec:Threats>
-    <section title="Assumptions" id="assumptions">
-      <assumptions>
-        <assumption name="A.PLATFORM">
-          <description> The OS relies upon a trustworthy computing platform for
-            its execution. This underlying platform is out of scope of this PP. </description>
-          <objective-refer ref="OE.PLATFORM">
-            <rationale> The operational environment objective OE.PLATFORM is realized through
-              A.PLATFORM. </rationale>
-          </objective-refer>
-        </assumption>
-        <assumption name="A.PROPER_USER">
-          <description> The user of the OS is not willfully negligent or hostile, and uses the
-            software in compliance with the applied enterprise security policy. At the same time,
-            malicious software could act <h:i>as</h:i> the user, so requirements which
-            confine malicious subjects are still in scope.</description>
-          <objective-refer ref="OE.PROPER_USER">
-            <rationale>The operational environment objective OE.PROPER_USER is realized through
-              A.PROPER_USER.</rationale>
-          </objective-refer>
-        </assumption>
-        <assumption name="A.PROPER_ADMIN">
-          <description> The administrator of the OS is not careless, willfully negligent or hostile,
-            and administers the OS within compliance of the applied enterprise security policy. </description>
-          <objective-refer ref="OE.PROPER_ADMIN">
-            <rationale>The operational environment objective OE.PROPER_ADMIN is realized through
-              A.PROPER_ADMIN.</rationale>
-          </objective-refer>
-        </assumption>
-      </assumptions>
-    </section>
-<!--    <section title="Organizational Security Policies" id="OSPs">
-      <OSPs>
-        <OSP id="P.ENTERPRISE">
-          <description>If the OS is bound to a directory or management server, the configuration of
-            the OS software must be capable of adhering to the enterprise security policies
-            distributed by them.</description>
-          <objective-refer ref="O.MANAGEMENT">
-            <rationale>The organizational security policy P.ENTERPRISE is enforced through the
-              objective O.MANAGEMENT as this objective represents how the enterprise and user assert
-              management over the OS.</rationale>
-          </objective-refer>
-        </OSP>
-      </OSPs>
-    </section> -->
-  </sec:spd>
+    
+    <sec:Assumptions>
+      <assumptions/>
+    </sec:Assumptions>
+      
+    <sec:Organizational_Security_Policies>
+      <OSPs/>
+    </sec:Organizational_Security_Policies>
+  </sec:Security_Problem_Definition>
+
   <sec:Security_Objectives>
-    <section title="Security Objectives for the TOE" id="SecurityObjectivesTOE">
-      <SOs>
-        <SO name="O.ACCOUNTABILITY">
-          <description> Conformant OSes ensure that information exists that allows
-            administrators to discover unintentional issues with the configuration and operation of
-            the operating system and discover its cause.  Gathering event information and immediately
-            transmitting it to another system can also enable incident response in the event
-            of system compromise.</description>
-          <addressed-by>FAU_GEN.1</addressed-by><rationale>'cause FAU_GEN.1 is awesome</rationale>
-          <addressed-by>FTP_ITC_EXT.1</addressed-by><rationale>Cause FTP reasons </rationale>
-        </SO>
-        <SO name="O.INTEGRITY">
-          <description>Conformant OSes ensure the integrity of their update
-            packages. OSes are seldom if ever shipped without errors, and the
-            ability to deploy patches and updates with integrity is critical to enterprise network
-            security. Conformant OSes provide execution environment-based
-            mitigations that increase the cost to attackers by adding complexity to the task of
-            compromising systems. </description>
-            <addressed-by>FPT_SBOP_EXT.1</addressed-by><rationale>For reasons </rationale>
-            <addressed-by>FPT_ASLR_EXT.1</addressed-by><rationale>ASLR For reasons </rationale>
-            <addressed-by>FPT_TUD_EXT.1</addressed-by><rationale>For reasons </rationale>
-            <addressed-by>FPT_TUD_EXT.2</addressed-by><rationale>For reasons </rationale>
-            <addressed-by>FCS_COP.1/HASH</addressed-by><rationale>For reasons </rationale>
-            <addressed-by>FCS_COP.1/SIGN</addressed-by><rationale>For reasons </rationale>
-            <addressed-by>FCS_COP.1/KEYHMAC</addressed-by><rationale>For reasons </rationale>
-            <addressed-by>FPT_ACF_EXT.1</addressed-by><rationale>For reasons </rationale>
-            <addressed-by>FPT_SRP_EXT.1</addressed-by><rationale>For reasons </rationale>
-            <addressed-by>FIA_X509_EXT.1</addressed-by><rationale>For reasons </rationale>
-            <addressed-by>FPT_TST_EXT.1</addressed-by><rationale>For reasons </rationale>
-            <addressed-by>FTP_ITC_EXT.1</addressed-by><rationale>For reasons </rationale>
-            <addressed-by>FPT_W^X_EXT.1</addressed-by><rationale>For reasons </rationale>
-            <addressed-by>FIA_AFL.1</addressed-by><rationale>For reasons </rationale>
-            <addressed-by>FIA_UAU.5</addressed-by><rationale>For reasons </rationale>
-        </SO>
-        <SO name="O.MANAGEMENT">
-          <description> To facilitate management by users and the enterprise, conformant OSes
-	    provide consistent and supported interfaces for their
-            security-relevant configuration and maintenance. This includes the deployment of
-            applications and application updates through the use of platform-supported deployment
-            mechanisms and formats, as well as providing mechanisms for configuration and
-            application execution control. </description>
-            <addressed-by>FMT_MOF_EXT.1</addressed-by><rationale>For reasons </rationale>
-            <addressed-by>FMT_SMF_EXT.1</addressed-by><rationale>For reasons </rationale>
-            <addressed-by>FTA_TAB.1</addressed-by><rationale>For reasons </rationale>
-            <addressed-by>FTP_TRP.1</addressed-by><rationale>For reasons </rationale>
-        </SO>
-	<!-- <SO id="O.RESILIENCE"> -->
-	<!--   <description>  -->
-	<!--     To address the issue of exploitation in the event of software vulnerabilities,  -->
-	<!--     conformant OSs employ industry-standard exploitation countermeasures. -->
-	<!--   </description> -->
-	<!-- </SO> -->
-        <SO name="O.PROTECTED_STORAGE">
-          <description>
-To address the issue of loss of confidentiality of credentials in the event of
-loss of physical control of the storage medium, conformant OSes
-provide data-at-rest protection for credentials.
-Conformant OSes also provide access controls which allow users to keep their files private from other
-users of the same system.
-          </description>
-          <addressed-by>FCS_STO_EXT.1, FCS_RBG_EXT.1, FCS_COP.1/ENCRYPT, FDP_ACF_EXT.1</addressed-by>
-          <rationale>Rationale for a big chunk</rationale>
-        </SO>
-        <SO name="O.PROTECTED_COMMS">
-          <description> To address both passive (eavesdropping) and active (packet modification)
-            network attack threats, conformant OSes provide mechanisms to create
-            trusted channels for CSP and sensitive data. Both CSP and sensitive data
-            should not be exposed outside of the platform. </description>
-          <addressed-by>
-            FCS_RBG_EXT.1, FCS_CKM.1, FCS_CKM.2, FCS_CKM_EXT.4, FCS_COP.1/ENCRYPT,
-            FCS_COP.1/HASH, FCS_COP.1/SIGN, FCS_COP.1/HMAC, FDP_IFC_EXT.1, FIA_X509_EXT.1,
-            FIA_X509_EXT.2, FTP_ITC_EXT.1
-          </addressed-by>
-          <rationale>Rationale for a big chunk</rationale>
-        </SO>
-      </SOs>
-    </section>
-    <section title="Security Objectives for the Operational Environment"
-      id="SecurityObjectivesTOEorEnvironment">The following security objectives for the operational
-      environment assist the OS in correctly providing its security functionality.
-      These track with the assumptions about the environment. <SOEs>
-        <SOE name="OE.PLATFORM">
-          <description>The OS relies on being installed on trusted
-            hardware.</description>
-        </SOE>
-        <SOE name="OE.PROPER_USER">
-          <description> The user of the OS is not willfully negligent or hostile,
-            and uses the software within compliance of the applied enterprise security policy.
-            Standard user accounts are provisioned in accordance with the least privilege model.
-            Users requiring higher levels of access should have a separate account dedicated for
-            that use. </description>
-        </SOE>
-        <SOE name="OE.PROPER_ADMIN">
-          <description> The administrator of the OS is not careless, willfully
-            negligent or hostile, and administers the OS within compliance of the applied enterprise
-            security policy. </description>
-        </SOE>
-      </SOEs></section>
-    <section title="Security Objectives Rationale" id="SOR">
-      <!-- This section is populated by boilerplates.xsl in transforms. -->
-      </section>
+    <sec:Security_Objectives_for_the_TOE>
+      <SOs/>
+    </sec:Security_Objectives_for_the_TOE>
+    
+    <sec:Security_Objectives_for_the_Operational_Environment>
+      Because this PP‐Module does not define any additional assumptions or organizational security policies,
+      there are no additional security objectives for the Operational Environment to satisfy.
+    </sec:Security_Objectives_for_the_Operational_Environment> 
+    
+    <section title="Security Objectives Rationale" id="SOR"/>
   </sec:Security_Objectives>
 
-  <sec:Security_Requirements>This chapter describes the security requirements
-    which have to be fulfilled by the OS. Those requirements comprise functional
-    components from Part 2 and assurance components from Part 3 of <xref g="CC"/>. The
-    following notations are used: <h:ul>
-      <h:li>
-        <h:b>Refinement</h:b> operation (denoted by <h:b>bold text</h:b>): is used to add details to a
-        requirement, and thus further restricts a requirement.</h:li>
-      <h:li>
-        <h:b>Selection</h:b> (denoted by <h:i>italicized text</h:i>): is used to select one or more options
-        provided by the [CC] in stating a requirement.</h:li>
-      <h:li>
-        <h:b>Assignment</h:b> operation (denoted by <h:span class="assignable-content">italicized text</h:span>): is used to assign a
-        specific value to an unspecified parameter, such as the length of a password. Showing the
-        value in square brackets indicates assignment.</h:li>
-      <h:li>
-        <h:b>Iteration</h:b> operation: are identified with a number inside parentheses (e.g.
-        "(1)")</h:li>
-    </h:ul>
-
-    <sec:SFRs title="Security Functional Requirements">
-      <sec:Something>
-          Here's whwere we talk about an audit table.
-          <audit-table table="mandatory" id="at-mandatory"/>
-      </sec:Something>
-      <section title="QQQQ" id="FOO">
-         <f-component cc-id="foo_foo.1" name="Foo Foo">
-          <f-element id="foo-foo-id">
-            <title> The TOE shall consiste of  
-              <selectables>
-                 <selectable id="soup">soup</selectable>
-                 <selectable id="salad">salad</selectable>
-              </selectables>
-              followed by 
-              <selectables>
-                 <selectable id="pizza">pizza</selectable>
-                 <selectable id="spaghetti">spaghetti</selectable>
-                 <selectable id="ratatouille">ratatouille</selectable>
-                 <selectable id="sushi">sushi</selectable>
-              </selectables> with 
-              <selectables>
-                 <selectable id="s-white">white</selectable>
-                 <selectable id="s-red">red</selectable>
-              </selectables>. 
-            </title>
-            <note role="application"></note>
-            <aactivity>Something<TSS>ABC</TSS></aactivity>
-	    <!-- So an 'or' with one child means This OR NOTHING. -->
-	    <!-- So the following means -->
-	    <rule id="r-1">
-              <or>
-		<and>
-                  <ref-id>s-white</ref-id>
-                  <or><ref-id>ratatouille</ref-id>
-                  <ref-id>sushi</ref-id></or>
-		</and>
-		<and>
-                  <ref-id>s-red</ref-id>
-                  <or><ref-id>spaghetti</ref-id>
-                     <ref-id>pizza</ref-id></or>
-		</and>
-              </or>
-	    </rule>
-          </f-element>
-        </f-component>
-        <f-component cc-id="foo_bar.1" name="Foo Bar">
-          <f-element id="foo-bar-id">
-            <title> The TOE shall drink  <selectables><selectable id="tea">tea</selectable><selectable>coffee</selectable></selectables>. 
-            </title>
-            <note role="application"></note>
-            <aactivity>Something<TSS>ABC</TSS></aactivity>
-          </f-element>
-          <f-element id="foo-bar-cookie">
-            <title> The TOE shall eat <selectables><selectable id="crackers">crackers</selectable><selectable>nothing</selectable></selectables></title>
-            <note role="application">Deonstrating rules across elements</note>
-            <aactivity>Something <Guidance></Guidance></aactivity>
-	    <rule id="r-tea-and-crackers">
-              <or><and><ref-id>tea</ref-id><ref-id>crackers</ref-id></and></or>
-	    </rule>
-          </f-element>
-
-         </f-component>
-       </section>
-       <section title="QQQQ" id="QQQQ">
-         <f-component cc-id="fqq_qqq.1" name="QQQQQ">
-          <f-element id="a-unique-id">
-            <title> The TOE shall do either <selectables><selectable id="aaa">this</selectable><selectable>that</selectable></selectables>. 
-            </title>
-            <note role="application"></note>
-            <aactivity>
-              <TSS>
-Activities assoiated with the TSS.
-              </TSS>
-               <Guidance>
-Activities assoiated with guidance
-              </Guidance>
-             <Tests>
-                 <testlist>
-                    <test>
-                     Make shadow puppets.
-                       <Objective>This is the motivation behind the tests.</Objective>
-                       <Evidence>A warm fuzzy feeling </Evidence>
-                     </test>
-                 </testlist>
-Activities assoiated with the Tests. 
-                 <h:div><depends on="virtual"/>
-					 Great tests for something virtual.
-				 </h:div>
-                 <h:div><depends on="physical"/>
-					 Great tests for something tangible or in my mind.
-				 </h:div>
-
-              </Tests>
-	    </aactivity>
-          </f-element>
- 	  <audit-event>
-                <audit-event-descr>
-	On failure of audit data capture due to lack of disk space or pre-defined limit.
-                </audit-event-descr>
-                <audit-event-info>None.</audit-event-info>
-          </audit-event>
-  	  <audit-event table="turtle">
-	    <optional/>
-                <audit-event-descr>
-	On number of turtles in the area.
-                </audit-event-descr>
-          </audit-event>
-        </f-component>
-        <f-component cc-id="fqq_qqq.3" name="BQQQQQ">
-	  <objective/>
-          <f-element id="objective-example">
-            <title> The TOE shall do <assignable>guidance on what things should be assignable </assignable>. </title>
-            <note role="application">Notes. Notes. Notes.</note>
-            <aactivity>
-              <Guidance>
-Activities assoiated with guidance
-              </Guidance>
-	    </aactivity>
-          </f-element>
-        </f-component>
-        <f-component cc-id="fqq_qqq.2" name="TQQQQQ" id="optional-comp-example">
-	  <optional/>
-          <f-element id="optional-example">
-            <title> The TOE shall do soemthing.</title>
-            <note role="application"></note>
-            <aactivity>
-              <TSS>
-Activities assoiated with the TSS.
-              </TSS>
-	    </aactivity>
-          </f-element>
-        </f-component>
-         <f-component cc-id="fqq_qqq.4" name="UQQQQQ">
-          <depends id="aaa"/>
-          <f-element id="selbased-example">
-            <title> The TOE shall do something great.</title>
-            <note role="application"></note>
-            <aactivity>
-              <TSS>
-Activities assoiated with the TSS.
-              </TSS>
-	    </aactivity>
-          </f-element>
-        </f-component>
-        <f-component cc-id="fqq_qqq.6" name="WQQQQQ">
-          <depends on="a-feature-id"/>
-          <f-element id="feat-based-example">
-            <title> The TOE shall do something with regards to some implementation.</title>
-            <note role="application"></note>
-            <aactivity>
-              <TSS>
-Activities assoiated with the TSS.
-              </TSS>
-	    </aactivity>
-          </f-element>
-        </f-component>
-      </section>
-
-      <section title="Security Management (FMT)" id="fmt-2">
-          <f-component cc-id="fmt_smf.1" iteration="HOST" name="Specification of Management Functions (EDR Management of Host Agent)">
-            <f-element id="iteration-example">
-              <title>The EDR shall be capable of performing the following functions that control
-                behavior of the Host Agent:<h:br/>
-                <management-function-set default="O">
-                  <manager cid="a">Administrator</manager>
-                  <manager cid="s">SOC Analyst</manager>
-                  <manager cid="u">Read-Only User</manager>
-                  <management-function>
-                    <text>Configure the time frame for sending Host Agent data to the EDR
-                        <assignable>list of configurable time frames</assignable>
-                    </text>
-                    <M ref="a"/><O ref="s"/><NA ref="u"/>
-                  </management-function>
-                  <management-function>
-                    <text>Assign a label or tag to categorize or group individual endpoint systems </text>
-                    <M ref="a"/><O ref="s"/><NA ref="u"/>
-                  </management-function>
-                </management-function-set>
+  <sec:Security_Requirements>
+    <comment>Need to add URLs once created</comment>
+    <base-pp id="bpp-psd" name="Peripheral Sharing Device" product="Device" short="PSD" version="5.0">
+      <git>
+        <url>https://github.com/commoncriteria/ua</url>
+        <branch>release-5.0</branch>
+      </git>
+      <url>https://github.com/commoncriteria/psd</url>
+      
+      <sec-func-req-dir>
+        When a TOE claims conformance to this PP‐Module, it is necessary to make claims in the PSD PP
+        requirements consistent with the functionality in the PP‐Module. The following sections describe any PSD
+        PP claims that must be made and any additional evaluation activities that must be performed when the
+        TOE boundary includes the functionality this PP‐Module describes.
+      </sec-func-req-dir>
+      
+      <modified-sfrs>
+        
+        <sec:mod_fdp title="User Data Protection (FDP)">
+          <f-component cc-id="fdp_apc_ext.1" name="Active PSD Connections">
+            <consistency-rationale>
+              This SFR adds a requirement to block electrical signals that strengthens but
+              does not conflict with the requirement in the PSD PP.
+            </consistency-rationale>
+            <f-element id="fdp-apc-ext-1e1">
+              <title> The TSF shall route user data only <h:s>to or</h:s> from the interfaces selected by the
+                user. 
               </title>
-              <note role="application">This requirement captures all the configuration
-                functionality the EDR provides the administrator to configure the
-                EDR Host Agents. <h:br/><h:br/>
-              Chart legend: X = Mandatory, O = Optional, - = N/A</note>
-              <aactivity>
-                <TSS>The evaluator shall verify the ST contains a list of roles and what functions they can perform.  
-                  The evaluator shall verify the list matches the chart in the requirement.</TSS>
-                <Guidance>The evaluator shall review the operational guidance to verify that the EDR has
-                documented capabilities to perform the management functions.</Guidance>
-                <Tests>The evaluator shall perform the below tests:
-                 <testlist>
-                   <test>The evaluator shall modify the time frame for sending Host Agent data to the EDR
-                   and verify that an affected Host Agent is sending data at the intended interval.</test>
-                   <test>The evaluator shall tag or categorize a group of individual endpoint systems and
-                   verify that the tag or categorization persists within the EDR management dashboard for
-                   other users.</test>
-                   <test>The evaluator shall attempt each function with each role and verify access conforms with the chart in the requirement.</test>
-                 </testlist>
-                 <Objective>This is the motivation behind the tests.</Objective>
-                 <Evidence>A check should appear.</Evidence>
+            </f-element>
+            <f-element id="fdp-apc-ext-1e2">
+              <title>The TSF shall ensure that no data <h:b>or electrical signals</h:b> flow between connected computers whether the
+                TOE is powered on or powered off.
+              </title>
+              <note role="application">
+                This SFR is refined from the PSD PP for this PP‐Module to include further
+                restrictions for electrical signals. It is unlikely that this element can be satisfied
+                unless video/display peripheral device interfaces are electrically and logically
+                isolated from the connected computer interfaces or through other methods.<h:br/><h:br/>
+                If the TOE claims conformance to multiple PP‐Modules, each PP‐Module modifies
+                this SFR in a different manner for the interfaces that are unique to that module. In
+                this case, the ST author should reference this modification of the SFR as
+                “FDP_APC_EXT.1/VI” for uniqueness. Note that all elements of FDP_APC_EXT.1
+                must be included in this iteration, not just the ones that are modified by this PPModule.                
+              </note>        
+              
+              <aactivity>         
+                <TSS/>                  
+                <Guidance/>
+                <CustomEA name="Isolation">
+                  The evaluator shall examine the Isolation Document and verify it describes how the TOE ensures that no
+                  data or electrical signals flow between connected computers in both cases (powered on, powered off).
+                </CustomEA>
+                <Tests>                  
+                  The evaluator shall perform the following tests.
+                  
+                  <testlist>
+                    <test id="visourcesel">
+                      <h:b>Video Source Selection and Identification, TOE Off and Failure States</h:b><h:br/><h:br/>
+                      This test verifies the TOE switching function operates properly and will stop the video output display when
+                      in an OFF or FAILURE state.<h:ol>
+                        <h:li>Configure the TOE and the Operational Environment in accordance with the operational guidance.</h:li>
+                        <h:li>Play a different video with embedded audio on a number of computers for each TOE computer
+                          video interface.</h:li>
+                        <h:li>Connect each computer to a TOE computer video interface.</h:li>
+                        <h:li>Connect a display to each TOE display interface.</h:li>
+                        <h:li>Turn on the TOE.</h:li>
+                        <h:li>For each connected computer, ensure it is selected and verify that the video and its accompanying
+                          audio from the selected computer(s) are received on the proper display(s).</h:li>
+                        <h:li>[Conditional: if “multiple connected displays” is selected in FDP_CDS_EXT.1.1 then] verify that
+                          video generated by the TOE has clear identification marking or text to properly identify the source
+                          computer shown.</h:li>
+                        <h:li>Turn off the TOE and verify that no video appears on any connected display.</h:li>
+                        <h:li>Power on the TOE and cause the TOE to enter a failure state. Verify that the TOE provides the user
+                          with a visual indication of failure and that no usable video appears on any connected display.</h:li>
+                        <h:li>Repeat steps 3 to 9 for each unique display protocol and port type supported by the TOE.</h:li>
+                       </h:ol>                  
+                  </test>
+                    <test>
+                      <h:b>Computer Video Interface Solutions</h:b><h:br/><h:br/>
+                      [Conditional: perform this test if “switching can be initiated only through express user action” is selected
+                      in FDP_SWI_EXT.1.1 in the PSD PP.]<h:br/><h:br/>
+                      This test verifies that the TOE does not transfer data to any non‐selected computer video interface.<h:ol>
+                        <h:li>Configure the TOE and the Operational Environment in accordance with the operational guidance.
+                          Connect only the first computer interface cable to one computer. Turn on the TOE.</h:li>
+                        <h:li>Switch the TOE primary display to computer #1.</h:li>
+                        <h:li>Observe the primary display to verify that the selected computer is the one that is shown.</h:li>
+                        <h:li>Remove the non‐selected computer video interface cables from the TOE and connect the
+                          oscilloscope probe to the TOE #2 computer video interface to verify that no SYNC signal is passed through
+                          the TOE. Based on the connection interface protocol, this is performed as
+                          follows.<h:ol>
+                            <h:li>Video Graphics Array (VGA) – single ended probe on pins 13 and then 14</h:li>
+                            <h:li>High‐Definition Multimedia Interface (HDMI) – connect pin 19 to a 3.3V power supply via a 100
+                              Ohm resistor to provide Hot Plug Detect (HPD) signal; Check for signals ‐ differential probe
+                              between pins 10 (+) and 12 (‐)</h:li>
+                            <h:li>Digital Visual Interface (DVI)‐I – connect pin 16 to a 3.3V power supply via a 100 Ohm resistor to
+                              provide HPD signal; Check for signals ‐ single ended probe on pins 8 and C4. Differential probe
+                              between pins 23 (+) and 24 (‐)</h:li>
+                            <h:li>DVI‐D ‐ connect pin 16 to a 3.3V power supply via a 100 Ohm resistor to provide HPD signal; Check
+                              for signals ‐ Differential probe between pins 23 (+) and 24 (‐)</h:li>
+                            <h:li>DisplayPort ‐ connect pin 18 to a 3.3V power supply via 100 Ohm resistor to provide HPD signal;
+                              Check for signals ‐ Differential probe between pins 3 (‐) and 1 (+) and between 10 (‐) and 12 (+)</h:li>
+                            <h:li>USB Type‐C with DisplayPort as Alternate Function – connect pin A8 to a 3.3V power supply via a
+                              100 Ohm resistor to provide HPD signal; Check for signals – Differential probe between pins A2
+                              and A3, A10 and A11; B2 and B3, and B10 and B11</h:li>
+                          </h:ol></h:li>
+                        <h:li>Repeat steps 3 and 4 while selecting other TOE connected computers. Verify that no SYNC signal
+                          is present.</h:li>
+                        <h:li>Repeat steps 3 to 5 with the TOE unpowered. Verify that no SYNC signal is present.</h:li>
+                        <h:li>With the probe connected to the TOE computer #2 video interface, disconnect / reconnect the
+                          computer #1 video cable. Power up the TOE and select computer #1. Attempt to detect the change in the
+                          oscilloscope at each one of the TOE #2 computer video interface pins. No changes shall be detected.</h:li>
+                        <h:li>Repeat step 7 for each one of the other TOE computer video interfaces.</h:li>
+                        <h:li>Repeat steps 7 and 8, but instead of disconnecting / reconnecting the computer, disconnect and
+                          reconnect the display.</h:li>
+                        <h:li>Repeat steps 7 and 8, but instead of disconnecting / reconnecting the computer, reboot the
+                          selected computer.</h:li>
+                        <h:li>Repeat steps 2 to 10 with each connected computer.</h:li>
+                        <h:li>[Conditional: if “multiple connected displays” is selected in FDP_CDS_EXT.1.1 then] repeat steps
+                          3 to 10 with each other display connected to the TOE.</h:li>
+                        <h:li>Repeat this test for each unique display protocol and port type supported by the TOE.</h:li>
+                      </h:ol>                      
+                    </test>
+                    
+                    <test>
+                      <h:b>Unauthorized Sub-Protocols</h:b><h:br/><h:br/>                      
+                      Note that in the following steps only native video protocol cables shall be used. No conversion from other
+                      video protocols is allowed in these tests except as directed in FDP_IPC_EXT.1.1.<h:br/><h:br/>
+                      This test verifies that unauthorized sub‐protocols are blocked.<h:br/><h:br/>
+                      Perform this test for each of the selections in FDP_PDC_EXT.3.1/VI and FDP_IPC_EXT.1.1.<h:br/><h:br/>
+                      <h:b>In the following steps the evaluator shall establish a verified test setup that passes video signals across
+                      the TOE.</h:b>
+                      <h:ol>
+                        <h:li>Connect at least one computer with a native video protocol output to the TOE computer #1 video
+                          input interface.</h:li>
+                        <h:li>Connect at least one display with native video protocol to the TOE display output.</h:li>
+                        <h:li>Power up the TOE and ensure the connected computer is selected.</h:li>
+                        <h:li>Verify that the video image is visible and stable on the user display.</h:li>
+                      
+                      <h:b>In the following steps the evaluator shall verify that the test setup properly blocks the unauthorized
+                        video sub‐protocol traffic.</h:b><h:br/><h:br/>
+                      
+                        <h:li>Open the Monitor Control Command Set (MCCS) control console program on the computer and
+                          attempt to change the display contrast and brightness. Verify that the display does not change its contrast
+                          and brightness accordingly.</h:li>
+                        <h:li>Disconnect the video cable connecting the display and the TOE and connect the display directly to
+                          the TOE. Verify that the video image is visible and stable on the user display.</h:li>
+                        <h:li>Attempt to change the display contrast and brightness. Verify that the display does change its
+                          contrast and brightness accordingly.</h:li>
+                        <h:li>Connect the following testing device based on the display video protocol being tested at the
+                          peripheral display interface.<h:ol>
+                            <h:li>DisplayPort – DisplayPort AUX channel analyzer in series between the display and the TOE</h:li>
+                            <h:li>HDMI/DVI‐I/‐DVI‐D – HDMI sink test device</h:li>
+                            <h:li>USB Type‐C with DisplayPort as Alternate Function – USB sniffer in series between the display and
+                              the TOE</h:li>
+                            <h:li>VGA – VGA sink test device</h:li>                            
+                          </h:ol></h:li>
+                            <h:li>Attempt to change the display contrast and brightness. Verify that the testing device does not
+                              capture any MCCS commands.</h:li>
+                            <h:li>Replace the computer with a source generator for each selected protocol at the computer video
+                              interface. If DVI‐I or DVI‐D is selected, use an HDMI source generator.</h:li>
+                            <h:li>Run an EDID write transaction at the generator and verify in the testing device that no EDID traffic
+                              is captured.</h:li>
+                            <h:li>[Conditional, if DisplayPort, DVI‐D, DVI‐I, HDMI, or USB Type‐C is the selected protocol being
+                              tested at the computer video interface, then] run Consumer Electronics Control (CEC) and High‐bandwidth
+                              Digital Content Protection (HDCP) tests or commands at the generator and verify in the testing device that
+                              no CEC or HDCP traffic is captured.</h:li>
+                            <h:li>[Conditional, if DVI‐D, DVI‐I, or HDMI is the selected protocol being tested at the computer video
+                              interface, then] run Audio Return Channel (ARC), HDMI Ethernet and Audio Return Channel (HEAC), and
+                              HDMI Ethernet Channel (HEC) tests or commands at the generator and verify in the testing device that no
+                              ARC, HEAC, or HEC traffic is captured.</h:li>
+                            <h:li>[Conditional: If “[HDMI] protocol” is selected in FDP_IPC_EXT.1.2, then] perform steps 15 and 16
+                              for both pin 13 (CEC) and 14 (UTILITY).</h:li>
+                            <h:li>Turn off the TOE. Use a multi‐meter to measure the resistance‐to‐ground of the pin at the TOE
+                              HDMI peripheral interface and verify it is greater than 2 Mega‐ohms.</h:li>
+                            <h:li>Attach a single ended oscilloscope probe between the pin and the ground, turn on the TOE, and
+                              verify that no changes between 0.0v and 0.2v and between 3.0v and 3.3v are detected.</h:li>
+                            <h:li>[Conditional: if VGA is not the selected protocol being tested, then] disconnect all devices.
+                              Connect the display to a TOE computer video interface and the oscilloscope to the TOE display interface
+                              in order to verify that no HPD signal is passed by measuring a signal voltage of less than 1.0V. Based on
+                              the selected protocol being tested, this is performed as follows<h:ol>
+                                <h:li>HDMI – connect scope to pin 19 and verify no HPD signal is detected</h:li>
+                                <h:li>DVI‐D/DVI‐I – connect scope to pin 16 and verify no HPD signal is detected</h:li>
+                                <h:li>DisplayPort ‐ connect scope to pin 18 and verify no HPD signal is detected</h:li>
+                                <h:li>USB Type‐C with DisplayPort as Alternate Function – connect scope to pin A8 and B8 and verify
+                                  no HPD signal is detected.</h:li>
+                              </h:ol></h:li>
+                            <h:li>Repeat this test for each of the selections in FDP_PDC_EXT.3.1/VI and FDP_IPC_EXT.1.2.</h:li>
+                      </h:ol></test>
+                    <test>
+                      <h:b>Video and EDID Channel Unidirectional Rule</h:b><h:br/><h:br/>
+                      This test verifies that the TOE video path is unidirectional from the computer video interface to the display
+                      interface with the exception of EDID, which may be read from the display once at power up and then may
+                      be read by the connected computers. The evaluator should have at least two high‐resolution displays and
+                      one low‐resolution display for each TOE‐supported video protocol.<h:br/><h:br/>
+                      <h:b>In the following steps the evaluator should attempt to read display EDID after the TOE completed its
+                      self‐test / power up. The TOE should not read the new display EDID.</h:b><h:ol>
+                        <h:li>Configure the TOE and the Operational Environment in accordance with the operational guidance.
+                          Connect a computer and a high‐resolution display to the TOE.</h:li>
+                        <h:li>Ensure the TOE is on, computer #1 is selected, and verify that the display shows video from
+                          computer #1 as expected.</h:li>
+                        <h:li>Turn off the TOE. Disconnect the user display from the TOE.</h:li>
+                        <h:li>Connect the low‐resolution display to the TOE and turn on the TOE. After the video is shown on
+                          the display, turn off the TOE.</h:li>
+                        <h:li>Turn on the TOE. After the TOE has completed the self‐test, the TOE may fail to generate video on
+                          the user display (i.e., no EDID is read at the TOE power up). If the display is showing video, then run the
+                          EDID reading and parsing software on computer #1 and check that there is no active EDID (i.e., the
+                          computer is using a default generic display or reading older display settings from the registry).</h:li>
+                        <h:b>In the following steps the evaluator shall validate that the TOE video path is unidirectional from the
+                          computer video interface to the display interface.</h:b>
+                        <h:li>Perform steps 7‐11 for each TOE computer video interface.</h:li>
+                        <h:li>Power off the TOE and disconnect the computer #1 video output and the display. Connect the
+                          display cable to the TOE computer #1 video interface. Connect the computer #1 video cable to the TOE
+                          display interface. This configuration will attempt to force video data through the TOE in the reverse
+                          direction.</h:li>
+                        <h:li>Power up the TOE again.</h:li>
+                        <h:li>Check that the video is not visible in the display.</h:li>
+                        <h:li>Perform steps 11 while the TOE is powered on and powered off.</h:li>
+                        <h:li>Remove the display cable from the TOE and connect the oscilloscope to verify that no SYNC signal
+                          is passed through the TOE. Based on the video protocols supported, this is
+                          performed as follows.<h:ol>
+                            <h:li>VGA – single ended probe on pins 13 and 14</h:li>
+                            <h:li>HDMI – connect pin 19 to a 3.3V power supply via a 100 Ohm resistor to provide HPD signal; Check
+                              for signals ‐ differential probe between pins 10 (+) and 12 (‐)</h:li>
+                            <h:li>DVI‐I – connect pin 16 to a 3.3V power supply via a 100 Ohm resistor to provide HPD signal; Check
+                              for signals ‐ single ended probe on pins 8 and C4. Differential probe between pins 23 (+) and 24 (‐
+                              )</h:li>
+                            <h:li>DVI‐D ‐ connect pin 16 to a 3.3V power supply via a 100 Ohm resistor to provide HPD signal; Check
+                              for signals ‐ Differential probe between pins 23 (+) and 24 (‐)</h:li>
+                            <h:li>DisplayPort ‐ connect pin 18 to a 3.3V power supply via a 100 Ohm resistor to provide HPD signal;
+                              Check for signals ‐ Differential probe between pins 3 (‐) and 1 (+) and between 10 (‐) and 12 (+)</h:li>
+                            <h:li>USB Type‐C with DisplayPort as Alternate Function – connect pin A8 to a 3.3V power supply via a
+                              100 Ohm resistor to provide HPD signal; Check for signals – Differential probe between pins A2
+                              and A3, A10 and A11; B2 and B3, and B10 and B11</h:li>
+                          </h:ol></h:li>                        
+                      </h:ol>
+                    </test>
+                    <test>
+                      <h:b>No Flow between Connected Computers Over Time</h:b><h:br/><h:br/>
+                      This test verifies that the TOE does not send data to different computers connected to the same TOE video
+                      interface over time. Repeat this test for each TOE Video port.<h:ol>
+                        <h:li>Configure the TOE and the Operational Environment in accordance with the operational guidance.
+                          Run EDID reading and parsing software on two computers and connect a display to the TOE.</h:li>
+                        <h:li>Connect computer #1 to the TOE, ensure the TOE is on, computer #1 is selected, no other
+                          computers are connected, and verify that the display shows video from computer #1 as expected.</h:li>
+                        <h:li>Capture the TOE EDID content in the software on computer #1 and save as a file with a name that
+                          indicates capture time.</h:li>
+                        <h:li>Disconnect computer #1 and connect an I2C programmer to the same port. Attempt to write the
+                          characters “FFFF” over the entire EDID address range.</h:li>
+                        <h:li>Disconnect the I2C programmer, reconnect computer #1 to the same port, and repeat step 3.</h:li>
+                        <h:li>Reboot the TOE and repeat step 3.</h:li>
+                        <h:li>Turn off the TOE and repeat step 3.</h:li>
+                        <h:li>Restart the TOE and repeat step 3.</h:li>
+                        <h:li>Disconnect computer #1 and repeat steps 2 to 8 with computer #2 on the same port.</h:li>
+                        <h:li>Repeat steps 2 to 9 for a total of 20 EDID file captures.</h:li>
+                        <h:li>Collect all 20 captured EDID files, compare them bit‐by‐bit, and verify that they are identical.</h:li>
+                      </h:ol>
+                    </test>
+                  </testlist>
                 </Tests>
-              </aactivity>
+              </aactivity>              
             </f-element>
           </f-component>
-         </section> 
-          <!-- FAU_GEN.1 -->
-            <section id="fau" title="Security Audit (FAU)">
-                <f-component cc-id="fau_gen.1" name="Audit Data Generation">
-                    <f-element id="fel-audit-gen">
-                        <title>The TSF shall be able to generate an audit record of the following auditable events:
-                            <h:ol type="a">
-                                <h:li>Start-up and shutdown of audit functions</h:li>
-                                <h:li>All administrative actions</h:li>
-                                <h:li>[Specifically defined auditable events in Table 1]</h:li>
-                                <h:li><selectables>
-
-				<!-- It makes no sense to have a selection for the various audit tables. The entries in those 
-				tables are automatically included in the ST is the associated SFR is included. The audit events are effectively
-				part of their corresponding SFRs. Selecting them here has no effect. 
-				-->
-                                    <selectable id="table2">additional information defined in Table 2</selectable>
-				    <selectable>additional information defined in Table 3</selectable>
-                                    <selectable>additional information defined in Table 4</selectable>
-                                    <selectable>additional information defined in in Table 5</selectable>
-                                    <selectable>no other information</selectable>
-
-				 </selectables></h:li>
-                            </h:ol>
-                        </title>
-                    </f-element>
-                    <f-element id="fel-audit-record">
-                        <title>The TSF shall record within each audit record at least the following information:
-                            <h:ol type="a">
-                                <h:li>Date and time of the event</h:li>
-                                <h:li>Type of event</h:li>
-                                <h:li>Subject and object identity (if applicable)</h:li>
-                                <h:li>The outcome (success or failure) of the event</h:li>
-                                <h:li>[Additional information defined in Table 1]</h:li>
-                                <h:li><selectables>
-<!-- XXX Table 2 is Optional.
-        Depending on the specific optional SFRs from Annex A that are claimed in the ST, the ST author shall
-	include the appropriate auditable events from Table 2 for FAU_GEN.1.<h:br></h:br><h:br></h:br>
-
-        Depending on the specific selection-based SFRs from Annex B that are claimed in the ST, the ST author shall
-	include the appropriate auditable events from Table 4 for FAU_GEN.1.<h:br></h:br><h:br></h:br>
-
-        Depending on the specific objective SFRs from Annex C that are claimed in the ST, the ST author shall
-	include the appropriate auditable events from Table 4 for FAU_GEN.1.<h:br></h:br><h:br></h:br>
-	
-	FIA_UIA_EXT.1 is a mandatory requirement that has both mandatory and optional audit events. I think
- 	I should handle this with a selection within the audit event table.
- 
--->
-                                    <selectable>additional information defined in Table 2</selectable>
-                                    <selectable>additional information defined in Table 3</selectable>
-                                    <selectable>additional information defined in Table 4</selectable>
-                                    <selectable>additional information defined in in Table 5</selectable>
-                                    <selectable>no other information</selectable>
-                                </selectables></h:li>
-                            </h:ol>
-                        </title>
-                        <note role="application">
-                            The ST author can include other auditable events directly in Table 1; they are not limited to the list presented. The ST author should update the table in FAU_GEN.1.2 with any additional information generated. “Subject identity” in FAU_GEN.1.2 could be a user id or an identifier specifying a VM, for example.<h:br></h:br><h:br></h:br>
-                            If ‘additional information defined in Table 3’ is selected, it is acceptable to include individual
-                            entries from Table 3 without including the entirety of Table 3.  Appropriate entries from Tables 2, 4,
-                            and 5 should be included in the ST if the associated SFRs and selections are included.<h:br></h:br><h:br></h:br>
-                            The Table 1 entry for FDP_VNC_EXT.1 refers to configuration settings that attach VMs to virtualized network components. Changes to these configurations can be made during VM execution or when VMs are not running. Audit records must be generated for either case.<h:br></h:br><h:br></h:br>
-                            The intent of the audit requirement for FDP_PPR_EXT.1 is to log that the VM is connected to a physical device (when the device becomes part of the VM’s hardware view), not to log every time that the device is accessed. Generally, this is only once at VM startup. However, some devices can be connected and disconnected during operation (e.g., virtual USB devices such as CD-ROMs). All such connection/disconnection events must be logged.
-                        </note>
-			<aactivity>
-                            <TSS>
-                                The evaluator shall check the TSS and ensure that it lists all of the auditable events 
-                                and provides a format for audit records. Each audit record format type shall be covered, along with a 
-                                brief description of each field. The evaluator shall check to make sure that every audit event type 
-                                mandated by the PP is described in the TSS.<h:br></h:br><h:br></h:br>
-                            </TSS>
-                            <Guidance>
-                                The evaluator shall also make a determination of the administrative actions that are relevant in the 
-                                context of this PP. The evaluator shall examine the administrative guide and make a determination of which 
-                                administrative commands, including subcommands, scripts, and configuration files, are related to the 
-                                configuration (including enabling or disabling) of the mechanisms implemented in the TOE 
-                                that are necessary to enforce the requirements specified in the PP. The evaluator shall document the 
-                                methodology or approach taken while determining which actions in the administrative guide are 
-                                security-relevant with respect to this PP.<h:br></h:br><h:br></h:br>
-                            </Guidance>
-                            <Tests>
-                                The evaluator shall test the TOE’s ability to correctly generate audit records by 
-                                having the TOE generate audit records for the events listed and administrative actions. 
-                                For administrative actions, the evaluator shall test that each action determined by the evaluator above to 
-                                be security relevant in the context of this PP is auditable. When verifying the test results, the 
-                                evaluator shall ensure the audit records generated during testing match the format specified in the 
-                                administrative guide, and that the fields in each audit record have the proper entries.<h:br></h:br>
-                                <h:br></h:br>
-                                Note that the testing here can be accomplished in conjunction with the testing of the security mechanisms 
-                                directly.<h:br></h:br>
-				    
-				    							
-			See <xref to="at-mandatory"/> for more information.
-
-			<!-- AUDIT TABLE for MANDATORY SFRs. This needs to move outside the EAs -->
-<!-- Bob killed this 
-                       <ctr id="man-table" ctr-type="Table">: Auditable Events</ctr>
-                        <audit-events table="mandatory"/><h:br/>
-			    
-                        <audit-events table="turtle">
-                            <ctr id="turtle-table" ctr-type="Table">: Auditable Events</ctr>
-			    <depends on="selection"><ref-id>table2</ref-id></depends>
-			</audit-events><h:br/>
--->
-
-                            </Tests>   
-                        </aactivity>
-                    </f-element>
-                </f-component>
-                
-                <!-- FAU_SAR.1 -->
-                <f-component cc-id="fau_sar.1" name="Audit Review">
-                    <f-element id="fel-audit-cap">
-                        <title>The TSF shall provide [administrators] with the capability to read [all information] from the audit records.
-                        </title>
-                    </f-element>
-                    <f-element id="fel-audit-present">
-                        <title>The TSF shall provide the audit records in a manner suitable for the user to interpret the information.
-                        </title>
-                        <aactivity>
-                            <Guidance>
-                                The evaluator shall review the operational guidance for the procedure on how to review the audit 
-                                records.
-                            </Guidance>
-                            <Tests>
-                                The evaluator shall verify that the audit records provide all of the information specified in 
-                                FAU_GEN.1 and that this information is suitable for human interpretation. The assurance 
-                                activity for this requirement is performed in conjunction with the assurance activity for 
-                                FAU_GEN.1.
-                            </Tests>
-                        </aactivity>
-                    </f-element>
-                </f-component>
-                
-                <!-- FAU_STG.1 -->
-                <f-component cc-id="fau_stg.1" name="Protected Audit Trail Storage">
-                    <f-element id="fel-audit-del">
-                        <title>The TSF shall protect the stored audit records in the audit trail from unauthorized deletion.
-                        </title>
-                    </f-element>
-                    <f-element id="fel-audit-mod">
-                        <title>The TSF shall be able to [prevent] modifications to the stored audit records in the audit trail.
-                        </title>
-                        <note role="application">The assurance activity for this SFR is not intended to imply that the TOE must support an administrator’s ability to designate individual audit records for deletion. That level of granularity is not required.</note>
-			<aactivity><elev/>Element-level eas.
-			<Tests>
-			  <testlist>
-			    <test>Do something</test>
-			  </testlist>
-			</Tests>
-			</aactivity>
-                        <aactivity>The evaluator shall ensure that the TSS describes how the audit records are protected from unauthorized modification or deletion. The evaluator shall ensure that the TSS describes the conditions that must be met for authorized deletion of audit records. The evaluator shall perform the following tests:<h:br></h:br><h:br></h:br>
-                            <Tests>
-                                <testlist>
-                                    <test>The evaluator shall access the audit trail as an unauthorized Administrator and attempt 
-                                        to modify and delete the audit records. The evaluator shall verify that these attempts 
-                                        fail.
-                                    </test>
-                                    <test>The evaluator shall access the audit trail as an authorized Administrator and attempt 
-                                        to delete the audit records. The evaluator shall verify that these attempts succeed. 
-                                        The evaluator shall verify that only the records authorized for deletion are deleted.
-                                    </test>
-                                </testlist>
-                            </Tests>
-                        </aactivity>
-                    </f-element>
-					
-                </f-component>
-
-                <!-- FAU_STG_EXT.1 -->
-                <f-component cc-id="fau_stg_ext.1" name="Off-Loading of Audit Data">
-                    <f-element id="fel-audit-mov">
-                        <title>The TSF shall be able to transmit the generated audit data to an external IT entity using a trusted channel as specified in FTP_ITC_EXT.1.
-                        </title>
-                        <aactivity>
-                            Protocols used for implementing the trusted channel must be selected in FTP_ITC_EXT.1.
-                            <TSS>
-                                The evaluator shall examine the TSS to ensure it describes the means by which 
-                                the audit data are transferred to the external audit server, and how the trusted channel is 
-                                provided. 
-                            </TSS>
-                            <Guidance>
-                                The evaluator shall examine the operational guidance to ensure it describes how to establish the trusted channel to the audit server, as well as describe any requirements 
-                                on the audit server (particular audit server protocol, version of the protocol required, etc.), as well 
-                                as configuration of the TOE needed to communicate with the audit server.
-                            </Guidance>
-                            <Tests>
-                                Testing of the trusted channel mechanism is to be performed as specified in the assurance 
-                                activities for FTP_ITC_EXT.1. <h:br></h:br><h:br></h:br>
-                                The evaluator shall perform the following test for this requirement:<h:br></h:br><h:br></h:br>
-                                <testlist>
-                                    <test>The evaluator shall establish a session between the TOE and the audit server according to the configuration guidance provided. The evaluator shall then examine the traffic that passes between the audit server and the TOE during several activities of the evaluator’s choice designed to generate audit data to be transferred to the audit server. The evaluator shall observe that these data are not able to be viewed in the clear during this transfer, and that they are successfully received by the audit server. The evaluator shall record the particular software (name, version) used on the audit server during testing.</test>
-                                </testlist>
-                            </Tests>
-                        </aactivity>
-                    </f-element>
-                    <f-element id="fel-audit-full">
-                        <title>The TSF shall
-                            <selectables>
-                                <selectable>drop new audit data</selectable>
-                                <selectable>overwrite previous audit records according to the following rule:
-                                    <assignable>rule for overwriting previous audit records</assignable></selectable>
-                                <selectable><assignable>other action</assignable></selectable>
-                            </selectables>
-                            when the local storage space for audit data is full.
-                        </title>
-                        <note role="application">An external log server, if available, might be used as alternative storage space in case the local storage space is full. An ‘other action’ could be defined in this case as ‘send the new audit data to an external IT entity’.</note>
-                        <aactivity>
-                            <TSS>
-                                The evaluator shall examine the TSS to ensure it describes what happens when the 
-                                local audit data store is full. 
-                            </TSS>
-                            <Guidance>
-                                The evaluator shall also examine the operational guidance to 
-                                determine that it describes the relationship between the local audit data and the audit data that 
-                                are sent to the audit log server. For example, when an audit event is generated, is it simultaneously
-                                sent to the external server and the local store, or is the local store used as a buffer and “cleared”
-                                periodically by sending the data to the audit server.
-                            </Guidance>
-                            <Tests>
-                                The evaluator shall perform operations that generate audit data and verify that this data is 
-                                stored locally. The evaluator shall perform operations that generate audit data until the local 
-                                storage space is exceeded and verifies that the TOE complies with the behavior 
-                                defined in the ST for FAU_STG_EXT.1.2.
-                            </Tests>
-                        </aactivity>
-                    </f-element>
-		    <audit-event table="mandatory">
-                        <audit-event-descr>
-				Failure of audit data capture due to lack of disk space or pre-defined limit.
-                                On failure of logging function, capture record of failure and record upon restart of logging function.
-					</audit-event-descr>
-		    </audit-event>
-                </f-component>
- 					
-                
-                <!-- FAU_ARP.1 -->
-                <f-component cc-id="fau_arp.1" name="Security Audit Automatic Response" >
-		  <optional/>
-                    <f-element id="fel-counter">
-                        <title>The TSF shall take <assignable>list of actions</assignable> upon detection of a potential security violation.
-                        </title>
-                        <note role="application">In certain cases, it may be useful for Virtualization Systems to perform automated responses to certain security events. An example may include halting a VM which has taken some action to violate a key system security policy. This may be especially useful with headless endpoints when there is no human user in the loop.<h:br></h:br><h:br></h:br>
-                            The potential security violation mentioned in FAU_ARP.1.1 refers to FAU_SAA.1. </note>
-                        <aactivity>
-                            <Tests>
-                                The evaluator shall generate a potential security violation as defined in FAU_SAA.1 and verify 
-                                that each action in the assignment in FAU_ARP.1.1 is performed by the TSF as a 
-                                result. The evaluator shall perform this action for each security violation that is defined in 
-                                FAU_SAA.1.
-                            </Tests>
-                        </aactivity>
-                    </f-element>
-		    <audit-event table="optional">
-                        <audit-event-descr>Actions taken due to potential security violations.</audit-event-descr>
-		    </audit-event>
-	        </f-component>
-                
-                <!-- FAU_SAA.1 -->
-                <f-component cc-id="fau_saa.1" name="Security Audit Analysis">
-		  <optional/>
-                    <f-element id="fel-audit-mon">
-                        <title>The TSF shall be able to apply a set of rules in monitoring the audited events and based upon these rules indicate a potential violation of the enforcement of the SFRs.
-                        </title>
-                    </f-element>
-                    <f-element id="fel-audit-rules">
-                        <title>The TSF shall enforce the following rules for monitoring audited events:
-                            <h:ol type="a">
-                                <h:li>accumulation or combination of <assignable>subset of defined auditable events</assignable> known to indicate a potential security violation</h:li>
-                                <h:li><assignable>any other rules</assignable></h:li>
-                            </h:ol>
-                        </title>
-                        <note role="application">The potential security violation described in FAU_SAA.1 can be used as a trigger for automated responses as defined in FAU_ARP.1.</note>
-                        <aactivity>
-                            <Tests>
-                                The evaluator shall cause each combination of auditable events defined in FAU_SAA.1.2 to occur,
-                                and verify that a potential security violation is indicated by the TSF.
-                            </Tests>
-                        </aactivity>
-                    </f-element>
-		    <audit-event table="optional">
-                        <audit-event-descr>
-				Enabling and disabling of any of the analysis mechanisms
-                    		Automated responses performed by the TSF.
-			</audit-event-descr>
-		    </audit-event>
-	        </f-component>
-            </section>
-    </sec:SFRs>
-    <section title="Security Assurance Requirements" id="SARs">
-      The Security Objectives in <xref to="Security_Objectives"/> were constructed
-      to address threats identified in
-      <xref to="Threats"/>. The Security Functional Requirements (SFRs)
-      in <xref to="SFRs"/> are a formal instantiation of the Security Objectives. The PP
-      identifies the Security Assurance Requirements (SARs) to frame the extent to
-      which the evaluator assesses the documentation applicable for the evaluation and performs
-      independent testing. <h:br/> This section lists the set of SARs from CC part 3
-      that are required in evaluations against this PP. Individual Assurance Activities
-      o be performed are specified both in 
-      <xref to="SFRs"/> as well as in this section. <h:br/>
-      The general model for evaluation of OSs against STs written to conform to this PP is as follows: <h:br/>
-      After the  ST has been approved for evaluation, the TSEF will obtain the
-        OS, supporting environmental IT, and the administrative/user guides for
-      the OS. The ITSEF is expected to perform actions mandated by the Common Evaluation
-      Methodology (CEM) for the ASE and ALC SARs. The ITSEF also performs the Assurance Activities
-      contained within <xref to="SFRs"/>, which are intended to be an interpretation of the
-      other CEM assurance requirements as they apply to the specific technology instantiated in the
-      OS. The Assurance Activities that are captured in <xref to="SFRs"/> also provide
-      clarification as to what the developer needs to provide to demonstrate the OS is compliant
-      with the PP.
-     <section title="Class ASE: Security Target" id="ase">As per ASE activities
-        defined in <xref to="bibCEM"/>.</section>
-      <section title="Class ADV: Development" id="adv">The information about the OS is contained in the guidance documentation available to the end user as
-        well as the TSS portion of the ST. The OS developer must concur with the description of the product that is
-        contained in the TSS as it relates to the functional requirements. The Assurance Activities
-        contained in <xref to="SFRs"/> should provide the ST authors with
-        sufficient information to determine the appropriate content for the TSS section.
-          <a-component cc-id="adv_fsp.1" name="Basic Functional Specification (ADV_FSP.1)">The
-          functional specification describes the TSFIs. It is not
-          necessary to have a formal or complete specification of these interfaces. Additionally,
-          because OSs conforming to this PP will necessarily have interfaces to
-          the Operational Environment that are not directly invokable by OS
-          users, there is little point specifying that such interfaces be described in and of
-          themselves since only indirect testing of such interfaces may be possible. For this PP,
-          the activities for this family should focus on understanding the interfaces presented in
-          the TSS in response to the functional requirements and the interfaces
-          presented in the AGD documentation. No additional “functional specification” documentation
-          is necessary to satisfy the assurance activities specified. The interfaces that need to be
-          evaluated are characterized through the information needed to perform the assurance
-          activities listed, rather than as an independent, abstract list. 
-            <a-element type="D">
-              <title>The developer shall provide a functional specification.</title>
-            </a-element>
-            <a-element type="C">
-              <title>The developer shall provide a tracing from the functional specification to the
-              SFRs.</title>
-              <note role="application">As indicated in the introduction to this section, the
-              functional specification is comprised of the information contained in the AGD_OPE and
-              AGD_PRE documentation. The developer may reference a website accessible to application
-              developers and the evaluator. The assurance activities in the functional requirements
-              point to evidence that should exist in the documentation and TSS
-              section; since these are directly associated with the SFRs, the tracing in element
-              ADV_FSP.1.2D is implicitly already done and no additional documentation is
-              necessary.</note>
-            </a-element>
-	  
-            <a-element type="C">
-              <title>The functional specification shall describe the purpose and method of use for
-              each SFR-enforcing and SFR-supporting TSFI.</title>
-            </a-element>
-            <a-element type="C">
-              <title>The functional specification shall identify all parameters associated with each
-              SFR-enforcing and SFR-supporting TSFI.</title>
-            </a-element>
-            <a-element type="C">
-              <title>The functional specification shall provide rationale for the implicit
-              categorization of interfaces as SFR-non-interfering.</title>
-            </a-element>
-            <a-element type="C">
-              <title>
-		The tracing shall demonstrate that the SFRs trace to 
-		TSFIs in the functional specification.
-	      </title>
-            </a-element>
-	  
-            <a-element type="E">
-              <title>The evaluator shall confirm that the information provided meets all requirements
-              for content and presentation of evidence.</title>
-            </a-element>
-            <a-element type="E">
-              <title>The evaluator shall determine that the functional specification is an accurate
-              and complete instantiation of the SFRs.</title>
-              <aactivity>There are no specific assurance activities associated with these SARs, except
-              ensuring the information is provided. The functional specification documentation is
-              provided to support the evaluation activities described in <xref to="SFRs"/>, and
-              other activities described for AGD, ATE, and AVA SARs. The requirements on the content
-              of the functional specification information is implicitly assessed by virtue of the
-              other assurance activities being performed; if the evaluator is unable to perform an
-              activity because there is insufficient interface information, then an adequate
-              functional specification has not been provided.
-	      </aactivity>
-            </a-element>
-	  
-        </a-component>
-      </section>
-      <section id="agd" title="Class AGD: Guidance Documentation">The guidance documents will be
-        provided with the ST. Guidance must include a description of how the IT
-        personnel verifies that the Operational Environment can fulfill its role for the security
-        functionality. The documentation should be in an informal style and readable by the IT
-        personnel. Guidance must be provided for every operational environment that the product
-        supports as claimed in the ST. This guidance includes instructions to
-        successfully install the TSF in that environment; and Instructions to
-        manage the security of the TSF as a product and as a component of the
-        larger operational environment. Guidance pertaining to particular security functionality is
-        also provided; requirements on such guidance are contained in the assurance activities
-        specified with each requirement. 
-	<a-component cc-id="agd_ope.1" name="Operational User Guidance (AGD_OPE.1)">
-	    <a-element type="D">
-	      <title>The developer shall provide operational user guidance.</title>
-	      <note role="application">The operational user guidance does not have to be contained in a
-	      single document. Guidance to users, administrators and application developers can be
-              spread among documents or web pages. 
-	      Rather than repeat information here, the developer should
-              review the assurance activities for this component to ascertain the specifics of the
-              guidance that the evaluator will be checking for. This will provide the necessary
-              information for the preparation of acceptable guidance.</note>
-            </a-element>
           
-            <a-element type="C">
-              <title>The operational user guidance shall describe, for each user role, the
-              user-accessible functions and privileges that should be controlled in a secure
-              processing environment, including appropriate warnings.</title>
-              <note role="application">User and administrator are to be considered in the definition
-              of user role.</note>
-            </a-element>
-            <a-element type="C">
-              <title>The operational user guidance shall describe, for each user role, how to use the
-              available interfaces provided by the OS in a secure manner.</title>
-            </a-element>
-            <a-element type="C">
-              <title>The operational user guidance shall describe, for each user role, the available
-              functions and interfaces, in particular all security parameters under the control of
-              the user, indicating secure values as appropriate.</title>
-              <note role="application">
-		This portion of the operational user guidance should be presented
-		in the form of a checklist that can be quickly executed by IT personnel (or end-users, 
-		when necessary) and suitable for use in compliance activities.
-		When possible, this guidance is to be expressed in the eXtensible Configuration 
-		Checklist Description Format (XCCDF) to
-		support security automation.  
-		Minimally, it should be presented in a structured 
-		format which includes a title for each configuration item, 
-		instructions for achieving the secure configuration, and any relevant rationale.  
-              </note>
-            </a-element>
-            <a-element type="C">
-              <title>The operational user guidance shall, for each user role, clearly present each
-              type of security-relevant event relative to the user-accessible functions that need to
-              be performed, including changing the security characteristics of entities under the
-              control of the TSF.</title>
-            </a-element>
-            <a-element type="C">
-              <title>The operational user guidance shall identify all possible modes of operation of
-              the OS (including operation following failure or operational
-              error), their consequences, and implications for maintaining secure operation.</title>
-            </a-element>
-            <a-element type="C">
-              <title>The operational user guidance shall, for each user role, describe the security
-              measures to be followed in order to fulfill the security objectives for the
-              operational environment as described in the ST.</title>
-            </a-element>
-            <a-element type="C">
-              <title>The operational user guidance shall be clear and reasonable.</title>
-            </a-element>
-	  
-            <a-element type="E">
-              <title>The evaluator shall confirm that the information provided meets all requirements
-              for content and presentation of evidence. </title>
-              <aactivity>Some of the contents of the operational guidance are verified by the
-              assurance activities in <xref to="SFRs"/> and evaluation of the OS according to the <xref to="bibCEM"/>. The following additional
-              information is also required. If cryptographic functions are provided by the OS, the operational guidance shall contain instructions for configuring
-              the cryptographic engine associated with the evaluated configuration of the OS. It shall provide a warning to the administrator that use of other
-              cryptographic engines was not evaluated nor tested during the CC evaluation of the
-              OS. The documentation must describe the process for verifying
-              updates to the OS by verifying a digital signature – this may be
-              done by the OS or the underlying platform. The evaluator will
-              verify that this process includes the following steps: Instructions for obtaining the
-              update itself. This should include instructions for making the update accessible to
-              the OS (e.g., placement in a specific directory). Instructions for
-              initiating the update process, as well as discerning whether the process was
-              successful or unsuccessful. This includes generation of the hash/digital signature.
-              The OS will likely contain security functionality that does not
-              fall in the scope of evaluation under this PP. The operational guidance shall make it
-              clear to an administrator which security functionality is covered by the evaluation
-              activities. </aactivity>
-          </a-element>
-	  
-        </a-component>
-        <a-component cc-id="agd_pre.1" name="Preparative Procedures (AGD_PRE.1)">
-            <a-element type="D">
-              <title>The developer shall provide the OS, including its preparative
-              procedures.</title>
-              <note role="application">As with the operational guidance, the developer should look to
-              the assurance activities to determine the required content with respect to preparative
-              procedures.</note>
-            </a-element>
-	  
-            <a-element type="C">
-              <title>The preparative procedures shall describe all the steps necessary for secure
-              acceptance of the delivered OS in accordance with the developer's
-              delivery procedures.</title>
-            </a-element>
-            <a-element type="C">
-              <title>The preparative procedures shall describe all the steps necessary for secure
-              installation of the OS and for the secure preparation of the
-              operational environment in accordance with the security objectives for the operational
-              environment as described in the ST.</title>
-            </a-element>
-	  
-            <a-element type="E">
-              <title>The evaluator shall confirm that the information provided meets all requirements
-              for content and presentation of evidence.</title>
-            </a-element>
-            <a-element type="E">
-              <title>The evaluator shall apply the preparative procedures to confirm that the OS can be prepared securely for operation.</title>
-              <aactivity>As indicated in the introduction above, there are significant expectations
-              with respect to the documentation—especially when configuring the operational
-              environment to support OS functional requirements. The evaluator
-              shall check to ensure that the guidance provided for the OS
-              adequately addresses all platforms claimed for the OS in the ST. </aactivity>
-            </a-element>
-	  
-        </a-component>
-      </section>
-      <section id="alc" title="Class ALC: Life-cycle Support"> At the assurance level provided
-        for OSs conformant to this PP, life-cycle support is limited to end-user-visible aspects of
-        the life-cycle, rather than an examination of the OS vendor’s development and configuration
-        management process. This is not meant to diminish the critical role that a developer’s
-        practices play in contributing to the overall trustworthiness of a product; rather, it is a
-        reflection on the information to be made available for evaluation at this assurance level.
-          <a-component cc-id="alc_cmc.1" name="Labeling of the TOE (ALC_CMC.1)">This component is
-          targeted at identifying the OS such that it can be distinguished from
-          other products or versions from the same vendor and can be easily specified when being
-          procured by an end user. 
-            <a-element type="D">
-              <title>The developer shall provide the OS and a reference for the
-              OS.</title>
-            </a-element>
-	  
-            <a-element type="C">
-              <title>The OS shall be labeled with a unique reference.</title>
-              <note role="application">Unique reference information includes: 
-	      <h:ul>
-		<h:li>OS Name</h:li>
-		<h:li>OS Version</h:li>
-		<h:li>OS Description</h:li>
-		<h:li>Software Identification (SWID) tags, if available</h:li>
-              </h:ul>
-              </note>
-            </a-element>
-	  
-            <a-element type="E">
-              <title>The evaluator shall confirm that the information provided meets all requirements
-              for content and presentation of evidence.</title>
-              <aactivity>The evaluator will check the ST to ensure that it contains
-              an identifier (such as a product name/version number) that specifically identifies the
-              version that meets the requirements of the ST. Further, the
-              evaluator will check the AGD guidance and OS samples received for
-              testing to ensure that the version number is consistent with that in the ST. If the vendor maintains a web site advertising the OS, the evaluator will examine the information on the web site to
-              ensure that the information in the ST is sufficient to distinguish
-              the product.</aactivity>
-            </a-element>
-	  
-        </a-component>
-        <a-component cc-id="alc_cms.1" name="TOE CM Coverage (ALC_CMS.1)">
-	  Given the scope of the OS and its associated evaluation 
-	  evidence requirements, this component’s assurance activities are covered 
-	  by the assurance activities listed for ALC_CMC.1.
-            <a-element type="D">
+          <f-component cc-id="fdp_pdc_ext.1" name="Peripheral Device Connection">
+            <consistency-rationale>
+              This SFR is not changed by this PP‐Module and only defines existing Evaluation
+              Activities for video/display devices, which does not conflict with the PSD PP.
+            </consistency-rationale>
+            <description>There is no modification to this SFR in this PP‐Module. However, there are additions to the Peripheral
+              Device Connections Policy (see Appendix E) associated with this SFR and additional Evaluation Activities.</description>
+            <f-element>
+              <title/>
+            <aactivity>
+              <TSS/>                
+              <Guidance>
+                The evaluator shall verify that the operational user guidance describes devices authorized for use with the
+                TOE in accordance with the authorized peripheral device connections.
+              </Guidance>                
+              <CustomEA name="Isolation"/>
+              <Tests>
+                <testlist>
+                  <test>
+                    The evaluator shall verify that the TOE ports do not reject authorized devices and devices with
+                    authorized protocols as per the Peripheral Device Connections appendix in MOD_VI_V1.0.<h:br/><h:br/>
+                    Repeat this test for each of the selected protocols in FDP_PDC_EXT.3.1/VI.<h:ol>
+                      <h:li>Connect the authorized device with an authorized protocol directly to a computer. Display any
+                        image on the device. Disconnect the device from the computer.</h:li>
+                      <h:li>Configure the TOE and the Operational Environment in accordance with the operational guidance.</h:li>
+                      <h:li>Ensure the TOE is powered off.</h:li>
+                      <h:li>Connect the authorized device with an authorized protocol to the TOE peripheral interface.</h:li>
+                      <h:li>Power on the TOE and verify the TOE user indication described in the operational user guidance is
+                        not present.</h:li>
+                      <h:li>Ensure the connected computer is selected and verify that the device displays the same image as
+                        in step 1.</h:li>
+                      <h:li>Disconnect the authorized device, then reconnect it to the TOE peripheral interface.</h:li>
+                      <h:li>Verify the TOE user indication described in the operational user guidance is not present.</h:li>
+                      <h:li>Verify that the device displays the same image as in step 1 and 6.</h:li>
+                    </h:ol>
+                  </test>                                  
+                </testlist>
+              </Tests>
+            </aactivity>
+            </f-element>
+          </f-component>
+        </sec:mod_fdp>
+        
+        <sec:mod_fta title="TOE Access (FTA)">          
+          <f-component cc-id="fta_cin_ext.1" name="Continuous Indications">
+            <consistency-rationale>
+              This PP‐Module adds a new display mechanism that is unique to video/display
+              peripherals and a new trigger for when the SFR applies. Neither of these
+              changes conflict with the original SFR definition in the PSD PP.
+            </consistency-rationale>
+            <description>This SFR is selection‐based in the PSD PP. It remains selection‐based when the TOE conforms to this PPModule.
+              However, this PP‐Module adds a trigger for its selection—specifically, if “multiple connected
+              displays” is selected in FDP_CDS_EXT.1.1, then FTA_CIN_EXT.1 is applicable to the TOE and must be
+              claimed.<h:br/><h:br/>
+              The following SFR has a specific assignment, which is a mandatory selection if selecting “multiple
+              connected displays” in FDP_CDS_EXT.1.1.<h:br/><h:br/>
+              Additionally, the SFR is refined to specify an additional display mechanism in FTA_CIN_EXT.1.2, as follows:</description>
+            <f-element id="fta-cin-ext-1e2">
               <title>
-		The developer shall provide a configuration list for the  OS.
-	      </title>
-            </a-element>
-	  
-            <a-element type="C">
-              <title>The configuration list shall include the following: the OS
-              itself; and the evaluation evidence required by the SARs.</title>
-            </a-element>
-            <a-element type="C">
-              <title>The configuration list shall uniquely identify the configuration items.</title>
-            </a-element>
-	  
-            <a-element type="E">
-              <title>The evaluator shall confirm that the information provided meets all requirements
-              for content and presentation of evidence.</title>
-              <aactivity>The "evaluation evidence required by the SARs" in this PP is limited to the
-              information in the ST coupled with the guidance provided to
-              administrators and users under the AGD requirements. By ensuring that the OS is specifically identified and that this identification is
-              consistent in the ST and in the AGD guidance (as done in the
-              assurance activity for ALC_CMC.1), the evaluator implicitly confirms the information
-              required by this component. Life-cycle support is targeted aspects of the developer’s
-              life-cycle and instructions to providers of applications for the developer’s devices,
-              rather than an in-depth examination of the TSF manufacturer’s
-              development and configuration management process. This is not meant to diminish the
-              critical role that a developer’s practices play in contributing to the overall
-              trustworthiness of a product; rather, it’s a reflection on the information to be made
-              available for evaluation. <h:br/> The evaluator will ensure that the developer has
-              identified (in guidance documentation for application developers concerning the
-              targeted platform) one or more development environments appropriate for use in
-              developing applications for the developer’s platform. For each of these development
-              environments, the developer shall provide information on how to configure the
-              environment to ensure that buffer overflow protection mechanisms in the environment(s)
-              are invoked (e.g., compiler and linker flags). The evaluator will ensure that this documentation
-              also includes an indication of whether such protections are on by default, or have to
-              be specifically enabled. The evaluator will ensure that the TSF is
-              uniquely identified (with respect to other products from the TSF
-              vendor), and that documentation provided by the developer in association with the
-              requirements in the ST is associated with the TSF
-              using this unique identification.</aactivity>
-          </a-element>
-	  
-        </a-component>
-        <a-component cc-id="alc_tsu_ext.1" name="Timely Security Updates"> This component requires the
-          OS developer, in conjunction with any other necessary parties, to provide information as
-          to how the end-user devices are updated to address security issues in a timely manner. The
-          documentation describes the process of providing updates to the public from the time a
-          security flaw is reported/discovered, to the time an update is released. This description
-          includes the parties involved (e.g., the developer, carriers(s)) and the steps that are
-          performed (e.g., developer testing, carrier testing), including worst case time periods,
-          before an update is made available to the public. 
-            <a-element type="D">
-              <title>The developer shall provide a description in the TSS of how timely security
-              updates are made to the OS.</title>
-            </a-element>
-            <a-element type="D">
-              <title> The developer shall provide a description in the TSS of how users are notified
-              when updates change security properties or the configuration of the product. </title>
-            </a-element>
-	  
-            <a-element type="C">
-              <title>The description shall include the process for creating and deploying security
-              updates for the OS software.</title>
-            </a-element>
-            <a-element type="C">
-              <title>The description shall include the mechanisms publicly available for reporting
-              security issues pertaining to the OS.</title>
-              <note> The reporting mechanism could include web sites, email addresses, as well as a
-              means to protect the sensitive nature of the report (e.g., public keys that could be
-              used to encrypt the details of a proof-of-concept exploit). </note>
-            </a-element>
-	  
-            <a-element type="E">
-              <title>The evaluator shall confirm that the information provided meets all
-              requirements for content and presentation of evidence.</title>
-              <aactivity> The evaluator will verify that the TSS contains a description of the timely
-              security update process used by the developer to create and deploy security updates.
-              The evaluator will verify that this description addresses the entire application. The
-              evaluator will also verify that, in addition to the OS developer’s process, any
-              third-party processes are also addressed in the description. The evaluator will also
-              verify that each mechanism for deployment of security updates is described. <h:br/> The
-              evaluator will verify that, for each deployment mechanism described for the update
-              process, the TSS lists a time between public disclosure of a vulnerability and public
-              availability of the security update to the OS patching this vulnerability, to include
-              any third-party or carrier delays in deployment. The evaluator will verify that this
-              time is expressed in a number or range of days. <h:br/> The evaluator will verify that
-              this description includes the publicly available mechanisms (including either an email
-              address or website) for reporting security issues related to the OS. The evaluator
-              shall verify that the description of this mechanism includes a method for protecting
-              the report either using a public key for encrypting email or a trusted channel for a
-              website. </aactivity>
-            </a-element>
-	  
-        </a-component>
+                The TSF shall implement the visible indication using the following mechanism:
+                <h:b>easily visible graphical and/or textual markings of each source video on the
+                display,</h:b> <selectables>
+                  <selectable>a button</selectable>
+                  <selectable>a panel with lights</selectable>
+                  <selectable>a screen with dimming function</selectable>
+                  <selectable>a screen with no dimming function</selectable>
+                  <selectable><assignable>description of visible
+                indication</assignable></selectable>
+                </selectables>
+              </title>            
+            <aactivity>
+              <no-tests>Additional testing for this component is performed in test 1 of
+                FDP_APC_EXT.1 in <xref to="visourcesel"/>.</no-tests>
+            </aactivity>
+            </f-element>
+          </f-component>
+        </sec:mod_fta>
+      </modified-sfrs>
+      
+      <additional-sfrs/>
+      
+      <!-- 6.1.1 Consistency of TOE Type -->
+      <con-toe>
+        The PSD PP defines the boundaries of a PSD—a device that provides a mechanism for securely connecting
+        a set of peripherals to one or more attached computers. This PP‐Module builds on this by defining
+        functional capabilities that are specific to devices that can share video or display peripherals. The
+        requirements of this PP do not prevent a conformant TOE from implementing mandatory requirements of
+        the PSD PP.
+      </con-toe>
+      
+      <!-- 6.1.2 Consistency of Security Problem Definition -->
+      <con-sec-prob>This PP‐Module does not define additional threats beyond those the PSD PP defines. Therefore, there is
+        no inconsistency between this PP‐Module and the PSD with respect to the security problem definition.</con-sec-prob>
+      
+      <!-- 6.1.3 Consistency of Objectives -->
+      <con-obj/>
+      <con-op-en/>
+    </base-pp>
+    
+    <man-sfrs>
+      <section title="User Data Protection (FDP)" id="FDP">        
+        <ext-comp-def fam-id="FDP_PDC_EXT" title="Peripheral Device Connection">
+          <fam-behavior>This family is defined in the PSD PP. This PP‐Module augments the extended family by adding two
+            additional components, FDP_PDC_EXT.2 and FDP_PDC_EXT.3. These new components and their impact
+            on the extended family’s component leveling are shown below; reference the PSD PP for all other
+            definitions for this family.</fam-behavior>
+        </ext-comp-def>
+        
+        <ext-comp-def fam-id="FDP_UDF_EXT" title="Unidirectional Data Flow (Video Output)">
+          <fam-behavior>Components in this family define unidirectional transmission of user data.</fam-behavior>
+        </ext-comp-def>
+        
+        <f-component cc-id="fdp_pdc_ext.2" name="Peripheral Device Connection (Video Output)"
+          iteration="VI" id="fdp-pdc-ext-2-vi">
+          <consistency-rationale>This SFR defines the devices that are authorized by this PP‐Module. This is
+            dependent on the other PP‐Modules that are claimed in the TOE’s ST. The
+            Base‐PP is written specifically not to discuss the supported device types,
+            instead leaving it to the various PP‐Modules to define what they support.
+          </consistency-rationale>
+          
+          <comp-lev>defines the types of physical devices that the TSF will permit to
+            connect to it.</comp-lev>
+          <management>No specific management functions are identified.
+          </management>
+          <audit>There are no specific auditable events foreseen.</audit>
+          <dependencies>FDP_PDC_EXT.1 Peripheral Device Connection</dependencies>
+          
+          <f-element id="fdp-pdc-ext-2e1-vi">
+            <title>
+              The TSF shall allow connections with authorized devices as defined in [Appendix
+              E] and<selectables>
+                <selectable>authorized devices as defined in the PP‐Module for Audio Output
+                  Devices</selectable>
+                <selectable>authorized devices and functions as defined in the PP‐Module for
+                  Keyboard/Mouse Devices</selectable>
+                <selectable>authorized devices as defined in the PP‐Module for User Authentication
+                  Devices</selectable>
+                <selectable>no other devices</selectable>
+              </selectables> upon TOE power up and connection of a peripheral device to a powered-on
+              TOE.
+            </title>
+            
+            <ext-comp-def-title>
+              <title>
+                The TSF shall allow connections with authorized devices as defined in
+                <assignable> devices specified in the PP or PP‐Module in which this SFR is defined</assignable>
+                and <assignable> devices specified in another PP or PP‐Module that shares a PP-Configuration
+                with the PP or PP‐Module in which this SFR is defined</assignable> upon TOE
+                power up and upon connection of a peripheral device to a powered‐on TOE.
+              </title>
+            </ext-comp-def-title>
+          </f-element>       
+          
+          <f-element id="fdp-pdc-ext-2e2-vi">
+            <title>
+              The TSF shall allow connections with authorized devices presenting authorized
+              interface protocols as defined in [Appendix E] and<selectables>
+                <selectable>authorized devices presenting authorized interface protocols as defined in the PP‐Module for Audio Output
+                  Devices</selectable>
+                <selectable>authorized devices presenting authorized interface protocols as defined in the PP‐Module for
+                  Keyboard/Mouse Devices</selectable>
+                <selectable>authorized devices presenting authorized interface protocols as defined in the PP‐Module for User Authentication
+                  Devices</selectable>
+                <selectable>no other devices</selectable>
+              </selectables> upon TOE power up and connection of a peripheral device to a powered-on
+              TOE.
+            </title>
+            
+            <ext-comp-def-title>
+              <title>
+                The TSF shall allow connections with authorized devices presenting authorized
+                interface protocols as defined in <assignable> devices specified in the PP or PPModule
+                  in which this SFR is defined</assignable> and <assignable> devices specified in another
+                PP or PP‐Module that shares a PP‐Configuration with the PP or PP‐Module in
+                which this SFR is defined</assignable> upon TOE power up and upon connection of a
+                peripheral device to a powered‐on TOE.
+              </title>
+            </ext-comp-def-title>
+            
+            <note role="application">
+              The TSF must claim conformance to a PP‐Configuration that includes each PP-Module
+              contained in any selections. The ST author should select all devices and
+              interfaces supported by the TOE.<h:br/><h:br/>
+              If “authorized devices presenting authorized interface protocols as defined in the
+              PP‐Module for Keyboard/Mouse” is selected and “USB Type‐C with DisplayPort as
+              alternate function” is selected in FDP_PDC_EXT.3.1/VI, then video devices that use
+              USB Type‐C with DisplayPort as alternate function may not be used in conjunction
+              with touch screen devices.
+            </note>           
+            
+            <aactivity>
+              <no-tests>Evaluation Activities for this component are performed through evaluation of
+                <xref to="fdp_pdc_ext.1"/>.</no-tests>
+            </aactivity>
+          </f-element>
+        </f-component>
+        
+        <f-component cc-id="fdp_pdc_ext.3" name="Authorized Connection Protocols"
+          iteration="VI" id="fdp-pdc-ext-3-vi">
+          <consistency-rationale>
+            This SFR defines the protocols that are authorized specifically by this PPModule
+            and the rules for handling of
+          </consistency-rationale>
+          
+          <comp-lev>defines the protocols that the TSF will authorize over
+            its physical/logical interfaces, as well as any rules that are applicable to these interfaces.</comp-lev>
+          <management>No specific management functions are identified.</management>
+          <audit>There are no auditable events foreseen.</audit>
+          <dependencies>FDP_PDC_EXT.1 Peripheral Device Connection</dependencies>
+          
+          <f-element id="fdp-pdc-ext-3e1-vi">            
+            <title>
+              The TSF shall have interfaces for the <selectables>
+                <selectable>VGA</selectable>
+                <selectable>DVI‐D</selectable>
+                <selectable>DVI‐I</selectable>
+                <selectable>HDMI</selectable>
+                <selectable>DisplayPort</selectable>
+                <selectable>USB Type‐C with DisplayPort as alternate function</selectable>
+              </selectables> protocols.
+            </title>
+            
+            <ext-comp-def-title>
+              <title>
+                The TSF shall have interfaces for the <assignable> list of supported protocols
+                associated with physical or logical TSF interfaces</assignable> protocols.
+              </title>  
+            </ext-comp-def-title>
+          </f-element>
+          
+          <f-element id="fdp-pdc-ext-3e2-vi">            
+            <title>
+              The TSF shall apply the following rules to the supported protocols: [<h:i>the TSF shall
+              read the connected display EDID information once during power‐on or reboot</h:i>].
+            </title>
+            
+            <ext-comp-def-title>
+              <title>
+                The TSF shall apply the following rules to the supported protocols: <assignable>
+                rules defining the handling for communications over this protocol (e.g., any
+                processing that must be done by the TSF prior to transmitting it through the TOE,
+                circumstances or frequency with which the protocol is invoked)</assignable>.
+              </title>
+            </ext-comp-def-title>
+            
+            <note role="application">
+              It is expected that the ST author will make all selections in FDP_PDC_EXT.3.1/VI
+              for which the TOE has an interface; the TOE boundary should encompass the
+              entire device where possible.<h:br/><h:br/>
+              If the KM PP‐Module is also claimed by the ST, “USB Type‐C with DisplayPort as
+              alternate function” may not be selected in conjunction with a touchscreen
+              peripheral device.<h:br/><h:br/>
+              If “DisplayPort” is selected, the ST must include the selection‐based requirement
+              FDP_IPC_EXT.1.<h:br/><h:br/>
+              This PP‐Module defines several iterations of FDP_SPR_EXT.1. Depending on the
+              selections made in FDP_PDC_EXT.3.1/VI, the evaluator must include the relevant
+              iterations.
+            </note>            
+            <aactivity>
+              <no-tests>Evaluation Activities for this component are performed through evaluation of
+                <xref to="fdp_pdc_ext.1"/>.</no-tests>
+            </aactivity>
+          </f-element>          
+        </f-component>
+        
+        <f-component cc-id="fdp_udf_ext.1" name="Unidirectional Data Flow (Video Output)"
+          iteration="VI" id="fdp-udf-ext-1-vi">
+          <consistency-rationale>
+            This SFR requires the specific types of peripheral data defined in this PPModule
+            to flow unidirectionally. This does not prevent the enforcement of any
+            PSD PP SFRs.
+          </consistency-rationale>
+          
+          <comp-lev>requires the TSF to provide unidirectional (one‐way)
+            communications between a given pair of interface types.</comp-lev>
+          <management>No specific management functions are identified.</management>
+          <audit>There are no auditable events foreseen.</audit>
+          <dependencies>FDP_APC_EXT.1 Active PSD Connections</dependencies>  
+          
+          <f-element id="fdp-udf-ext-1e1">
+            <title>
+              The TSF shall ensure [<h:i>video</h:i>] data transits the TOE unidirectionally from
+              the [<h:i>TOE
+                compiuter video</h:i>] interface to the [<h:i>TOE peripheral device display</h:i>] interface.
+            </title>
+            
+            <ext-comp-def-title>
+              <title>
+                The TSF shall ensure <assignable>type of data</assignable> data transits the TOE
+                unidirectionally from the <assignable>origin point of data</assignable> interface to the
+                <assignable>destination point of data</assignable> interface.
+              </title>
+            </ext-comp-def-title>
+            
+            <aactivity>
+              <no-tests>Evaluation Activities for this component are performed through evaluation of
+                <xref to="fdp_apc_ext.1"/>.</no-tests>
+            </aactivity>
+          </f-element>
+        </f-component>
       </section>
-      <section id="ate" title="Class ATE: Tests">Testing is specified for functional aspects of
-        the system as well as aspects that take advantage of design or implementation weaknesses.
-        The former is done through the ATE_IND family, while the latter is through the AVA_VAN
-        family. At the assurance level specified in this PP, testing is based on advertised
-        functionality and interfaces with dependency on the availability of design information. One
-        of the primary outputs of the evaluation process is the test report as specified in the
-        following requirements. <a-component cc-id="ate_ind.1"
-          name="Independent Testing – Conformance (ATE_IND.1)"> Testing is performed to confirm the
-          functionality described in the TSS as well as the administrative
-          (including configuration and operational) documentation provided. The focus of the testing
-          is to confirm that the requirements specified in <xref to="SFRs"/> being met,
-          although some additional testing is specified for SARs in <xref to="SARs"/>. The
-          Assurance Activities identify the additional testing activities associated with these
-          components. The evaluator produces a test report documenting the plan for and results of
-          testing, as well as coverage arguments focused on the platform/OS
-          combinations that are claiming conformance to this PP. Given the scope of the OS and its associated evaluation evidence requirements, this component’s
-          assurance activities are covered by the assurance activities listed for ALC_CMC.1.
-            <a-element type="D">
-              <title>The developer shall provide the OS for testing.</title>
-            </a-element>
-	  
-            <a-element type="C">
-              <title>The OS shall be suitable for testing.</title>
-            </a-element>
-	  
-            <a-element type="E">
-              <title>The evaluator <h:i>shall confirm</h:i> that the information provided meets all
-              requirements for content and presentation of evidence.</title>
-            </a-element>
-            <a-element type="E">
-              <title>The evaluator shall test a subset of the TSF to confirm that
-              the TSF operates as specified.</title>
-              <note role="application">The evaluator will test the OS on the most current fully
-              patched version of the platform.</note>
-              <aactivity>The evaluator will prepare a test plan and report documenting the testing
-              aspects of the system, including any application crashes during testing. The evaluator
-              shall determine the root cause of any application crashes and include that information
-              in the report. The test plan covers all of the testing actions contained in the 
-              <xref to="bibCEM"/> and the body of this PP’s Assurance Activities. <h:br/> While it is
-              not necessary to have one test case per test listed in an Assurance Activity, the
-              evaluator must document in the test plan that each applicable testing requirement in
-              the ST is covered. The test plan identifies the platforms to be
-              tested, and for those platforms not included in the test plan but included in the
-                ST, the test plan provides a justification for not testing the
-              platforms. This justification must address the differences between the tested
-              platforms and the untested platforms, and make an argument that the differences do not
-              affect the testing to be performed. It is not sufficient to merely assert that the
-              differences have no affect; rationale must be provided. If all platforms claimed in
-              the ST are tested, then no rationale is necessary. The test plan
-              describes the composition of each platform to be tested, and any setup that is
-              necessary beyond what is contained in the AGD documentation. It should be noted that
-              the evaluator is expected to follow the AGD documentation for installation and setup
-              of each platform either as part of a test or as a standard pre-test condition. This
-              may include special test drivers or tools. For each driver or tool, an argument (not
-              just an assertion) should be provided that the driver or tool will not adversely
-              affect the performance of the functionality by the OS and its
-              platform. <h:br/> This also includes the configuration of the cryptographic engine to be
-              used. The cryptographic algorithms implemented by this engine are those specified by
-              this PP and used by the cryptographic protocols being evaluated (IPsec, TLS). The test
-              plan identifies high-level test objectives as well as the test procedures to be
-              followed to achieve those objectives. These procedures include expected results. <h:br/>
-              The test report (which could just be an annotated version of the test plan) details
-              the activities that took place when the test procedures were executed, and includes
-              the actual results of the tests. This shall be a cumulative account, so if there was a
-              test run that resulted in a failure; a fix installed; and then a successful re-run of
-              the test, the report would show a “fail” and “pass” result (and the supporting
-              details), and not just the “pass” result.</aactivity>
-            </a-element>
-	  
-        </a-component>
+    </man-sfrs> 
+    
+    <opt-sfrs/>
+    
+    <sel-sfrs>
+      <section title="User Data Protection (FDP)">
+        
+        <ext-comp-def title="Connected Displays Supported" fam-id="FDP_CDS_EXT">
+          <fam-behavior>
+            Components in this family define requirements for the number of display interfaces contained within the
+            TOE.
+          </fam-behavior>
+        </ext-comp-def>
+        
+        <ext-comp-def title="Internal Protocol Conversion" fam-id="FDP_IPC_EXT">
+          <fam-behavior>
+            Components in this family define requirements for the TOE’s ability to convert one protocol into another
+            for internal processing.
+          </fam-behavior>
+        </ext-comp-def>
+        
+        <ext-comp-def title="Sub-Protocol Rules" fam-id="FDP_SPR_EXT">
+          <fam-behavior>
+            Components in this family define the sub‐protocols that the TSF allows or blocks depending on the
+            protocols it supports.
+          </fam-behavior>
+        </ext-comp-def>
+        
+        <f-component cc-id="fdp_cds_ext.1" name="Connected Displays Supported">
+          <consistency-rationale>
+            This SFR adds support for one or multiple connected displays. It is not in the
+            PSD PP.
+          </consistency-rationale>
+          
+          <comp-lev>requires the TSF to define whether it supports one
+            connected display at a time or multiple connected displays simultaneously.</comp-lev>
+          <management>There are no specific management functions identified.</management>
+          <audit>There are no auditable events foreseen.</audit>
+          <dependencies>No dependencies</dependencies>
+          
+          <f-element id="fdp-cds-ext-1e1">
+            <title>The TSF shall support <selectables>
+                <selectable>one connected display</selectable>
+                <selectable>multiple connected displays</selectable>
+              </selectables>at a time.
+            </title>
+            
+            <note role="application">
+              This SFR must be claimed if “switching can be initiated only through express user
+              action” is chosen as a selection for FDP_SWI_EXT.1 in the PSD PP.<h:br/><h:br/>
+              If “peripheral devices using a guard” is selected in FDP_SWI_EXT.2.2 (from the PSD
+              PP), then “multiple connected displays” must be selected in FDP_CDS_EXT.1.1.
+            </note>
+            
+          <aactivity>
+            <TSS>
+              The evaluator shall examine the TSS and verify that it describes how many connected displays may be
+              supported at a time.
+            </TSS>
+            <Guidance>
+              The evaluator shall examine the operational user guidance and verify that it describes how many displays
+              are supported by the TOE.
+            </Guidance>
+            <CustomEA name="Isolation"/>
+            <Tests/>              
+          </aactivity>
+          </f-element>
+        </f-component>
+        
+        <f-component cc-id="fdp_ipc_ext.1" name="Internal Protocol Conversion">
+          <consistency-rationale>
+            This SFR allows for the conversion of video protocols. It is not in the PSD PP.
+          </consistency-rationale>
+          
+          <comp-lev>requires the TSF to specify an input protocol that the TOE
+            receives, the protocol that the TSF converts it to, and whether the data is output from the TOE as the
+            original protocol or as the converted one.</comp-lev>
+          <management>No specific management functions are identified.</management>
+          <audit>There are no auditable events foreseen.</audit>
+          <dependencies>FDP_PDC_EXT.2 Authorized Devices</dependencies>
+          
+          <f-element id="fdp-ipc-ext-1e1">
+            <title>
+              The TSF shall convert the [<h:i>DisplayPort</h:i>] protocol at the [<h:i>computer
+                video interface</h:i>]
+              into the [<h:i>HDMI</h:i>] protocol within the TOE.
+            </title>
+            
+            <ext-comp-def-title>
+              <title>The TSF shall convert the <assignable>original protocol</assignable> protocol at the
+                <assignable>TOE external interfaces</assignable> into the <assignable>converted
+                  protocol</assignable> protocol within the TOE.</title>
+            </ext-comp-def-title>
+          </f-element>
+          
+          <f-element id="fdp-ipc-ext-1e2">
+            <title>
+              The TSF shall output the [<h:i>HDMI</h:i>] protocol from inside the TOE to [<h:i>peripheral
+                display interfaces</h:i>] as <selectables>
+                  <selectable>[<h:i>DisplayPort</h:i>] protocol</selectable>
+                  <selectable>[<h:i>HDMI</h:i>] protocol</selectable>
+                </selectables>.
+            </title>
+          
+          <ext-comp-def-title>
+            <title>
+              The TSF shall output the <assignable>converted protocol</assignable> protocol from inside
+              the TOE to <assignable>TOE external interfaces</assignable> as <selectables>
+                <selectable><assignable>original protocol</assignable></selectable>
+                <selectable>protocol</selectable>
+              </selectables>, <assignable>converted protocol</assignable> protocol.
+            </title>
+          </ext-comp-def-title>
+            
+          <note role="application">
+              This SFR must be claimed if "DisplayPort" is chosen as a selection for
+              FDP_PDC_EXT.2.1/VI.
+            </note>
+            
+            <aactivity>
+              <TSS>
+                The evaluator shall examine the TSS and verify that it describes how data DisplayPort data is converted.
+              </TSS>
+              <Guidance/>
+              <CustomEA name="Isolation"/>
+              <Tests>
+                Testing for this SFR is covered under FDP_APC_EXT.1 Test 3 in this Module.
+              </Tests>
+            </aactivity>
+          </f-element>
+        </f-component>
+        
+        <f-component name="Sub-Protocol Rules" cc-id="fdp_spr_ext.1" status="invisible">
+          <comp-lev>requires the TSF to specify the allowed and blocked sub‐protocols
+            based on the protocol it supports.</comp-lev>
+          <management>No specific management functions are identified.</management>
+          <audit>There are no auditable events foreseen.</audit>
+          <dependencies>FDP_PDC_EXT.3 AuthorizedConnection Protocols</dependencies>
+          
+        <f-element>
+          <title/>
+                  
+          <ext-comp-def-title>
+              <title>
+                The TSF shall apply the following rules for the <assignable>supported protocol</assignable>
+                protocol:<h:ul>
+                  <h:li>block the following video/display sub‐protocols:<h:ul>
+                    <h:li><assignable>list of blocked sub‐protocols</assignable></h:li>
+                  </h:ul></h:li>
+                  <h:li>allow the following video/display sub‐protocols:<h:ul>
+                    <h:li>list of allowed sub‐protocols</h:li>
+                  </h:ul></h:li>                  
+                </h:ul>
+              </title>
+            </ext-comp-def-title>
+          </f-element>
+        </f-component>
+        
+        <f-component cc-id="fdp_spr_ext.1" name="Sub-Protocol Rules (DisplayPort Protocol)" iteration="DP"
+          id="fdp-spr-ext-1-dp">
+          <consistency-rationale>
+            This SFR describes how the TSF handles specific video sub‐protocols, which is
+            beyond the scope of the behavior described in the Base‐PP.
+          </consistency-rationale>
+          
+          <f-element id="fdp-spr-ext-1e1-dp">
+            <title>
+              The TSF shall apply the following rules for the [<h:i>DisplayPort</h:i>]
+              protocol.<h:ul>
+                <h:li>block the following video/display sub‐protocols:<h:ul>[<h:i>
+                  <h:li>CEC</h:li>
+                  <h:li>EDID from computer to display</h:li>
+                  <h:li>HDCP</h:li>
+                  <h:li>MCCS</h:li></h:i>]
+                </h:ul></h:li>
+                <h:li>allow the following video/display sub-protocols:<h:ul>[<h:i>
+                  <h:li>EDID from display to computer</h:li>
+                  <h:li>HPD from display to computer</h:li>
+                  <h:li>Link Training</h:li></h:i>]                  
+                </h:ul></h:li>
+              </h:ul>
+            </title>
+            
+            <note role="application">
+              The ST author must include this SFR if “DisplayPort” is selected in
+              FDP_PDC_EXT.3.1/VI.
+            </note>
+            <aactivity>
+              <TSS>
+                The evaluator shall examine the TSS and verify that it describes that the various sub‐protocols are allowed
+                or blocked by the TOE as described by the SFR.
+              </TSS>
+              <Guidance/>
+              <CustomEA name="Isolation"/>
+              <Tests>
+                Testing for this SFR is covered under FDP_APC_EXT.1 Tests 3 and 4 in this Module.
+              </Tests>
+            </aactivity>
+          </f-element>
+        </f-component>
+        
+        <f-component cc-id="fdp_spr_ext.1" name="Sub-Protocol Rules (DVI-D Protocol)"
+          iteration="DVID" id="fdp-spr-ext-1-dvi-d">
+          <consistency-rationale>
+            This SFR describes how the TSF handles specific video sub‐protocols, which is
+            beyond the scope of the behavior described in the Base‐PP.
+          </consistency-rationale>
+          
+          <f-element id="fdp-spr-ext-1e1-dvi-d">
+            <title>
+              The TSF shall apply the following rules for the [<h:i>DVI-D</h:i>]
+              protocol.<h:ul>
+                <h:li>block the following video/display sub‐protocols:<h:ul>[<h:i>
+                  <h:li>ARC</h:li>
+                  <h:li>CEC</h:li>
+                  <h:li>EDID from computer to display</h:li>
+                  <h:li>HDCP</h:li>
+                  <h:li>HEAC</h:li>
+                  <h:li>HEC</h:li>
+                  <h:li>MCCS</h:li></h:i>]
+                </h:ul></h:li>
+                <h:li>allow the following video/display sub-protocols:<h:ul>[<h:i>
+                  <h:li>EDID from display to computer</h:li>
+                  <h:li>HPD from display to computer</h:li></h:i>]                                    
+                </h:ul></h:li>
+              </h:ul>
+            </title>
+            
+            <note role="application">
+              The ST author must include this SFR if “DVI‐D” is selected in
+              FDP_PDC_EXT.3.1/VI.
+            </note>
+            <aactivity>
+              <TSS>
+                The evaluator shall examine the TSS and verify that it describes that the various sub‐protocols are allowed
+                or blocked by the TOE as described by the SFR.
+              </TSS>
+              <Guidance/>
+              <CustomEA name="Isolation"/>
+              <Tests>
+                Testing for this SFR is covered under FDP_APC_EXT.1 Test 3 and 4 in this Module.
+              </Tests>
+            </aactivity>
+          </f-element>
+        </f-component>
+        
+        <f-component cc-id="fdp_spr_ext.1" name="Sub-Protocol Rules (DVI-I Protocol)"
+          iteration="DVII" id="fdp-spr-ext-1-dvi-i">
+          <consistency-rationale>
+            This SFR describes how the TSF handles specific video sub‐protocols, which is
+            beyond the scope of the behavior described in the Base‐PP.
+          </consistency-rationale>
+          
+          <f-element id="fdp-spr-ext-1e1-dvi-i">
+            <title>
+              The TSF shall apply the following rules for the [<h:i>DVI-I</h:i>]
+              protocol.<h:ul>
+                <h:li>block the following video/display sub‐protocols:<h:ul>[<h:i>
+                  <h:li>ARC</h:li>
+                  <h:li>CEC</h:li>
+                  <h:li>EDID from computer to display</h:li>
+                  <h:li>HDCP</h:li>
+                  <h:li>HEAC</h:li>
+                  <h:li>HEC</h:li>
+                  <h:li>MCCS</h:li></h:i>]
+                </h:ul></h:li>
+                <h:li>allow the following video/display sub-protocols:<h:ul>[<h:i>
+                  <h:li>EDID from display to computer</h:li>
+                  <h:li>HPD from display to computer</h:li></h:i>]                                    
+                </h:ul></h:li>
+              </h:ul>
+            </title>
+            
+            <note role="application">
+              The ST author must include this SFR if “DVI‐I” is selected in
+              FDP_PDC_EXT.3.1/VI.
+            </note>
+            <aactivity>
+              <TSS>
+                The evaluator shall examine the TSS and verify that it describes that the various sub‐protocols are allowed
+                or blocked by the TOE as described by the SFR.
+              </TSS>
+              <Guidance/>
+              <CustomEA name="Isolation"/>
+              <Tests>
+                Testing for this SFR is covered under FDP_APC_EXT.1 Test 3 and 4 in this Module.
+              </Tests>
+            </aactivity>
+          </f-element>
+        </f-component>
+        
+        <f-component cc-id="fdp_spr_ext.1" name="Sub-Protocol Rules (HDMI Protocol)" iteration="HDMI"
+          id="fdp-spr-ext-1-hdmi">
+          <consistency-rationale>
+            This SFR describes how the TSF handles specific video sub‐protocols, which is
+            beyond the scope of the behavior described in the Base‐PP.
+          </consistency-rationale>
+          
+          <f-element id="fdp-spr-ext-1e1-hdmi">
+            <title>
+              The TSF shall apply the following rules for the [<h:i>HDMI</h:i>]
+              protocol.<h:ul>
+                <h:li>block the following video/display sub‐protocols:<h:ul>[<h:i>
+                  <h:li>ARC</h:li>
+                  <h:li>CEC</h:li>
+                  <h:li>EDID from computer to display</h:li>
+                  <h:li>HDCP</h:li>
+                  <h:li>HEAC</h:li>
+                  <h:li>HEC</h:li>
+                  <h:li>MCCS</h:li></h:i>]
+                </h:ul></h:li>
+                <h:li>allow the following video/display sub-protocols:<h:ul>[<h:i>
+                  <h:li>EDID from display to computer</h:li>
+                  <h:li>HPD from display to computer</h:li></h:i>]                                    
+                </h:ul></h:li>
+              </h:ul>
+            </title>
+            
+            <note role="application">
+              The ST author must include this SFR if “HDMI” is selected in
+              FDP_PDC_EXT.3.1/VI.
+            </note>
+            <aactivity>
+              <TSS>
+                The evaluator shall examine the TSS and verify that it describes that the various sub‐protocols are allowed
+                or blocked by the TOE as described by the SFR.
+              </TSS>
+              <Guidance/>
+              <CustomEA name="Isolation"/>
+              <Tests>
+                Testing for this SFR is covered under FDP_APC_EXT.1 Test 3 and 4 in this Module.
+              </Tests>
+            </aactivity>
+          </f-element>
+        </f-component>
+        
+        <f-component cc-id="fdp_spr_ext.1" name="Sub-Protocol Rules (USB-C Protocol)"
+          iteration="USBC" id="fdp-spr-ext-1-usb-c">
+          <consistency-rationale>
+            This SFR describes how the TSF handles specific video sub‐protocols, which is
+            beyond the scope of the behavior described in the Base‐PP.
+          </consistency-rationale>
+          
+          <f-element id="fdp-spr-ext-1e1-usb-c">
+            <title>
+              The TSF shall apply the following rules for the [<h:i>USB Type-C with DisplayPort as
+                alternate function</h:i>]
+              protocol.<h:ul>
+                <h:li>block the following video/display sub‐protocols:<h:ul>[<h:i>
+                  <h:li>CEC</h:li>
+                  <h:li>EDID from computer to display</h:li>
+                  <h:li>HDCP</h:li>
+                  <h:li>MCCS</h:li></h:i>]
+                </h:ul></h:li>
+                <h:li>allow the following video/display sub-protocols:<h:ul>[<h:i>
+                  <h:li>EDID from display to computer</h:li>
+                  <h:li>HPD from display to computer</h:li>
+                  <h:li>Link Training</h:li></h:i>]                                    
+                </h:ul></h:li>
+              </h:ul>
+            </title>
+            
+            <note role="application">
+              The ST author must include this SFR if “USB Type-C with DisplayPort as alternate
+              function” is selected in
+              FDP_PDC_EXT.3.1/VI.
+            </note>
+            <aactivity>
+              <TSS>
+                The evaluator shall examine the TSS and verify that it describes that the various sub‐protocols are allowed
+                or blocked by the TOE as described by the SFR.
+              </TSS>
+              <Guidance/>
+              <CustomEA name="Isolation"/>
+              <Tests>
+                Testing for this SFR is covered under FDP_APC_EXT.1 Test 3 and 4 in this Module.
+              </Tests>
+            </aactivity>
+          </f-element>
+        </f-component>
+        
+        <f-component cc-id="fdp_spr_ext.1" name="Sub-Protocol Rules (VGA Protocol)" iteration="VGA"
+          id="fdp-spr-ext-1-vga">
+          <consistency-rationale>
+            This SFR describes how the TSF handles specific video sub‐protocols, which is
+            beyond the scope of the behavior described in the Base‐PP.
+          </consistency-rationale>
+          
+          <f-element id="fdp-spr-ext-1e1-vga">
+            <title>
+              The TSF shall apply the following rules for the [<h:i>VGA</h:i>]
+              protocol.<h:ul>
+                <h:li>block the following video/display sub‐protocols:<h:ul>[<h:i>                
+                  <h:li>EDID from computer to display</h:li>                  
+                  <h:li>MCCS</h:li></h:i>]
+                </h:ul></h:li>
+                <h:li>allow the following video/display sub-protocols:<h:ul>[<h:i>
+                  <h:li>EDID from display to computer</h:li></h:i>]                                    
+                </h:ul></h:li>
+              </h:ul>
+            </title>
+            
+            <note role="application">
+              The ST author must include this SFR if “VGA” is selected in
+              FDP_PDC_EXT.3.1/VI.
+            </note>
+            <aactivity>
+              <TSS>
+                The evaluator shall examine the TSS and verify that it describes that the various sub‐protocols are allowed
+                or blocked by the TOE as described by the SFR.
+              </TSS>
+              <Guidance/>
+              <CustomEA name="Isolation"/>
+              <Tests>
+                Testing for this SFR is covered under FDP_APC_EXT.1 Test 3 and 4 in this Module.
+              </Tests>
+            </aactivity>
+          </f-element>
+        </f-component>        
       </section>
-      <section id="ava" title="Class AVA: Vulnerability Assessment">For the first generation of
-        this protection profile, the evaluation lab is expected to survey open sources to discover
-        what vulnerabilities have been discovered in these types of products. In most cases, these
-        vulnerabilities will require sophistication beyond that of a basic attacker. Until
-        penetration tools are created and uniformly distributed to the evaluation labs, the
-        evaluator will not be expected to test for these vulnerabilities in the OS. The labs will be expected to comment on the likelihood of these vulnerabilities given
-        the documentation provided by the vendor. This information will be used in the development
-        of penetration testing tools and for the development of future protection profiles.
-        <a-component cc-id="ava_van.1" name="Vulnerability Survey (AVA_VAN.1)">
-            <a-element type="D">
-              <title>The developer shall provide the OS for testing.</title>
-            </a-element>
-	  
-          <a-element type="C">
-            <title>The OS shall be suitable for testing.</title>
-          </a-element>
-	  
-          <a-element type="E">
-            <title>The evaluator shall confirm that the information provided meets all requirements
-              for content and presentation of evidence.</title>
-          </a-element>
-          <a-element type="E">
-            <title>The evaluator shall perform a search of public domain sources to identify
-              potential vulnerabilities in the OS.</title>
-            <note role="application">Public domain sources include the Common Vulnerabilities 
-              and Exposures (CVE) dictionary for publicly-known vulnerabilities.  Public domain
-              sources also include sites which provide free checking of files for viruses.</note>
-            <!-- their Usage statement does not permit us to mention VirusTotal by name without permission -->
-          </a-element>
-          <a-element type="E">
-            <title>The evaluator shall conduct penetration testing, based on the identified
-              potential vulnerabilities, to determine that the OS is resistant to
-              attacks performed by an attacker possessing Basic attack potential.</title>
-            <aactivity>The evaluator will generate a report to document their
-              findings with respect to this requirement. This report could physically be part of the
-              overall test report mentioned in ATE_IND, or a separate document. The evaluator
-              performs a search of public information to find vulnerabilities that have been found
-              in similar applications with a particular focus on network protocols the application
-              uses and document formats it parses. 
-              The evaluator documents the sources consulted and
-              the vulnerabilities found in the report. 
-              <h:br/>
-              For each vulnerability found, the evaluator
-              either provides a rationale with respect to its non-applicability, or the evaluator
-              formulates a test (using the guidelines provided in ATE_IND) to confirm the
-              vulnerability, if suitable. Suitability is determined by assessing the attack vector
-              needed to take advantage of the vulnerability. If exploiting the vulnerability
-              requires expert skills and an electron microscope, for instance, then a test would not
-              be suitable and an appropriate justification would be formulated.</aactivity>
-          </a-element>
-	  
-        </a-component>
-      </section>      
-    </section>
+    </sel-sfrs>
+    <obj-sfrs/>
+    <impl-dep-sfrs/>    
+        
   </sec:Security_Requirements>
-
-  <appendix title="Inherently Satisfied Requirements" id="satisfiedreqs"> This
-	appendix lists requirements that should be considered satisfied by products
-	successfully evaluated against this Protection Profile.  
-	However, these requirements are not featured explicitly as SFRs and should not be
-	included in the ST.  
-	They are not included as standalone SFRs because it would
-	increase the time, cost, and complexity of evaluation.  This approach is permitted
-	by <xref g="CC"/> Part 1, <h:b>8.2 Dependencies between components</h:b>.
-    <h:br/>
-	This information benefits systems engineering activities which call for inclusion of 
-	particular security controls.  Evaluation against the Protection Profile
-	provides evidence that these controls are present and have been evaluated.
-    <table xmlns="http://www.w3.org/1999/xhtml">
-	<tr class="header">
-	<td>Requirement</td>
-	<td>Rationale for Satisfaction</td>
-	</tr>
-	<tr>
-	<td>FIA_UAU.1 - Timing of authentication</td>
-	<td>
-	  FIA_AFL.1 implicitly requires that the OS perform all necessary actions, 
-	  including those on behalf of the user who has not been authenticated, 
-	  in order to authenticate;
-	  therefore it is duplicative to include these actions as a 
-	  separate assignment and test.
-	</td>
-	</tr>
-	<tr>
-	<td>FIA_UID.1 - Timing of identification</td>
-	<td>
-	  FIA_AFL.1 implicitly requires that the OS perform all necessary actions, 
-	  including those on behalf of the user who has not been identified, 
-	  in order to authenticate;
-	  therefore it is duplicative to include these actions as a 
-	  separate assignment and test.
-	</td>
-	</tr>
-	<tr>
-	<td>FMT_SMR.1 - Security roles</td>
-	<td>
-	  FMT_MOF_EXT.1 specifies role-based management functions that implicitly defines
-	  user and privileged accounts; 
-	  therefore, it is duplicative to include separate role requirements.
-	</td>
-	</tr>
-	<tr>
-	<td>FPT_STM.1 - Reliable time stamps</td>
-	<td>
-	  FAU_GEN.1.2 explicitly requires that the OS associate timestamps with audit records;
-	  therefore it is duplicative to include a separate timestamp requirement.
-	</td>
-	</tr>
-	<tr>
-	<td>FTA_SSL.1 - TSF-initiated session locking</td>
-	<td>
-	  FMT_MOF_EXT.1 defines requirements for managing session locking;
-	  therefore, it is duplicative to include a separate session locking requirement.
-	</td>
-	</tr>
-	<tr>
-	<td>FTA_SSL.2 - User-initiated locking</td>
-	<td>
-	  FMT_MOF_EXT.1 defines requirements for user-initiated session locking;
-	  therefore, it is duplicative to include a separate session locking requirement.
-	</td>
-	</tr>
-	<tr>
-	<td>FAU_STG.1 - Protected audit trail storage</td>
-	<td>
-	  FPT_ACF_EXT.1 defines a requirement to protect audit logs;
-	  therefore, it is duplicative to include a separate protection of audit trail requirements.
-	</td>
-	</tr>
-	<tr>
-	<td>FAU_GEN.2 - User identity association</td>
-	<td>
-	  FAU_GEN.1.2 explicitly requires that the OS record
-	  any user account associated with each event; therefore, it is duplicative
-	  to include a separate requirement to associate a user account with each
-	  event.
-	</td>
-	</tr>
-	<tr>
-	  <td>FAU_SAR.1 - Audit review</td>
-	  <td>
-	    FPT_ACF_EXT.1.2 requires that audit logs (and other objects)
-	    are protected from reading by unprivileged users; therefore, it is duplicative
-	    to include a separate requirement to protect only the audit information.
-	  </td>
-	</tr>
-    </table>
-
+    
+  <appendix title="Isolation Documentation and Assessment" id="iso-doc-assess">
+    The TOE does not require any additional supplementary information to describe its isolation concepts
+    beyond the requirements outlined in the ‘Isolation Documentation and Assessment’ sections in Appendix
+    D of the PSD PP. As with other PSD PP requirements, the only additional requirement is that the isolation
+    documentation also applies to the specific isolation and data flow SFRs in this PP‐module in addition to
+    the functionality the PSD PP requires.    
   </appendix>
-
-
-
-  <implements>
-    <feature id="a-feature-id" title="Widget Thing">
-      <description> This is a super description of this certain feature.</description>
-    </feature>
-  </implements>
   
-  <bibliography>
-    <entry id="bibCEM">
-      <tag>CEM</tag>
-      <description>
-        <h:a href="http://www.commoncriteriaportal.org/files/ccfiles/CEMV3.1R4.pdf">Common
-        Evaluation Methodology for Information Technology Security - Evaluation Methodology</h:a>,
-      CCMB-2012-09-004, Version 3.1, Revision 4, September 2012. </description>
-    </entry>
-    <entry id="bibCESG">
-      <tag>CESG</tag>
-      <description>CESG - <h:a
-      href="https://www.gov.uk/government/collections/end-user-devices-security-guidance"> End
-      User Devices Security and Configuration Guidance</h:a></description>
-    </entry>
-    <entry id="bibCSA">
-      <tag>CSA</tag>
-      <description>
-        <h:a href="http://csrc.nist.gov/groups/SMA/ispab/documents/csa_87.txt">Computer Security Act
-      of 1987</h:a>, H.R. 145, June 11, 1987. </description>
-    </entry>
-    <entry id="bibOMB">
-      <tag>OMB</tag>
-      <description>
-        <h:a href="http://www.whitehouse.gov/sites/default/files/omb/memoranda/fy2006/m06-19.pdf"
-             >Reporting Incidents Involving Personally Identifiable Information and Incorporating the
-        Cost for Security in Agency Information Technology Investments</h:a>, OMB M-06-19, July
-      12, 2006. </description>
+  <appendix title="Peripheral Device Connections" id="perdevcon">
+    <section title="General">
+      This appendix expands the PSD PP Peripheral Device Connections appendix, and offers additional direction
+      on peripheral devices and interface protocols with TOEs claiming compliance with this PP‐Module. This
+      appendix is in conjunction with the PSD PP’s appendix and does not replace it.
+    </section>
+    
+    <section title="Unauthorized Peripheral Devices">
+      The following are unauthorized devices:<h:ul>        
+        <h:li>Any device not specifically authorized</h:li>
+      </h:ul>     
+    </section>
+    
+    <section title="Unauthorized Interface Protocols">
+      The following are unauthorized interface protocols:<h:ul>
+        <h:li>Any interface protocol not specifically authorized</h:li>        
+      </h:ul>
+    </section>
+    <section title="Authorized Peripheral Devices">
+      The following are authorized devices<h:ul>
+        <h:li>Display device</h:li>
+      </h:ul>
+    </section>
+    
+    <section title="Authorized Interface Protocols">
+      The following are authorized interface protocols:<h:ul>
+        <h:li>DisplayPort</h:li>
+        <h:li>DVI-D</h:li>
+        <h:li>DVI-I</h:li>
+        <h:li>HDMI</h:li>
+        <h:li>USB Type‐C with DisplayPort as alternate function</h:li>
+        <h:li>VGA</h:li>
+      </h:ul>
+    </section>
+  </appendix> 
+  
+  <appendix title="Interactions between PP-Modules" id="interbetmod">
+    This appendix provides any additional guidance required to address interactions between multiple
+    PP-Modules when they are both contained within a PP‐Configuration.
+    <section title="PP-Module for Audio Output Devices">
+      Unauthorized devices identified in both PP‐Modules are considered unauthorized devices for the TOE as
+      per FDP_PDC_EXT.1.<h:br/><h:br/>
+      Authorized devices identified in both PP‐Modules are considered authorized devices for the TOE as per
+      the claimed iterations of FDP_PDC_EXT.2.<h:br/><h:br/>
+      Power events at a user authentication interface for one connected computer cannot impact power events
+      at an analog audio output interface for another connected computer and vice versa, as per
+      FDP_APC_EXT.1. This evaluation activity is tested in Test 3‐AO in the Supporting Document for Audio
+      Output.<h:br/><h:br/>
+      Both PP‐Modules modify the Base‐PP SFR FDP_APC_EXT.1 in ways that are specific to their respective
+      peripheral types. The ST author should make two iterations of this SFR, FDP_APC_EXT.1/UA and
+      FDP_APC_EXT.1/AO, to show the different modifications made for each specific peripheral type.
+    </section>
+    <section title="PP-Module for Keyboard/Mouse Devices">
+      Unauthorized devices identified in both PP‐Modules are considered unauthorized devices for the TOE as
+      per FDP_PDC_EXT.1.<h:br/><h:br/>
+      Authorized devices identified in both PP‐Modules are considered authorized devices for the TOE as per
+      the claimed iterations of FDP_PDC_EXT.2.<h:br/><h:br/>
+      User authentication functionality must be isolated from KM functionality and vice versa as per
+      FDP_UAI_EXT.1.<h:br/><h:br/>
+      Both PP‐Modules modify the Base‐PP SFR FDP_APC_EXT.1 in ways that are specific to their respective
+      peripheral types. The ST author should make two iterations of this SFR, FDP_APC_EXT.1/UA and
+      FDP_APC_EXT.1/KM, to show the different modifications made for each specific peripheral type.
+    </section>
+    <section title="PP-Module for User Authentication Devices">
+      Unauthorized devices identified in both PP‐Modules are considered unauthorized devices for the TOE as
+      per FDP_PDC_EXT.1.<h:br/><h:br/>
+      Authorized devices identified in both PP‐Modules are considered authorized devices for the TOE as per
+      the claimed iterations of FDP_PDC_EXT.2.<h:br/><h:br/>
+      Any USB‐C functionality that is supported by the TOE must be isolated from user authentication
+      functionality and vice versa as per FDP_UAI_EXT.1.<h:br/><h:br/>      
+      Both PP‐Modules modify the Base‐PP SFR FDP_APC_EXT.1 in ways that are specific to their respective
+      peripheral types. The ST author should make two iterations of this SFR, FDP_APC_EXT.1/VI and
+      FDP_APC_EXT.1/UA, to show the different modifications made for each specific peripheral type.
+    </section>
+  </appendix>    
+  
+  <bibliography>    
+    <entry id="base-pp">
+      <tag>PP_PSD_V5.0 or PSD PP</tag>
+      <description><h:a href=""><comment>Need to add URL once published.</comment>Protection Profile for Peripheral Sharing Device, Version 5.0, 2025-07-11</h:a>
+      </description>    
     </entry>
   </bibliography>
-
-</PP>
+</Module>
