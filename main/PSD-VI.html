@@ -632,7 +632,7 @@ function showTarget(id){
     </style></head><body onLoad="init()"><div id="commmentbox-"><a href="#Comment-1-">Comment: Comment-1-</a><br/><a href="#Comment-2-">Comment: Comment-2-</a><br/></div><h1 class="title" style="page-break-before:auto;">PP-Module for Video/Display Device</h1><noscript><h1 style="text-align:center; border-style: dashed; border-width: medium; border-color: red;">This page is best viewed with JavaScript enabled!</h1></noscript><div class="center"><img src="images/niaplogo.png" alt="NIAP Logo"></img><br/>
       Version: 2.0<br/>2025-07-11<br/><b>National Information Assurance Partnership</b><br/></div><h2 style="page-break-before:always;">Revision History</h2><table><tr class="header"><th>Version</th><th>Date</th><th>Comment</th></tr><tr><td>1.0</td><td>2019-07-19</td><td>Initial draft</td></tr>
 <tr><td>2.0</td><td>2025-07-11</td><td>Updates for <abbr class="dyn-abbr"><a href="#abbr_CC">CC</a></abbr>:2022</td></tr>
-</table><h2>Contents</h2><div class="toc" id="toc"><a href="#Introduction" style="text-indent:0px">1<span>Introduction</span></a><a href="#ppoverview" style="text-indent:10px">1.1<span>Overview</span></a><a href="#glossary" style="text-indent:10px">1.2<span>Terms</span></a><a href="#cc-terms" style="text-indent:20px">1.2.1<span>Common Criteria Terms</span></a><a href="#tech-terms" style="text-indent:20px">1.2.2<span>Technical Terms</span></a><a href="#TOEdescription" style="text-indent:10px">1.3<span>Compliant Targets of Evaluation</span></a><a href="#TOEboundary" style="text-indent:10px">1.4<span>TOE Boundary</span></a><a href="#usecases" style="text-indent:10px">1.5<span>Use Cases</span></a><a href="#sec-cclaims" style="text-indent:0px">2<span>Conformance Claims</span></a><a href="#Security_Problem_Definition" style="text-indent:0px">3<span>Security Problem Definition</span></a><a href="#Threats" style="text-indent:10px">3.1<span>Threats</span></a><a href="#Assumptions" style="text-indent:10px">3.2<span>Assumptions</span></a><a href="#Organizational_Security_Policies" style="text-indent:10px">3.3<span>Organizational Security Policies</span></a><a href="#Security_Objectives" style="text-indent:0px">4<span>Security Objectives</span></a><a href="#Security_Objectives_for_the_TOE" style="text-indent:10px">4.1<span>Security Objectives for the TOE</span></a><a href="#Security_Objectives_for_the_Operational_Environment" style="text-indent:10px">4.2<span>Security Objectives for the Operational Environment</span></a><a href="#SOR" style="text-indent:10px">4.3<span>Security Objectives Rationale</span></a><a href="#Security_Requirements" style="text-indent:0px">5<span>Security Requirements</span></a><a href="#secreq-bpp-psd" style="text-indent:10px">5.1<span>
+</table><h2>Contents</h2><div class="toc" id="toc"><a href="#Introduction" style="text-indent:0px">1<span>Introduction</span></a><a href="#ppoverview" style="text-indent:10px">1.1<span>Overview</span></a><a href="#glossary" style="text-indent:10px">1.2<span>Terms</span></a><a href="#cc-terms" style="text-indent:20px">1.2.1<span>Common Criteria Terms</span></a><a href="#tech-terms" style="text-indent:20px">1.2.2<span>Technical Terms</span></a><a href="#TOEdescription" style="text-indent:10px">1.3<span>Compliant Targets of Evaluation</span></a><a href="#TOEboundary" style="text-indent:10px">1.4<span>TOE Boundary</span></a><a href="#usecases" style="text-indent:10px">1.5<span>Use Cases</span></a><a href="#sec-cclaims" style="text-indent:0px">2<span>Conformance Claims</span></a><a href="#Security_Problem_Definition" style="text-indent:0px">3<span>Security Problem Definition</span></a><a href="#Threats" style="text-indent:10px">3.1<span>Threats</span></a><a href="#Assumptions" style="text-indent:10px">3.2<span>Assumptions</span></a><a href="#Organizational_Security_Policies" style="text-indent:10px">3.3<span>Organizational Security Policies</span></a><a href="#Security_Objectives" style="text-indent:0px">4<span>Security Objectives</span></a><a href="#Security_Objectives_for_the_Operational_Environment" style="text-indent:10px">4.1<span>Security Objectives for the Operational Environment</span></a><a href="#Security_Requirements" style="text-indent:0px">5<span>Security Requirements</span></a><a href="#secreq-bpp-psd" style="text-indent:10px">5.1<span>
     Protection Profile for Peripheral Sharing Device
        Security Functional Requirements Direction
     </span></a><a href="#modsfr-bpp-psd" style="text-indent:20px">5.1.1<span> Modified SFRs </span></a><a href="#mod_fdp" style="text-indent:30px">5.1.1.1<span>User Data Protection (FDP)</span></a><a href="#mod_fta" style="text-indent:30px">5.1.1.2<span>TOE Access (FTA)</span></a><a href="#man-sfrs" style="text-indent:10px">5.2<span>TOE Security Functional Requirements</span></a><a href="#FDP" style="text-indent:20px">5.2.1<span>User Data Protection (FDP)</span></a><a href="#obj-req-map" style="text-indent:10px">5.3<span>TOE Security Functional Requirements Rationale</span></a><a href="#mod-conrat" style="text-indent:0px">6<span>Consistency Rationale</span></a><a href="#conrat-bpp-psd" style="text-indent:10px">6.1<span>
@@ -648,7 +648,7 @@ function showTarget(id){
     </span></a><a href="#obj-sfrs" style="text-indent:10px">A.2<span>Objective Requirements
     </span></a><a href="#impl-dep-sfrs" style="text-indent:10px">A.3<span>Implementation-dependent Requirements
     </span></a><a href="#sel-sfrs" style="text-indent:0px">Appendix B - <span>Selection-based Requirements
-    </span></a><a href="#" style="text-indent:10px">B.1<span>User Data Protection (FDP)</span></a><a href="#ext-comp-defs" style="text-indent:0px">Appendix C - <span>Extended Component Definitions</span></a><a href="#ext-comp-defs-bg" style="text-indent:10px">C.1<span>Extended Components Table</span></a><a href="#ext-comp-defs-bg" style="text-indent:10px">C.2<span>Extended Component Definitions</span></a><a href="#ext-comp-FDP" style="text-indent:20px">C.2.1<span>User Data Protection (FDP)</span></a><a href="#ext-comp-FDP_PDC_EXT" style="text-indent:30px">C.2.1.1<span>FDP_PDC_EXT Peripheral Device Connection</span></a><a href="#ext-comp-FDP_UDF_EXT" style="text-indent:30px">C.2.1.2<span>FDP_UDF_EXT Unidirectional Data Flow (Video Output)</span></a><a href="#ext-comp-FDP_CDS_EXT" style="text-indent:30px">C.2.1.3<span>FDP_CDS_EXT Connected Displays Supported</span></a><a href="#ext-comp-FDP_IPC_EXT" style="text-indent:30px">C.2.1.4<span>FDP_IPC_EXT Internal Protocol Conversion</span></a><a href="#ext-comp-FDP_SPR_EXT" style="text-indent:30px">C.2.1.5<span>FDP_SPR_EXT Sub-Protocol Rules</span></a><a href="#iso-doc-assess" style="text-indent:0px">Appendix D - <span>Isolation Documentation and Assessment</span></a><a href="#perdevcon" style="text-indent:0px">Appendix E - <span>Peripheral Device Connections</span></a><a href="#_sec_9" style="text-indent:10px">E.1<span>General</span></a><a href="#_sec_10" style="text-indent:10px">E.2<span>Unauthorized Peripheral Devices</span></a><a href="#_sec_11" style="text-indent:10px">E.3<span>Unauthorized Interface Protocols</span></a><a href="#_sec_12" style="text-indent:10px">E.4<span>Authorized Peripheral Devices</span></a><a href="#_sec_13" style="text-indent:10px">E.5<span>Authorized Interface Protocols</span></a><a href="#interbetmod" style="text-indent:0px">Appendix F - <span>Interactions between PP-Modules</span></a><a href="#_sec_14" style="text-indent:10px">F.1<span>PP-Module for Audio Output Devices</span></a><a href="#_sec_15" style="text-indent:10px">F.2<span>PP-Module for Keyboard/Mouse Devices</span></a><a href="#_sec_16" style="text-indent:10px">F.3<span>PP-Module for User Authentication Devices</span></a><a href="#acronyms" style="text-indent:0px">Appendix G - <span>Acronyms</span></a><a href="#appendix-bibliography" style="text-indent:0px">Appendix H - <span>Bibliography</span></a></div><h1 class="indexable" data-level="1" id="Introduction">1 Introduction</h1>
+    </span></a><a href="#" style="text-indent:10px">B.1<span>User Data Protection (FDP)</span></a><a href="#ext-comp-defs" style="text-indent:0px">Appendix C - <span>Extended Component Definitions</span></a><a href="#ext-comp-defs-bg" style="text-indent:10px">C.1<span>Extended Components Table</span></a><a href="#ext-comp-defs-bg" style="text-indent:10px">C.2<span>Extended Component Definitions</span></a><a href="#ext-comp-FDP" style="text-indent:20px">C.2.1<span>User Data Protection (FDP)</span></a><a href="#ext-comp-FDP_PDC_EXT" style="text-indent:30px">C.2.1.1<span>FDP_PDC_EXT Peripheral Device Connection</span></a><a href="#ext-comp-FDP_UDF_EXT" style="text-indent:30px">C.2.1.2<span>FDP_UDF_EXT Unidirectional Data Flow (Video Output)</span></a><a href="#ext-comp-FDP_CDS_EXT" style="text-indent:30px">C.2.1.3<span>FDP_CDS_EXT Connected Displays Supported</span></a><a href="#ext-comp-FDP_IPC_EXT" style="text-indent:30px">C.2.1.4<span>FDP_IPC_EXT Internal Protocol Conversion</span></a><a href="#ext-comp-FDP_SPR_EXT" style="text-indent:30px">C.2.1.5<span>FDP_SPR_EXT Sub-Protocol Rules</span></a><a href="#iso-doc-assess" style="text-indent:0px">Appendix D - <span>Isolation Documentation and Assessment</span></a><a href="#perdevcon" style="text-indent:0px">Appendix E - <span>Peripheral Device Connections</span></a><a href="#_sec_8" style="text-indent:10px">E.1<span>General</span></a><a href="#_sec_9" style="text-indent:10px">E.2<span>Unauthorized Peripheral Devices</span></a><a href="#_sec_10" style="text-indent:10px">E.3<span>Unauthorized Interface Protocols</span></a><a href="#_sec_11" style="text-indent:10px">E.4<span>Authorized Peripheral Devices</span></a><a href="#_sec_12" style="text-indent:10px">E.5<span>Authorized Interface Protocols</span></a><a href="#interbetmod" style="text-indent:0px">Appendix F - <span>Interactions between PP-Modules</span></a><a href="#_sec_13" style="text-indent:10px">F.1<span>PP-Module for Audio Output Devices</span></a><a href="#_sec_14" style="text-indent:10px">F.2<span>PP-Module for Keyboard/Mouse Devices</span></a><a href="#_sec_15" style="text-indent:10px">F.3<span>PP-Module for User Authentication Devices</span></a><a href="#acronyms" style="text-indent:0px">Appendix G - <span>Acronyms</span></a><a href="#appendix-bibliography" style="text-indent:0px">Appendix H - <span>Bibliography</span></a></div><h1 class="indexable" data-level="1" id="Introduction">1 Introduction</h1>
     <h2 class="indexable" data-level="2" id="ppoverview">1.1 Overview</h2>
       The scope of this Protection Profile (<abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr>)‐Module is to describe the security functionality of a specific type
       of Peripheral Sharing Device (<abbr class="dyn-abbr"><a href="#abbr_PSD">PSD</a></abbr>) product in terms of Common Criteria for Information Technology
@@ -747,7 +747,8 @@ The following sections list Common Criteria and technology terms used in this do
         The <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> boundary is a <abbr class="dyn-abbr"><a href="#abbr_PSD">PSD</a></abbr>. Refer to the <abbr class="dyn-abbr"><a href="#abbr_PSD">PSD</a></abbr> <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr> for an outline of the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> boundary. When claiming
         conformance to this <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr>‐Module, the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> boundary will include one or more each of peripheral and
         computer interfaces that can be used to transmit video signals. It is permissible to use this <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr>‐Module in
-        conjunction with other <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr>‐Modules that also extend the <abbr class="dyn-abbr"><a href="#abbr_PSD">PSD</a></abbr> <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr> by claiming conformance to a PPConfiguration
+        conjunction with other <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr>‐Modules that also extend the <abbr class="dyn-abbr"><a href="#abbr_PSD">PSD</a></abbr> <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr> by claiming conformance to a
+        <abbr class="dyn-abbr"><a href="#abbr_PP-Configuration">PP-Configuration</a></abbr>
         that includes all applicable <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr>‐Modules. In this manner, a single <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> may support multiple
         different types of peripherals.<br/><br/>
         A conformant <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> may simultaneously present the video output of one or more computers per peripheral
@@ -791,7 +792,7 @@ The following sections list Common Criteria and technology terms used in this do
 					any Protection Profile.
 				</dd><p></p><dd>The following <abbr class="dyn-abbr"><a href="#abbr_PP">PPs</a></abbr> and <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr>-Modules are allowed to be specified in a 
 					<abbr class="dyn-abbr"><a href="#abbr_PP-Configuration">PP-Configuration</a></abbr> with this <abbr class="dyn-abbr"><a href="#abbr_PP-Module">PP-Module</a></abbr>:
-					<ul><li>Protection Profile for Peripheral Sharing Device, Version 5.0</li><li><abbr class="dyn-abbr"><a href="#abbr_PP-Module">PP-Module</a></abbr> for Analog Audio Output Devices, Version 2.0</li><li><abbr class="dyn-abbr"><a href="#abbr_PP-Module">PP-Module</a></abbr> for Keyboard/Mouse Devices, Version 2.0</li><li><abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr>-MOdule for User Authentication Devices, Version 2.0</li></ul></dd><dt>Package Claim</dt><p></p><dd>This <abbr class="dyn-abbr"><a href="#abbr_PP-Module">PP-Module</a></abbr> is not conformant to any 
+					<ul><li>Protection Profile for Peripheral Sharing Device, Version 5.0</li><li><abbr class="dyn-abbr"><a href="#abbr_PP-Module">PP-Module</a></abbr> for Analog Audio Output Devices, Version 2.0</li><li><abbr class="dyn-abbr"><a href="#abbr_PP-Module">PP-Module</a></abbr> for Keyboard/Mouse Devices, Version 2.0</li><li><abbr class="dyn-abbr"><a href="#abbr_PP-Module">PP-Module</a></abbr> for User Authentication Devices, Version 2.0</li></ul></dd><dt>Package Claim</dt><p></p><dd>This <abbr class="dyn-abbr"><a href="#abbr_PP-Module">PP-Module</a></abbr> is not conformant to any 
 						Functional or Assurance Packages.</dd></dl>
   <h1 class="indexable" data-level="1" id="Security_Problem_Definition">3 Security Problem Definition</h1>    
     This <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr>‐Module describes the security problem in terms of the threats the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> is expected to address,
@@ -828,21 +829,12 @@ The following sections list Common Criteria and technology terms used in this do
     
     
   <h1 class="indexable" data-level="1" id="Security_Objectives">4 Security Objectives</h1>
-    <h2 class="indexable" data-level="2" id="Security_Objectives_for_the_TOE">4.1 Security Objectives for the TOE</h2>
-      
-      This document does not define any additional SOs.
     
-    
-    
-    <h2 class="indexable" data-level="2" id="Security_Objectives_for_the_Operational_Environment">4.2 Security Objectives for the Operational Environment</h2>
+    <h2 class="indexable" data-level="2" id="Security_Objectives_for_the_Operational_Environment">4.1 Security Objectives for the Operational Environment</h2>
       Because this <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr>‐Module does not define any additional assumptions or organizational security policies,
       there are no additional security objectives for the Operational Environment to satisfy.
-     
+        
     
-    <h2 id="SOR" class="indexable,h2" data-level="2">4.3 Security Objectives Rationale</h2>   
-		This section describes how the assumptions and organizational 
-		security policies map to operational environment security objectives.
-	<table><caption><span class="ctr" data-myid="t-sec-obj-rat" data-counter-type="ct-Table" id="t-sec-obj-rat">Table <span class="counter">1</span></span>: Security Objectives Rationale</caption><tr class="header"><td>Assumption or <abbr class="dyn-abbr"><a href="#abbr_OSP">OSP</a></abbr></td><td>Security Objectives</td><td>Rationale</td></tr></table>
   <h1 id="Security_Requirements" class="indexable" data-level="1">5 Security Requirements</h1>
       This chapter describes the security requirements which have to be fulfilled by the product under evaluation.
      Those requirements comprise functional components from Part 2 and assurance components from Part 3 of 
@@ -900,7 +892,7 @@ The following sections list Common Criteria and technology terms used in this do
                 this <abbr class="dyn-abbr"><a href="#abbr_SFR">SFR</a></abbr> in a different manner for the interfaces that are unique to that module. In
                 this case, the <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> author should reference this modification of the <abbr class="dyn-abbr"><a href="#abbr_SFR">SFR</a></abbr> as
                 “<a href="#FDP_APC_EXT.1">FDP_APC_EXT.1</a>/VI” for uniqueness. Note that all elements of <a href="#FDP_APC_EXT.1">FDP_APC_EXT.1</a>
-                must be included in this iteration, not just the ones that are modified by this PPModule.                
+                must be included in this iteration, not just the ones that are modified by this <abbr class="dyn-abbr"><a href="#abbr_PP-Module">PP-Module</a></abbr>.                
               </span></div></div></div>
           <div class="activity_pane hide"><div class="activity_pane_header"><a onclick="toggle(this);return false;" href="#"><span class="activity_pane_label"> Evaluation Activities </span><span class="toggler"></span></a></div><div class="activity_pane_body"><div class="component-activity-header"><a href="#FDP_APC_EXT.1">FDP_APC_EXT.1</a></div>         
                                   
@@ -1008,16 +1000,17 @@ The following sections list Common Criteria and technology terms used in this do
                           attempt to change the display contrast and brightness. Verify that the display does not change its contrast
                           and brightness accordingly.</li>
                         <li>Disconnect the video cable connecting the display and the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> and connect the display directly to
-                          the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr>. Verify that the video image is visible and stable on the user display.</li>
+                          the computer. Verify that the video image is visible and stable on the user display.</li>
                         <li>Attempt to change the display contrast and brightness. Verify that the display does change its
                           contrast and brightness accordingly.</li>
                         <li>Connect the following testing device based on the display video protocol being tested at the
                           peripheral display interface.<ol>
                             <li>DisplayPort – DisplayPort AUX channel analyzer in series between the display and the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr></li>
-                            <li><abbr class="dyn-abbr"><a href="#abbr_HDMI">HDMI</a></abbr>/<abbr class="dyn-abbr"><a href="#abbr_DVI">DVI</a></abbr>‐I/‐<abbr class="dyn-abbr"><a href="#abbr_DVI">DVI</a></abbr>‐D – <abbr class="dyn-abbr"><a href="#abbr_HDMI">HDMI</a></abbr> sink test device</li>
+                            <li><abbr class="dyn-abbr"><a href="#abbr_HDMI">HDMI</a></abbr> – <abbr class="dyn-abbr"><a href="#abbr_HDMI">HDMI</a></abbr> sink test device</li>
                             <li><abbr class="dyn-abbr"><a href="#abbr_USB">USB</a></abbr> Type‐C with DisplayPort as Alternate Function – <abbr class="dyn-abbr"><a href="#abbr_USB">USB</a></abbr> sniffer in series between the display and
                               the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr></li>
-                            <li><abbr class="dyn-abbr"><a href="#abbr_VGA">VGA</a></abbr> – <abbr class="dyn-abbr"><a href="#abbr_VGA">VGA</a></abbr> sink test device</li>                            
+                            <li><abbr class="dyn-abbr"><a href="#abbr_VGA">VGA</a></abbr> – <abbr class="dyn-abbr"><a href="#abbr_VGA">VGA</a></abbr> sink test device</li>
+                            <li><abbr class="dyn-abbr"><a href="#abbr_DVI">DVI</a></abbr>-I/<abbr class="dyn-abbr"><a href="#abbr_DVI">DVI</a></abbr> - <abbr class="dyn-abbr"><a href="#abbr_DVI">DVI</a></abbr> sink test device</li>                            
                           </ol></li>
                             <li>Attempt to change the display contrast and brightness. Verify that the testing device does not
                               capture any <abbr class="dyn-abbr"><a href="#abbr_MCCS">MCCS</a></abbr> commands.</li>
@@ -1025,10 +1018,11 @@ The following sections list Common Criteria and technology terms used in this do
                               interface. If <abbr class="dyn-abbr"><a href="#abbr_DVI">DVI</a></abbr>‐I or <abbr class="dyn-abbr"><a href="#abbr_DVI">DVI</a></abbr>‐D is selected, use an <abbr class="dyn-abbr"><a href="#abbr_HDMI">HDMI</a></abbr> source generator.</li>
                             <li>Run an <abbr class="dyn-abbr"><a href="#abbr_EDID">EDID</a></abbr> write transaction at the generator and verify in the testing device that no <abbr class="dyn-abbr"><a href="#abbr_EDID">EDID</a></abbr> traffic
                               is captured.</li>
-                            <li>[Conditional, if DisplayPort, <abbr class="dyn-abbr"><a href="#abbr_DVI">DVI</a></abbr>‐D, <abbr class="dyn-abbr"><a href="#abbr_DVI">DVI</a></abbr>‐I, <abbr class="dyn-abbr"><a href="#abbr_HDMI">HDMI</a></abbr>, or <abbr class="dyn-abbr"><a href="#abbr_USB">USB</a></abbr> Type‐C is the selected protocol being
+                            <li>[Conditional, if DisplayPort, <abbr class="dyn-abbr"><a href="#abbr_HDMI">HDMI</a></abbr>, or <abbr class="dyn-abbr"><a href="#abbr_USB">USB</a></abbr> Type‐C is the selected protocol being
                               tested at the computer video interface, then] run Consumer Electronics Control (<abbr class="dyn-abbr"><a href="#abbr_CEC">CEC</a></abbr>) and High‐bandwidth
                               Digital Content Protection (<abbr class="dyn-abbr"><a href="#abbr_HDCP">HDCP</a></abbr>) tests or commands at the generator and verify in the testing device that
-                              no <abbr class="dyn-abbr"><a href="#abbr_CEC">CEC</a></abbr> or <abbr class="dyn-abbr"><a href="#abbr_HDCP">HDCP</a></abbr> traffic is captured.</li>
+                              no <abbr class="dyn-abbr"><a href="#abbr_CEC">CEC</a></abbr> or <abbr class="dyn-abbr"><a href="#abbr_HDCP">HDCP</a></abbr> traffic is captured for <abbr class="dyn-abbr"><a href="#abbr_HDMI">HDMI</a></abbr> or <abbr class="dyn-abbr"><a href="#abbr_USB">USB</a></abbr>-C, or check for an absence of power on pin 14 (CONFIG2)
+                              using an oscilloscope for DisplayPort DP++ Dual Mode.</li>
                             <li>[Conditional, if <abbr class="dyn-abbr"><a href="#abbr_DVI">DVI</a></abbr>‐D, <abbr class="dyn-abbr"><a href="#abbr_DVI">DVI</a></abbr>‐I, or <abbr class="dyn-abbr"><a href="#abbr_HDMI">HDMI</a></abbr> is the selected protocol being tested at the computer video
                               interface, then] run Audio Return Channel (<abbr class="dyn-abbr"><a href="#abbr_ARC">ARC</a></abbr>), <abbr class="dyn-abbr"><a href="#abbr_HDMI">HDMI</a></abbr> Ethernet and Audio Return Channel (<abbr class="dyn-abbr"><a href="#abbr_HEAC">HEAC</a></abbr>), and
                               <abbr class="dyn-abbr"><a href="#abbr_HDMI">HDMI</a></abbr> Ethernet Channel (<abbr class="dyn-abbr"><a href="#abbr_HEC">HEC</a></abbr>) tests or commands at the generator and verify in the testing device that no
@@ -1056,7 +1050,8 @@ The following sections list Common Criteria and technology terms used in this do
                       <b>Video and <abbr class="dyn-abbr"><a href="#abbr_EDID">EDID</a></abbr> Channel Unidirectional Rule</b><br/><br/>
                       This test verifies that the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> video path is unidirectional from the computer video interface to the display
                       interface with the exception of <abbr class="dyn-abbr"><a href="#abbr_EDID">EDID</a></abbr>, which may be read from the display once at power up and then may
-                      be read by the connected computers. The evaluator should have at least two high‐resolution displays and
+                      be read by the connected computers. The evaluator should have at least two
+                      high‐resolution displays of different models and
                       one low‐resolution display for each <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr>‐supported video protocol.<br/><br/>
                       <b>In the following steps the evaluator should attempt to read display <abbr class="dyn-abbr"><a href="#abbr_EDID">EDID</a></abbr> after the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> completed its
                       self‐test / power up. The <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> should not read the new display <abbr class="dyn-abbr"><a href="#abbr_EDID">EDID</a></abbr>.</b><ol>
@@ -1066,8 +1061,9 @@ The following sections list Common Criteria and technology terms used in this do
                           computer #1 as expected.</li>
                         <li>Turn off the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr>. Disconnect the user display from the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr>.</li>
                         <li>Connect the low‐resolution display to the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> and turn on the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr>. After the video is shown on
-                          the display, turn off the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr>.</li>
-                        <li>Turn on the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr>. After the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> has completed the self‐test, the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> may fail to generate video on
+                          the display, turn off the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> and disconnect the low-resolution display.</li>
+                        <li>Turn on the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr>. After the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> has completed the self‐test connect the
+                          second high-resolution display of a different model to the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr>. The <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> may fail to generate video on
                           the user display (i.e., no <abbr class="dyn-abbr"><a href="#abbr_EDID">EDID</a></abbr> is read at the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> power up). If the display is showing video, then run the
                           <abbr class="dyn-abbr"><a href="#abbr_EDID">EDID</a></abbr> reading and parsing software on computer #1 and check that there is no active <abbr class="dyn-abbr"><a href="#abbr_EDID">EDID</a></abbr> (i.e., the
                           computer is using a default generic display or reading older display settings from the registry).</li>
@@ -1119,7 +1115,8 @@ The following sections list Common Criteria and technology terms used in this do
                         <li>Restart the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> and repeat step 3.</li>
                         <li>Disconnect computer #1 and repeat steps 2 to 8 with computer #2 on the same port.</li>
                         <li>Repeat steps 2 to 9 for a total of 20 <abbr class="dyn-abbr"><a href="#abbr_EDID">EDID</a></abbr> file captures.</li>
-                        <li>Collect all 20 captured <abbr class="dyn-abbr"><a href="#abbr_EDID">EDID</a></abbr> files, compare them bit‐by‐bit, and verify that they are identical.</li>
+                        <li>Collect all 20 captured <abbr class="dyn-abbr"><a href="#abbr_EDID">EDID</a></abbr> files, compare them bit‐by‐bit, and
+                          verify that they are identical excluding null caputres recorded in Step 7.</li>
                       </ol>
                     </li>
                   </ul></span>
@@ -1127,9 +1124,10 @@ The following sections list Common Criteria and technology terms used in this do
           
           <div class="comp" id="FDP_PDC_EXT.1"><h4>FDP_PDC_EXT.1 Peripheral Device Connection</h4>
             
-            <span class="description">There is no modification to this <abbr class="dyn-abbr"><a href="#abbr_SFR">SFR</a></abbr> in this <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr>‐Module. However, there are additions to the Peripheral
-              Device Connections Policy (see Appendix E) associated with this <abbr class="dyn-abbr"><a href="#abbr_SFR">SFR</a></abbr> and additional Evaluation Activities.</span>
-            <div class="element"><div class="reqid" id="FDP_PDC_EXT.1.1"><a href="#FDP_PDC_EXT.1.1" class="abbr">FDP_PDC_EXT.1.1</a></div><div class="reqdesc"></div></div>
+            <div class="element"><div class="reqid" id="FDP_PDC_EXT.1.1"><a href="#FDP_PDC_EXT.1.1" class="abbr">FDP_PDC_EXT.1.1</a></div><div class="reqdesc">
+                There is no modification to this <abbr class="dyn-abbr"><a href="#abbr_SFR">SFR</a></abbr> in this <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr>‐Module. However, there are additions to the Peripheral
+              Device Connections Policy (see Appendix E) associated with this <abbr class="dyn-abbr"><a href="#abbr_SFR">SFR</a></abbr> and additional Evaluation Activities.
+              </div></div>
           <div class="activity_pane hide"><div class="activity_pane_header"><a onclick="toggle(this);return false;" href="#"><span class="activity_pane_label"> Evaluation Activities </span><span class="toggler"></span></a></div><div class="activity_pane_body"><div class="component-activity-header"><a href="#FDP_PDC_EXT.1">FDP_PDC_EXT.1</a></div>
                               
                               
@@ -1158,7 +1156,9 @@ The following sections list Common Criteria and technology terms used in this do
                         in step 1.</li>
                       <li>Disconnect the authorized device, then reconnect it to the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> peripheral interface.</li>
                       <li>Verify the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> user indication described in the operational user guidance is not present.</li>
-                      <li>Verify that the device displays the same image as in step 1 and 6.</li>
+                      <li>Verify that the device displays the same image as in step 1 and 6 or that it displays a blank 
+                        screen. If it displays a blank screen, reboot the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr>, select the channel that was selected prior
+                        to reboot, and verify that the device now displays the same image as in step 1 and 6.</li>
                     </ol>
                   </li>                                  
                 </ul></span>
@@ -1168,12 +1168,13 @@ The following sections list Common Criteria and technology terms used in this do
         <h4 id="mod_fta" class="indexable" data-level="4">5.1.1.2 TOE Access (FTA)</h4>          
           <div class="comp" id="FTA_CIN_EXT.1"><h4>FTA_CIN_EXT.1 Continuous Indications</h4>
             
-            <span class="description">This <abbr class="dyn-abbr"><a href="#abbr_SFR">SFR</a></abbr> is selection‐based in the <abbr class="dyn-abbr"><a href="#abbr_PSD">PSD</a></abbr> <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr>. It remains selection‐based when the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> conforms to this PPModule.
+            <span class="description">This <abbr class="dyn-abbr"><a href="#abbr_SFR">SFR</a></abbr> is selection‐based in the <abbr class="dyn-abbr"><a href="#abbr_PSD">PSD</a></abbr> <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr>. It remains selection‐based when
+              the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> conforms to this <abbr class="dyn-abbr"><a href="#abbr_PP-Module">PP-Module</a></abbr>.
               However, this <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr>‐Module adds a trigger for its selection—specifically, if “multiple connected
-              displays” is selected in <a href="#FDP_CDS_EXT.1.1">FDP_CDS_EXT.1.1</a>, then <a href="#FTA_CIN_EXT.1">FTA_CIN_EXT.1</a> is applicable to the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> and must be
+              displays” is selected in <a href="#FDP_CDS_EXT.1.1">FDP_CDS_EXT.1.1</a> or if the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> fits the Combiner Use Case, then <a href="#FTA_CIN_EXT.1">FTA_CIN_EXT.1</a> is applicable to the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> and must be
               claimed.<br/><br/>
-              The following <abbr class="dyn-abbr"><a href="#abbr_SFR">SFR</a></abbr> has a specific assignment, which is a mandatory selection if selecting “multiple
-              connected displays” in <a href="#FDP_CDS_EXT.1.1">FDP_CDS_EXT.1.1</a>.<br/><br/>
+              The following <abbr class="dyn-abbr"><a href="#abbr_SFR">SFR</a></abbr> has a specific assignment, which is a mandatory selection if the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr>
+              fits the Combiner Use Case.<br/><br/>
               Additionally, the <abbr class="dyn-abbr"><a href="#abbr_SFR">SFR</a></abbr> is refined to specify an additional display mechanism in <a href="#FTA_CIN_EXT.1">FTA_CIN_EXT.1</a>.2, as follows:</span>
             <div class="element"><div class="reqid" id="FTA_CIN_EXT.1.1"><a href="#FTA_CIN_EXT.1.1" class="abbr">FTA_CIN_EXT.1.1</a></div><div class="reqdesc">
                 The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall implement the visible indication using the following mechanism:
@@ -1196,17 +1197,15 @@ The following sections list Common Criteria and technology terms used in this do
         
         
         
+        
+        
+        
         <div class="comp" id="FDP_PDC_EXT.2/VI"><h4>FDP_PDC_EXT.2/VI Peripheral Device Connection (Video Output)</h4>
-          
-          
-          
-          
-          
           
           
           <div class="element"><div class="reqid" id="FDP_PDC_EXT.2.1/VI"><a href="#FDP_PDC_EXT.2.1/VI" class="abbr">FDP_PDC_EXT.2.1/VI</a></div><div class="reqdesc">
               The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall allow connections with authorized devices as defined in [Appendix
-              E] and[<b>selection</b>: <span class="selectable-content" id="_s_6">authorized devices as defined in the <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr>‐Module for Audio Output
+              E] and [<b>selection</b>: <span class="selectable-content" id="_s_6">authorized devices as defined in the <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr>‐Module for Audio Output
                   Devices</span>, <span class="selectable-content" id="_s_7">authorized devices and functions as defined in the <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr>‐Module for
                   Keyboard/Mouse Devices</span>, <span class="selectable-content" id="_s_8">authorized devices as defined in the <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr>‐Module for User Authentication
                   Devices</span>, <span class="selectable-content" id="_s_9">no other devices</span>] upon <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> power up and connection of a peripheral device to a powered-on
@@ -1215,7 +1214,7 @@ The following sections list Common Criteria and technology terms used in this do
           
           <div class="element"><div class="reqid" id="FDP_PDC_EXT.2.2/VI"><a href="#FDP_PDC_EXT.2.2/VI" class="abbr">FDP_PDC_EXT.2.2/VI</a></div><div class="reqdesc">
               The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall allow connections with authorized devices presenting authorized
-              interface protocols as defined in [Appendix E] and[<b>selection</b>: <span class="selectable-content" id="_s_10">authorized devices presenting authorized interface protocols as defined in the <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr>‐Module for Audio Output
+              interface protocols as defined in [Appendix E] and [<b>selection</b>: <span class="selectable-content" id="_s_10">authorized devices presenting authorized interface protocols as defined in the <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr>‐Module for Audio Output
                   Devices</span>, <span class="selectable-content" id="_s_11">authorized devices presenting authorized interface protocols as defined in the <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr>‐Module for
                   Keyboard/Mouse Devices</span>, <span class="selectable-content" id="_s_12">authorized devices presenting authorized interface protocols as defined in the <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr>‐Module for User Authentication
                   Devices</span>, <span class="selectable-content" id="_s_13">no other devices</span>] upon <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> power up and connection of a peripheral device to a powered-on
@@ -1237,12 +1236,8 @@ The following sections list Common Criteria and technology terms used in this do
                 <a href="#fdp_pdc_ext.1" class="dynref" data-format=""></a>.<br/><br/>
             </div></div></div>
         
-        <div class="comp" id="FDP_PDC_EXT.3/VI"><h4>FDP_PDC_EXT.3/VI Authorized Connection Protocols</h4>
-          
-          
-          
-          
-          
+        
+        <div class="comp" id="FDP_PDC_EXT.3/VI"><h4>FDP_PDC_EXT.3/VI Authorized Connection Protocols (Video Output)</h4>
           
           
           <div class="element"><div class="reqid" id="FDP_PDC_EXT.3.1/VI"><a href="#FDP_PDC_EXT.3.1/VI" class="abbr">FDP_PDC_EXT.3.1/VI</a></div><div class="reqdesc">
@@ -1251,7 +1246,7 @@ The following sections list Common Criteria and technology terms used in this do
           
           <div class="element"><div class="reqid" id="FDP_PDC_EXT.3.2/VI"><a href="#FDP_PDC_EXT.3.2/VI" class="abbr">FDP_PDC_EXT.3.2/VI</a></div><div class="reqdesc">
               The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall apply the following rules to the supported protocols: [<i>the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall
-              read the connected display <abbr class="dyn-abbr"><a href="#abbr_EDID">EDID</a></abbr> information once during power‐on or reboot</i>].
+              read the connected display <abbr class="dyn-abbr"><a href="#abbr_EDID">EDID</a></abbr> information once during power‐on or reboot [<b>selection</b>: <span class="selectable-content" id="_s_20">automatically</span>, <span class="selectable-content" id="_s_21">when prompted by user intervention</span>]</i>].
             <div class="appnote"><span class="note-header">Application
       Note:
     </span><span class="note">
@@ -1265,25 +1260,25 @@ The following sections list Common Criteria and technology terms used in this do
               <a href="#FDP_IPC_EXT.1">FDP_IPC_EXT.1</a>.<br/><br/>
               This <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr>‐Module defines several iterations of FDP_SPR_EXT.1. Depending on the
               selections made in <a href="#FDP_PDC_EXT.3.1/VI">FDP_PDC_EXT.3.1/VI</a>, the evaluator must include the relevant
-              iterations.
+              iterations.<br/><br/>
+              If the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> can read the connected display <abbr class="dyn-abbr"><a href="#abbr_EDID">EDID</a></abbr> information during power-on or 
+              reboot without human intervention, the first selection item for <a href="#FDP_PDC_EXT.3.2/VI">FDP_PDC_EXT.3.2/VI</a>
+              is selected. If the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> requires human intervention to read the connected display 
+              <abbr class="dyn-abbr"><a href="#abbr_EDID">EDID</a></abbr> during power-on or reboot, the second selection item is selected.
             </span></div></div></div>          
         <div class="activity_pane hide"><div class="activity_pane_header"><a onclick="toggle(this);return false;" href="#"><span class="activity_pane_label"> Evaluation Activities </span><span class="toggler"></span></a></div><div class="activity_pane_body"><div class="component-activity-header"><a href="#FDP_PDC_EXT.3/VI">FDP_PDC_EXT.3/VI</a></div>
               Evaluation Activities for this component are performed through evaluation of
                 <a href="#fdp_pdc_ext.1" class="dynref" data-format=""></a>.<br/><br/>
             </div></div></div>
         
+        
+        
         <div class="comp" id="FDP_UDF_EXT.1/VI"><h4>FDP_UDF_EXT.1/VI Unidirectional Data Flow (Video Output)</h4>
           
           
-          
-          
-          
-            
-          
           <div class="element"><div class="reqid" id="FDP_UDF_EXT.1.1/VI"><a href="#FDP_UDF_EXT.1.1/VI" class="abbr">FDP_UDF_EXT.1.1/VI</a></div><div class="reqdesc">
               The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall ensure [<i>video</i>] data transits the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> unidirectionally from
-              the [<i><abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr>
-                compiuter video</i>] interface to the [<i><abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> peripheral device display</i>] interface.
+              the [<i><abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> computer video</i>] interface to the [<i><abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> peripheral device display</i>] interface.
             </div></div>
         <div class="activity_pane hide"><div class="activity_pane_header"><a onclick="toggle(this);return false;" href="#"><span class="activity_pane_label"> Evaluation Activities </span><span class="toggler"></span></a></div><div class="activity_pane_body"><div class="component-activity-header"><a href="#FDP_UDF_EXT.1/VI">FDP_UDF_EXT.1/VI</a></div>
               Evaluation Activities for this component are performed through evaluation of
@@ -1291,32 +1286,10 @@ The following sections list Common Criteria and technology terms used in this do
             </div></div></div>
       
     <h2 id="obj-req-map" class="indexable" data-level="2">5.3 TOE Security Functional Requirements Rationale</h2><p>The following rationale provides justification for each <abbr class="dyn-abbr"><a href="#abbr_SFR">SFR</a></abbr> for the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr>, 
-    showing that the <abbr class="dyn-abbr"><a href="#abbr_SFR">SFRs</a></abbr> are suitable to address the specified threats:<br/><table><caption><span class="ctr" data-myid="t-obj_map" data-counter-type="ct-Table" id="t-obj_map">Table <span class="counter">2</span></span>: <abbr class="dyn-abbr"><a href="#abbr_SFR">SFR</a></abbr> Rationale</caption><tr><th>Threat</th><th>Addressed by</th><th>Rationale</th></tr><tr class="major-row"><td rowspan="2"><a href="#T.DATA_LEAK">T.DATA_​LEAK</a>
+    showing that the <abbr class="dyn-abbr"><a href="#abbr_SFR">SFRs</a></abbr> are suitable to address the specified threats:<br/><table><caption><span class="ctr" data-myid="t-obj_map" data-counter-type="ct-Table" id="t-obj_map">Table <span class="counter">1</span></span>: <abbr class="dyn-abbr"><a href="#abbr_SFR">SFR</a></abbr> Rationale</caption><tr><th>Threat</th><th>Addressed by</th><th>Rationale</th></tr><tr class="major-row"><td rowspan="8"><a href="#T.DATA_LEAK">T.DATA_​LEAK</a>
 		(from <abbr class="dyn-abbr"><a href="#abbr_PSD">PSD</a></abbr> <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr>)
-	</td><td><a href="#FDP_APC_EXT.1">FDP_APC_EXT.1</a> (modified)</td><td>Mitigates this threat by
-            ensuring only user-selected data is routed to an interface.</td></tr>
-<tr><td><a href="#FDP_PDC_EXT.1">FDP_PDC_EXT.1</a> (modified)</td><td>Mitigates this threat by
-            specifying authorized <abbr class="dyn-abbr"><a href="#abbr_USB">USB</a></abbr> devices and adding testing for those devices.</td></tr>
-<tr class="major-row"><td rowspan="1"><a href="#T.RESIDUAL_LEAK">T.RESIDUAL_​LEAK</a>
-		(from <abbr class="dyn-abbr"><a href="#abbr_PSD">PSD</a></abbr> <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr>)
-	</td><td><a href="#FDP_UDF_EXT.1/VI">FDP_UDF_EXT.1/VI</a></td><td>Mitigates this threat by ensuring
-            video data transits unidirectionally between interfaces.</td></tr>
-<tr class="major-row"><td rowspan="2"><a href="#T.SIGNAL_LEAK">T.SIGNAL_​LEAK</a>
-		(from <abbr class="dyn-abbr"><a href="#abbr_PSD">PSD</a></abbr> <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr>)
-	</td><td><a href="#FDP_APC_EXT.1">FDP_APC_EXT.1</a> (modified)</td><td>Mitigates this threat by
-            requiring only user-selected data to be routed and ensuring no data or electrical
-            signals flow.</td></tr>
-<tr><td><a href="#FDP_PDC_EXT.1">FDP_PDC_EXT.1</a> (modified)</td><td>Mitigates this threat by
-            ensuring only authorized peripheral devices are connected during power up and when a new
-          peripheral devices is connected.</td></tr>
-<tr class="major-row"><td rowspan="9"><a href="#T.UNAUTHORIZED_DEVICES">T.UNAUTHORIZED_​DEVICES</a>
-		(from <abbr class="dyn-abbr"><a href="#abbr_PSD">PSD</a></abbr> <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr>)
-	</td><td><a href="#FDP_PDC_EXT.2/VI">FDP_PDC_EXT.2/VI</a></td><td>Mitigates this threat by ensuring only authorized devices are allowed to connect based on a specified
-            standard.</td></tr>
-<tr><td><a href="#FDP_PDC_EXT.3/VI">FDP_PDC_EXT.3/VI</a></td><td>Mitigates this threat by applying
-            rules to the protocols the interface supports to prevent unauthorized connections.</td></tr>
-<tr><td><a href="#FDP_IPC_EXT.1">FDP_IPC_EXT.1</a> (selection-based)</td><td>Mitigates this
-            threat by ensuring the specified protocol is converted  from within the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr>.</td></tr>
+	</td><td><a href="#FDP_PDC_EXT.2/VI">FDP_PDC_EXT.2/VI</a></td><td>Mitigates this threat by only
+            allowing authorized device connections with authorized interface protocols.</td></tr>
 <tr><td><a href="#FDP_SPR_EXT.1/DP">FDP_SPR_EXT.1/DP</a> (selection-based)</td><td>Mitigates this
             threat by ensuring the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> applies the specified rules for the DP protocol.</td></tr>
 <tr><td>FDP_SPR_EXT.1/<abbr class="dyn-abbr"><a href="#abbr_DVI">DVI</a></abbr>-D (selection-based)</td><td>Mitigates
@@ -1329,13 +1302,69 @@ The following sections list Common Criteria and technology terms used in this do
             threat by ensuring the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> applies the specified rules for the <abbr class="dyn-abbr"><a href="#abbr_USB">USB</a></abbr> protocol.</td></tr>
 <tr><td><a href="#FDP_SPR_EXT.1/VGA">FDP_SPR_EXT.1/VGA</a> (selection-based)</td><td>Mitigates this
             threat by ensuring the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> applies the specified rules for the <abbr class="dyn-abbr"><a href="#abbr_VGA">VGA</a></abbr> protocol.</td></tr>
-<tr class="major-row"><td rowspan="2"><a href="#T.UNINTENDED_USE">T.UNINTENDED_​USE</a>
+<tr><td><a href="#FDP_UDF_EXT.1/VI">FDP_UDF_EXT.1/VI</a></td><td>Mitigates this threat by ensuring
+            video data transits unidirectionally between interfaces.</td></tr>
+<tr class="major-row"><td rowspan="7"><a href="#T.RESIDUAL_LEAK">T.RESIDUAL_​LEAK</a>
 		(from <abbr class="dyn-abbr"><a href="#abbr_PSD">PSD</a></abbr> <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr>)
-	</td><td><a href="#FTA_CIN_EXT.1">FTA_CIN_EXT.1</a> (modified)</td><td>Mitigates this threat by
-          requiring visible markings for each video source to ensure the correct display is being
-          used.
-          </td></tr>
-<tr><td><a href="#FDP_CDS_EXT.1">FDP_CDS_EXT.1</a> (selection-based)</td><td>Mitigates this threat
+	</td><td><a href="#FDP_PDC_EXT.2/VI">FDP_PDC_EXT.2/VI</a></td><td>Mitigates this threat by only
+            allowing authorized device connections with authorized interface protocols.</td></tr>
+<tr><td><a href="#FDP_SPR_EXT.1/DP">FDP_SPR_EXT.1/DP</a> (selection-based)</td><td>Mitigates this
+            threat by ensuring the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> applies the specified rules for the DP protocol.</td></tr>
+<tr><td>FDP_SPR_EXT.1/<abbr class="dyn-abbr"><a href="#abbr_DVI">DVI</a></abbr>-D (selection-based)</td><td>Mitigates
+            this threat by ensuring the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> applies the specified rules for the <abbr class="dyn-abbr"><a href="#abbr_DVI">DVI</a></abbr>-D protocol.</td></tr>
+<tr><td>FDP_SPR_EXT.1/<abbr class="dyn-abbr"><a href="#abbr_DVI">DVI</a></abbr>-I (selection-based)</td><td>Mitigates
+            this threat by ensuring the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> applies the specified rules for the <abbr class="dyn-abbr"><a href="#abbr_DVI">DVI</a></abbr>-I protocol.</td></tr>
+<tr><td><a href="#FDP_SPR_EXT.1/HDMI">FDP_SPR_EXT.1/HDMI</a> (selection-based)</td><td>Mitigates this
+            threat by ensuring the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> applies the specified rules for the <abbr class="dyn-abbr"><a href="#abbr_HDMI">HDMI</a></abbr> protocol.</td></tr>
+<tr><td>FDP_SPR_EXT.1/<abbr class="dyn-abbr"><a href="#abbr_USB">USB</a></abbr> (selection-based)</td><td>Mitigates this
+            threat by ensuring the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> applies the specified rules for the <abbr class="dyn-abbr"><a href="#abbr_USB">USB</a></abbr> protocol.</td></tr>
+<tr><td><a href="#FDP_SPR_EXT.1/VGA">FDP_SPR_EXT.1/VGA</a> (selection-based)</td><td>Mitigates this
+            threat by ensuring the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> applies the specified rules for the <abbr class="dyn-abbr"><a href="#abbr_VGA">VGA</a></abbr> protocol.</td></tr>
+<tr class="major-row"><td rowspan="9"><a href="#T.SIGNAL_LEAK">T.SIGNAL_​LEAK</a>
+		(from <abbr class="dyn-abbr"><a href="#abbr_PSD">PSD</a></abbr> <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr>)
+	</td><td><a href="#FDP_PDC_EXT.2/VI">FDP_PDC_EXT.2/VI</a></td><td>Mitigates this threat by only
+            allowing authorized device connections with authorized interface protocols.</td></tr>
+<tr><td><a href="#FDP_SPR_EXT.1/DP">FDP_SPR_EXT.1/DP</a> (selection-based)</td><td>Mitigates this
+            threat by ensuring the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> applies the specified rules for the DP protocol.</td></tr>
+<tr><td>FDP_SPR_EXT.1/<abbr class="dyn-abbr"><a href="#abbr_DVI">DVI</a></abbr>-D (selection-based)</td><td>Mitigates
+            this threat by ensuring the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> applies the specified rules for the <abbr class="dyn-abbr"><a href="#abbr_DVI">DVI</a></abbr>-D protocol.</td></tr>
+<tr><td>FDP_SPR_EXT.1/<abbr class="dyn-abbr"><a href="#abbr_DVI">DVI</a></abbr>-I (selection-based)</td><td>Mitigates
+            this threat by ensuring the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> applies the specified rules for the <abbr class="dyn-abbr"><a href="#abbr_DVI">DVI</a></abbr>-I protocol.</td></tr>
+<tr><td><a href="#FDP_SPR_EXT.1/HDMI">FDP_SPR_EXT.1/HDMI</a> (selection-based)</td><td>Mitigates this
+            threat by ensuring the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> applies the specified rules for the <abbr class="dyn-abbr"><a href="#abbr_HDMI">HDMI</a></abbr> protocol.</td></tr>
+<tr><td>FDP_SPR_EXT.1/<abbr class="dyn-abbr"><a href="#abbr_USB">USB</a></abbr> (selection-based)</td><td>Mitigates this
+            threat by ensuring the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> applies the specified rules for the <abbr class="dyn-abbr"><a href="#abbr_USB">USB</a></abbr> protocol.</td></tr>
+<tr><td><a href="#FDP_SPR_EXT.1/VGA">FDP_SPR_EXT.1/VGA</a> (selection-based)</td><td>Mitigates this
+            threat by ensuring the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> applies the specified rules for the <abbr class="dyn-abbr"><a href="#abbr_VGA">VGA</a></abbr> protocol.</td></tr>
+<tr><td><a href="#FDP_UDF_EXT.1/VI">FDP_UDF_EXT.1/VI</a></td><td>Mitigates this threat by ensuring
+            video data transits unidirectionally between interfaces.</td></tr>
+<tr><td><a href="#FDP_UDF_EXT.1/VI">FDP_UDF_EXT.1/VI</a></td><td>Mitigates this threat by ensuring
+            video data transits unidirectionally between interfaces.</td></tr>
+<tr class="major-row"><td rowspan="10"><a href="#T.UNAUTHORIZED_DEVICES">T.UNAUTHORIZED_​DEVICES</a>
+		(from <abbr class="dyn-abbr"><a href="#abbr_PSD">PSD</a></abbr> <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr>)
+	</td><td><a href="#FDP_PDC_EXT.2/VI">FDP_PDC_EXT.2/VI</a></td><td>Mitigates this threat by only
+            allowing authorized device connections with authorized interface protocols.</td></tr>
+<tr><td><a href="#FDP_PDC_EXT.3/VI">FDP_PDC_EXT.3/VI</a></td><td>Mitigates this
+            threat by applying rules to supported protocols.</td></tr>
+<tr><td><a href="#FDP_IPC_EXT.1">FDP_IPC_EXT.1</a> (selection-based)</td><td>Mitigates this
+            threat by converting protocols internally.</td></tr>
+<tr><td><a href="#FDP_SPR_EXT.1/DP">FDP_SPR_EXT.1/DP</a> (selection-based)</td><td>Mitigates this
+            threat by ensuring the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> applies the specified rules for the DP protocol.</td></tr>
+<tr><td>FDP_SPR_EXT.1/<abbr class="dyn-abbr"><a href="#abbr_DVI">DVI</a></abbr>-D (selection-based)</td><td>Mitigates
+            this threat by ensuring the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> applies the specified rules for the <abbr class="dyn-abbr"><a href="#abbr_DVI">DVI</a></abbr>-D protocol.</td></tr>
+<tr><td>FDP_SPR_EXT.1/<abbr class="dyn-abbr"><a href="#abbr_DVI">DVI</a></abbr>-I (selection-based)</td><td>Mitigates
+            this threat by ensuring the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> applies the specified rules for the <abbr class="dyn-abbr"><a href="#abbr_DVI">DVI</a></abbr>-I protocol.</td></tr>
+<tr><td><a href="#FDP_SPR_EXT.1/HDMI">FDP_SPR_EXT.1/HDMI</a> (selection-based)</td><td>Mitigates this
+            threat by ensuring the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> applies the specified rules for the <abbr class="dyn-abbr"><a href="#abbr_HDMI">HDMI</a></abbr> protocol.</td></tr>
+<tr><td>FDP_SPR_EXT.1/<abbr class="dyn-abbr"><a href="#abbr_USB">USB</a></abbr> (selection-based)</td><td>Mitigates this
+            threat by ensuring the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> applies the specified rules for the <abbr class="dyn-abbr"><a href="#abbr_USB">USB</a></abbr> protocol.</td></tr>
+<tr><td><a href="#FDP_SPR_EXT.1/VGA">FDP_SPR_EXT.1/VGA</a> (selection-based)</td><td>Mitigates this
+            threat by ensuring the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> applies the specified rules for the <abbr class="dyn-abbr"><a href="#abbr_VGA">VGA</a></abbr> protocol.</td></tr>
+<tr><td><a href="#FDP_UDF_EXT.1/VI">FDP_UDF_EXT.1/VI</a></td><td>Mitigates this threat by ensuring
+            video data transits unidirectionally between interfaces.</td></tr>
+<tr class="major-row"><td rowspan="1"><a href="#T.UNINTENDED_USE">T.UNINTENDED_​USE</a>
+		(from <abbr class="dyn-abbr"><a href="#abbr_PSD">PSD</a></abbr> <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr>)
+	</td><td><a href="#FDP_CDS_EXT.1">FDP_CDS_EXT.1</a> (selection-based)</td><td>Mitigates this threat
           by choosing whether to support one or multiple displays to ensure there is no unauthorized
           connections.</td></tr>
 </table></p><h1 id="mod-conrat" class="indexable" data-level="1">6 Consistency Rationale</h1><h2 id="conrat-bpp-psd" class="indexable" data-level="2">6.1 
@@ -1350,8 +1379,18 @@ The following sections list Common Criteria and technology terms used in this do
       <h3 id="consecprob-bpp-psd" class="indexable" data-level="3">6.1.2 
 	Consistency of Security Problem Definition
       </h3>This <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr>‐Module does not define additional threats beyond those the <abbr class="dyn-abbr"><a href="#abbr_PSD">PSD</a></abbr> <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr> defines. Therefore, there is
-        no inconsistency between this <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr>‐Module and the <abbr class="dyn-abbr"><a href="#abbr_PSD">PSD</a></abbr> with respect to the security problem definition.<table><caption><span class="ctr" data-myid="t-con-sec-prob-def" data-counter-type="ct-Table" id="t-con-sec-prob-def">Table <span class="counter">3</span></span>: Consistency of Security Problem Definition (<abbr class="dyn-abbr"><a href="#abbr_PSD">PSD</a></abbr> <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr> base)
-		</caption><tr><th><abbr class="dyn-abbr"><a href="#abbr_PP-Module">PP-Module</a></abbr> Threat, Assumption, <abbr class="dyn-abbr"><a href="#abbr_OSP">OSP</a></abbr></th><th>Consistency Rationale</th></tr><tr><td><a href="#T.DATA_LEAK">T.DATA_LEAK</a></td><td></td></tr><tr><td><a href="#T.RESIDUAL_LEAK">T.RESIDUAL_LEAK</a></td><td></td></tr><tr><td><a href="#T.SIGNAL_LEAK">T.SIGNAL_LEAK</a></td><td></td></tr><tr><td><a href="#T.UNAUTHORIZED_DEVICES">T.UNAUTHORIZED_DEVICES</a></td><td></td></tr><tr><td><a href="#T.UNINTENDED_USE">T.UNINTENDED_USE</a></td><td></td></tr></table><h3 id="conobj-bpp-psd" class="indexable" data-level="3">6.1.3 
+        no inconsistency between this <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr>‐Module and the <abbr class="dyn-abbr"><a href="#abbr_PSD">PSD</a></abbr> with respect to the security problem definition.<table><caption><span class="ctr" data-myid="t-con-sec-prob-def" data-counter-type="ct-Table" id="t-con-sec-prob-def">Table <span class="counter">2</span></span>: Consistency of Security Problem Definition (<abbr class="dyn-abbr"><a href="#abbr_PSD">PSD</a></abbr> <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr> base)
+		</caption><tr><th><abbr class="dyn-abbr"><a href="#abbr_PP-Module">PP-Module</a></abbr> Threat, Assumption, <abbr class="dyn-abbr"><a href="#abbr_OSP">OSP</a></abbr></th><th>Consistency Rationale</th></tr><tr><td><a href="#T.DATA_LEAK">T.DATA_LEAK</a></td><td>
+        This threat is from the <abbr class="dyn-abbr"><a href="#abbr_PSD">PSD</a></abbr> <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr>, thus no conflict exists.
+      </td></tr><tr><td><a href="#T.RESIDUAL_LEAK">T.RESIDUAL_LEAK</a></td><td>
+        This threat is from the <abbr class="dyn-abbr"><a href="#abbr_PSD">PSD</a></abbr> <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr>, thus no conflict exists.
+      </td></tr><tr><td><a href="#T.SIGNAL_LEAK">T.SIGNAL_LEAK</a></td><td>
+        This threat is from the <abbr class="dyn-abbr"><a href="#abbr_PSD">PSD</a></abbr> <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr>, thus no conflict exists.
+      </td></tr><tr><td><a href="#T.UNAUTHORIZED_DEVICES">T.UNAUTHORIZED_DEVICES</a></td><td>
+        This threat is from the <abbr class="dyn-abbr"><a href="#abbr_PSD">PSD</a></abbr> <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr>, thus no conflict exists.
+      </td></tr><tr><td><a href="#T.UNINTENDED_USE">T.UNINTENDED_USE</a></td><td>
+        This threat is from the <abbr class="dyn-abbr"><a href="#abbr_PSD">PSD</a></abbr> <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr>, thus no conflict exists.
+      </td></tr></table><h3 id="conobj-bpp-psd" class="indexable" data-level="3">6.1.3 
 			Consistency of OE Objectives
 		</h3><p></p><h3 id="conreq-bpp-psd" class="indexable" data-level="3">6.1.4 
 	Consistency of Requirements
@@ -1370,7 +1409,7 @@ The following sections list Common Criteria and technology terms used in this do
           The rationale for why this does not conflict with the claims
       defined by the
       <abbr class="dyn-abbr"><a href="#abbr_PSD">PSD</a></abbr> <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr> are as follows:
-      <table><caption><span class="ctr" data-myid="t-con-reqs" data-counter-type="ct-Table" id="t-con-reqs">Table <span class="counter">4</span></span>: Consistency of Requirements (<abbr class="dyn-abbr"><a href="#abbr_PSD">PSD</a></abbr> <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr> base)
+      <table><caption><span class="ctr" data-myid="t-con-reqs" data-counter-type="ct-Table" id="t-con-reqs">Table <span class="counter">3</span></span>: Consistency of Requirements (<abbr class="dyn-abbr"><a href="#abbr_PSD">PSD</a></abbr> <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr> base)
 		</caption><tr><th><abbr class="dyn-abbr"><a href="#abbr_PP-Module">PP-Module</a></abbr> Requirement</th><th>Consistency Rationale</th></tr><tr><th colspan="2"> Modified <abbr class="dyn-abbr"><a href="#abbr_SFR">SFRs</a></abbr></th></tr><tr><td><a href="#FDP_APC_EXT.1">FDP_APC_EXT.1</a></td><td>
               This <abbr class="dyn-abbr"><a href="#abbr_SFR">SFR</a></abbr> adds a requirement to block electrical signals that strengthens but
               does not conflict with the requirement in the <abbr class="dyn-abbr"><a href="#abbr_PSD">PSD</a></abbr> <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr>.
@@ -1389,10 +1428,10 @@ The following sections list Common Criteria and technology terms used in this do
             Base‐<abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr> is written specifically not to discuss the supported device types,
             instead leaving it to the various <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr>‐Modules to define what they support.
           </td></tr><tr><td><a href="#FDP_PDC_EXT.3/VI">FDP_PDC_EXT.3/VI</a></td><td>
-            This <abbr class="dyn-abbr"><a href="#abbr_SFR">SFR</a></abbr> defines the protocols that are authorized specifically by this PPModule
+            This <abbr class="dyn-abbr"><a href="#abbr_SFR">SFR</a></abbr> defines the protocols that are authorized specifically by this <abbr class="dyn-abbr"><a href="#abbr_PP-Module">PP-Module</a></abbr>
             and the rules for handling of
           </td></tr><tr><td><a href="#FDP_UDF_EXT.1/VI">FDP_UDF_EXT.1/VI</a></td><td>
-            This <abbr class="dyn-abbr"><a href="#abbr_SFR">SFR</a></abbr> requires the specific types of peripheral data defined in this PPModule
+            This <abbr class="dyn-abbr"><a href="#abbr_SFR">SFR</a></abbr> requires the specific types of peripheral data defined in this <abbr class="dyn-abbr"><a href="#abbr_PP-Module">PP-Module</a></abbr>
             to flow unidirectionally. This does not prevent the enforcement of any
             <abbr class="dyn-abbr"><a href="#abbr_PSD">PSD</a></abbr> <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr> <abbr class="dyn-abbr"><a href="#abbr_SFR">SFRs</a></abbr>.
           </td></tr></tr><tr><th colspan="2"> Optional <abbr class="dyn-abbr"><a href="#abbr_SFR">SFRs</a></abbr></th><tr><td colspan="2" style="text-align:center">
@@ -1440,7 +1479,12 @@ The following sections list Common Criteria and technology terms used in this do
         
         
         
-        <div class="comp" id="FDP_CDS_EXT.1"><h4>FDP_CDS_EXT.1 Connected Displays Supported</h4><div class="statustag"></div>
+        <div class="comp" id="FDP_CDS_EXT.1"><h4>FDP_CDS_EXT.1 Connected Displays Supported</h4><div class="statustag"><b><i>The inclusion of this selection-based component depends upon selection in
+           
+             from <a href="https://github.com/commoncriteria/psd">,
+        version 
+        </a>.
+           </i></b></div>
           
           
           
@@ -1448,7 +1492,8 @@ The following sections list Common Criteria and technology terms used in this do
           
           
           
-          <div class="element"><div class="reqid" id="FDP_CDS_EXT.1.1"><a href="#FDP_CDS_EXT.1.1" class="abbr">FDP_CDS_EXT.1.1</a></div><div class="reqdesc">The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall support [<b>selection</b>: <span class="selectable-content" id="_s_20">one connected display</span>, <span class="selectable-content" id="_s_21">multiple connected displays</span>]at a time.
+          
+          <div class="element"><div class="reqid" id="FDP_CDS_EXT.1.1"><a href="#FDP_CDS_EXT.1.1" class="abbr">FDP_CDS_EXT.1.1</a></div><div class="reqdesc">The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall support [<b>selection</b>: <span class="selectable-content" id="_s_22">one connected display</span>, <span class="selectable-content" id="_s_23">multiple connected displays</span>] at a time.
             <div class="appnote"><span class="note-header">Application
       Note:
     </span><span class="note">
@@ -1480,20 +1525,22 @@ The following sections list Common Criteria and technology terms used in this do
           
           
           
+          
           <div class="element"><div class="reqid" id="FDP_IPC_EXT.1.1"><a href="#FDP_IPC_EXT.1.1" class="abbr">FDP_IPC_EXT.1.1</a></div><div class="reqdesc">
-              The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall convert the [<i>DisplayPort</i>] protocol at the [<i>computer
-                video interface</i>]
-              into the [<i><abbr class="dyn-abbr"><a href="#abbr_HDMI">HDMI</a></abbr></i>] protocol within the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr>.
+              The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall convert the [<i>DisplayPort</i>] protocol at the [<b>selection</b>: <span class="selectable-content" id="_s_24">DisplayPort peripheral display interfaces</span>, <span class="selectable-content" id="_s_25">DisplayPort computer video interface</span>]
+              into the [<b>selection</b>: <span class="selectable-content" id="_s_26"><abbr class="dyn-abbr"><a href="#abbr_HDMI">HDMI</a></abbr></span>, <span class="selectable-content" id="_s_27">YCbCr</span>] protocol within the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr>.
             </div></div>
           
           <div class="element"><div class="reqid" id="FDP_IPC_EXT.1.2"><a href="#FDP_IPC_EXT.1.2" class="abbr">FDP_IPC_EXT.1.2</a></div><div class="reqdesc">
-              The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall output the [<i><abbr class="dyn-abbr"><a href="#abbr_HDMI">HDMI</a></abbr></i>] protocol from inside the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> to [<i>peripheral
-                display interfaces</i>] as [<b>selection</b>: <span class="selectable-content" id="_s_22">[<i>DisplayPort</i>] protocol</span>, <span class="selectable-content" id="_s_23">[<i><abbr class="dyn-abbr"><a href="#abbr_HDMI">HDMI</a></abbr></i>] protocol</span>].
+              The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall output the [<b>selection</b>: <span class="selectable-content" id="_s_28"><abbr class="dyn-abbr"><a href="#abbr_HDMI">HDMI</a></abbr></span>, <span class="selectable-content" id="_s_29">YCbCr</span>] protocol from inside the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> to [<b>selection</b>: <span class="selectable-content" id="_s_30">computer video interface</span>, <span class="selectable-content" id="_s_31">peripheral display interfaces</span>] as [<b>selection</b>: <span class="selectable-content" id="_s_32">[<i>DisplayPort</i>] protocol</span>, <span class="selectable-content" id="_s_33">[<i><abbr class="dyn-abbr"><a href="#abbr_HDMI">HDMI</a></abbr></i>] protocol</span>].
             <div class="appnote"><span class="note-header">Application
       Note:
     </span><span class="note">
               This <abbr class="dyn-abbr"><a href="#abbr_SFR">SFR</a></abbr> must be claimed if "DisplayPort" is chosen as a selection for
-              <a href="#FDP_PDC_EXT.2.1/VI">FDP_PDC_EXT.2.1/VI</a>.
+              <a href="#FDP_PDC_EXT.3.1/VI">FDP_PDC_EXT.3.1/VI</a>.The intent of this requirement is to ensure <abbr class="dyn-abbr"><a href="#abbr_HDMI">HDMI</a></abbr> is used in place of DisplayPort 
+              while within the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr>, whether the DisplayPort interface is at the peripheral display interface, 
+              computer video interface, or both.<br/><br/>              
+              The first selection in <a href="#FDP_IPC_EXT.1.2">FDP_IPC_EXT.1.2</a> should match the second selection of <a href="#FDP_IPC_EXT.1.1">FDP_IPC_EXT.1.1</a>.
             </span></div></div></div>
         <div class="activity_pane hide"><div class="activity_pane_header"><a onclick="toggle(this);return false;" href="#"><span class="activity_pane_label"> Evaluation Activities </span><span class="toggler"></span></a></div><div class="activity_pane_body"><div class="component-activity-header"><a href="#FDP_IPC_EXT.1">FDP_IPC_EXT.1</a></div>
               
@@ -1511,6 +1558,7 @@ The following sections list Common Criteria and technology terms used in this do
         
         
         <div class="comp" id="FDP_SPR_EXT.1/DP"><h4>FDP_SPR_EXT.1/DP Sub-Protocol Rules (DisplayPort Protocol)</h4><div class="statustag"></div>
+          
           
           
           <div class="element"><div class="reqid" id="FDP_SPR_EXT.1.1/DP"><a href="#FDP_SPR_EXT.1.1/DP" class="abbr">FDP_SPR_EXT.1.1/DP</a></div><div class="reqdesc">
@@ -1549,6 +1597,7 @@ The following sections list Common Criteria and technology terms used in this do
               </div></div></div></div></div>
         
         <div class="comp" id="FDP_SPR_EXT.1/DVID"><h4>FDP_SPR_EXT.1/DVID Sub-Protocol Rules (DVI-D Protocol)</h4><div class="statustag"></div>
+          
           
           
           <div class="element"><div class="reqid" id="FDP_SPR_EXT.1.1/DVID"><a href="#FDP_SPR_EXT.1.1/DVID" class="abbr">FDP_SPR_EXT.1.1/DVID</a></div><div class="reqdesc">
@@ -1591,6 +1640,7 @@ The following sections list Common Criteria and technology terms used in this do
         <div class="comp" id="FDP_SPR_EXT.1/DVII"><h4>FDP_SPR_EXT.1/DVII Sub-Protocol Rules (DVI-I Protocol)</h4><div class="statustag"></div>
           
           
+          
           <div class="element"><div class="reqid" id="FDP_SPR_EXT.1.1/DVII"><a href="#FDP_SPR_EXT.1.1/DVII" class="abbr">FDP_SPR_EXT.1.1/DVII</a></div><div class="reqdesc">
               The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall apply the following rules for the [<i><abbr class="dyn-abbr"><a href="#abbr_DVI">DVI</a></abbr>-I</i>]
               protocol.<ul>
@@ -1629,6 +1679,7 @@ The following sections list Common Criteria and technology terms used in this do
               </div></div></div></div></div>
         
         <div class="comp" id="FDP_SPR_EXT.1/HDMI"><h4>FDP_SPR_EXT.1/HDMI Sub-Protocol Rules (HDMI Protocol)</h4><div class="statustag"></div>
+          
           
           
           <div class="element"><div class="reqid" id="FDP_SPR_EXT.1.1/HDMI"><a href="#FDP_SPR_EXT.1.1/HDMI" class="abbr">FDP_SPR_EXT.1.1/HDMI</a></div><div class="reqdesc">
@@ -1671,6 +1722,7 @@ The following sections list Common Criteria and technology terms used in this do
         <div class="comp" id="FDP_SPR_EXT.1/USBC"><h4>FDP_SPR_EXT.1/USBC Sub-Protocol Rules (USB-C Protocol)</h4><div class="statustag"></div>
           
           
+          
           <div class="element"><div class="reqid" id="FDP_SPR_EXT.1.1/USBC"><a href="#FDP_SPR_EXT.1.1/USBC" class="abbr">FDP_SPR_EXT.1.1/USBC</a></div><div class="reqdesc">
               The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall apply the following rules for the [<i><abbr class="dyn-abbr"><a href="#abbr_USB">USB</a></abbr> Type-C with DisplayPort as
                 alternate function</i>]
@@ -1711,6 +1763,7 @@ The following sections list Common Criteria and technology terms used in this do
         <div class="comp" id="FDP_SPR_EXT.1/VGA"><h4>FDP_SPR_EXT.1/VGA Sub-Protocol Rules (VGA Protocol)</h4><div class="statustag"></div>
           
           
+          
           <div class="element"><div class="reqid" id="FDP_SPR_EXT.1.1/VGA"><a href="#FDP_SPR_EXT.1.1/VGA" class="abbr">FDP_SPR_EXT.1.1/VGA</a></div><div class="reqdesc">
               The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall apply the following rules for the [<i><abbr class="dyn-abbr"><a href="#abbr_VGA">VGA</a></abbr></i>]
               protocol.<ul>
@@ -1749,62 +1802,62 @@ The following sections list Common Criteria and technology terms used in this do
 
 	All extended components specified in the <abbr class="dyn-abbr"><a href="#abbr_PP-Module">PP-Module</a></abbr> are listed in this table:
 
-<table class="sort_kids_"><caption data-sortkey="#0"><b><span class="ctr" data-myid="" data-counter-type="ct-Table" id="">Table <span class="counter">5</span></span>: Extended Component Definitions</b></caption><tr data-sortkey="#1"><th>Functional Class</th><th>Functional Components</th></tr><tr data-sortkey="User Data Protection (FDP)"><td>User Data Protection (FDP)</td><td>FDP_CDS_EXT Connected Displays Supported<br/>FDP_IPC_EXT Internal Protocol Conversion<br/>FDP_PDC_EXT Peripheral Device Connection<br/>FDP_SPR_EXT Sub-Protocol Rules<br/>FDP_UDF_EXT Unidirectional Data Flow (Video Output)<br/></td></tr></table><h2 id="ext-comp-defs-bg" class="indexable" data-level="2">C.2 Extended Component Definitions</h2><span class="sort_kids_"><span data-sortkey="User Data Protection (FDP)"><h3 id="ext-comp-FDP" class="indexable" data-level="3">C.2.1 User Data Protection (FDP)</h3>This <abbr class="dyn-abbr"><a href="#abbr_PP-Module">PP-Module</a></abbr> defines the following extended components as part of the
+<table class="sort_kids_"><caption data-sortkey="#0"><b><span class="ctr" data-myid="" data-counter-type="ct-Table" id="">Table <span class="counter">4</span></span>: Extended Component Definitions</b></caption><tr data-sortkey="#1"><th>Functional Class</th><th>Functional Components</th></tr><tr data-sortkey="User Data Protection (FDP)"><td>User Data Protection (FDP)</td><td>FDP_CDS_EXT Connected Displays Supported<br/>FDP_IPC_EXT Internal Protocol Conversion<br/>FDP_PDC_EXT Peripheral Device Connection<br/>FDP_SPR_EXT Sub-Protocol Rules<br/>FDP_UDF_EXT Unidirectional Data Flow (Video Output)<br/></td></tr></table><h2 id="ext-comp-defs-bg" class="indexable" data-level="2">C.2 Extended Component Definitions</h2><span class="sort_kids_"><span data-sortkey="User Data Protection (FDP)"><h3 id="ext-comp-FDP" class="indexable" data-level="3">C.2.1 User Data Protection (FDP)</h3>This <abbr class="dyn-abbr"><a href="#abbr_PP-Module">PP-Module</a></abbr> defines the following extended components as part of the
 	 FDP class originally defined by <abbr class="dyn-abbr"><a href="#abbr_CC">CC</a></abbr> Part 2:
 	<h3 id="ext-comp-FDP_PDC_EXT" class="indexable" data-level="4">C.2.1.1 FDP_PDC_EXT Peripheral Device Connection</h3><div style="margin-left: 1em;"><h4>Family Behavior</h4><div>This family is defined in the <abbr class="dyn-abbr"><a href="#abbr_PSD">PSD</a></abbr> <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr>. This <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr>‐Module augments the extended family by adding two
             additional components, FDP_PDC_EXT.2 and FDP_PDC_EXT.3. These new components and their impact
             on the extended family’s component leveling are shown below; reference the <abbr class="dyn-abbr"><a href="#abbr_PSD">PSD</a></abbr> <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr> for all other
-            definitions for this family.</div><h4>Component Leveling</h4><svg style="max-height: 50px;"><text x="4" fill="black" font-size="15" y="44">FDP_PDC_EXT</text><rect x="2" y="31" width="150" height="16" fill="none" stroke="black"></rect><text x="234" fill="black" font-size="15" y="24">2/VI</text><rect x="232" y="11" width="48" height="16" fill="none" stroke="black"></rect><line x1="152" y1="37" x2="231" y2="17" stroke="black"></line><text x="234" fill="black" font-size="15" y="44">3/VI</text><rect x="232" y="31" width="48" height="16" fill="none" stroke="black"></rect><line x1="152" y1="37" x2="231" y2="37" stroke="black"></line></svg><p><a href="#FDP_PDC_EXT.2/VI">FDP_PDC_EXT.2/VI</a>,
-             Peripheral Device Connection (Video Output),
+            definitions for this family.</div><h4>Component Leveling</h4><svg style="max-height: 50px;"><text x="4" fill="black" font-size="15" y="44">FDP_PDC_EXT</text><rect x="2" y="31" width="150" height="16" fill="none" stroke="black"></rect><text x="234" fill="black" font-size="15" y="24">2</text><rect x="232" y="11" width="12" height="16" fill="none" stroke="black"></rect><line x1="152" y1="37" x2="231" y2="17" stroke="black"></line><text x="234" fill="black" font-size="15" y="44">3</text><rect x="232" y="31" width="12" height="16" fill="none" stroke="black"></rect><line x1="152" y1="37" x2="231" y2="37" stroke="black"></line></svg><p>FDP_PDC_EXT.2,
+             Peripheral Device Connection,
              defines the types of physical devices that the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> will permit to
-            connect to it.</p><p><a href="#FDP_PDC_EXT.3/VI">FDP_PDC_EXT.3/VI</a>,
+            connect to it.</p><p>FDP_PDC_EXT.3,
              Authorized Connection Protocols,
              defines the protocols that the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> will authorize over
-            its physical/logical interfaces, as well as any rules that are applicable to these interfaces.</p><h4>Management: FDP_PDC_EXT.2/VI</h4><p>No specific management functions are identified.
-          </p><h4>Audit: FDP_PDC_EXT.2/VI</h4><p>There are no specific auditable events foreseen.</p><h4>FDP_PDC_EXT.2/VI Peripheral Device Connection (Video Output)</h4><div style="margin-left: 1em;"><table class="ecd_heir_dep" style="width: 100%"><tr><td style="whitespace: nowrap">Hierarchical to:</td><td style="width: 100%">No other components.</td></tr><tr style="background-color: inherit"><td>Dependencies to:</td><td><a href="#FDP_PDC_EXT.1">FDP_PDC_EXT.1</a> Peripheral Device Connection</td></tr></table><h4 id="ext-comp-FDP_PDC_EXT.2.1/VI">FDP_PDC_EXT.2.1/VI</h4>
-                The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall allow connections with authorized devices as defined in
+            its physical/logical interfaces, as well as any rules that are applicable to these interfaces.</p><h4>Management: FDP_PDC_EXT.2</h4><p>No specific management functions are identified.
+          </p><h4>Audit: FDP_PDC_EXT.2</h4><p>There are no specific auditable events foreseen.</p><h4>FDP_PDC_EXT.2 Peripheral Device Connection</h4><div style="margin-left: 1em;"><table class="ecd_heir_dep" style="width: 100%"><tr><td style="whitespace: nowrap">Hierarchical to:</td><td style="width: 100%">No other components.</td></tr><tr style="background-color: inherit"><td>Dependencies to:</td><td><a href="#FDP_PDC_EXT.1">FDP_PDC_EXT.1</a> Peripheral Device Connection</td></tr></table><h4 id="ext-comp-FDP_PDC_EXT.2.1">FDP_PDC_EXT.2.1</h4>
+              The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall allow connections with authorized devices as defined in
                 [<b>assignment</b>: 
      <span class="assignable-content"> devices specified in the <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr> or <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr>‐Module in which this <abbr class="dyn-abbr"><a href="#abbr_SFR">SFR</a></abbr> is defined</span>]
                 and [<b>assignment</b>: 
      <span class="assignable-content"> devices specified in another <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr> or <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr>‐Module that shares a <abbr class="dyn-abbr"><a href="#abbr_PP-Configuration">PP-Configuration</a></abbr>
                 with the <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr> or <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr>‐Module in which this <abbr class="dyn-abbr"><a href="#abbr_SFR">SFR</a></abbr> is defined</span>] upon <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr>
                 power up and upon connection of a peripheral device to a powered‐on <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr>.
-              <h4 id="ext-comp-FDP_PDC_EXT.2.2/VI">FDP_PDC_EXT.2.2/VI</h4>
-                The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall allow connections with authorized devices presenting authorized
-                interface protocols as defined in [<b>assignment</b>: 
-     <span class="assignable-content"> devices specified in the <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr> or PPModule
-                  in which this <abbr class="dyn-abbr"><a href="#abbr_SFR">SFR</a></abbr> is defined</span>] and [<b>assignment</b>: 
+            <h4 id="ext-comp-FDP_PDC_EXT.2.2">FDP_PDC_EXT.2.2</h4>
+              The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall allow connections with authorized devices presenting authorized
+              interface protocols as defined in [<b>assignment</b>: 
+     <span class="assignable-content"> devices specified in the <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr> or <abbr class="dyn-abbr"><a href="#abbr_PP-Module">PP-Module</a></abbr>
+                in which this <abbr class="dyn-abbr"><a href="#abbr_SFR">SFR</a></abbr> is defined</span>] and [<b>assignment</b>: 
      <span class="assignable-content"> devices specified in another
-                <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr> or <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr>‐Module that shares a <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr>‐Configuration with the <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr> or <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr>‐Module in
-                which this <abbr class="dyn-abbr"><a href="#abbr_SFR">SFR</a></abbr> is defined</span>] upon <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> power up and upon connection of a
-                peripheral device to a powered‐on <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr>.
-              </div><h4>Management: FDP_PDC_EXT.3/VI</h4><p>No specific management functions are identified.</p><h4>Audit: FDP_PDC_EXT.3/VI</h4><p>There are no auditable events foreseen.</p><h4>FDP_PDC_EXT.3/VI Authorized Connection Protocols</h4><div style="margin-left: 1em;"><table class="ecd_heir_dep" style="width: 100%"><tr><td style="whitespace: nowrap">Hierarchical to:</td><td style="width: 100%">No other components.</td></tr><tr style="background-color: inherit"><td>Dependencies to:</td><td><a href="#FDP_PDC_EXT.1">FDP_PDC_EXT.1</a> Peripheral Device Connection</td></tr></table><h4 id="ext-comp-FDP_PDC_EXT.3.1/VI">FDP_PDC_EXT.3.1/VI</h4>
-                The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall have interfaces for the [<b>assignment</b>: 
+                  <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr> or <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr>‐Module that shares a <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr>‐Configuration with the <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr> or <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr>‐Module in
+                  which this <abbr class="dyn-abbr"><a href="#abbr_SFR">SFR</a></abbr> is defined</span>] upon <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> power up and upon connection of a
+              peripheral device to a powered‐on <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr>.
+            </div><h4>Management: FDP_PDC_EXT.3</h4><p>No specific management functions are identified.</p><h4>Audit: FDP_PDC_EXT.3</h4><p>There are no auditable events foreseen.</p><h4>FDP_PDC_EXT.3 Authorized Connection Protocols</h4><div style="margin-left: 1em;"><table class="ecd_heir_dep" style="width: 100%"><tr><td style="whitespace: nowrap">Hierarchical to:</td><td style="width: 100%">No other components.</td></tr><tr style="background-color: inherit"><td>Dependencies to:</td><td><a href="#FDP_PDC_EXT.1">FDP_PDC_EXT.1</a> Peripheral Device Connection</td></tr></table><h4 id="ext-comp-FDP_PDC_EXT.3.1">FDP_PDC_EXT.3.1</h4>
+              The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall have interfaces for the [<b>assignment</b>: 
      <span class="assignable-content"> list of supported protocols
                 associated with physical or logical <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> interfaces</span>] protocols.
-              <h4 id="ext-comp-FDP_PDC_EXT.3.2/VI">FDP_PDC_EXT.3.2/VI</h4>
-                The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall apply the following rules to the supported protocols: [<b>assignment</b>: 
+            <h4 id="ext-comp-FDP_PDC_EXT.3.2">FDP_PDC_EXT.3.2</h4>
+              The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall apply the following rules to the supported protocols: [<b>assignment</b>: 
      <span class="assignable-content">
                 rules defining the handling for communications over this protocol (e.g., any
                 processing that must be done by the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> prior to transmitting it through the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr>,
                 circumstances or frequency with which the protocol is invoked)</span>].
-              </div></div><h3 id="ext-comp-FDP_UDF_EXT" class="indexable" data-level="4">C.2.1.2 FDP_UDF_EXT Unidirectional Data Flow (Video Output)</h3><div style="margin-left: 1em;"><h4>Family Behavior</h4><div>Components in this family define unidirectional transmission of user data.</div><h4>Component Leveling</h4><svg style="max-height: 30px;"><text x="4" fill="black" font-size="15" y="24">FDP_UDF_EXT</text><rect x="2" y="11" width="150" height="16" fill="none" stroke="black"></rect><text x="234" fill="black" font-size="15" y="24">1/VI</text><rect x="232" y="11" width="48" height="16" fill="none" stroke="black"></rect><line x1="152" y1="17" x2="231" y2="17" stroke="black"></line></svg><p><a href="#FDP_UDF_EXT.1/VI">FDP_UDF_EXT.1/VI</a>,
-             Unidirectional Data Flow (Video Output),
+            </div></div><h3 id="ext-comp-FDP_UDF_EXT" class="indexable" data-level="4">C.2.1.2 FDP_UDF_EXT Unidirectional Data Flow (Video Output)</h3><div style="margin-left: 1em;"><h4>Family Behavior</h4><div>Components in this family define unidirectional transmission of user data.</div><h4>Component Leveling</h4><svg style="max-height: 30px;"><text x="4" fill="black" font-size="15" y="24">FDP_UDF_EXT</text><rect x="2" y="11" width="150" height="16" fill="none" stroke="black"></rect><text x="234" fill="black" font-size="15" y="24">1</text><rect x="232" y="11" width="12" height="16" fill="none" stroke="black"></rect><line x1="152" y1="17" x2="231" y2="17" stroke="black"></line></svg><p>FDP_UDF_EXT.1,
+             Unidirectional Data Flow,
              requires the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> to provide unidirectional (one‐way)
-            communications between a given pair of interface types.</p><h4>Management: FDP_UDF_EXT.1/VI</h4><p>No specific management functions are identified.</p><h4>Audit: FDP_UDF_EXT.1/VI</h4><p>There are no auditable events foreseen.</p><h4>FDP_UDF_EXT.1/VI Unidirectional Data Flow (Video Output)</h4><div style="margin-left: 1em;"><table class="ecd_heir_dep" style="width: 100%"><tr><td style="whitespace: nowrap">Hierarchical to:</td><td style="width: 100%">No other components.</td></tr><tr style="background-color: inherit"><td>Dependencies to:</td><td><a href="#FDP_APC_EXT.1">FDP_APC_EXT.1</a> Active <abbr class="dyn-abbr"><a href="#abbr_PSD">PSD</a></abbr> Connections</td></tr></table><h4 id="ext-comp-FDP_UDF_EXT.1.1/VI">FDP_UDF_EXT.1.1/VI</h4>
-                The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall ensure [<b>assignment</b>: 
+            communications between a given pair of interface types.</p><h4>Management: FDP_UDF_EXT.1</h4><p>No specific management functions are identified.</p><h4>Audit: FDP_UDF_EXT.1</h4><p>There are no auditable events foreseen.</p><h4>FDP_UDF_EXT.1 Unidirectional Data Flow</h4><div style="margin-left: 1em;"><table class="ecd_heir_dep" style="width: 100%"><tr><td style="whitespace: nowrap">Hierarchical to:</td><td style="width: 100%">No other components.</td></tr><tr style="background-color: inherit"><td>Dependencies to:</td><td><a href="#FDP_APC_EXT.1">FDP_APC_EXT.1</a> Active <abbr class="dyn-abbr"><a href="#abbr_PSD">PSD</a></abbr> Connections</td></tr></table><h4 id="ext-comp-FDP_UDF_EXT.1.1">FDP_UDF_EXT.1.1</h4>
+              The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall ensure [<b>assignment</b>: 
      <span class="assignable-content">type of data</span>] data transits the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr>
-                unidirectionally from the [<b>assignment</b>: 
+              unidirectionally from the [<b>assignment</b>: 
      <span class="assignable-content">origin point of data</span>] interface to the
-                [<b>assignment</b>: 
+              [<b>assignment</b>: 
      <span class="assignable-content">destination point of data</span>] interface.
-              </div></div><h3 id="ext-comp-FDP_CDS_EXT" class="indexable" data-level="4">C.2.1.3 FDP_CDS_EXT Connected Displays Supported</h3><div style="margin-left: 1em;"><h4>Family Behavior</h4><div>
+            </div></div><h3 id="ext-comp-FDP_CDS_EXT" class="indexable" data-level="4">C.2.1.3 FDP_CDS_EXT Connected Displays Supported</h3><div style="margin-left: 1em;"><h4>Family Behavior</h4><div>
             Components in this family define requirements for the number of display interfaces contained within the
             <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr>.
           </div><h4>Component Leveling</h4><svg style="max-height: 30px;"><text x="4" fill="black" font-size="15" y="24">FDP_CDS_EXT</text><rect x="2" y="11" width="150" height="16" fill="none" stroke="black"></rect><text x="234" fill="black" font-size="15" y="24">1</text><rect x="232" y="11" width="12" height="16" fill="none" stroke="black"></rect><line x1="152" y1="17" x2="231" y2="17" stroke="black"></line></svg><p><a href="#FDP_CDS_EXT.1">FDP_CDS_EXT.1</a>,
              Connected Displays Supported,
              requires the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> to define whether it supports one
-            connected display at a time or multiple connected displays simultaneously.</p><h4>Management: FDP_CDS_EXT.1</h4><p>There are no specific management functions identified.</p><h4>Audit: FDP_CDS_EXT.1</h4><p>There are no auditable events foreseen.</p><h4>FDP_CDS_EXT.1 Connected Displays Supported</h4><div style="margin-left: 1em;"><table class="ecd_heir_dep" style="width: 100%"><tr><td style="whitespace: nowrap">Hierarchical to:</td><td style="width: 100%">No other components.</td></tr><tr style="background-color: inherit"><td>Dependencies to:</td><td>No dependencies</td></tr></table><h4 id="ext-comp-FDP_CDS_EXT.1.1">FDP_CDS_EXT.1.1</h4>The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall support [<b>selection</b>: <span class="selectable-content" id="_s_20">one connected display</span>, <span class="selectable-content" id="_s_21">multiple connected displays</span>]at a time.
+            connected display at a time or multiple connected displays simultaneously.</p><h4>Management: FDP_CDS_EXT.1</h4><p>There are no specific management functions identified.</p><h4>Audit: FDP_CDS_EXT.1</h4><p>There are no auditable events foreseen.</p><h4>FDP_CDS_EXT.1 Connected Displays Supported</h4><div style="margin-left: 1em;"><table class="ecd_heir_dep" style="width: 100%"><tr><td style="whitespace: nowrap">Hierarchical to:</td><td style="width: 100%">No other components.</td></tr><tr style="background-color: inherit"><td>Dependencies to:</td><td>No dependencies</td></tr></table><h4 id="ext-comp-FDP_CDS_EXT.1.1">FDP_CDS_EXT.1.1</h4>The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall support [<b>selection</b>: <span class="selectable-content" id="_s_22">one connected display</span>, <span class="selectable-content" id="_s_23">multiple connected displays</span>] at a time.
             </div></div><h3 id="ext-comp-FDP_IPC_EXT" class="indexable" data-level="4">C.2.1.4 FDP_IPC_EXT Internal Protocol Conversion</h3><div style="margin-left: 1em;"><h4>Family Behavior</h4><div>
             Components in this family define requirements for the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr>’s ability to convert one protocol into another
             for internal processing.
@@ -1821,8 +1874,8 @@ The following sections list Common Criteria and technology terms used in this do
               The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall output the [<b>assignment</b>: 
      <span class="assignable-content">converted protocol</span>] protocol from inside
               the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> to [<b>assignment</b>: 
-     <span class="assignable-content"><abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> external interfaces</span>] as [<b>selection</b>: <span class="selectable-content" id="_s_24">[<b>assignment</b>: 
-     <span class="assignable-content">original protocol</span>]</span>, <span class="selectable-content" id="_s_25">protocol</span>], [<b>assignment</b>: 
+     <span class="assignable-content"><abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> external interfaces</span>] as [<b>selection</b>: <span class="selectable-content" id="_s_34">[<b>assignment</b>: 
+     <span class="assignable-content">original protocol</span>]</span>, <span class="selectable-content" id="_s_35">protocol</span>], [<b>assignment</b>: 
      <span class="assignable-content">converted protocol</span>] protocol.
             </div></div><h3 id="ext-comp-FDP_SPR_EXT" class="indexable" data-level="4">C.2.1.5 FDP_SPR_EXT Sub-Protocol Rules</h3><div style="margin-left: 1em;"><h4>Family Behavior</h4><div>
             Components in this family define the sub‐protocols that the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> allows or blocks depending on the
@@ -1830,8 +1883,8 @@ The following sections list Common Criteria and technology terms used in this do
           </div><h4>Component Leveling</h4><svg style="max-height: 30px;"><text x="4" fill="black" font-size="15" y="24">FDP_SPR_EXT</text><rect x="2" y="11" width="150" height="16" fill="none" stroke="black"></rect><text x="234" fill="black" font-size="15" y="24">1</text><rect x="232" y="11" width="12" height="16" fill="none" stroke="black"></rect><line x1="152" y1="17" x2="231" y2="17" stroke="black"></line></svg><p>FDP_SPR_EXT.1,
              Sub-Protocol Rules,
              requires the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> to specify the allowed and blocked sub‐protocols
-            based on the protocol it supports.</p><h4>Management: FDP_SPR_EXT.1</h4><p>No specific management functions are identified.</p><h4>Audit: FDP_SPR_EXT.1</h4><p>There are no auditable events foreseen.</p><h4>FDP_SPR_EXT.1 Sub-Protocol Rules</h4><div style="margin-left: 1em;"><table class="ecd_heir_dep" style="width: 100%"><tr><td style="whitespace: nowrap">Hierarchical to:</td><td style="width: 100%">No other components.</td></tr><tr style="background-color: inherit"><td>Dependencies to:</td><td>FDP_PDC_EXT.3 AuthorizedConnection Protocols</td></tr></table><h4 id="ext-comp-FDP_SPR_EXT.1.1">FDP_SPR_EXT.1.1</h4>
-                The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall apply the following rules for the [<b>assignment</b>: 
+            based on the protocol it supports.</p><h4>Management: FDP_SPR_EXT.1</h4><p>No specific management functions are identified.</p><h4>Audit: FDP_SPR_EXT.1</h4><p>There are no auditable events foreseen.</p><h4>FDP_SPR_EXT.1 Sub-Protocol Rules</h4><div style="margin-left: 1em;"><table class="ecd_heir_dep" style="width: 100%"><tr><td style="whitespace: nowrap">Hierarchical to:</td><td style="width: 100%">No other components.</td></tr><tr style="background-color: inherit"><td>Dependencies to:</td><td>FDP_PDC_EXT.3 Authorized Connection Protocols</td></tr></table><h4 id="ext-comp-FDP_SPR_EXT.1.1">FDP_SPR_EXT.1.1</h4>
+            The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall apply the following rules for the [<b>assignment</b>: 
      <span class="assignable-content">supported protocol</span>]
                 protocol:<ul>
                   <li>block the following video/display sub‐protocols:<ul>
@@ -1842,37 +1895,37 @@ The following sections list Common Criteria and technology terms used in this do
                     <li>list of allowed sub‐protocols</li>
                   </ul></li>                  
                 </ul>
-              </div></div></span></span><h1 id="iso-doc-assess" class="indexable" data-level="A">Appendix D -  Isolation Documentation and Assessment</h1>
+          </div></div></span></span><h1 id="iso-doc-assess" class="indexable" data-level="A">Appendix D -  Isolation Documentation and Assessment</h1>
     The <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> does not require any additional supplementary information to describe its isolation concepts
     beyond the requirements outlined in the ‘Isolation Documentation and Assessment’ sections in Appendix
     D of the <abbr class="dyn-abbr"><a href="#abbr_PSD">PSD</a></abbr> <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr>. As with other <abbr class="dyn-abbr"><a href="#abbr_PSD">PSD</a></abbr> <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr> requirements, the only additional requirement is that the isolation
     documentation also applies to the specific isolation and data flow <abbr class="dyn-abbr"><a href="#abbr_SFR">SFRs</a></abbr> in this <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr>‐module in addition to
     the functionality the <abbr class="dyn-abbr"><a href="#abbr_PSD">PSD</a></abbr> <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr> requires.    
   <h1 id="perdevcon" class="indexable" data-level="A">Appendix E -  Peripheral Device Connections</h1>
-    <h2 class="indexable" data-level="2" id="_sec_9">E.1 General</h2>
+    <h2 class="indexable" data-level="2" id="_sec_8">E.1 General</h2>
       This appendix expands the <abbr class="dyn-abbr"><a href="#abbr_PSD">PSD</a></abbr> <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr> Peripheral Device Connections appendix, and offers additional direction
       on peripheral devices and interface protocols with <abbr class="dyn-abbr"><a href="#abbr_TOE">TOEs</a></abbr> claiming compliance with this <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr>‐Module. This
       appendix is in conjunction with the <abbr class="dyn-abbr"><a href="#abbr_PSD">PSD</a></abbr> <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr>’s appendix and does not replace it.
     
     
-    <h2 class="indexable" data-level="2" id="_sec_10">E.2 Unauthorized Peripheral Devices</h2>
+    <h2 class="indexable" data-level="2" id="_sec_9">E.2 Unauthorized Peripheral Devices</h2>
       The following are unauthorized devices:<ul>        
         <li>Any device not specifically authorized</li>
       </ul>     
     
     
-    <h2 class="indexable" data-level="2" id="_sec_11">E.3 Unauthorized Interface Protocols</h2>
+    <h2 class="indexable" data-level="2" id="_sec_10">E.3 Unauthorized Interface Protocols</h2>
       The following are unauthorized interface protocols:<ul>
         <li>Any interface protocol not specifically authorized</li>        
       </ul>
     
-    <h2 class="indexable" data-level="2" id="_sec_12">E.4 Authorized Peripheral Devices</h2>
+    <h2 class="indexable" data-level="2" id="_sec_11">E.4 Authorized Peripheral Devices</h2>
       The following are authorized devices<ul>
         <li>Display device</li>
       </ul>
     
     
-    <h2 class="indexable" data-level="2" id="_sec_13">E.5 Authorized Interface Protocols</h2>
+    <h2 class="indexable" data-level="2" id="_sec_12">E.5 Authorized Interface Protocols</h2>
       The following are authorized interface protocols:<ul>
         <li>DisplayPort</li>
         <li><abbr class="dyn-abbr"><a href="#abbr_DVI">DVI</a></abbr>-D</li>
@@ -1885,7 +1938,7 @@ The following sections list Common Criteria and technology terms used in this do
   <h1 id="interbetmod" class="indexable" data-level="A">Appendix F -  Interactions between PP-Modules</h1>
     This appendix provides any additional guidance required to address interactions between multiple
     <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr>-Modules when they are both contained within a <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr>‐Configuration.
-    <h2 class="indexable" data-level="2" id="_sec_14">F.1 PP-Module for Audio Output Devices</h2>
+    <h2 class="indexable" data-level="2" id="_sec_13">F.1 PP-Module for Audio Output Devices</h2>
       Unauthorized devices identified in both <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr>‐Modules are considered unauthorized devices for the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> as
       per <a href="#FDP_PDC_EXT.1">FDP_PDC_EXT.1</a>.<br/><br/>
       Authorized devices identified in both <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr>‐Modules are considered authorized devices for the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> as per
@@ -1898,7 +1951,7 @@ The following sections list Common Criteria and technology terms used in this do
       peripheral types. The <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> author should make two iterations of this <abbr class="dyn-abbr"><a href="#abbr_SFR">SFR</a></abbr>, <a href="#FDP_APC_EXT.1">FDP_APC_EXT.1</a>/UA and
       <a href="#FDP_APC_EXT.1">FDP_APC_EXT.1</a>/AO, to show the different modifications made for each specific peripheral type.
     
-    <h2 class="indexable" data-level="2" id="_sec_15">F.2 PP-Module for Keyboard/Mouse Devices</h2>
+    <h2 class="indexable" data-level="2" id="_sec_14">F.2 PP-Module for Keyboard/Mouse Devices</h2>
       Unauthorized devices identified in both <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr>‐Modules are considered unauthorized devices for the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> as
       per <a href="#FDP_PDC_EXT.1">FDP_PDC_EXT.1</a>.<br/><br/>
       Authorized devices identified in both <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr>‐Modules are considered authorized devices for the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> as per
@@ -1909,7 +1962,7 @@ The following sections list Common Criteria and technology terms used in this do
       peripheral types. The <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> author should make two iterations of this <abbr class="dyn-abbr"><a href="#abbr_SFR">SFR</a></abbr>, <a href="#FDP_APC_EXT.1">FDP_APC_EXT.1</a>/UA and
       <a href="#FDP_APC_EXT.1">FDP_APC_EXT.1</a>/KM, to show the different modifications made for each specific peripheral type.
     
-    <h2 class="indexable" data-level="2" id="_sec_16">F.3 PP-Module for User Authentication Devices</h2>
+    <h2 class="indexable" data-level="2" id="_sec_15">F.3 PP-Module for User Authentication Devices</h2>
       Unauthorized devices identified in both <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr>‐Modules are considered unauthorized devices for the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> as
       per <a href="#FDP_PDC_EXT.1">FDP_PDC_EXT.1</a>.<br/><br/>
       Authorized devices identified in both <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr>‐Modules are considered authorized devices for the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> as per
@@ -1920,7 +1973,7 @@ The following sections list Common Criteria and technology terms used in this do
       peripheral types. The <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> author should make two iterations of this <abbr class="dyn-abbr"><a href="#abbr_SFR">SFR</a></abbr>, <a href="#FDP_APC_EXT.1">FDP_APC_EXT.1</a>/VI and
       <a href="#FDP_APC_EXT.1">FDP_APC_EXT.1</a>/UA, to show the different modifications made for each specific peripheral type.
     
-  <h1 id="acronyms" class="indexable" data-level="A">Appendix G -  Acronyms</h1><table><caption><span class="ctr" data-myid="t-acronyms" data-counter-type="ct-Table" id="t-acronyms">Table <span class="counter">6</span></span>: Acronyms
+  <h1 id="acronyms" class="indexable" data-level="A">Appendix G -  Acronyms</h1><table><caption><span class="ctr" data-myid="t-acronyms" data-counter-type="ct-Table" id="t-acronyms">Table <span class="counter">5</span></span>: Acronyms
 		</caption><tr class="header"><th>Acronym</th><th>Meaning</th></tr><tr><td><span class="term" id="abbr_ARC"><abbr class="dyn-abbr"><a href="#abbr_ARC">ARC</a></abbr></span></td><td><span id="long_abbr_ARC">Audio Return Channel</span></td></tr>
 <tr><td><span class="term" id="abbr_Base-PP" data-plural="Base-PPs"><abbr class="dyn-abbr"><a href="#abbr_Base-PP">Base-PP</a></abbr></span></td><td><span id="long_abbr_Base-PP">Base Protection Profile</span></td></tr>
 <tr><td><span class="term" id="abbr_CC"><abbr class="dyn-abbr"><a href="#abbr_CC">CC</a></abbr></span></td><td><span id="long_abbr_CC">Common Criteria</span></td></tr>
@@ -1928,7 +1981,7 @@ The following sections list Common Criteria and technology terms used in this do
 <tr><td><span class="term" id="abbr_CEM"><abbr class="dyn-abbr"><a href="#abbr_CEM">CEM</a></abbr></span></td><td><span id="long_abbr_CEM">Common Evaluation Methodology</span></td></tr>
 <tr><td><span class="term" id="abbr_cPP" data-plural="cPPs"><abbr class="dyn-abbr"><a href="#abbr_cPP">cPP</a></abbr></span></td><td><span id="long_abbr_cPP">Collaborative Protection Profile</span></td></tr>
 <tr><td><span class="term" id="abbr_DVI"><abbr class="dyn-abbr"><a href="#abbr_DVI">DVI</a></abbr></span></td><td><span id="long_abbr_DVI">Digital Visual Interface (standard)</span></td></tr>
-<tr><td><span class="term" id="abbr_EDID"><abbr class="dyn-abbr"><a href="#abbr_EDID">EDID</a></abbr></span></td><td><span id="long_abbr_EDID">Extended Display Identificatin Data</span></td></tr>
+<tr><td><span class="term" id="abbr_EDID"><abbr class="dyn-abbr"><a href="#abbr_EDID">EDID</a></abbr></span></td><td><span id="long_abbr_EDID">Extended Display Identification Data</span></td></tr>
 <tr><td><span class="term" id="abbr_EP"><abbr class="dyn-abbr"><a href="#abbr_EP">EP</a></abbr></span></td><td><span id="long_abbr_EP">Extended Package</span></td></tr>
 <tr><td><span class="term" id="abbr_FP"><abbr class="dyn-abbr"><a href="#abbr_FP">FP</a></abbr></span></td><td><span id="long_abbr_FP">Functional Package</span></td></tr>
 <tr><td><span class="term" id="abbr_HDCP"><abbr class="dyn-abbr"><a href="#abbr_HDCP">HDCP</a></abbr></span></td><td><span id="long_abbr_HDCP">High-bandwidth Digital Content Protection</span></td></tr>
@@ -1956,7 +2009,7 @@ The following sections list Common Criteria and technology terms used in this do
 <tr><td><span class="term" id="abbr_TSS"><abbr class="dyn-abbr"><a href="#abbr_TSS">TSS</a></abbr></span></td><td><span id="long_abbr_TSS"><abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> Summary Specification</span></td></tr>
 <tr><td><span class="term" id="abbr_USB"><abbr class="dyn-abbr"><a href="#abbr_USB">USB</a></abbr></span></td><td><span id="long_abbr_USB">Universal Serial Bus</span></td></tr>
 <tr><td><span class="term" id="abbr_VGA"><abbr class="dyn-abbr"><a href="#abbr_VGA">VGA</a></abbr></span></td><td><span id="long_abbr_VGA">Video Graphics Array (standard)</span></td></tr>
-</table><h1 id="appendix-bibliography" class="indexable" data-level="A">Appendix H -  Bibliography</h1><table><caption><span class="ctr" data-myid="t-biblio" data-counter-type="ct-Table" id="t-biblio">Table <span class="counter">7</span></span>: Bibliography</caption><tr class="header"><th>Identifier</th><th>Title</th></tr><tr><td><span id="bibCC">[<abbr class="dyn-abbr"><a href="#abbr_CC">CC</a></abbr>]</span></td><td><span class="description">Common Criteria for Information Technology Security Evaluation - <ul>
+</table><h1 id="appendix-bibliography" class="indexable" data-level="A">Appendix H -  Bibliography</h1><table><caption><span class="ctr" data-myid="t-biblio" data-counter-type="ct-Table" id="t-biblio">Table <span class="counter">6</span></span>: Bibliography</caption><tr class="header"><th>Identifier</th><th>Title</th></tr><tr><td><span id="bibCC">[<abbr class="dyn-abbr"><a href="#abbr_CC">CC</a></abbr>]</span></td><td><span class="description">Common Criteria for Information Technology Security Evaluation - <ul>
             <li><a href="https://www.commoncriteriaportal.org/files/ccfiles/CC2022PART1R1.pdf">Part 1: 
 				Introduction and general model</a>, CCMB-2022-11-001, <abbr class="dyn-abbr"><a href="#abbr_CC">CC</a></abbr>:2022, Revision 1, November 2022.</li>
             <li><a href="http://www.commoncriteriaportal.org/files/ccfiles/CC2022PART2R1.pdf">Part 2: 
@@ -1970,5 +2023,5 @@ The following sections list Common Criteria and technology terms used in this do
           </ul></span></td></tr><tr><td><span id="bibCEM">[<abbr class="dyn-abbr"><a href="#abbr_CEM">CEM</a></abbr>]</span></td><td><span class="description">Common Methodology for Information Technology Security Evaluation - <ul>
             <li><a href="http://www.commoncriteriaportal.org/files/ccfiles/CEM2022R1.pdf">
                  Evaluation methodology</a>, CCMB-2022-11-006, <abbr class="dyn-abbr"><a href="#abbr_CC">CC</a></abbr>:2022, Revision 1, November 2022.</li>
-          </ul></span></td></tr><tr><td><span id="base-pp">[PP_PSD_V5.0 or <abbr class="dyn-abbr"><a href="#abbr_PSD">PSD</a></abbr> <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr>]</span></td><td><span class="description"><a href=""><span style="" class="comment " id="Comment-2-">Need to add URL once published.</span>Protection Profile for Peripheral Sharing Device, Version 5.0, 2025-07-11</a>
+          </ul></span></td></tr><tr><td><span id="base-pp">[PP_PSD_V5.0 or <abbr class="dyn-abbr"><a href="#abbr_PSD">PSD</a></abbr> <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr>]</span></td><td><span class="description"><a href="https://www.niap-ccevs.org/protectionprofiles/412"><span style="" class="comment " id="Comment-2-">Need to add URL once published.</span>Protection Profile for Peripheral Sharing Device, Version 5.0, 2025-07-11</a>
       </span></td></tr></table></body></html>

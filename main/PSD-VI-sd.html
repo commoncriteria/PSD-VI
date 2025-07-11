@@ -294,7 +294,7 @@
       Technical Community members, with representatives from industry, government 
       agencies, Common Criteria Test Laboratories, and members of academia.
       </p></div><h1>Table of Contents</h1><div id="toc"><a href="#introduction" style="text-indent:0px">1<span>Introduction</span></a><a href="#scope" style="text-indent:10px">1.1<span>Technology Area and Scope of Supporting Document</span></a><a href="#structure" style="text-indent:10px">1.2<span>Structure of the Document</span></a><a href="#glossary" style="text-indent:10px">1.3<span>Terms</span></a><a href="#cc-terms" style="text-indent:20px">1.3.1<span>Common Criteria Terms</span></a><a href="#tech-terms" style="text-indent:20px">1.3.2<span>Technical Terms</span></a><a href="#sfr" style="text-indent:0px">2<span>Evaluation Activities for SFRs</span></a><a href="#aa-bpp-psd" style="text-indent:10px">2.1<span>Peripheral Sharing Device</span></a><a href="#qq-sfrs-bpp-psd-Modified" style="text-indent:20px">2.1.1<span>Modified SFRs
-        </span></a><a href="#mod_fdp" style="text-indent:30px">2.1.1.1<span>User Data Protection (FDP)</span></a><a href="#mod_fta" style="text-indent:30px">2.1.1.2<span>TOE Access (FTA)</span></a><a href="#man-sfrs" style="text-indent:10px">2.2<span>TOE SFR Evaluation Activities</span></a><a href="#FDP" style="text-indent:20px">2.2.1<span>User Data Protection (FDP)</span></a><a href="#opt-sfrs" style="text-indent:10px">2.3<span>Evaluation Activities for Optional SFRs</span></a><a href="#sel-sfrs" style="text-indent:10px">2.4<span>Evaluation Activities for Selection-Based SFRs</span></a><a href="#_sec_8" style="text-indent:20px">2.4.1<span>User Data Protection (FDP)</span></a><a href="#obj-sfrs" style="text-indent:10px">2.5<span>Evaluation Activities for Objective SFRs</span></a><a href="#impl-sfrs-" style="text-indent:10px">2.6<span>Evaluation Activities for Implementation-dependent SFRs</span></a><a href="#sar_aas" style="text-indent:0px">3<span>Evaluation Activities for SARs</span></a><a href="#sup-info" style="text-indent:0px">4<span>Required Supplementary Information</span></a><a href="#biblio" style="text-indent:0px">Appendix A - <span>References</span></a></div><h1 id="introduction" class="indexable" data-level="0">1 Introduction</h1><h2 id="scope" class="indexable" data-level="1">1.1 Technology Area and Scope of Supporting Document</h2><p>The scope of the 
+        </span></a><a href="#mod_fdp" style="text-indent:30px">2.1.1.1<span>User Data Protection (FDP)</span></a><a href="#mod_fta" style="text-indent:30px">2.1.1.2<span>TOE Access (FTA)</span></a><a href="#man-sfrs" style="text-indent:10px">2.2<span>TOE SFR Evaluation Activities</span></a><a href="#FDP" style="text-indent:20px">2.2.1<span>User Data Protection (FDP)</span></a><a href="#opt-sfrs" style="text-indent:10px">2.3<span>Evaluation Activities for Optional SFRs</span></a><a href="#sel-sfrs" style="text-indent:10px">2.4<span>Evaluation Activities for Selection-Based SFRs</span></a><a href="#_sec_7" style="text-indent:20px">2.4.1<span>User Data Protection (FDP)</span></a><a href="#obj-sfrs" style="text-indent:10px">2.5<span>Evaluation Activities for Objective SFRs</span></a><a href="#impl-sfrs-" style="text-indent:10px">2.6<span>Evaluation Activities for Implementation-dependent SFRs</span></a><a href="#sar_aas" style="text-indent:0px">3<span>Evaluation Activities for SARs</span></a><a href="#sup-info" style="text-indent:0px">4<span>Required Supplementary Information</span></a><a href="#biblio" style="text-indent:0px">Appendix A - <span>References</span></a></div><h1 id="introduction" class="indexable" data-level="0">1 Introduction</h1><h2 id="scope" class="indexable" data-level="1">1.1 Technology Area and Scope of Supporting Document</h2><p>The scope of the 
     PP-Module for Video/Display Device is
     to describe the security functionality of 
     Video/Display Device
@@ -529,16 +529,17 @@ The following sections list Common Criteria and technology terms used in this do
                           attempt to change the display contrast and brightness. Verify that the display does not change its contrast
                           and brightness accordingly.</li>
                         <li>Disconnect the video cable connecting the display and the TOE and connect the display directly to
-                          the TOE. Verify that the video image is visible and stable on the user display.</li>
+                          the computer. Verify that the video image is visible and stable on the user display.</li>
                         <li>Attempt to change the display contrast and brightness. Verify that the display does change its
                           contrast and brightness accordingly.</li>
                         <li>Connect the following testing device based on the display video protocol being tested at the
                           peripheral display interface.<ol>
                             <li>DisplayPort – DisplayPort AUX channel analyzer in series between the display and the TOE</li>
-                            <li>HDMI/DVI‐I/‐DVI‐D – HDMI sink test device</li>
+                            <li>HDMI – HDMI sink test device</li>
                             <li>USB Type‐C with DisplayPort as Alternate Function – USB sniffer in series between the display and
                               the TOE</li>
-                            <li>VGA – VGA sink test device</li>                            
+                            <li>VGA – VGA sink test device</li>
+                            <li>DVI-I/DVI - DVI sink test device</li>                            
                           </ol></li>
                             <li>Attempt to change the display contrast and brightness. Verify that the testing device does not
                               capture any MCCS commands.</li>
@@ -546,10 +547,11 @@ The following sections list Common Criteria and technology terms used in this do
                               interface. If DVI‐I or DVI‐D is selected, use an HDMI source generator.</li>
                             <li>Run an EDID write transaction at the generator and verify in the testing device that no EDID traffic
                               is captured.</li>
-                            <li>[Conditional, if DisplayPort, DVI‐D, DVI‐I, HDMI, or USB Type‐C is the selected protocol being
+                            <li>[Conditional, if DisplayPort, HDMI, or USB Type‐C is the selected protocol being
                               tested at the computer video interface, then] run Consumer Electronics Control (CEC) and High‐bandwidth
                               Digital Content Protection (HDCP) tests or commands at the generator and verify in the testing device that
-                              no CEC or HDCP traffic is captured.</li>
+                              no CEC or HDCP traffic is captured for HDMI or USB-C, or check for an absence of power on pin 14 (CONFIG2)
+                              using an oscilloscope for DisplayPort DP++ Dual Mode.</li>
                             <li>[Conditional, if DVI‐D, DVI‐I, or HDMI is the selected protocol being tested at the computer video
                               interface, then] run Audio Return Channel (ARC), HDMI Ethernet and Audio Return Channel (HEAC), and
                               HDMI Ethernet Channel (HEC) tests or commands at the generator and verify in the testing device that no
@@ -577,7 +579,8 @@ The following sections list Common Criteria and technology terms used in this do
                       <b>Video and EDID Channel Unidirectional Rule</b><br/><br/>
                       This test verifies that the TOE video path is unidirectional from the computer video interface to the display
                       interface with the exception of EDID, which may be read from the display once at power up and then may
-                      be read by the connected computers. The evaluator should have at least two high‐resolution displays and
+                      be read by the connected computers. The evaluator should have at least two
+                      high‐resolution displays of different models and
                       one low‐resolution display for each TOE‐supported video protocol.<br/><br/>
                       <b>In the following steps the evaluator should attempt to read display EDID after the TOE completed its
                       self‐test / power up. The TOE should not read the new display EDID.</b><ol>
@@ -587,8 +590,9 @@ The following sections list Common Criteria and technology terms used in this do
                           computer #1 as expected.</li>
                         <li>Turn off the TOE. Disconnect the user display from the TOE.</li>
                         <li>Connect the low‐resolution display to the TOE and turn on the TOE. After the video is shown on
-                          the display, turn off the TOE.</li>
-                        <li>Turn on the TOE. After the TOE has completed the self‐test, the TOE may fail to generate video on
+                          the display, turn off the TOE and disconnect the low-resolution display.</li>
+                        <li>Turn on the TOE. After the TOE has completed the self‐test connect the
+                          second high-resolution display of a different model to the TOE. The TOE may fail to generate video on
                           the user display (i.e., no EDID is read at the TOE power up). If the display is showing video, then run the
                           EDID reading and parsing software on computer #1 and check that there is no active EDID (i.e., the
                           computer is using a default generic display or reading older display settings from the registry).</li>
@@ -640,7 +644,8 @@ The following sections list Common Criteria and technology terms used in this do
                         <li>Restart the TOE and repeat step 3.</li>
                         <li>Disconnect computer #1 and repeat steps 2 to 8 with computer #2 on the same port.</li>
                         <li>Repeat steps 2 to 9 for a total of 20 EDID file captures.</li>
-                        <li>Collect all 20 captured EDID files, compare them bit‐by‐bit, and verify that they are identical.</li>
+                        <li>Collect all 20 captured EDID files, compare them bit‐by‐bit, and
+                          verify that they are identical excluding null caputres recorded in Step 7.</li>
                       </ol>
                     </li>
                   </ul></span>
@@ -672,7 +677,9 @@ The following sections list Common Criteria and technology terms used in this do
                         in step 1.</li>
                       <li>Disconnect the authorized device, then reconnect it to the TOE peripheral interface.</li>
                       <li>Verify the TOE user indication described in the operational user guidance is not present.</li>
-                      <li>Verify that the device displays the same image as in step 1 and 6.</li>
+                      <li>Verify that the device displays the same image as in step 1 and 6 or that it displays a blank 
+                        screen. If it displays a blank screen, reboot the TOE, select the channel that was selected prior
+                        to reboot, and verify that the device now displays the same image as in step 1 and 6.</li>
                     </ol>
                   </li>                                  
                 </ul></span>
@@ -685,13 +692,13 @@ The following sections list Common Criteria and technology terms used in this do
       <h2 class="indexable" data-level="1" id="man-sfrs">2.2 TOE SFR Evaluation Activities</h2><h2 class="indexable" data-level="2" id="FDP">2.2.1 User Data Protection (FDP)</h2><div class="comp" id="FDP-PDC-EXT-2-VI"><h4>FDP_PDC_EXT.2/VI Peripheral Device Connection (Video Output)</h4><span class="activity_pane_body"><div class="component-activity-header">FDP_PDC_EXT.2/VI</div>
               Evaluation Activities for this component are performed through evaluation of
                 <span href="#fdp_pdc_ext.1" class="dynref" data-format=""></span>.<br/><br/>
-            </span></div><div class="comp" id="FDP-PDC-EXT-3-VI"><h4>FDP_PDC_EXT.3/VI Authorized Connection Protocols</h4><span class="activity_pane_body"><div class="component-activity-header">FDP_PDC_EXT.3/VI</div>
+            </span></div><div class="comp" id="FDP-PDC-EXT-3-VI"><h4>FDP_PDC_EXT.3/VI Authorized Connection Protocols (Video Output)</h4><span class="activity_pane_body"><div class="component-activity-header">FDP_PDC_EXT.3/VI</div>
               Evaluation Activities for this component are performed through evaluation of
                 <span href="#fdp_pdc_ext.1" class="dynref" data-format=""></span>.<br/><br/>
             </span></div><div class="comp" id="FDP-UDF-EXT-1-VI"><h4>FDP_UDF_EXT.1/VI Unidirectional Data Flow (Video Output)</h4><span class="activity_pane_body"><div class="component-activity-header">FDP_UDF_EXT.1/VI</div>
               Evaluation Activities for this component are performed through evaluation of
                 <span href="#fdp_apc_ext.1" class="dynref" data-format=""></span>.<br/><br/>
-            </span></div><h2 class="indexable" data-level="1" id="opt-sfrs">2.3 Evaluation Activities for Optional SFRs</h2>The PP-Module does not define any optional requirements.<h2 class="indexable" data-level="1" id="sel-sfrs">2.4 Evaluation Activities for Selection-Based SFRs</h2><h2 class="indexable" data-level="2" id="_sec_8">2.4.1 User Data Protection (FDP)</h2><div class="comp" id=""><h4>FDP_CDS_EXT.1 Connected Displays Supported</h4><span class="activity_pane_body"><div class="component-activity-header">FDP_CDS_EXT.1</div>
+            </span></div><h2 class="indexable" data-level="1" id="opt-sfrs">2.3 Evaluation Activities for Optional SFRs</h2>The PP-Module does not define any optional requirements.<h2 class="indexable" data-level="1" id="sel-sfrs">2.4 Evaluation Activities for Selection-Based SFRs</h2><h2 class="indexable" data-level="2" id="_sec_7">2.4.1 User Data Protection (FDP)</h2><div class="comp" id=""><h4>FDP_CDS_EXT.1 Connected Displays Supported</h4><span class="activity_pane_body"><div class="component-activity-header">FDP_CDS_EXT.1</div>
             
             
             
@@ -801,7 +808,7 @@ The following sections list Common Criteria and technology terms used in this do
     and supplement that evaluation with the necessary SFRs that are taken from the PP-Module.
     </p><h1 id="sup-info" class="indexable" data-level="0">4 Required Supplementary Information</h1><p>This Supporting Document has no required supplementary information beyond the ST, operational
 guidance, and testing.</p><h1 id="biblio" class="indexable" data-level="A">Appendix A -  References</h1><table><tr class="header"><th>Identifier</th><th>Title</th></tr>    
-    <tr><td><span id="base-pp"></span>[PP_PSD_V5.0 or PSD PP]</td><td><a href=""><span style="" class="comment " id="Comment-2-">Need to add URL once published.</span>Protection Profile for Peripheral Sharing Device, Version 5.0, 2025-07-11</a>
+    <tr><td><span id="base-pp"></span>[PP_PSD_V5.0 or PSD PP]</td><td><a href="https://www.niap-ccevs.org/protectionprofiles/412"><span style="" class="comment " id="Comment-2-">Need to add URL once published.</span>Protection Profile for Peripheral Sharing Device, Version 5.0, 2025-07-11</a>
       </td></tr>
 
   </table></body></html>
