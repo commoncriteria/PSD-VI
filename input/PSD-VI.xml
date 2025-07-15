@@ -1098,7 +1098,8 @@
               <Guidance/>
               <CustomEA name="Isolation"/>
               <Tests>
-                Testing for this SFR is covered under FDP_APC_EXT.1 Tests 3 and 4 in this Module.
+                Testing for this SFR is covered under <xref to="APC_Test_3-VI"/> and <xref
+                  to="APC_Test_4-VI"/>.
               </Tests>
             </aactivity>
           </f-element>
