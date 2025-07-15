@@ -186,13 +186,13 @@
             allowing authorized device connections with authorized interface protocols.</rationale>
           <addressed-by>FDP_SPR_EXT.1/DP (selection-based)</addressed-by><rationale>Mitigates this
             threat by ensuring the TSF applies the specified rules for the DP protocol.</rationale>
-          <addressed-by>FDP_SPR_EXT.1/DVI-D (selection-based)</addressed-by><rationale>Mitigates
+          <addressed-by>FDP_SPR_EXT.1/DVID (selection-based)</addressed-by><rationale>Mitigates
             this threat by ensuring the TSF applies the specified rules for the DVI-D protocol.</rationale>
-          <addressed-by>FDP_SPR_EXT.1/DVI-I (selection-based)</addressed-by><rationale>Mitigates
+          <addressed-by>FDP_SPR_EXT.1/DVII (selection-based)</addressed-by><rationale>Mitigates
             this threat by ensuring the TSF applies the specified rules for the DVI-I protocol.</rationale>
           <addressed-by>FDP_SPR_EXT.1/HDMI (selection-based)</addressed-by><rationale>Mitigates this
             threat by ensuring the TSF applies the specified rules for the HDMI protocol.</rationale>
-          <addressed-by>FDP_SPR_EXT.1/USB (selection-based)</addressed-by><rationale>Mitigates this
+          <addressed-by>FDP_SPR_EXT.1/USBC (selection-based)</addressed-by><rationale>Mitigates this
             threat by ensuring the TSF applies the specified rules for the USB protocol.</rationale>
           <addressed-by>FDP_SPR_EXT.1/VGA (selection-based)</addressed-by><rationale>Mitigates this
             threat by ensuring the TSF applies the specified rules for the VGA protocol.</rationale>
@@ -206,13 +206,13 @@
             allowing authorized device connections with authorized interface protocols.</rationale>
           <addressed-by>FDP_SPR_EXT.1/DP (selection-based)</addressed-by><rationale>Mitigates this
             threat by ensuring the TSF applies the specified rules for the DP protocol.</rationale>
-          <addressed-by>FDP_SPR_EXT.1/DVI-D (selection-based)</addressed-by><rationale>Mitigates
+          <addressed-by>FDP_SPR_EXT.1/DVID (selection-based)</addressed-by><rationale>Mitigates
             this threat by ensuring the TSF applies the specified rules for the DVI-D protocol.</rationale>
-          <addressed-by>FDP_SPR_EXT.1/DVI-I (selection-based)</addressed-by><rationale>Mitigates
+          <addressed-by>FDP_SPR_EXT.1/DVII (selection-based)</addressed-by><rationale>Mitigates
             this threat by ensuring the TSF applies the specified rules for the DVI-I protocol.</rationale>
           <addressed-by>FDP_SPR_EXT.1/HDMI (selection-based)</addressed-by><rationale>Mitigates this
             threat by ensuring the TSF applies the specified rules for the HDMI protocol.</rationale>
-          <addressed-by>FDP_SPR_EXT.1/USB (selection-based)</addressed-by><rationale>Mitigates this
+          <addressed-by>FDP_SPR_EXT.1/USBC (selection-based)</addressed-by><rationale>Mitigates this
             threat by ensuring the TSF applies the specified rules for the USB protocol.</rationale>
           <addressed-by>FDP_SPR_EXT.1/VGA (selection-based)</addressed-by><rationale>Mitigates this
             threat by ensuring the TSF applies the specified rules for the VGA protocol.</rationale>          
@@ -224,13 +224,13 @@
             allowing authorized device connections with authorized interface protocols.</rationale>
           <addressed-by>FDP_SPR_EXT.1/DP (selection-based)</addressed-by><rationale>Mitigates this
             threat by ensuring the TSF applies the specified rules for the DP protocol.</rationale>
-          <addressed-by>FDP_SPR_EXT.1/DVI-D (selection-based)</addressed-by><rationale>Mitigates
+          <addressed-by>FDP_SPR_EXT.1/DVID (selection-based)</addressed-by><rationale>Mitigates
             this threat by ensuring the TSF applies the specified rules for the DVI-D protocol.</rationale>
-          <addressed-by>FDP_SPR_EXT.1/DVI-I (selection-based)</addressed-by><rationale>Mitigates
+          <addressed-by>FDP_SPR_EXT.1/DVII (selection-based)</addressed-by><rationale>Mitigates
             this threat by ensuring the TSF applies the specified rules for the DVI-I protocol.</rationale>
           <addressed-by>FDP_SPR_EXT.1/HDMI (selection-based)</addressed-by><rationale>Mitigates this
             threat by ensuring the TSF applies the specified rules for the HDMI protocol.</rationale>
-          <addressed-by>FDP_SPR_EXT.1/USB (selection-based)</addressed-by><rationale>Mitigates this
+          <addressed-by>FDP_SPR_EXT.1/USBC (selection-based)</addressed-by><rationale>Mitigates this
             threat by ensuring the TSF applies the specified rules for the USB protocol.</rationale>
           <addressed-by>FDP_SPR_EXT.1/VGA (selection-based)</addressed-by><rationale>Mitigates this
             threat by ensuring the TSF applies the specified rules for the VGA protocol.</rationale>
@@ -250,13 +250,13 @@
             threat by converting protocols internally.</rationale>
           <addressed-by>FDP_SPR_EXT.1/DP (selection-based)</addressed-by><rationale>Mitigates this
             threat by ensuring the TSF applies the specified rules for the DP protocol.</rationale>
-          <addressed-by>FDP_SPR_EXT.1/DVI-D (selection-based)</addressed-by><rationale>Mitigates
+          <addressed-by>FDP_SPR_EXT.1/DVID (selection-based)</addressed-by><rationale>Mitigates
             this threat by ensuring the TSF applies the specified rules for the DVI-D protocol.</rationale>
-          <addressed-by>FDP_SPR_EXT.1/DVI-I (selection-based)</addressed-by><rationale>Mitigates
+          <addressed-by>FDP_SPR_EXT.1/DVII (selection-based)</addressed-by><rationale>Mitigates
             this threat by ensuring the TSF applies the specified rules for the DVI-I protocol.</rationale>
           <addressed-by>FDP_SPR_EXT.1/HDMI (selection-based)</addressed-by><rationale>Mitigates this
             threat by ensuring the TSF applies the specified rules for the HDMI protocol.</rationale>
-          <addressed-by>FDP_SPR_EXT.1/USB (selection-based)</addressed-by><rationale>Mitigates this
+          <addressed-by>FDP_SPR_EXT.1/USBC (selection-based)</addressed-by><rationale>Mitigates this
             threat by ensuring the TSF applies the specified rules for the USB protocol.</rationale>
           <addressed-by>FDP_SPR_EXT.1/VGA (selection-based)</addressed-by><rationale>Mitigates this
             threat by ensuring the TSF applies the specified rules for the VGA protocol.</rationale>
@@ -267,8 +267,7 @@
         <from base="bpp-psd"/>
         <description>This threat from the PSD PP also applies to the functionality defined in this PP-Module.</description>
         <addressed-by>FDP_CDS_EXT.1 (selection-based)</addressed-by><rationale>Mitigates this threat
-          by choosing whether to support one or multiple displays to ensure there is no unauthorized
-          connections.</rationale>
+          by specifying whether multiple displays are supported as a trigger for the TOE needing to apply on-screen display labeling for video feeds.</rationale>
         
       </threat>
       </threats> 
@@ -808,7 +807,7 @@
           <f-element id="fdp-pdc-ext-3e1-vi">            
             <title>
               The TSF shall have interfaces for the <selectables>
-                <selectable id="supportssvga">VGA</selectable>
+                <selectable id="supportsvga">VGA</selectable>
                 <selectable id="supportsdvid">DVI‐D</selectable>
                 <selectable id="supportsdvii">DVI‐I</selectable>
                 <selectable id="supportshdmi">HDMI</selectable>
