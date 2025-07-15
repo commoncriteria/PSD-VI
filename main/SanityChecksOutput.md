@@ -1,4 +1,6 @@
 * Warning: This document still has at least one comment.
+* Error: Detected dangling id-reference to supportsvga from attribute
+        on-sel/Module[1]""/sec:Security_Requirements[1]""/sel-sfrs[1]""/section[1]""/f-component[9]""/depends[1]""/on-sel[1]""
 * Error: Detected multiple elements with an id of 'fdp-pdc-ext-2e1-vi'.
 * Error: Detected multiple elements with an id of 'fdp-pdc-ext-2e2-vi'.
 * Error: Detected multiple elements with an id of 'fdp-pdc-ext-2e1-vi'.
