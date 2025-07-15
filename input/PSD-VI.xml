@@ -347,7 +347,7 @@
                   The evaluator shall perform the following tests.
                   
                   <testlist>
-                    <test id="visourcesel">
+                    <test id="APC_Test_1-VI">
                       <h:b>Video Source Selection and Identification, TOE Off and Failure States</h:b><h:br/><h:br/>
                       This test verifies the TOE switching function operates properly and will stop the video output display when
                       in an OFF or FAILURE state.<h:ol>
@@ -368,7 +368,7 @@
                         <h:li>Repeat steps 3 to 9 for each unique display protocol and port type supported by the TOE.</h:li>
                        </h:ol>                  
                   </test>
-                    <test>
+                    <test id="APC_Test_2-VI">
                       <h:b>Computer Video Interface Solutions</h:b><h:br/><h:br/>
                       [Conditional: perform this test if “switching can be initiated only through express user action” is selected
                       in FDP_SWI_EXT.1.1 in the PSD PP.]<h:br/><h:br/>
@@ -414,7 +414,7 @@
                       </h:ol>                      
                     </test>
                     
-                    <test>
+                    <test id="APC_Test_3-VI">
                       <h:b>Unauthorized Sub-Protocols</h:b><h:br/><h:br/>                      
                       Note that in the following steps only native video protocol cables shall be used. No conversion from other
                       video protocols is allowed in these tests except as directed in FDP_IPC_EXT.1.1.<h:br/><h:br/>
@@ -481,7 +481,7 @@
                               </h:ol></h:li>
                             <h:li>Repeat this test for each of the selections in FDP_PDC_EXT.3.1/VI and FDP_IPC_EXT.1.2.</h:li>
                       </h:ol></test>
-                    <test>
+                    <test id="APC_Test_4-VI">
                       <h:b>Video and EDID Channel Unidirectional Rule</h:b><h:br/><h:br/>
                       This test verifies that the TOE video path is unidirectional from the computer video interface to the display
                       interface with the exception of EDID, which may be read from the display once at power up and then may
@@ -531,7 +531,7 @@
                           </h:ol></h:li>                        
                       </h:ol>
                     </test>
-                    <test>
+                    <test id="APC_Test_5-VI">
                       <h:b>No Flow between Connected Computers Over Time</h:b><h:br/><h:br/>
                       This test verifies that the TOE does not send data to different computers connected to the same TOE video
                       interface over time. Repeat this test for each TOE Video port.<h:ol>
@@ -629,8 +629,7 @@
                 </selectables>
               </title>            
             <aactivity>
-              <no-tests>Additional testing for this component is performed in test 1 of
-                FDP_APC_EXT.1 in <xref to="visourcesel"/>.</no-tests>
+              <no-tests>Additional testing for this component is performed in <xref to="APC_Test_1-VI"/>.</no-tests>
             </aactivity>
             </f-element>
           </f-component>
@@ -1031,7 +1030,7 @@
               <Guidance/>
               <CustomEA name="Isolation"/>
               <Tests>
-                Testing for this SFR is covered under FDP_APC_EXT.1 Test 3 in this Module.
+                Testing for this SFR is covered under <xref to="APC_Test_3-VI"/>.
               </Tests>
             </aactivity>
           </f-element>
@@ -1145,7 +1144,8 @@
               <Guidance/>
               <CustomEA name="Isolation"/>
               <Tests>
-                Testing for this SFR is covered under FDP_APC_EXT.1 Test 3 and 4 in this Module.
+                Testing for this SFR is covered under <xref to="APC_Test_3-VI"/> and <xref
+                  to="APC_Test_4-VI"/>.
               </Tests>
             </aactivity>
           </f-element>
@@ -1191,7 +1191,8 @@
               <Guidance/>
               <CustomEA name="Isolation"/>
               <Tests>
-                Testing for this SFR is covered under FDP_APC_EXT.1 Test 3 and 4 in this Module.
+                Testing for this SFR is covered under <xref to="APC_Test_3-VI"/> and <xref
+                  to="APC_Test_4-VI"/>.
               </Tests>
             </aactivity>
           </f-element>
@@ -1237,7 +1238,8 @@
               <Guidance/>
               <CustomEA name="Isolation"/>
               <Tests>
-                Testing for this SFR is covered under FDP_APC_EXT.1 Test 3 and 4 in this Module.
+                Testing for this SFR is covered under <xref to="APC_Test_3-VI"/> and <xref
+                  to="APC_Test_4-VI"/>.
               </Tests>
             </aactivity>
           </f-element>
@@ -1283,7 +1285,8 @@
               <Guidance/>
               <CustomEA name="Isolation"/>
               <Tests>
-                Testing for this SFR is covered under FDP_APC_EXT.1 Test 3 and 4 in this Module.
+                Testing for this SFR is covered under <xref to="APC_Test_3-VI"/> and <xref
+                  to="APC_Test_4-VI"/>.
               </Tests>
             </aactivity>
           </f-element>
@@ -1323,7 +1326,8 @@
               <Guidance/>
               <CustomEA name="Isolation"/>
               <Tests>
-                Testing for this SFR is covered under FDP_APC_EXT.1 Test 3 and 4 in this Module.
+                Testing for this SFR is covered under <xref to="APC_Test_3-VI"/> and <xref
+                  to="APC_Test_4-VI"/>.
               </Tests>
             </aactivity>
           </f-element>
@@ -1389,7 +1393,7 @@
       the claimed iterations of FDP_PDC_EXT.2.<h:br/><h:br/>
       Power events at a user authentication interface for one connected computer cannot impact power events
       at an analog audio output interface for another connected computer and vice versa, as per
-      FDP_APC_EXT.1. This evaluation activity is tested in Test 3‐AO in the Supporting Document for Audio
+      FDP_APC_EXT.1. This evaluation activity is tested in FDP_APC_EXT.1:3 in the PP-Module for Audio
       Output.<h:br/><h:br/>
       Both PP‐Modules modify the Base‐PP SFR FDP_APC_EXT.1 in ways that are specific to their respective
       peripheral types. The ST author should make two iterations of this SFR, FDP_APC_EXT.1/UA and
