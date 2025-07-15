@@ -8,7 +8,6 @@ output/PSD-VI-release-linkable.html: A11
 output/PSD-VI-release-linkable.html: A2
 output/PSD-VI-release-linkable.html: A3
 output/PSD-VI-release-linkable.html: A8
-output/PSD-VI-release-linkable.html: AO
 output/PSD-VI-release-linkable.html: B10
 output/PSD-VI-release-linkable.html: B11
 output/PSD-VI-release-linkable.html: B2
@@ -29,7 +28,6 @@ output/PSD-VI-release-linkable.html: YCbCr
 output/PSD-VI-release-linkable.html: caputres
 output/PSD-VI-release-linkable.html: unidirectionally
 output/PSD-VI-release-linkable.html: unpowered
-output/PSD-VI-release.html: AO
 output/PSD-VI-release.html: Assessment’
 output/PSD-VI-release.html: CEM
 output/PSD-VI-release.html: DisplayPort
@@ -80,7 +78,6 @@ output/PSD-VI.html: A11
 output/PSD-VI.html: A2
 output/PSD-VI.html: A3
 output/PSD-VI.html: A8
-output/PSD-VI.html: AO
 output/PSD-VI.html: Assessment’
 output/PSD-VI.html: B10
 output/PSD-VI.html: B11
