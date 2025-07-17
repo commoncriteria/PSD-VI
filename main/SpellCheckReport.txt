@@ -25,7 +25,6 @@ output/PSD-VI-release-linkable.html: UAI
 output/PSD-VI-release-linkable.html: V1
 output/PSD-VI-release-linkable.html: V5
 output/PSD-VI-release-linkable.html: YCbCr
-output/PSD-VI-release-linkable.html: caputres
 output/PSD-VI-release-linkable.html: unidirectionally
 output/PSD-VI-release-linkable.html: unpowered
 output/PSD-VI-release.html: Assessment’
@@ -63,7 +62,6 @@ output/PSD-VI-sd.html: SPD
 output/PSD-VI-sd.html: SWI
 output/PSD-VI-sd.html: V1
 output/PSD-VI-sd.html: V5
-output/PSD-VI-sd.html: caputres
 output/PSD-VI-sd.html: evaluator’s
 output/PSD-VI-sd.html: fail’
 output/PSD-VI-sd.html: pass’
@@ -96,6 +94,5 @@ output/PSD-VI.html: UAI
 output/PSD-VI.html: V1
 output/PSD-VI.html: V5
 output/PSD-VI.html: YCbCr
-output/PSD-VI.html: caputres
 output/PSD-VI.html: unidirectionally
 output/PSD-VI.html: unpowered
