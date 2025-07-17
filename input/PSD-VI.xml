@@ -559,7 +559,7 @@
             </f-element>
           </f-component>
           
-          <f-component cc-id="fdp_pdc_ext.1" name="Peripheral Device Connection">
+          <f-component cc-id="fdp_pdc_ext.1" name="Peripheral Device Connection" id="fdp-pdc-ext-1">
             <consistency-rationale>
               This SFR is not changed by this PP‐Module and only defines existing Evaluation
               Activities for video/display devices, which does not conflict with the PSD PP.
@@ -768,7 +768,7 @@
             
             <aactivity>
               <no-tests>Evaluation Activities for this component are performed through evaluation of
-                <xref to="fdp_pdc_ext.1"/>.</no-tests>
+                <xref to="fdp-pdc-ext-1"/>.</no-tests>
             </aactivity>
           </f-element>
         </f-component>
@@ -844,7 +844,7 @@
             </note>            
             <aactivity>
               <no-tests>Evaluation Activities for this component are performed through evaluation of
-                <xref to="fdp_pdc_ext.1"/>.</no-tests>
+                <xref to="fdp-pdc-ext-1"/>.</no-tests>
             </aactivity>
           </f-element>          
         </f-component>
@@ -882,7 +882,7 @@
             
             <aactivity>
               <no-tests>Evaluation Activities for this component are performed through evaluation of
-                <xref to="fdp_apc_ext.1"/>.</no-tests>
+                <xref to="fdp-pdc-ext-1"/>.</no-tests>
             </aactivity>
           </f-element>
         </f-component>
