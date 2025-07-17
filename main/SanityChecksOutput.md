@@ -5,9 +5,6 @@
 * Error: Detected multiple elements with an id of 'fdp-pdc-ext-2e2-vi'.
 * Error: Detected multiple elements with an id of 'fdp-udf-ext-1e1'.
 * Error: Detected multiple elements with an id of 'fdp-udf-ext-1e1'.
- Failed to find a reference to fdp_pdc_ext.1.
- Failed to find a reference to fdp_pdc_ext.1.
- Failed to find a reference to fdp_apc_ext.1.
 warning: failed to load external entity "output/bpp-psd.xml"
 warning: failed to load external entity "output/bpp-psd.xml"
 warning: failed to load external entity "output/bpp-psd.xml"
