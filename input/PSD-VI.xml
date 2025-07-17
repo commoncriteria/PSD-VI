@@ -550,7 +550,7 @@
                         <h:li>Disconnect computer #1 and repeat steps 2 to 8 with computer #2 on the same port.</h:li>
                         <h:li>Repeat steps 2 to 9 for a total of 20 EDID file captures.</h:li>
                         <h:li>Collect all 20 captured EDID files, compare them bit‐by‐bit, and
-                          verify that they are identical excluding null caputres recorded in Step 7.</h:li>
+                          verify that they are identical excluding null captures recorded in Step 7.</h:li>
                       </h:ol>
                     </test>
                   </testlist>
