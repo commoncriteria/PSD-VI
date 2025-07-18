@@ -485,7 +485,7 @@
                             <h:li>USB Type‐C with DisplayPort as Alternate Function – USB sniffer in series between the display and
                               the TOE</h:li>
                             <h:li>VGA – VGA sink test device</h:li>
-                            <h:li>DVI-I/DVI - DVI sink test device</h:li>                            
+                            <h:li>DVI-I/DVI-D - DVI sink test device</h:li>                            
                           </h:ol></h:li>
                             <h:li>Attempt to change the display contrast and brightness. Verify that the testing device does not
                               capture any MCCS commands.</h:li>
@@ -493,7 +493,7 @@
                               interface. If DVI‐I or DVI‐D is selected, use an HDMI source generator.</h:li>
                             <h:li>Run an EDID write transaction at the generator and verify in the testing device that no EDID traffic
                               is captured.</h:li>
-                            <h:li>[Conditional, if DisplayPort, HDMI, or USB Type‐C is the selected protocol being
+                            <h:li>[Conditional, if DisplayPort (DP++ - Dual Mode Only), HDMI, or USB Type‐C is the selected protocol being
                               tested at the computer video interface, then] run Consumer Electronics Control (CEC) and High‐bandwidth
                               Digital Content Protection (HDCP) tests or commands at the generator and verify in the testing device that
                               no CEC or HDCP traffic is captured for HDMI or USB-C, or check for an absence of power on pin 14 (CONFIG2)
@@ -589,7 +589,7 @@
                         <h:li>Disconnect computer #1 and repeat steps 2 to 8 with computer #2 on the same port.</h:li>
                         <h:li>Repeat steps 2 to 9 for a total of 20 EDID file captures.</h:li>
                         <h:li>Collect all 20 captured EDID files, compare them bit‐by‐bit, and
-                          verify that they are identical excluding null caputres recorded in Step 7.</h:li>
+                          verify that they are identical excluding null captures recorded in Step 7.</h:li>
                       </h:ol>
                     </test>
                   </testlist>
@@ -598,7 +598,7 @@
             </f-element>
           </f-component>
           
-          <f-component cc-id="fdp_pdc_ext.1" name="Peripheral Device Connection">
+          <f-component cc-id="fdp_pdc_ext.1" name="Peripheral Device Connection" id="fdp-pdc-ext-1">
             <consistency-rationale>
               This SFR is not changed by this PP‐Module and only defines existing Evaluation
               Activities for video/display devices, which does not conflict with the PSD PP.
@@ -807,7 +807,7 @@
             
             <aactivity>
               <no-tests>Evaluation Activities for this component are performed through evaluation of
-                <xref to="fdp_pdc_ext.1"/>.</no-tests>
+                <xref to="fdp-pdc-ext-1"/>.</no-tests>
             </aactivity>
           </f-element>
         </f-component>
@@ -883,7 +883,7 @@
             </note>            
             <aactivity>
               <no-tests>Evaluation Activities for this component are performed through evaluation of
-                <xref to="fdp_pdc_ext.1"/>.</no-tests>
+                <xref to="fdp-pdc-ext-1"/>.</no-tests>
             </aactivity>
           </f-element>          
         </f-component>
@@ -921,7 +921,7 @@
             
             <aactivity>
               <no-tests>Evaluation Activities for this component are performed through evaluation of
-                <xref to="fdp_apc_ext.1"/>.</no-tests>
+                <xref to="fdp-pdc-ext-1"/>.</no-tests>
             </aactivity>
           </f-element>
         </f-component>
@@ -977,6 +977,7 @@
             </title>
             
             <note role="application">
+              <comment>we may want to further distinguish what is intended here as "multiple connected displays" - if this is meant to be for dual monitor support then the testing would include verifying there is no crosstalk between heads (e.g. port 1 head 1 should be isolated from both port 2 head 1 and port 2 head 2). If "multiple connected displays" is meant to refer to "multiple connected displays at the same time" i.e. the combiner use case then we should just be explicit about that. We may want to just have two separate selections for this. Also, as alluded to in the updated note here, it is possible for a device to have a "security camera" style feed on a separate monitor that shows an aggregation of multiple feeds or just a single feed. But in both cases that screen should have the feed(s) labeled because that may be set independently of the other peripherals (e.g. your keyboard/mouse/primary monitor can all be on computer 1 while your second monitor can show all of computers 1-4 in a grid, or just any of them individually; either way this secondary monitor should label its feeds because otherwise it would be ambiguous with respect to what computers were active on it.</comment><h:br/>
               This SFR must be claimed if “switching can be initiated only through express user
               action” is chosen as a selection for FDP_SWI_EXT.1 in the PSD PP.<h:br/><h:br/>
               If “peripheral devices using a guard” is selected in FDP_SWI_EXT.2.2 (from the PSD
@@ -1056,7 +1057,7 @@
             
           <note role="application">
               This SFR must be claimed if "DisplayPort" is chosen as a selection for
-              FDP_PDC_EXT.3.1/VI.The intent of this requirement is to ensure HDMI is used in place of DisplayPort 
+              FDP_PDC_EXT.3.1/VI. The intent of this requirement is to ensure HDMI is used in place of DisplayPort 
               while within the TOE, whether the DisplayPort interface is at the peripheral display interface, 
               computer video interface, or both.<h:br/><h:br/>              
               The first selection in FDP_IPC_EXT.1.2 should match the second selection of FDP_IPC_EXT.1.1.
