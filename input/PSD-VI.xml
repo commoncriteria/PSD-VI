@@ -348,9 +348,15 @@
   <sec:Security_Objectives>
     
     <sec:Security_Objectives_for_the_Operational_Environment>
-      Because this PP‐Module does not define any additional assumptions or organizational security policies,
-      there are no additional security objectives for the Operational Environment to satisfy.
-    </sec:Security_Objectives_for_the_Operational_Environment>    
+      <SOEs>
+        <SOE name="OE.NO_SPECIAL_ANALOG_CAPABILITIES">
+          <description>The operational environment will not have special analog data collection cards or peripherals such as
+            analog to digital interface, high performance audio interface, or a component with digital signal
+            processing or analog video capture functions.</description>          
+        </SOE>
+      </SOEs>
+    </sec:Security_Objectives_for_the_Operational_Environment>
+<sec:Security_Objectives_Rationale/>    
     
   </sec:Security_Objectives>
 
@@ -358,7 +364,7 @@
     <comment>Need to add URLs once created</comment>
     <base-pp id="bpp-psd" name="Peripheral Sharing Device" product="Device" short="PSD" version="5.0">
       <git>
-        <url>https://github.com/commoncriteria/PSD</url>
+        <url>https://github.com/commoncriteria/VI</url>
         <branch>main</branch>
       </git>
       <url>https://commoncriteria.github.io/PSD/main/PSD-release.html</url>
