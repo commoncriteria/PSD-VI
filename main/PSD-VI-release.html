@@ -632,7 +632,7 @@ function showTarget(id){
     </style></head><body onLoad="init()"><div id="commmentbox-"><a href="#Comment-1-">Comment: Comment-1-</a><br/><a href="#Comment-2-">Comment: Comment-2-</a><br/><a href="#Comment-3-">Comment: Comment-3-</a><br/></div><h1 class="title" style="page-break-before:auto;">PP-Module for Video/Display Device</h1><noscript><h1 style="text-align:center; border-style: dashed; border-width: medium; border-color: red;">This page is best viewed with JavaScript enabled!</h1></noscript><div class="center"><img src="images/niaplogo.png" alt="NIAP Logo"></img><br/>
       Version: 2.0<br/>2025-07-11<br/><b>National Information Assurance Partnership</b><br/></div><h2 style="page-break-before:always;">Revision History</h2><table><tr class="header"><th>Version</th><th>Date</th><th>Comment</th></tr><tr><td>1.0</td><td>2019-07-19</td><td>Initial draft</td></tr>
 <tr><td>2.0</td><td>2025-07-11</td><td>Updates for <abbr class="dyn-abbr"><a href="#abbr_CC">CC</a></abbr>:2022</td></tr>
-</table><h2>Contents</h2><div class="toc" id="toc"><a href="#Introduction" style="text-indent:0px">1<span>Introduction</span></a><a href="#ppoverview" style="text-indent:10px">1.1<span>Overview</span></a><a href="#glossary" style="text-indent:10px">1.2<span>Terms</span></a><a href="#cc-terms" style="text-indent:20px">1.2.1<span>Common Criteria Terms</span></a><a href="#tech-terms" style="text-indent:20px">1.2.2<span>Technical Terms</span></a><a href="#TOEdescription" style="text-indent:10px">1.3<span>Compliant Targets of Evaluation</span></a><a href="#TOEboundary" style="text-indent:10px">1.4<span>TOE Boundary</span></a><a href="#usecases" style="text-indent:10px">1.5<span>Use Cases</span></a><a href="#sec-cclaims" style="text-indent:0px">2<span>Conformance Claims</span></a><a href="#Security_Problem_Definition" style="text-indent:0px">3<span>Security Problem Definition</span></a><a href="#Threats" style="text-indent:10px">3.1<span>Threats</span></a><a href="#Assumptions" style="text-indent:10px">3.2<span>Assumptions</span></a><a href="#Organizational_Security_Policies" style="text-indent:10px">3.3<span>Organizational Security Policies</span></a><a href="#Security_Objectives" style="text-indent:0px">4<span>Security Objectives</span></a><a href="#Security_Objectives_for_the_Operational_Environment" style="text-indent:10px">4.1<span>Security Objectives for the Operational Environment</span></a><a href="#Security_Requirements" style="text-indent:0px">5<span>Security Requirements</span></a><a href="#secreq-bpp-psd" style="text-indent:10px">5.1<span>
+</table><h2>Contents</h2><div class="toc" id="toc"><a href="#Introduction" style="text-indent:0px">1<span>Introduction</span></a><a href="#ppoverview" style="text-indent:10px">1.1<span>Overview</span></a><a href="#glossary" style="text-indent:10px">1.2<span>Terms</span></a><a href="#cc-terms" style="text-indent:20px">1.2.1<span>Common Criteria Terms</span></a><a href="#tech-terms" style="text-indent:20px">1.2.2<span>Technical Terms</span></a><a href="#TOEdescription" style="text-indent:10px">1.3<span>Compliant Targets of Evaluation</span></a><a href="#TOEboundary" style="text-indent:10px">1.4<span>TOE Boundary</span></a><a href="#usecases" style="text-indent:10px">1.5<span>Use Cases</span></a><a href="#_sec_5" style="text-indent:10px">1.6<span>Test Environment for Evaluation Activities</span></a><a href="#sec-cclaims" style="text-indent:0px">2<span>Conformance Claims</span></a><a href="#Security_Problem_Definition" style="text-indent:0px">3<span>Security Problem Definition</span></a><a href="#Threats" style="text-indent:10px">3.1<span>Threats</span></a><a href="#Assumptions" style="text-indent:10px">3.2<span>Assumptions</span></a><a href="#Organizational_Security_Policies" style="text-indent:10px">3.3<span>Organizational Security Policies</span></a><a href="#Security_Objectives" style="text-indent:0px">4<span>Security Objectives</span></a><a href="#Security_Objectives_for_the_Operational_Environment" style="text-indent:10px">4.1<span>Security Objectives for the Operational Environment</span></a><a href="#Security_Requirements" style="text-indent:0px">5<span>Security Requirements</span></a><a href="#secreq-bpp-psd" style="text-indent:10px">5.1<span>
     Protection Profile for Peripheral Sharing Device
        Security Functional Requirements Direction
     </span></a><a href="#modsfr-bpp-psd" style="text-indent:20px">5.1.1<span> Modified SFRs </span></a><a href="#mod_fdp" style="text-indent:30px">5.1.1.1<span>User Data Protection (FDP)</span></a><a href="#mod_fta" style="text-indent:30px">5.1.1.2<span>TOE Access (FTA)</span></a><a href="#man-sfrs" style="text-indent:10px">5.2<span>TOE Security Functional Requirements</span></a><a href="#FDP" style="text-indent:20px">5.2.1<span>User Data Protection (FDP)</span></a><a href="#obj-req-map" style="text-indent:10px">5.3<span>TOE Security Functional Requirements Rationale</span></a><a href="#mod-conrat" style="text-indent:0px">6<span>Consistency Rationale</span></a><a href="#conrat-bpp-psd" style="text-indent:10px">6.1<span>
@@ -648,7 +648,7 @@ function showTarget(id){
     </span></a><a href="#obj-sfrs" style="text-indent:10px">A.2<span>Objective Requirements
     </span></a><a href="#impl-dep-sfrs" style="text-indent:10px">A.3<span>Implementation-dependent Requirements
     </span></a><a href="#sel-sfrs" style="text-indent:0px">Appendix B - <span>Selection-based Requirements
-    </span></a><a href="#" style="text-indent:10px">B.1<span>User Data Protection (FDP)</span></a><a href="#ext-comp-defs" style="text-indent:0px">Appendix C - <span>Extended Component Definitions</span></a><a href="#ext-comp-defs-bg" style="text-indent:10px">C.1<span>Extended Components Table</span></a><a href="#ext-comp-defs-bg" style="text-indent:10px">C.2<span>Extended Component Definitions</span></a><a href="#ext-comp-FDP" style="text-indent:20px">C.2.1<span>User Data Protection (FDP)</span></a><a href="#ext-comp-FDP_PDC_EXT" style="text-indent:30px">C.2.1.1<span>FDP_PDC_EXT Peripheral Device Connection</span></a><a href="#ext-comp-FDP_UDF_EXT" style="text-indent:30px">C.2.1.2<span>FDP_UDF_EXT Unidirectional Data Flow (Video Output)</span></a><a href="#ext-comp-FDP_CDS_EXT" style="text-indent:30px">C.2.1.3<span>FDP_CDS_EXT Connected Displays Supported</span></a><a href="#ext-comp-FDP_IPC_EXT" style="text-indent:30px">C.2.1.4<span>FDP_IPC_EXT Internal Protocol Conversion</span></a><a href="#ext-comp-FDP_SPR_EXT" style="text-indent:30px">C.2.1.5<span>FDP_SPR_EXT Sub-Protocol Rules</span></a><a href="#iso-doc-assess" style="text-indent:0px">Appendix D - <span>Isolation Documentation and Assessment</span></a><a href="#perdevcon" style="text-indent:0px">Appendix E - <span>Peripheral Device Connections</span></a><a href="#_sec_8" style="text-indent:10px">E.1<span>General</span></a><a href="#_sec_9" style="text-indent:10px">E.2<span>Unauthorized Peripheral Devices</span></a><a href="#_sec_10" style="text-indent:10px">E.3<span>Unauthorized Interface Protocols</span></a><a href="#_sec_11" style="text-indent:10px">E.4<span>Authorized Peripheral Devices</span></a><a href="#_sec_12" style="text-indent:10px">E.5<span>Authorized Interface Protocols</span></a><a href="#interbetmod" style="text-indent:0px">Appendix F - <span>Interactions between PP-Modules</span></a><a href="#_sec_13" style="text-indent:10px">F.1<span>PP-Module for Audio Output Devices</span></a><a href="#_sec_14" style="text-indent:10px">F.2<span>PP-Module for Keyboard/Mouse Devices</span></a><a href="#_sec_15" style="text-indent:10px">F.3<span>PP-Module for User Authentication Devices</span></a><a href="#acronyms" style="text-indent:0px">Appendix G - <span>Acronyms</span></a><a href="#appendix-bibliography" style="text-indent:0px">Appendix H - <span>Bibliography</span></a></div><h1 class="indexable" data-level="1" id="Introduction">1 Introduction</h1>
+    </span></a><a href="#" style="text-indent:10px">B.1<span>User Data Protection (FDP)</span></a><a href="#ext-comp-defs" style="text-indent:0px">Appendix C - <span>Extended Component Definitions</span></a><a href="#ext-comp-defs-bg" style="text-indent:10px">C.1<span>Extended Components Table</span></a><a href="#ext-comp-defs-bg" style="text-indent:10px">C.2<span>Extended Component Definitions</span></a><a href="#ext-comp-FDP" style="text-indent:20px">C.2.1<span>User Data Protection (FDP)</span></a><a href="#ext-comp-FDP_PDC_EXT" style="text-indent:30px">C.2.1.1<span>FDP_PDC_EXT Peripheral Device Connection</span></a><a href="#ext-comp-FDP_UDF_EXT" style="text-indent:30px">C.2.1.2<span>FDP_UDF_EXT Unidirectional Data Flow (Video Output)</span></a><a href="#ext-comp-FDP_CDS_EXT" style="text-indent:30px">C.2.1.3<span>FDP_CDS_EXT Connected Displays Supported</span></a><a href="#ext-comp-FDP_IPC_EXT" style="text-indent:30px">C.2.1.4<span>FDP_IPC_EXT Internal Protocol Conversion</span></a><a href="#ext-comp-FDP_SPR_EXT" style="text-indent:30px">C.2.1.5<span>FDP_SPR_EXT Sub-Protocol Rules</span></a><a href="#iso-doc-assess" style="text-indent:0px">Appendix D - <span>Isolation Documentation and Assessment</span></a><a href="#perdevcon" style="text-indent:0px">Appendix E - <span>Peripheral Device Connections</span></a><a href="#_sec_9" style="text-indent:10px">E.1<span>General</span></a><a href="#_sec_10" style="text-indent:10px">E.2<span>Unauthorized Peripheral Devices</span></a><a href="#_sec_11" style="text-indent:10px">E.3<span>Unauthorized Interface Protocols</span></a><a href="#_sec_12" style="text-indent:10px">E.4<span>Authorized Peripheral Devices</span></a><a href="#_sec_13" style="text-indent:10px">E.5<span>Authorized Interface Protocols</span></a><a href="#interbetmod" style="text-indent:0px">Appendix F - <span>Interactions between PP-Modules</span></a><a href="#_sec_14" style="text-indent:10px">F.1<span>PP-Module for Audio Output Devices</span></a><a href="#_sec_15" style="text-indent:10px">F.2<span>PP-Module for Keyboard/Mouse Devices</span></a><a href="#_sec_16" style="text-indent:10px">F.3<span>PP-Module for User Authentication Devices</span></a><a href="#acronyms" style="text-indent:0px">Appendix G - <span>Acronyms</span></a><a href="#appendix-bibliography" style="text-indent:0px">Appendix H - <span>Bibliography</span></a></div><h1 class="indexable" data-level="1" id="Introduction">1 Introduction</h1>
     <h2 class="indexable" data-level="2" id="ppoverview">1.1 Overview</h2>
       The scope of this Protection Profile (<abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr>)‐Module is to describe the security functionality of a specific type
       of Peripheral Sharing Device (<abbr class="dyn-abbr"><a href="#abbr_PSD">PSD</a></abbr>) product in terms of Common Criteria for Information Technology
@@ -772,6 +772,47 @@ The following sections list Common Criteria and technology terms used in this do
         <li>Video Wall – Output from one or more computers to be shown across multiple displays</li>
     </ul>
         
+    <h2 class="indexable" data-level="2" id="_sec_5">1.6 Test Environment for Evaluation Activities</h2>
+      In order to ensure that the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> demonstrates the functionality required by the EAs, it is necessary for
+      the evaluator to ensure that they have appropriate equipment to conduct the required testing. In
+      addition to the equipment that is relevant for testing any <abbr class="dyn-abbr"><a href="#abbr_PSD">PSD</a></abbr> as defined in the <abbr class="dyn-abbr"><a href="#abbr_PSD">PSD</a></abbr> <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr>, the following
+      additional equipment should be used in testing:<ul>
+        <li>Display devices encompassing all display protocols the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> supports (Video Graphics Array (<abbr class="dyn-abbr"><a href="#abbr_VGA">VGA</a></abbr>),
+          High‐Definition Multimedia Interface (<abbr class="dyn-abbr"><a href="#abbr_HDMI">HDMI</a></abbr>), Digital Visual Interface (<abbr class="dyn-abbr"><a href="#abbr_DVI">DVI</a></abbr>)‐I/D, DisplayPort, and
+          <abbr class="dyn-abbr"><a href="#abbr_USB">USB</a></abbr> Type‐C with DisplayPort as alternate function)</li>
+        <li>Oscilloscope capable of sampling at least one single‐ended signal or one differential signal at 400
+          MHz or above</li>
+        <li>3.3v power supply</li>
+        <li>100 Ohm resistor</li>
+        <li>Multi‐meter capable of measuring voltage in millivolts and resistance above 2 Mega‐Ohms</li>
+        <li>Monitor Control Command Set (<abbr class="dyn-abbr"><a href="#abbr_MCCS">MCCS</a></abbr>) Control Console Software</li>
+        <li>I2C Programmer</li>
+        <li>Conditional – If the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> supports DisplayPort video interfaces:<ul>
+          <li>DisplayPort AUX Channel Analyzer</li>
+          <li>DisplayPort Source generator device or Peripheral Component Interconnect (PCI) card</li>
+        </ul></li>
+        <li>Conditional – If the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> supports <abbr class="dyn-abbr"><a href="#abbr_HDMI">HDMI</a></abbr> or <abbr class="dyn-abbr"><a href="#abbr_DVI">DVI</a></abbr> video interfaces:<ul>
+          <li><abbr class="dyn-abbr"><a href="#abbr_HDMI">HDMI</a></abbr> sink test device</li>
+          <li><abbr class="dyn-abbr"><a href="#abbr_HDMI">HDMI</a></abbr> source generator or PCI card</li>
+        </ul></li>        
+        <li>Conditional – If the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> supports <abbr class="dyn-abbr"><a href="#abbr_VGA">VGA</a></abbr> video interfaces:<ul>
+          <li><abbr class="dyn-abbr"><a href="#abbr_VGA">VGA</a></abbr> sink test device</li>
+          <li><abbr class="dyn-abbr"><a href="#abbr_VGA">VGA</a></abbr> source generator or PCI card</li>
+        </ul></li>        
+        <li>Conditional – If the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> supports <abbr class="dyn-abbr"><a href="#abbr_USB">USB</a></abbr>‐Type C with DisplayPort as alternate function video
+          interfaces<ul>
+            <li><abbr class="dyn-abbr"><a href="#abbr_USB">USB</a></abbr> sniffer</li>
+            <li>UB source generator or PCI card</li>
+          </ul></li>        
+        <li>Optional: Spectrum analyzer with single‐ended and differential probes. Spectrum analyzer
+          bandwidth should be at least 20% higher than the highest video bandwidth the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> supports</li>
+        <li>Optional: Video breakout device compatible with <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> display interfaces</li>            
+      </ul>      
+      When conducting testing, each <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> interface must be tested but not all interfaces must be tested
+      simultaneously. For example, if testing a 16‐port device, the evaluator may use four connected computers,
+      but must change the connected ports several times to ensure all <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> display interfaces and all <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr>
+      computer video interfaces are tested. Some equivalency arguments between ports are allowed.
+     
   <h1 class="indexable" data-level="1" id="sec-cclaims">2 Conformance Claims</h1>
     <dl><dt>Conformance Statement</dt><p></p><dd>An <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> must claim exact conformance 
 		 to this <abbr class="dyn-abbr"><a href="#abbr_PP-Module">PP-Module</a></abbr>.</dd><p></p><dd>The evaluation methods used for evaluating the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> are a combination of the workunits 
@@ -1043,7 +1084,7 @@ The following sections list Common Criteria and technology terms used in this do
             threat by ensuring the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> applies the specified rules for the <abbr class="dyn-abbr"><a href="#abbr_USB">USB</a></abbr> protocol.</td></tr>
 <tr><td><a href="#FDP_SPR_EXT.1/VGA">FDP_SPR_EXT.1/VGA</a> (selection-based)</td><td>Mitigates this
             threat by ensuring the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> applies the specified rules for the <abbr class="dyn-abbr"><a href="#abbr_VGA">VGA</a></abbr> protocol.</td></tr>
-<tr class="major-row"><td rowspan="9"><a href="#T.SIGNAL_LEAK">T.SIGNAL_​LEAK</a>
+<tr class="major-row"><td rowspan="8"><a href="#T.SIGNAL_LEAK">T.SIGNAL_​LEAK</a>
 		(from <abbr class="dyn-abbr"><a href="#abbr_PSD">PSD</a></abbr> <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr>)
 	</td><td><a href="#FDP_PDC_EXT.2/VI">FDP_PDC_EXT.2/VI</a></td><td>Mitigates this threat by only
             allowing authorized device connections with authorized interface protocols.</td></tr>
@@ -1059,8 +1100,6 @@ The following sections list Common Criteria and technology terms used in this do
             threat by ensuring the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> applies the specified rules for the <abbr class="dyn-abbr"><a href="#abbr_USB">USB</a></abbr> protocol.</td></tr>
 <tr><td><a href="#FDP_SPR_EXT.1/VGA">FDP_SPR_EXT.1/VGA</a> (selection-based)</td><td>Mitigates this
             threat by ensuring the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> applies the specified rules for the <abbr class="dyn-abbr"><a href="#abbr_VGA">VGA</a></abbr> protocol.</td></tr>
-<tr><td><a href="#FDP_UDF_EXT.1/VI">FDP_UDF_EXT.1/VI</a></td><td>Mitigates this threat by ensuring
-            video data transits unidirectionally between interfaces.</td></tr>
 <tr><td><a href="#FDP_UDF_EXT.1/VI">FDP_UDF_EXT.1/VI</a></td><td>Mitigates this threat by ensuring
             video data transits unidirectionally between interfaces.</td></tr>
 <tr class="major-row"><td rowspan="10"><a href="#T.UNAUTHORIZED_DEVICES">T.UNAUTHORIZED_​DEVICES</a>
@@ -1543,30 +1582,30 @@ The following sections list Common Criteria and technology terms used in this do
     documentation also applies to the specific isolation and data flow <abbr class="dyn-abbr"><a href="#abbr_SFR">SFRs</a></abbr> in this <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr>‐module in addition to
     the functionality the <abbr class="dyn-abbr"><a href="#abbr_PSD">PSD</a></abbr> <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr> requires.    
   <h1 id="perdevcon" class="indexable" data-level="A">Appendix E -  Peripheral Device Connections</h1>
-    <h2 class="indexable" data-level="2" id="_sec_8">E.1 General</h2>
+    <h2 class="indexable" data-level="2" id="_sec_9">E.1 General</h2>
       This appendix expands the <abbr class="dyn-abbr"><a href="#abbr_PSD">PSD</a></abbr> <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr> Peripheral Device Connections appendix, and offers additional direction
       on peripheral devices and interface protocols with <abbr class="dyn-abbr"><a href="#abbr_TOE">TOEs</a></abbr> claiming compliance with this <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr>‐Module. This
       appendix is in conjunction with the <abbr class="dyn-abbr"><a href="#abbr_PSD">PSD</a></abbr> <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr>’s appendix and does not replace it.
     
     
-    <h2 class="indexable" data-level="2" id="_sec_9">E.2 Unauthorized Peripheral Devices</h2>
+    <h2 class="indexable" data-level="2" id="_sec_10">E.2 Unauthorized Peripheral Devices</h2>
       The following are unauthorized devices:<ul>        
         <li>Any device not specifically authorized</li>
       </ul>     
     
     
-    <h2 class="indexable" data-level="2" id="_sec_10">E.3 Unauthorized Interface Protocols</h2>
+    <h2 class="indexable" data-level="2" id="_sec_11">E.3 Unauthorized Interface Protocols</h2>
       The following are unauthorized interface protocols:<ul>
         <li>Any interface protocol not specifically authorized</li>        
       </ul>
     
-    <h2 class="indexable" data-level="2" id="_sec_11">E.4 Authorized Peripheral Devices</h2>
+    <h2 class="indexable" data-level="2" id="_sec_12">E.4 Authorized Peripheral Devices</h2>
       The following are authorized devices<ul>
         <li>Display device</li>
       </ul>
     
     
-    <h2 class="indexable" data-level="2" id="_sec_12">E.5 Authorized Interface Protocols</h2>
+    <h2 class="indexable" data-level="2" id="_sec_13">E.5 Authorized Interface Protocols</h2>
       The following are authorized interface protocols:<ul>
         <li>DisplayPort</li>
         <li><abbr class="dyn-abbr"><a href="#abbr_DVI">DVI</a></abbr>-D</li>
@@ -1579,7 +1618,7 @@ The following sections list Common Criteria and technology terms used in this do
   <h1 id="interbetmod" class="indexable" data-level="A">Appendix F -  Interactions between PP-Modules</h1>
     This appendix provides any additional guidance required to address interactions between multiple
     <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr>-Modules when they are both contained within a <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr>‐Configuration.
-    <h2 class="indexable" data-level="2" id="_sec_13">F.1 PP-Module for Audio Output Devices</h2>
+    <h2 class="indexable" data-level="2" id="_sec_14">F.1 PP-Module for Audio Output Devices</h2>
       Unauthorized devices identified in both <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr>‐Modules are considered unauthorized devices for the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> as
       per <a href="#FDP_PDC_EXT.1">FDP_PDC_EXT.1</a>.<br/><br/>
       Authorized devices identified in both <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr>‐Modules are considered authorized devices for the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> as per
@@ -1592,7 +1631,7 @@ The following sections list Common Criteria and technology terms used in this do
       peripheral types. The <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> author should make two iterations of this <abbr class="dyn-abbr"><a href="#abbr_SFR">SFR</a></abbr>, <a href="#FDP_APC_EXT.1">FDP_APC_EXT.1</a>/UA and
       <a href="#FDP_APC_EXT.1">FDP_APC_EXT.1</a>/AO, to show the different modifications made for each specific peripheral type.
     
-    <h2 class="indexable" data-level="2" id="_sec_14">F.2 PP-Module for Keyboard/Mouse Devices</h2>
+    <h2 class="indexable" data-level="2" id="_sec_15">F.2 PP-Module for Keyboard/Mouse Devices</h2>
       Unauthorized devices identified in both <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr>‐Modules are considered unauthorized devices for the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> as
       per <a href="#FDP_PDC_EXT.1">FDP_PDC_EXT.1</a>.<br/><br/>
       Authorized devices identified in both <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr>‐Modules are considered authorized devices for the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> as per
@@ -1603,7 +1642,7 @@ The following sections list Common Criteria and technology terms used in this do
       peripheral types. The <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> author should make two iterations of this <abbr class="dyn-abbr"><a href="#abbr_SFR">SFR</a></abbr>, <a href="#FDP_APC_EXT.1">FDP_APC_EXT.1</a>/UA and
       <a href="#FDP_APC_EXT.1">FDP_APC_EXT.1</a>/KM, to show the different modifications made for each specific peripheral type.
     
-    <h2 class="indexable" data-level="2" id="_sec_15">F.3 PP-Module for User Authentication Devices</h2>
+    <h2 class="indexable" data-level="2" id="_sec_16">F.3 PP-Module for User Authentication Devices</h2>
       Unauthorized devices identified in both <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr>‐Modules are considered unauthorized devices for the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> as
       per <a href="#FDP_PDC_EXT.1">FDP_PDC_EXT.1</a>.<br/><br/>
       Authorized devices identified in both <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr>‐Modules are considered authorized devices for the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> as per
