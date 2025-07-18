@@ -660,7 +660,10 @@ function showTarget(id){
       <abbr class="dyn-abbr"><a href="#abbr_PSD">PSD</a></abbr> products, but additional specific requirements and Evaluation Activities apply depending on the types
       of physical and logical interfaces a <abbr class="dyn-abbr"><a href="#abbr_PSD">PSD</a></abbr> includes. Therefore, this <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr>‐Module defines additional Security
       Functional Requirements (<abbr class="dyn-abbr"><a href="#abbr_SFR">SFRs</a></abbr>) for security functionality unique to a <abbr class="dyn-abbr"><a href="#abbr_PSD">PSD</a></abbr> that includes the ability to
-      manipulate or assign video source inputs to video or display output devices.      
+      manipulate or assign video source inputs to video or display output devices. <br/><br/>
+      This <abbr class="dyn-abbr"><a href="#abbr_PP-Module">PP-Module</a></abbr> is intended for use with the following <abbr class="dyn-abbr"><a href="#abbr_Base-PP">Base-PPs</a></abbr>:<ul>
+        <li>Peripheral Sharing Devices Protection Profile, Version 5.0</li>
+      </ul>      
     
     
     <div class="no-link"><h2 id="glossary" class="indexable" data-level="2">1.2 Terms</h2>
@@ -857,9 +860,17 @@ The following sections list Common Criteria and technology terms used in this do
     
     
     <h2 class="indexable" data-level="2" id="Assumptions">3.2 Assumptions</h2>
+These assumptions are made on the Operational Environment (<abbr class="dyn-abbr"><a href="#abbr_OE">OE</a></abbr>) in order to be able to ensure that the
+security functionality specified in the <abbr class="dyn-abbr"><a href="#abbr_PP-Module">PP-Module</a></abbr> can be provided by the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr>.
+If the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> is placed in an <abbr class="dyn-abbr"><a href="#abbr_OE">OE</a></abbr> that does not meet these assumptions, the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> may no longer be able to
+provide all of its security functionality.
       
-      This document does not define any additional assumptions.
-    
+      This <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr>‐Module defines the following additional assumption beyond those defined in the <abbr class="dyn-abbr"><a href="#abbr_PSD">PSD</a></abbr> <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr>
+      <dl><dt class="assumption defined" id="A.NO_SPECIAL_ANALOG_CAPABILITIES">A.NO_SPECIAL_ANALOG_CAPABILITIES</dt><dd><span class="description">
+            The computers connected to the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> are not equipped with special analog data collection cards or
+            peripherals such as analog to digital interface, high performance audio interface, digital signal
+            processing function, or analog video capture function.       
+          </span></dd></dl>
     
       
     <h2 class="indexable" data-level="2" id="Organizational_Security_Policies">3.3 Organizational Security Policies</h2><p>An organization deploying the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> is
@@ -1422,7 +1433,11 @@ The following sections list Common Criteria and technology terms used in this do
         This threat is from the <abbr class="dyn-abbr"><a href="#abbr_PSD">PSD</a></abbr> <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr>, thus no conflict exists.
       </td></tr><tr><td><a href="#T.UNINTENDED_USE">T.UNINTENDED_USE</a></td><td>
         This threat is from the <abbr class="dyn-abbr"><a href="#abbr_PSD">PSD</a></abbr> <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr>, thus no conflict exists.
-      </td></tr></table><h3 id="conobj-bpp-psd" class="indexable" data-level="3">6.1.3 
+      </td></tr><tr><td><a href="#A.NO_SPECIAL_ANALOG_CAPABILITIES">A.NO_SPECIAL_ANALOG_CAPABILITIES</a></td><td>
+            If administrators in the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr>’s operational environment take care to ensure that computers with special
+            analog data collection interfaces are not connected to the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr>, then the assumption that such components
+            are not present is satisfied.
+          </td></tr></table><h3 id="conobj-bpp-psd" class="indexable" data-level="3">6.1.3 
 			Consistency of OE Objectives
 		</h3><p></p><h3 id="conreq-bpp-psd" class="indexable" data-level="3">6.1.4 
 	Consistency of Requirements
