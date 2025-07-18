@@ -50,7 +50,10 @@
       PSD products, but additional specific requirements and Evaluation Activities apply depending on the types
       of physical and logical interfaces a PSD includes. Therefore, this PP‐Module defines additional Security
       Functional Requirements (SFRs) for security functionality unique to a PSD that includes the ability to
-      manipulate or assign video source inputs to video or display output devices.      
+      manipulate or assign video source inputs to video or display output devices. <h:br/><h:br/>
+      This PP-Module is intended for use with the following Base-PPs:<h:ul>
+        <h:li>Peripheral Sharing Devices Protection Profile, Version 5.0</h:li>
+      </h:ul>      
     </section>
     
     <tech-terms>
@@ -313,7 +316,28 @@
     </sec:Threats>
     
     <sec:Assumptions>
-      <assumptions/>
+      This PP‐Module defines the following additional assumption beyond those defined in the PSD PP
+      <assumptions>
+        <assumption name="A.NO_SPECIAL_ANALOG_CAPABILITIES">
+          <description>
+            The computers connected to the TOE are not equipped with special analog data collection cards or
+            peripherals such as analog to digital interface, high performance audio interface, digital signal
+            processing function, or analog video capture function.       
+          </description>
+          
+          <consistency-rationale>
+            If administrators in the TOE’s operational environment take care to ensure that computers with special
+            analog data collection interfaces are not connected to the TOE, then the assumption that such components
+            are not present is satisfied.
+          </consistency-rationale>
+          
+          <objective-refer ref="OE.NO_SPECIAL_ANALOG_CAPABILITIES">
+            <rationale>If administrators in the TOE’s operational environment take care to ensure that computers with special
+              analog data collection interfaces are not connected to the TOE, then the assumption that such components
+              are not present is satisfied.</rationale>
+          </objective-refer>
+        </assumption>
+      </assumptions>
     </sec:Assumptions>
       
     <sec:Organizational_Security_Policies>
