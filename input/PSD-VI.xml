@@ -149,6 +149,47 @@
         <h:li>Video Wall – Output from one or more computers to be shown across multiple displays</h:li>
     </h:ul>
     </section>    
+    <section title="Test Environment for Evaluation Activities">
+      In order to ensure that the TOE demonstrates the functionality required by the EAs, it is necessary for
+      the evaluator to ensure that they have appropriate equipment to conduct the required testing. In
+      addition to the equipment that is relevant for testing any PSD as defined in the PSD PP, the following
+      additional equipment should be used in testing:<h:ul>
+        <h:li>Display devices encompassing all display protocols the TOE supports (Video Graphics Array (VGA),
+          High‐Definition Multimedia Interface (HDMI), Digital Visual Interface (DVI)‐I/D, DisplayPort, and
+          USB Type‐C with DisplayPort as alternate function)</h:li>
+        <h:li>Oscilloscope capable of sampling at least one single‐ended signal or one differential signal at 400
+          MHz or above</h:li>
+        <h:li>3.3v power supply</h:li>
+        <h:li>100 Ohm resistor</h:li>
+        <h:li>Multi‐meter capable of measuring voltage in millivolts and resistance above 2 Mega‐Ohms</h:li>
+        <h:li>Monitor Control Command Set (MCCS) Control Console Software</h:li>
+        <h:li>I2C Programmer</h:li>
+        <h:li>Conditional – If the TOE supports DisplayPort video interfaces:<h:ul>
+          <h:li>DisplayPort AUX Channel Analyzer</h:li>
+          <h:li>DisplayPort Source generator device or Peripheral Component Interconnect (PCI) card</h:li>
+        </h:ul></h:li>
+        <h:li>Conditional – If the TOE supports HDMI or DVI video interfaces:<h:ul>
+          <h:li>HDMI sink test device</h:li>
+          <h:li>HDMI source generator or PCI card</h:li>
+        </h:ul></h:li>        
+        <h:li>Conditional – If the TOE supports VGA video interfaces:<h:ul>
+          <h:li>VGA sink test device</h:li>
+          <h:li>VGA source generator or PCI card</h:li>
+        </h:ul></h:li>        
+        <h:li>Conditional – If the TOE supports USB‐Type C with DisplayPort as alternate function video
+          interfaces<h:ul>
+            <h:li>USB sniffer</h:li>
+            <h:li>UB source generator or PCI card</h:li>
+          </h:ul></h:li>        
+        <h:li>Optional: Spectrum analyzer with single‐ended and differential probes. Spectrum analyzer
+          bandwidth should be at least 20% higher than the highest video bandwidth the TOE supports</h:li>
+        <h:li>Optional: Video breakout device compatible with TOE display interfaces</h:li>            
+      </h:ul>      
+      When conducting testing, each TOE interface must be tested but not all interfaces must be tested
+      simultaneously. For example, if testing a 16‐port device, the evaluator may use four connected computers,
+      but must change the connected ports several times to ensure all TOE display interfaces and all TOE
+      computer video interfaces are tested. Some equivalency arguments between ports are allowed.
+    </section> 
   </sec:Introduction>
 
   <section title="Conformance Claims" id="sec-cclaims" boilerplate="no">
@@ -234,8 +275,6 @@
             threat by ensuring the TSF applies the specified rules for the USB protocol.</rationale>
           <addressed-by>FDP_SPR_EXT.1/VGA (selection-based)</addressed-by><rationale>Mitigates this
             threat by ensuring the TSF applies the specified rules for the VGA protocol.</rationale>
-          <addressed-by>FDP_UDF_EXT.1/VI</addressed-by><rationale>Mitigates this threat by ensuring
-            video data transits unidirectionally between interfaces.</rationale>
           <addressed-by>FDP_UDF_EXT.1/VI</addressed-by><rationale>Mitigates this threat by ensuring
             video data transits unidirectionally between interfaces.</rationale>
         </threat>
