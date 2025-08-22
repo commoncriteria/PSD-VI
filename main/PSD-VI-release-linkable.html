@@ -631,10 +631,10 @@ function showTarget(id){
       Version: 2.0<br>2025-07-11<br><b>National Information Assurance Partnership</b><br></div><h2 style="page-break-before:always;">Revision History</h2><table><tr class="header"><th>Version</th><th>Date</th><th>Comment</th></tr><tr><td>1.0</td><td>2019-07-19</td><td>Initial draft</td></tr>
 <tr><td>2.0</td><td>2025-07-11</td><td>Updates for <abbr class="dyn-abbr"><a href="#abbr_CC">CC</a></abbr>:2022</td></tr>
 </table><h2>Contents</h2><div class="toc" id="toc"><a href="#Introduction" style="text-indent:0px">1<span>Introduction</span></a><a href="#ppoverview" style="text-indent:10px">1.1<span>Overview</span></a><a href="#glossary" style="text-indent:10px">1.2<span>Terms</span></a><a href="#cc-terms" style="text-indent:20px">1.2.1<span>Common Criteria Terms</span></a><a href="#tech-terms" style="text-indent:20px">1.2.2<span>Technical Terms</span></a><a href="#TOEdescription" style="text-indent:10px">1.3<span>Compliant Targets of Evaluation</span></a><a href="#TOEboundary" style="text-indent:10px">1.4<span>TOE Boundary</span></a><a href="#usecases" style="text-indent:10px">1.5<span>Use Cases</span></a><a href="#_sec_5" style="text-indent:10px">1.6<span>Test Environment for Evaluation Activities</span></a><a href="#sec-cclaims" style="text-indent:0px">2<span>Conformance Claims</span></a><a href="#Security_Problem_Definition" style="text-indent:0px">3<span>Security Problem Definition</span></a><a href="#Threats" style="text-indent:10px">3.1<span>Threats</span></a><a href="#Assumptions" style="text-indent:10px">3.2<span>Assumptions</span></a><a href="#Organizational_Security_Policies" style="text-indent:10px">3.3<span>Organizational Security Policies</span></a><a href="#Security_Objectives" style="text-indent:0px">4<span>Security Objectives</span></a><a href="#Security_Objectives_for_the_Operational_Environment" style="text-indent:10px">4.1<span>Security Objectives for the Operational Environment</span></a><a href="#" style="text-indent:10px">4.2<span>Security Objectives Rationale</span></a><a href="#Security_Requirements" style="text-indent:0px">5<span>Security Requirements</span></a><a href="#secreq-bpp-psd" style="text-indent:10px">5.1<span>
-    Protection Profile for Peripheral Sharing Device
+    Protection Profile for Peripheral Sharing Devices
        Security Functional Requirements Direction
     </span></a><a href="#modsfr-bpp-psd" style="text-indent:20px">5.1.1<span> Modified SFRs </span></a><a href="#mod_fdp" style="text-indent:30px">5.1.1.1<span>User Data Protection (FDP)</span></a><a href="#mod_fta" style="text-indent:30px">5.1.1.2<span>TOE Access (FTA)</span></a><a href="#man-sfrs" style="text-indent:10px">5.2<span>TOE Security Functional Requirements</span></a><a href="#FDP" style="text-indent:20px">5.2.1<span>User Data Protection (FDP)</span></a><a href="#obj-req-map" style="text-indent:10px">5.3<span>TOE Security Functional Requirements Rationale</span></a><a href="#mod-conrat" style="text-indent:0px">6<span>Consistency Rationale</span></a><a href="#conrat-bpp-psd" style="text-indent:10px">6.1<span>
-    Protection Profile for Peripheral Sharing Device</span></a><a href="#contoe-bpp-psd" style="text-indent:20px">6.1.1<span>
+    Protection Profile for Peripheral Sharing Devices</span></a><a href="#contoe-bpp-psd" style="text-indent:20px">6.1.1<span>
 	Consistency of TOE Type
       </span></a><a href="#consecprob-bpp-psd" style="text-indent:20px">6.1.2<span>
 	Consistency of Security Problem Definition
@@ -653,7 +653,7 @@ function showTarget(id){
       Security Evaluation, version 3.1, Release 5 [<abbr class="dyn-abbr"><a href="#abbr_CC">CC</a></abbr>] and to define functional and assurance requirements for
       such products<a id="period_0" href="#period_0">. </a><br><br>
       A Target of Evaluation (<abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr>) claiming conformance to this <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr>&#8208;Module must also claim conformance to the
-      Peripheral Sharing Device Protection Profile (<abbr class="dyn-abbr"><a href="#abbr_PSD">PSD</a></abbr> <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr>) as its Base&#8208;<abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr><a id="period_1" href="#period_1">. </a>This is because the <abbr class="dyn-abbr"><a href="#abbr_PSD">PSD</a></abbr> <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr> is a generic
+      Protection Profile for Peripheral Sharing Devices (<abbr class="dyn-abbr"><a href="#abbr_PSD">PSD</a></abbr> <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr>) as its Base&#8208;<abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr><a id="period_1" href="#period_1">. </a>This is because the <abbr class="dyn-abbr"><a href="#abbr_PSD">PSD</a></abbr> <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr> is a generic
       Protection Profile aimed at defining baseline requirements and Evaluation Activities for a wide variety of
       <abbr class="dyn-abbr"><a href="#abbr_PSD">PSD</a></abbr> products, but additional specific requirements and Evaluation Activities apply depending on the types
       of physical and logical interfaces a <abbr class="dyn-abbr"><a href="#abbr_PSD">PSD</a></abbr> includes<a id="period_2" href="#period_2">. </a>Therefore, this <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr>&#8208;Module defines additional Security
@@ -817,7 +817,7 @@ The following sections list Common Criteria and technology terms used in this do
 					This <abbr class="dyn-abbr"><a href="#abbr_PP-Module">PP-Module</a></abbr> does not claim conformance to 
 					any Protection Profile<a id="period_63" href="#period_63">. </a>				</dd><p></p><dd>The following <abbr class="dyn-abbr"><a href="#abbr_PP">PPs</a></abbr> and <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr>-Modules are allowed to be specified in a 
 					<abbr class="dyn-abbr"><a href="#abbr_PP-Configuration">PP-Configuration</a></abbr> with this <abbr class="dyn-abbr"><a href="#abbr_PP-Module">PP-Module</a></abbr>:
-					<ul><li>Protection Profile for Peripheral Sharing Device, Version 5.0</li><li><abbr class="dyn-abbr"><a href="#abbr_PP-Module">PP-Module</a></abbr> for Analog Audio Output Devices, Version 2.0</li><li><abbr class="dyn-abbr"><a href="#abbr_PP-Module">PP-Module</a></abbr> for Keyboard/Mouse Devices, Version 2.0</li><li><abbr class="dyn-abbr"><a href="#abbr_PP-Module">PP-Module</a></abbr> for User Authentication Devices, Version 2.0</li></ul></dd><dt>Package Claim</dt><p></p><dd>This <abbr class="dyn-abbr"><a href="#abbr_PP-Module">PP-Module</a></abbr> is not conformant to any 
+					<ul><li>Protection Profile for Peripheral Sharing Devices, Version 5.0</li><li><abbr class="dyn-abbr"><a href="#abbr_PP-Module">PP-Module</a></abbr> for Analog Audio Output Devices, Version 2.0</li><li><abbr class="dyn-abbr"><a href="#abbr_PP-Module">PP-Module</a></abbr> for Keyboard/Mouse Devices, Version 2.0</li><li><abbr class="dyn-abbr"><a href="#abbr_PP-Module">PP-Module</a></abbr> for User Authentication Devices, Version 2.0</li></ul></dd><dt>Package Claim</dt><p></p><dd>This <abbr class="dyn-abbr"><a href="#abbr_PP-Module">PP-Module</a></abbr> is not conformant to any 
 						Functional or Assurance Packages<a id="period_64" href="#period_64">. </a></dd></dl>
   <h1 class="indexable" data-level="1" id="Security_Problem_Definition">3 Security Problem Definition</h1>    
     This <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr>&#8208;Module describes the security problem in terms of the threats the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> is expected to address,
@@ -892,7 +892,7 @@ provide all of its security functionality<a id="period_73" href="#period_73">. <
        </li>
      </ul>
    <h2 id="secreq-bpp-psd" class="indexable" data-level="2">5.1 
-    Protection Profile for Peripheral Sharing Device
+    Protection Profile for Peripheral Sharing Devices
        Security Functional Requirements Direction
     </h2>
         When a <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> claims conformance to this <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr>&#8208;Module, it is necessary to make claims in the <abbr class="dyn-abbr"><a href="#abbr_PSD">PSD</a></abbr> <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr>
@@ -1370,7 +1370,7 @@ provide all of its security functionality<a id="period_73" href="#period_73">. <
 	</td><td><a href="#FDP_CDS_EXT.1">FDP_CDS_EXT.1</a> (selection-based)</td><td>Mitigates this threat
           by specifying whether multiple displays are supported as a trigger for the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> needing to apply on-screen display labeling for video feeds<a id="period_289" href="#period_289">. </a></td></tr>
 </table></p><h1 id="mod-conrat" class="indexable" data-level="1">6 Consistency Rationale</h1><h2 id="conrat-bpp-psd" class="indexable" data-level="2">6.1 
-    Protection Profile for Peripheral Sharing Device</h2><h3 id="contoe-bpp-psd" class="indexable" data-level="3">6.1.1 
+    Protection Profile for Peripheral Sharing Devices</h2><h3 id="contoe-bpp-psd" class="indexable" data-level="3">6.1.1 
 	Consistency of TOE Type
       </h3>
         The <abbr class="dyn-abbr"><a href="#abbr_PSD">PSD</a></abbr> <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr> defines the boundaries of a <abbr class="dyn-abbr"><a href="#abbr_PSD">PSD</a></abbr>&#8212;a device that provides a mechanism for securely connecting
@@ -1966,5 +1966,6 @@ provide all of its security functionality<a id="period_73" href="#period_73">. <
           </ul></span></td></tr><tr><td><span id="bibCEM">[<abbr class="dyn-abbr"><a href="#abbr_CEM">CEM</a></abbr>]</span></td><td><span class="description">Common Methodology for Information Technology Security Evaluation - <ul>
             <li><a href="http://www.commoncriteriaportal.org/files/ccfiles/CEM2022R1.pdf">
                  Evaluation methodology</a>, CCMB-2022-11-006, <abbr class="dyn-abbr"><a href="#abbr_CC">CC</a></abbr>:2022, Revision 1, November 2022<a id="period_464" href="#period_464">. </a></li>
-          </ul></span></td></tr><tr><td><span id="base-pp">[PP_PSD_V5.0 or <abbr class="dyn-abbr"><a href="#abbr_PSD">PSD</a></abbr> <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr>]</span></td><td><span class="description"><a href="https://www.niap-ccevs.org/protectionprofiles/412"><span style="" class="comment " id="Comment-3-">Need to add URL once published.</span>Protection Profile for Peripheral Sharing Device, Version 5.0, 2025-07-11</a>
+          </ul></span></td></tr><tr><td><span id="base-pp">[PP_PSD_V5.0 or <abbr class="dyn-abbr"><a href="#abbr_PSD">PSD</a></abbr> <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr>]</span></td><td><span class="description"><a href="https://www.niap-ccevs.org/protectionprofiles/412"><span style="" class="comment " id="Comment-3-">Need to
+        add URL once published.</span>Protection Profile for Peripheral Sharing Devices, Version 5.0, 2025-07-11</a>
       </span></td></tr></table></body></html>
