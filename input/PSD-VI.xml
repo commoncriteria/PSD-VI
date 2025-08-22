@@ -45,7 +45,7 @@
       Security Evaluation, version 3.1, Release 5 [CC] and to define functional and assurance requirements for
       such products.<h:br/><h:br/>
       A Target of Evaluation (TOE) claiming conformance to this PP‐Module must also claim conformance to the
-      Peripheral Sharing Device Protection Profile (PSD PP) as its Base‐PP. This is because the PSD PP is a generic
+      Protection Profile for Peripheral Sharing Devices (PSD PP) as its Base‐PP. This is because the PSD PP is a generic
       Protection Profile aimed at defining baseline requirements and Evaluation Activities for a wide variety of
       PSD products, but additional specific requirements and Evaluation Activities apply depending on the types
       of physical and logical interfaces a PSD includes. Therefore, this PP‐Module defines additional Security
@@ -205,7 +205,7 @@
       <cc-pt3-conf>conformant</cc-pt3-conf> 
       <cc-pp-conf/>
       <cc-pp-config-with>
-        <PP-cc-ref>Protection Profile for Peripheral Sharing Device, Version 5.0</PP-cc-ref>
+        <PP-cc-ref>Protection Profile for Peripheral Sharing Devices, Version 5.0</PP-cc-ref>
         <Mod-cc-ref>PP-Module for Analog Audio Output Devices, Version 2.0</Mod-cc-ref>
         <Mod-cc-ref>PP-Module for Keyboard/Mouse Devices, Version 2.0</Mod-cc-ref>
         <Mod-cc-ref>PP-Module for User Authentication Devices, Version 2.0</Mod-cc-ref>
@@ -362,7 +362,7 @@
 
   <sec:Security_Requirements>
     <comment>Need to add URLs once created</comment>
-    <base-pp id="bpp-psd" name="Peripheral Sharing Device" product="Device" short="PSD" version="5.0">
+    <base-pp id="bpp-psd" name="Peripheral Sharing Devices" product="Device" short="PSD" version="5.0">
       <git>
         <url>https://github.com/commoncriteria/VI</url>
         <branch>main</branch>
@@ -1497,7 +1497,8 @@
   <bibliography>    
     <entry id="base-pp">
       <tag>PP_PSD_V5.0 or PSD PP</tag>
-      <description><h:a href="https://www.niap-ccevs.org/protectionprofiles/412"><comment>Need to add URL once published.</comment>Protection Profile for Peripheral Sharing Device, Version 5.0, 2025-07-11</h:a>
+      <description><h:a href="https://www.niap-ccevs.org/protectionprofiles/412"><comment>Need to
+        add URL once published.</comment>Protection Profile for Peripheral Sharing Devices, Version 5.0, 2025-07-11</h:a>
       </description>    
     </entry>
   </bibliography>
