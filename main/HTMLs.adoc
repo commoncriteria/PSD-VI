@@ -2,3 +2,4 @@
 * https://commoncriteria.github.io/PSD-VI/main/PSD-VI-release.html[PSD-VI-release.html]
 * https://commoncriteria.github.io/PSD-VI/main/PSD-VI-sd.html[PSD-VI-sd.html]
 * https://commoncriteria.github.io/PSD-VI/main/PSD-VI.html[PSD-VI.html]
+* https://commoncriteria.github.io/PSD-VI/main/diff-pp-template-release.html[diff-pp-template-release.html]
