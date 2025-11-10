@@ -1494,12 +1494,5 @@
     </section>
   </appendix>    
   
-  <bibliography>    
-    <entry id="base-pp">
-      <tag>PP_PSD_V5.0 or PSD PP</tag>
-      <description><h:a href="https://www.niap-ccevs.org/protectionprofiles/412"><comment>Need to
-        add URL once published.</comment>Protection Profile for Peripheral Sharing Devices, Version 5.0, 2025-07-11</h:a>
-      </description>    
-    </entry>
-  </bibliography>
+  <bibliography/>
 </Module>
