@@ -741,7 +741,7 @@ The following sections list Common Criteria and technology terms used in this do
         that includes all applicable <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr>&#8208;Modules<a id="period_47" href="#period_47">. </a>In this manner, a single <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> may support multiple
         different types of peripherals<a id="period_48" href="#period_48">. </a><br><br>
         A conformant <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> may simultaneously present the video output of one or more computers per peripheral
-        port; it is not required to be a one&#8208;to&#8208;one relationship<a id="period_49" href="#period_49">. </a>Section 1.4 below defines specific methods of
+        port; it is not required to be a one&#8208;to&#8208;one relationship<a id="period_49" href="#period_49">. </a>Section 1.5 defines specific methods of
         supported video display<a id="period_50" href="#period_50">. </a>            
     <h2 class="indexable" data-level="2" id="usecases">1.5 Use Cases</h2>
       This <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr>&#8208;Module does not define additional use cases beyond what the <abbr class="dyn-abbr"><a href="#abbr_PSD">PSD</a></abbr> <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr> defines<a id="period_51" href="#period_51">. </a>The <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> should
@@ -1901,21 +1901,27 @@ provide all of its security functionality<a id="period_73" href="#period_73">. <
       per <a href="#FDP_PDC_EXT.1">FDP_PDC_EXT.1</a><a id="period_449" href="#period_449">. </a><br><br>
       Authorized devices identified in both <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr>&#8208;Modules are considered authorized devices for the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> as per
       the claimed iterations of FDP_PDC_EXT.2<a id="period_450" href="#period_450">. </a><br><br>
-      User authentication functionality must be isolated from KM functionality and vice versa as per
-      FDP_UAI_EXT.1<a id="period_451" href="#period_451">. </a><br><br>
+      Video devices with an interface for <abbr class="dyn-abbr"><a href="#abbr_USB">USB</a></abbr> Type&#8208;C with DisplayPort as alternate function may not be
+      connected to a KM interface, and KM devices may not be connected to a video interface for <abbr class="dyn-abbr"><a href="#abbr_USB">USB</a></abbr> Type&#8208;C
+      with DisplayPort as alternate function, even though both devices are authorized devices<a id="period_451" href="#period_451">. </a><br><br>
+      Video devices with an interface for <abbr class="dyn-abbr"><a href="#abbr_USB">USB</a></abbr> Type&#8208;C with DisplayPort as alternate function may not be used in
+      conjunction with a touchscreen peripheral device, as per FDP_PDC_EXT.2/KM and
+      <a href="#FDP_PDC_EXT.3.1/VI">FDP_PDC_EXT.3.1/VI</a><a id="period_452" href="#period_452">. </a><br><br>
+      KM devices may be used with a guard in conjunction with multiple video devices, as per <a href="#FDP_CDS_EXT.1">FDP_CDS_EXT.1</a>
+      and FDP_SWI_EXT.2<a id="period_453" href="#period_453">. </a><br><br>
       Both <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr>&#8208;Modules modify the Base&#8208;<abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr> <abbr class="dyn-abbr"><a href="#abbr_SFR">SFR</a></abbr> <a href="#FDP_APC_EXT.1">FDP_APC_EXT.1</a> in ways that are specific to their respective
-      peripheral types<a id="period_452" href="#period_452">. </a>The <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> author should make two iterations of this <abbr class="dyn-abbr"><a href="#abbr_SFR">SFR</a></abbr>, <a href="#FDP_APC_EXT.1">FDP_APC_EXT.1</a>/UA and
-      <a href="#FDP_APC_EXT.1">FDP_APC_EXT.1</a>/KM, to show the different modifications made for each specific peripheral type<a id="period_453" href="#period_453">. </a>    
+      peripheral types<a id="period_454" href="#period_454">. </a>The <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> author should make two iterations of this <abbr class="dyn-abbr"><a href="#abbr_SFR">SFR</a></abbr>, <a href="#FDP_APC_EXT.1">FDP_APC_EXT.1</a>/VI and
+      <a href="#FDP_APC_EXT.1">FDP_APC_EXT.1</a>/KM, to show the different modifications made for each specific peripheral type<a id="period_455" href="#period_455">. </a>    
     <h2 class="indexable" data-level="2" id="_sec_16">F.3 PP-Module for User Authentication Devices</h2>
       Unauthorized devices identified in both <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr>&#8208;Modules are considered unauthorized devices for the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> as
-      per <a href="#FDP_PDC_EXT.1">FDP_PDC_EXT.1</a><a id="period_454" href="#period_454">. </a><br><br>
+      per <a href="#FDP_PDC_EXT.1">FDP_PDC_EXT.1</a><a id="period_456" href="#period_456">. </a><br><br>
       Authorized devices identified in both <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr>&#8208;Modules are considered authorized devices for the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> as per
-      the claimed iterations of FDP_PDC_EXT.2<a id="period_455" href="#period_455">. </a><br><br>
+      the claimed iterations of FDP_PDC_EXT.2<a id="period_457" href="#period_457">. </a><br><br>
       Any <abbr class="dyn-abbr"><a href="#abbr_USB">USB</a></abbr>&#8208;C functionality that is supported by the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> must be isolated from user authentication
-      functionality and vice versa as per FDP_UAI_EXT.1<a id="period_456" href="#period_456">. </a><br><br>      
+      functionality and vice versa as per FDP_UAI_EXT.1<a id="period_458" href="#period_458">. </a><br><br>      
       Both <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr>&#8208;Modules modify the Base&#8208;<abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr> <abbr class="dyn-abbr"><a href="#abbr_SFR">SFR</a></abbr> <a href="#FDP_APC_EXT.1">FDP_APC_EXT.1</a> in ways that are specific to their respective
-      peripheral types<a id="period_457" href="#period_457">. </a>The <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> author should make two iterations of this <abbr class="dyn-abbr"><a href="#abbr_SFR">SFR</a></abbr>, <a href="#FDP_APC_EXT.1">FDP_APC_EXT.1</a>/VI and
-      <a href="#FDP_APC_EXT.1">FDP_APC_EXT.1</a>/UA, to show the different modifications made for each specific peripheral type<a id="period_458" href="#period_458">. </a>    
+      peripheral types<a id="period_459" href="#period_459">. </a>The <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> author should make two iterations of this <abbr class="dyn-abbr"><a href="#abbr_SFR">SFR</a></abbr>, <a href="#FDP_APC_EXT.1">FDP_APC_EXT.1</a>/VI and
+      <a href="#FDP_APC_EXT.1">FDP_APC_EXT.1</a>/UA, to show the different modifications made for each specific peripheral type<a id="period_460" href="#period_460">. </a>    
   <h1 id="acronyms" class="indexable" data-level="A">Appendix G -  Acronyms</h1><table><caption><span class="ctr" data-myid="t-acronyms" data-counter-type="ct-Table" id="t-acronyms">Table <span class="counter">7</span></span>: Acronyms
 		</caption><tr class="header"><th>Acronym</th><th>Meaning</th></tr><tr><td><span class="term" id="abbr_ARC"><abbr class="dyn-abbr"><a href="#abbr_ARC">ARC</a></abbr></span></td><td><span id="long_abbr_ARC">Audio Return Channel</span></td></tr>
 <tr><td><span class="term" id="abbr_Base-PP" data-plural="Base-PPs"><abbr class="dyn-abbr"><a href="#abbr_Base-PP">Base-PP</a></abbr></span></td><td><span id="long_abbr_Base-PP">Base Protection Profile</span></td></tr>
@@ -1954,16 +1960,16 @@ provide all of its security functionality<a id="period_73" href="#period_73">. <
 <tr><td><span class="term" id="abbr_VGA"><abbr class="dyn-abbr"><a href="#abbr_VGA">VGA</a></abbr></span></td><td><span id="long_abbr_VGA">Video Graphics Array (standard)</span></td></tr>
 </table><h1 id="appendix-bibliography" class="indexable" data-level="A">Appendix H -  Bibliography</h1><table><caption><span class="ctr" data-myid="t-biblio" data-counter-type="ct-Table" id="t-biblio">Table <span class="counter">8</span></span>: Bibliography</caption><tr class="header"><th>Identifier</th><th>Title</th></tr><tr><td><span id="bibCC">[<abbr class="dyn-abbr"><a href="#abbr_CC">CC</a></abbr>]</span></td><td><span class="description">Common Criteria for Information Technology Security Evaluation - <ul>
             <li><a href="https://www.commoncriteriaportal.org/files/ccfiles/CC2022PART1R1.pdf">Part 1: 
-				Introduction and general model</a>, CCMB-2022-11-001, <abbr class="dyn-abbr"><a href="#abbr_CC">CC</a></abbr>:2022, Revision 1, November 2022<a id="period_459" href="#period_459">. </a></li>
+				Introduction and general model</a>, CCMB-2022-11-001, <abbr class="dyn-abbr"><a href="#abbr_CC">CC</a></abbr>:2022, Revision 1, November 2022<a id="period_461" href="#period_461">. </a></li>
             <li><a href="http://www.commoncriteriaportal.org/files/ccfiles/CC2022PART2R1.pdf">Part 2: 
-				Security functional requirements</a>, CCMB-2022-11-002, <abbr class="dyn-abbr"><a href="#abbr_CC">CC</a></abbr>:2022, Revision 1, November 2022<a id="period_460" href="#period_460">. </a></li>
+				Security functional requirements</a>, CCMB-2022-11-002, <abbr class="dyn-abbr"><a href="#abbr_CC">CC</a></abbr>:2022, Revision 1, November 2022<a id="period_462" href="#period_462">. </a></li>
             <li><a href="http://www.commoncriteriaportal.org/files/ccfiles/CC2022PART3R1.pdf">Part 3: 
-                Security assurance requirements</a>, CCMB-2022-11-003, <abbr class="dyn-abbr"><a href="#abbr_CC">CC</a></abbr>:2022, Revision 1, November 2022<a id="period_461" href="#period_461">. </a></li>
+                Security assurance requirements</a>, CCMB-2022-11-003, <abbr class="dyn-abbr"><a href="#abbr_CC">CC</a></abbr>:2022, Revision 1, November 2022<a id="period_463" href="#period_463">. </a></li>
             <li><a href="http://www.commoncriteriaportal.org/files/ccfiles/CC2022PART4R1.pdf">Part 4: 
-                Framework for the specification of evaluation methods and activities</a>, CCMB-2022-11-004, <abbr class="dyn-abbr"><a href="#abbr_CC">CC</a></abbr>:2022, Revision 1, November 2022<a id="period_462" href="#period_462">. </a></li>
+                Framework for the specification of evaluation methods and activities</a>, CCMB-2022-11-004, <abbr class="dyn-abbr"><a href="#abbr_CC">CC</a></abbr>:2022, Revision 1, November 2022<a id="period_464" href="#period_464">. </a></li>
             <li><a href="http://www.commoncriteriaportal.org/files/ccfiles/CC2022PART5R1.pdf">Part 5: 
-                 Pre-defined packages of security requirements</a>, CCMB-2022-11-005, <abbr class="dyn-abbr"><a href="#abbr_CC">CC</a></abbr>:2022, Revision 1, November 2022<a id="period_463" href="#period_463">. </a></li>
+                 Pre-defined packages of security requirements</a>, CCMB-2022-11-005, <abbr class="dyn-abbr"><a href="#abbr_CC">CC</a></abbr>:2022, Revision 1, November 2022<a id="period_465" href="#period_465">. </a></li>
           </ul></span></td></tr><tr><td><span id="bibCEM">[<abbr class="dyn-abbr"><a href="#abbr_CEM">CEM</a></abbr>]</span></td><td><span class="description">Common Methodology for Information Technology Security Evaluation - <ul>
             <li><a href="http://www.commoncriteriaportal.org/files/ccfiles/CEM2022R1.pdf">
-                 Evaluation methodology</a>, CCMB-2022-11-006, <abbr class="dyn-abbr"><a href="#abbr_CC">CC</a></abbr>:2022, Revision 1, November 2022<a id="period_464" href="#period_464">. </a></li>
+                 Evaluation methodology</a>, CCMB-2022-11-006, <abbr class="dyn-abbr"><a href="#abbr_CC">CC</a></abbr>:2022, Revision 1, November 2022<a id="period_466" href="#period_466">. </a></li>
           </ul></span></td></tr></table></body></html>

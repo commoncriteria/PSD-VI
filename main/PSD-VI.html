@@ -755,7 +755,7 @@ The following sections list Common Criteria and technology terms used in this do
         that includes all applicable <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr>‐Modules. In this manner, a single <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> may support multiple
         different types of peripherals.<br/><br/>
         A conformant <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> may simultaneously present the video output of one or more computers per peripheral
-        port; it is not required to be a one‐to‐one relationship. Section 1.4 below defines specific methods of
+        port; it is not required to be a one‐to‐one relationship. Section 1.5 defines specific methods of
         supported video display.
             
     <h2 class="indexable" data-level="2" id="usecases">1.5 Use Cases</h2>
@@ -2026,10 +2026,16 @@ provide all of its security functionality.
       per <a href="#FDP_PDC_EXT.1">FDP_PDC_EXT.1</a>.<br/><br/>
       Authorized devices identified in both <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr>‐Modules are considered authorized devices for the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> as per
       the claimed iterations of FDP_PDC_EXT.2.<br/><br/>
-      User authentication functionality must be isolated from KM functionality and vice versa as per
-      FDP_UAI_EXT.1.<br/><br/>
+      Video devices with an interface for <abbr class="dyn-abbr"><a href="#abbr_USB">USB</a></abbr> Type‐C with DisplayPort as alternate function may not be
+      connected to a KM interface, and KM devices may not be connected to a video interface for <abbr class="dyn-abbr"><a href="#abbr_USB">USB</a></abbr> Type‐C
+      with DisplayPort as alternate function, even though both devices are authorized devices.<br/><br/>
+      Video devices with an interface for <abbr class="dyn-abbr"><a href="#abbr_USB">USB</a></abbr> Type‐C with DisplayPort as alternate function may not be used in
+      conjunction with a touchscreen peripheral device, as per FDP_PDC_EXT.2/KM and
+      <a href="#FDP_PDC_EXT.3.1/VI">FDP_PDC_EXT.3.1/VI</a>.<br/><br/>
+      KM devices may be used with a guard in conjunction with multiple video devices, as per <a href="#FDP_CDS_EXT.1">FDP_CDS_EXT.1</a>
+      and FDP_SWI_EXT.2.<br/><br/>
       Both <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr>‐Modules modify the Base‐<abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr> <abbr class="dyn-abbr"><a href="#abbr_SFR">SFR</a></abbr> <a href="#FDP_APC_EXT.1">FDP_APC_EXT.1</a> in ways that are specific to their respective
-      peripheral types. The <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> author should make two iterations of this <abbr class="dyn-abbr"><a href="#abbr_SFR">SFR</a></abbr>, <a href="#FDP_APC_EXT.1">FDP_APC_EXT.1</a>/UA and
+      peripheral types. The <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> author should make two iterations of this <abbr class="dyn-abbr"><a href="#abbr_SFR">SFR</a></abbr>, <a href="#FDP_APC_EXT.1">FDP_APC_EXT.1</a>/VI and
       <a href="#FDP_APC_EXT.1">FDP_APC_EXT.1</a>/KM, to show the different modifications made for each specific peripheral type.
     
     <h2 class="indexable" data-level="2" id="_sec_16">F.3 PP-Module for User Authentication Devices</h2>
