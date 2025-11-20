@@ -132,7 +132,7 @@
         that includes all applicable PP‐Modules. In this manner, a single TOE may support multiple
         different types of peripherals.<h:br/><h:br/>
         A conformant TOE may simultaneously present the video output of one or more computers per peripheral
-        port; it is not required to be a one‐to‐one relationship. Section 1.4 below defines specific methods of
+        port; it is not required to be a one‐to‐one relationship. Section 1.5 defines specific methods of
         supported video display.
       </section>      
     <section title="Use Cases" id="usecases">
@@ -1475,10 +1475,16 @@
       per FDP_PDC_EXT.1.<h:br/><h:br/>
       Authorized devices identified in both PP‐Modules are considered authorized devices for the TOE as per
       the claimed iterations of FDP_PDC_EXT.2.<h:br/><h:br/>
-      User authentication functionality must be isolated from KM functionality and vice versa as per
-      FDP_UAI_EXT.1.<h:br/><h:br/>
+      Video devices with an interface for USB Type‐C with DisplayPort as alternate function may not be
+      connected to a KM interface, and KM devices may not be connected to a video interface for USB Type‐C
+      with DisplayPort as alternate function, even though both devices are authorized devices.<h:br/><h:br/>
+      Video devices with an interface for USB Type‐C with DisplayPort as alternate function may not be used in
+      conjunction with a touchscreen peripheral device, as per FDP_PDC_EXT.2/KM and
+      FDP_PDC_EXT.3.1/VI.<h:br/><h:br/>
+      KM devices may be used with a guard in conjunction with multiple video devices, as per FDP_CDS_EXT.1
+      and FDP_SWI_EXT.2.<h:br/><h:br/>
       Both PP‐Modules modify the Base‐PP SFR FDP_APC_EXT.1 in ways that are specific to their respective
-      peripheral types. The ST author should make two iterations of this SFR, FDP_APC_EXT.1/UA and
+      peripheral types. The ST author should make two iterations of this SFR, FDP_APC_EXT.1/VI and
       FDP_APC_EXT.1/KM, to show the different modifications made for each specific peripheral type.
     </section>
     <section title="PP-Module for User Authentication Devices">
