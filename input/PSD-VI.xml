@@ -1007,7 +1007,7 @@
             </title>
             
             <note role="application">
-              <comment>we may want to further distinguish what is intended here as "multiple connected displays" - if this is meant to be for dual monitor support then the testing would include verifying there is no crosstalk between heads (e.g. port 1 head 1 should be isolated from both port 2 head 1 and port 2 head 2). If "multiple connected displays" is meant to refer to "multiple connected displays at the same time" i.e. the combiner use case then we should just be explicit about that. We may want to just have two separate selections for this. Also, as alluded to in the updated note here, it is possible for a device to have a "security camera" style feed on a separate monitor that shows an aggregation of multiple feeds or just a single feed. But in both cases that screen should have the feed(s) labeled because that may be set independently of the other peripherals (e.g. your keyboard/mouse/primary monitor can all be on computer 1 while your second monitor can show all of computers 1-4 in a grid, or just any of them individually; either way this secondary monitor should label its feeds because otherwise it would be ambiguous with respect to what computers were active on it.</comment><h:br/>
+
               This SFR must be claimed if “switching can be initiated only through express user
               action” is chosen as a selection for FDP_SWI_EXT.1 in the PSD PP.<h:br/><h:br/>
               If “peripheral devices using a guard” is selected in FDP_SWI_EXT.2.2 (from the PSD
@@ -1500,5 +1500,11 @@
     </section>
   </appendix>    
   
-  <bibliography/>
+  <bibliography>    
+    <entry id="base-pp">
+      <tag>PP_PSD_V5.0 or PSD PP</tag>
+      <description>Protection Profile for Peripheral Sharing Device, Version 5.0
+      </description>    
+    </entry>
+  </bibliography>
 </Module>
