@@ -438,7 +438,7 @@
                        </h:ol>                  
                   </test>
                     <test id="APC_Test_2-VI">
-                      <h:b>Computer Video Interface Solutions</h:b><h:br/><h:br/>
+                      <h:b>Computer Video Interface Isolation</h:b><h:br/><h:br/>
                       [Conditional: perform this test if “switching can be initiated only through express user action” is selected
                       in FDP_SWI_EXT.1.1 in the PSD PP.]<h:br/><h:br/>
                       This test verifies that the TOE does not transfer data to any non‐selected computer video interface.<h:ol>
