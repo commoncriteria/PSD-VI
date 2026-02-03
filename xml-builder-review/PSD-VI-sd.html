@@ -1,0 +1,813 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html><head><title>Supporting Document - 
+    PP-Module for Video/Display Device</title><style type="text/css">
+    #toc a{
+        display: block;
+    }
+    .td-{
+        display: block;
+    }
+    svg{
+      width: 100%;
+    }
+
+    a[id^="ajq_"]{
+        color:black;
+    }
+
+    
+    body{
+       max-width: 900px;
+       margin: auto;
+    }
+    #toc span{
+       margin-left: 20px;
+    }
+    .assignable-content{
+      font-style: italic;
+    }
+    .selectable-content{
+      font-style: italic;
+    }
+    .not-selectable-content{
+      font-style: italic;
+      text-decoration: line-through;
+    }
+    .refinement{
+      font-weight: bold;
+    }
+    div.eacategory{
+      font-style: italic;
+      font-weight: bold;
+    }
+    .activity_pane .toggler::after, .activity_pane .toggler{
+       display: inline-block;
+       height: auto;
+       content: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA8A\
+       AAAPCAYAAAA71pVKAAAABmJLR0QA/wD/AP+gvaeTAAAACXBIWXMAAQOFAAEDhQGl\
+       VDz+AAAAB3RJTUUH4gIXFDM7fhmr1wAAAfRJREFUKM+dkk9I02EYxz/P+25uurWR\
+       tTkzI4NGl4jQgkq71K1DhnTQIDolRAQFQYSHTtGhU4e6eujQofBSFLOg0C4RUSjh\
+       FnmqTTdKpj/mfv/eX4cUpmRYn9vz8v3w8D7PA/AWGADCbI4QcAb4AnAF8IBJEdX+\
+       N0tEda40C4AHADviW1LFvpOX6+FwtAacVzqkGiWtwxo4F21OuPu7+yvxRNoDEhpY\
+       cpzavkQyc7D76FCk+vN7j7VU6RdR4xAsikjGGP9FKrN3sPfEpajv2i2zhckR4JUG\
+       UCr0erFavLkn2ytd2WPxcFOsZb74+SIQA0YPHBqIdB8Z6tChJv1m/N4P33OGAUsD\
+       BIFxPNcOkq07jyeSbbo1tTu2q6vHEqU7D/ddSKcz2ZQJjBSmx925b9NjwEMAafha\
+       eyQa/3Dq7O0243sCIEoRGAOA59nm5dM7OHVruzH+AkDjYEp23RrLT+U8Ub+fV0UR\
+       oVyaMfVa9fqquF5GKX3ja2FCuc6yWbMipYNP755UgEdr8o2FMf5ivVYdKRfzRkRW\
+       RfJTOc+2rWdAcUN5hdGP7x8viGgAXLvGbGFCKxW6tj74J3nOqVvP89M5V6kQ86UZ\
+       f7lWvWWMt7Sp41VKb21uSfqnB++6kWi8BLTzL4ioq7H4tgC4z3/QAZSBxEaBXygN\
+       v+jeFnAPAAAAAElFTkSuQmCC');
+       max-width: 15px;
+    }
+
+    a.defined{
+      color: inherit;
+      text-decoration: inherit;
+    }
+      
+    a {
+      text-decoration: none;
+      word-wrap: break-word;
+    }
+    a.abbr:link{
+      color:black;
+      text-decoration:none;
+    }
+    a.abbr:visited{
+      color:black;
+      text-decoration:none;
+    }
+    a.abbr:hover{
+      color:blue;
+      text-decoration:none;
+    }
+    a.abbr:hover:visited{
+      color:purple;
+      text-decoration:none;
+    }
+    a.abbr:active{
+      color:red;
+      text-decoration:none;
+    }
+    .note-header{
+      font-weight: bold;
+    }
+    .note p:first-child{
+      display: inline;
+    }
+
+    .indent{ margin-left:2em; }
+
+    /* Tooltip container */
+    .tooltipped {
+       position: relative;
+       display: inline-block;
+       border-bottom: 1px dotted black; /* If you want dots under the hoverable text */
+    }
+
+    /* Tooltip text */
+    .tooltiptext {
+       visibility: hidden;
+       width: 120px;
+       background-color: black;
+       color: #fff;
+       text-align: center;
+       padding: 5px 0;
+       border-radius: 6px;
+
+       /* Position the tooltip text - see examples below! */
+       position: absolute;
+       z-index: 1;
+   }
+
+   /* Show the tooltip text when you mouse over the tooltip container */
+   .tooltipped:hover .tooltiptext {
+       visibility: visible;
+   }
+   tr.major-row{
+       border-top-style: double;
+   }
+   tr.major-row td:first-child{
+       border-right-style: ridge;
+       background-color: white;
+   } 
+   table.mfs td{
+       text-align: center;
+   }
+   table.mfs td:first-child{
+       text-align: left;
+       white-space: nowrap;
+   }
+  .table-caption, caption{
+       text-align: center;
+       font-weight: bold;
+   }
+   table{
+       margin:auto;
+       margin-top:1em;
+       border-collapse:collapse; /*border: 1px solid black;*/
+   }
+   td{
+       text-align:left;
+       padding:8px 8px;
+   }
+   th{
+       padding:8px 8px;
+   }
+   thead tr td{
+       text-align: center;
+       font-style: oblique;
+       font-weight: bold;
+   }
+   tr.header{
+       border-bottom:3px solid gray;
+       padding:8px 8px;
+       text-align:left;
+       font-weight:bold; /*font-size: 90%; font-family: verdana, arial, helvetica, sans-serif; */
+   }
+   table tr:nth-child(2n+2){
+       background-color:#F4F4F4;
+   }
+
+   table.ecd_heir_dep{
+       width: 100%;
+   }
+   table.ecd_heir_dep tr{
+       background-color: inherit;
+   }
+       
+   table.ecd_heir_dep tr :first-child{
+       white-space: nowrap;
+   }
+   table.ecd_heir_dep tr :last-child{
+       width: 100%;
+   }
+
+       
+   .dependent{
+       border: 1px solid gray;
+       border-radius: 1px
+   }
+   .dependent-content{
+       margin-left: 25px;
+       font-style: italic;
+   }
+
+   .uc_table_or td, .uc_table_or tr {
+       vertical-align: middle;
+       border: 1px solid black;
+       background-color: white;
+   }
+
+   .uc_not, .uc_mf, .uc_sel, .uc_guide{
+       text-indent: 10px;
+   }
+   .uc_sel &gt; a{ 
+       font-style: italic;
+   }
+
+   .uc_not_sel, .uc_sel.uc_mf, uc_assign.uc_mf{
+       text-indent: 20px;
+   }
+
+
+   .uc_table_or tr td.or_cell{
+      white-space: nowrap;
+      border-radius: 0.6em 0 0 0.6em;
+      background-color: black;
+      color: white;
+   }
+
+   .uc_table_and, .uc_table_or {
+       width: 100%;
+       background-color: white;
+   }
+   .uc_guidance{
+       display: table;
+       background-color: gray;
+   }  
+   div.uc_inc_fcomp{
+       display: list-item;
+       list-style-type: disc;
+       list-style-position: inside;
+       }
+
+   div.validationguidelines_label{
+        padding-top: 10px;
+   }
+	
+   .evidence, .test-obj { font-style: normal; font-size: 90%;}
+   
+   
+	table.classic {
+    	width: 100%;
+    	background-color: white;
+    	border-collapse: collapse;
+    	border-width: 2px;
+  		border-color: gray;
+  		border-style: solid;
+  		color: black;
+		font-size: small;
+	}
+    table.classic th {
+  		background-color: lightgray;   
+	}
+    table.classic th:empty{
+	    background-color: white;
+		border-top: none;
+		border-left: none;
+	}
+	table.classic td, table.classic th {
+  		border-width: 2px;
+  		border-color: gray;
+  		border-style: solid;
+  		padding: 5px;
+	}
+
+   
+    .comp .description{
+        padding-bottom: 20px;
+        display: block;
+    }    
+   
+   </style></head><body><div style="text-align: center; margin-left: auto; margin-right: auto;"><h1 class="title" style="page-break-before:auto;">Supporting Document<br/>
+        Mandatory Technical Document</h1><img src="images/niaplogo.png" alt="NIAP Logo"></img><hr width="50%"></hr><noscript><h1 style="text-align:center; border-style: dashed; border-width: medium; border-color: red;">This page is best viewed with JavaScript enabled!</h1></noscript><br/>
+    PP-Module for Video/Display Device<br/>
+      Version: 2.0<br/>2025-07-11<br/><b>National Information Assurance Partnership</b></div><div class="foreword"><h1 style="text-align: center">Foreword</h1><p>This is a Supporting Document (SD), intended to complement the Common Criteria version 3
+      and the associated Common Evaluation Methodology for
+      Information Technology Security Evaluation.</p><p>SDs may be “Guidance Documents”, that highlight specific approaches 
+      and application of the standard to areas where no mutual recognition of
+      its application is required, and as such, are not of normative nature, 
+      or “Mandatory Technical Documents”, whose application is mandatory for evaluations 
+      whose scope is covered by that of the SD.
+      The usage of the latter class is not only mandatory, but certificates
+      issued as a result of their application are recognized under the CCRA.</p><p><b>Technical Editor:</b><br/>
+      National Information Assurance Partnership (NIAP)
+      </p><p><b style="page-break-before:always;">Document history:</b><table><tr class="header"><th>Version</th><th>Date</th><th style="align:left;">Comment</th></tr><tr><td>1.0</td><td>2019-07-19</td><td>Initial draft</td></tr><tr><td>2.0</td><td>2025-07-11</td><td>Updates for CC:2022</td></tr></table></p><p><b>General Purpose:</b><br/>
+      The purpose of this SD is to define evaluation methods for the functional behavior of
+      Video/Display Device      
+      products.
+      </p><p><b>Acknowledgments:</b><br/>
+      This SD was developed with support from NIAP 
+      Video/Display Device
+      Technical Community members, with representatives from industry, government 
+      agencies, Common Criteria Test Laboratories, and members of academia.
+      </p></div><h1>Table of Contents</h1><div id="toc"><a href="#introduction" style="text-indent:0px">1<span>Introduction</span></a><a href="#scope" style="text-indent:10px">1.1<span>Technology Area and Scope of Supporting Document</span></a><a href="#structure" style="text-indent:10px">1.2<span>Structure of the Document</span></a><a href="#glossary" style="text-indent:10px">1.3<span>Terms</span></a><a href="#cc-terms" style="text-indent:20px">1.3.1<span>Common Criteria Terms</span></a><a href="#tech-terms" style="text-indent:20px">1.3.2<span>Technical Terms</span></a><a href="#sfr" style="text-indent:0px">2<span>Evaluation Activities for SFRs</span></a><a href="#aa-bpp-psd" style="text-indent:10px">2.1<span>Peripheral Sharing Devices</span></a><a href="#qq-sfrs-bpp-psd-Modified" style="text-indent:20px">2.1.1<span>Modified SFRs
+        </span></a><a href="#mod_fdp" style="text-indent:30px">2.1.1.1<span>User Data Protection (FDP)</span></a><a href="#mod_fta" style="text-indent:30px">2.1.1.2<span>TOE Access (FTA)</span></a><a href="#man-sfrs" style="text-indent:10px">2.2<span>TOE SFR Evaluation Activities</span></a><a href="#FDP" style="text-indent:20px">2.2.1<span>User Data Protection (FDP)</span></a><a href="#opt-sfrs" style="text-indent:10px">2.3<span>Evaluation Activities for Optional SFRs</span></a><a href="#sel-sfrs" style="text-indent:10px">2.4<span>Evaluation Activities for Selection-Based SFRs</span></a><a href="#_sec_8" style="text-indent:20px">2.4.1<span>User Data Protection (FDP)</span></a><a href="#obj-sfrs" style="text-indent:10px">2.5<span>Evaluation Activities for Objective SFRs</span></a><a href="#impl-sfrs-" style="text-indent:10px">2.6<span>Evaluation Activities for Implementation-dependent SFRs</span></a><a href="#sar_aas" style="text-indent:0px">3<span>Evaluation Activities for SARs</span></a><a href="#sup-info" style="text-indent:0px">4<span>Required Supplementary Information</span></a><a href="#biblio" style="text-indent:0px">Appendix A - <span>References</span></a></div><h1 id="introduction" class="indexable" data-level="0">1 Introduction</h1><h2 id="scope" class="indexable" data-level="1">1.1 Technology Area and Scope of Supporting Document</h2><p>The scope of the 
+    PP-Module for Video/Display Device is
+    to describe the security functionality of 
+    Video/Display Device
+    products in terms of 
+    [CC] and to define functional and assurance requirements for them.
+
+    
+    The PP-Module is intended for use with the following Base-PP:
+        <ul><li>Peripheral Sharing Devices, version 5.0.</li></ul><br/>
+    This SD is mandatory for evaluations of TOEs that claim conformance to a PP-Configuration that includes the PP-Module for :
+    <ul><li>Video/Display Device, Version 2.0</li></ul>
+    As such it defines Evaluation Activities for the functionality described in the PP-Module as well as any impacts to the Evaluation Activities to the Base-PP(s) it modifies.
+    </p><p> 
+Although Evaluation Activities are defined mainly for the evaluators to follow, in general they also help developers to prepare for evaluation by identifying specific requirements for their TOE.
+    The specific requirements in Evaluation Activities may in some cases clarify the meaning of Security
+    Functional Requirements (SFR), and may identify particular requirements for the content of Security
+    Targets (ST) (especially the TOE Summary Specification), user guidance documentation, and possibly
+    supplementary information (e.g. for entropy analysis or cryptographic key management architecture).</p><h2 id="structure" class="indexable" data-level="1">1.2 Structure of the Document</h2><p>Evaluation Activities can be defined for both SFRs and Security Assurance Requirements (SAR),
+    which are themselves defined in separate sections of the SD.</p><p>If any Evaluation Activity cannot be successfully completed in an evaluation, then
+    the overall verdict for the evaluation is a 'fail'.
+    In rare cases there may be acceptable reasons why an Evaluation Activity
+    may be modified or deemed not applicable for a particular TOE, 
+    but this must be approved by the Certification Body for the evaluation.</p><p>In general, if all Evaluation Activities (for both SFRs and SARs) are successfully
+    completed in an evaluation then it would be expected that the overall verdict for 
+    the evaluation is a ‘pass’.
+    To reach a ‘fail’ verdict when the Evaluation Activities have been successfully 
+    completed would require a specific justification from the evaluator as to why the 
+    Evaluation Activities were not sufficient for that TOE.
+    </p><p>Similarly, at the more granular level of assurance components, if the Evaluation 
+    Activities for an assurance component and all of its related SFR Evaluation 
+    Activities are successfully completed in an evaluation then it would be expected 
+    that the verdict for the assurance component is a ‘pass’.
+    To reach a ‘fail’ verdict for the assurance component when these Evaluation 
+    Activities have been successfully completed would require a specific justification 
+    from the evaluator as to why the Evaluation Activities were not sufficient for that TOE. 
+    </p><div class="no-link"><h2 id="glossary" class="indexable" data-level="1">1.3 Terms</h2>
+The following sections list Common Criteria and technology terms used in this document.
+    <h3 id="cc-terms" class="indexable" data-level="2">1.3.1 Common Criteria Terms</h3><table><tr><td><div id="Assurance">Assurance</div></td><td>Grounds for confidence that a TOE meets the SFRs <span href="#bibCC">[CC]</span>.</td></tr>
+<tr><td><div id="Base_Protection_Profile">Base Protection Profile (Base-PP)</div></td><td>Protection Profile used as a basis to build a PP-Configuration.</td></tr>
+<tr><td><div id="Collaborative_Protection_Profile">Collaborative Protection Profile (cPP)</div></td><td>A Protection Profile developed by
+    international technical communities and approved by multiple schemes.</td></tr>
+<tr><td><div id="Common_Criteria">Common Criteria (CC)</div></td><td>Common Criteria for Information Technology Security Evaluation (International Standard ISO/IEC 15408).</td></tr>
+<tr><td><div id="Common_Criteria_Testing_Laboratory">Common Criteria Testing Laboratory</div></td><td>
+      Within the context of the Common Criteria Evaluation and Validation Scheme (CCEVS), an IT security evaluation facility
+      accredited by the National Voluntary Laboratory Accreditation Program (NVLAP) and approved by the NIAP Validation Body to conduct Common Criteria-based evaluations.
+    </td></tr>
+<tr><td><div id="Common_Evaluation_Methodology">Common Evaluation Methodology (CEM)</div></td><td>Common Evaluation Methodology for Information Technology Security Evaluation.</td></tr>
+<tr><td><div id="Direct_Rationale">Direct Rationale</div></td><td>
+		A type of Protection Profile, PP-Module, or Security Target in which the security
+		problem definition (SPD) elements are mapped directly to the SFRs and possibly to the 
+		security objectives for the operational environment. There are no security objectives
+		for the TOE.
+	</td></tr>
+<tr><td><div id="Distributed_TOE">Distributed TOE</div></td><td>A TOE composed of multiple components operating as a logical whole.</td></tr>
+<tr><td><div id="Extended_Package">Extended Package (EP)</div></td><td>A deprecated document form for collecting SFRs that implement a particular protocol, technology,
+	    or functionality. See Functional Packages.</td></tr>
+<tr><td><div id="Functional_Package">Functional Package (FP)</div></td><td>A document that collects SFRs for a particular protocol, technology,
+	    or functionality.</td></tr>
+<tr><td><div id="Operational_Environment">Operational Environment (OE)</div></td><td>Hardware and software that are outside the TOE boundary that support the TOE functionality and security policy.</td></tr>
+<tr><td><div id="Protection_Profile">Protection Profile (PP)</div></td><td>An implementation-independent set of security requirements for a category of products.</td></tr>
+<tr><td><div id="Protection_Profile_Configuration">Protection Profile Configuration (PP-Configuration)</div></td><td>A comprehensive set of security requirements for a product type that consists of at least one Base-PP and at least one PP-Module.</td></tr>
+<tr><td><div id="Protection_Profile_Module">Protection Profile Module (PP-Module)</div></td><td>An implementation-independent statement of security needs for a TOE type complementary to one or more Base-PPs.</td></tr>
+<tr><td><div id="Security_Assurance_Requirement">Security Assurance Requirement (SAR)</div></td><td>A requirement to assure the security of the TOE.</td></tr>
+<tr><td><div id="Security_Functional_Requirement">Security Functional Requirement (SFR)</div></td><td>A requirement for security enforcement by the TOE.</td></tr>
+<tr><td><div id="Security_Target">Security Target (ST)</div></td><td>A set of implementation-dependent security requirements for a specific product.</td></tr>
+<tr><td><div id="Target_of_Evaluation">Target of Evaluation (TOE)</div></td><td>The product under evaluation. </td></tr>
+<tr><td><div id="TOE_Security_Functionality">TOE Security Functionality (TSF)</div></td><td>The security functionality of the product under evaluation.</td></tr>
+<tr><td><div id="TOE_Summary_Specification">TOE Summary Specification (TSS)</div></td><td>A description of how a TOE satisfies the SFRs in an ST.</td></tr>
+</table><h3 id="tech-terms" class="indexable" data-level="2">1.3.2 Technical Terms</h3><table style="width: 100%"><tr><td><div id="Combiner/Multi-viewer">Combiner/Multi-viewer</div></td><td>
+        A PSD that can integrate video output from multiple connected systems and output
+        on a single display.
+      </td></tr>
+<tr><td><div id="Display">Display</div></td><td>
+        A device such as a monitor, projector, or touchscreen, which visually outputs user
+        data.
+      </td></tr>
+<tr><td><div id="Guard">Guard</div></td><td>
+        A PSD function that requires multiple express user actions in order to switch between
+        Connected Computers using Connected Peripherals.
+      </td></tr>
+<tr><td><div id="Protocol">Protocol</div></td><td>
+        A set of rules or procedures for transmitting data between electronic devices.
+      </td></tr>
+<tr><td><div id="Sub-Protocol">Sub-Protocol</div></td><td>
+        A set of common commands flowing within a protocol.
+      </td></tr>
+<tr><td><div id="TOE_Computer_Video_Interface">TOE Computer Video Interface</div></td><td>
+        TOE port used to connect the computer or other video source.
+      </td></tr>
+<tr><td><div id="USB_Type-C">USB Type-C</div></td><td>
+        Universal Serial Bus (USB) interface that supports DisplayPort video output as an
+        alternate mode.
+      </td></tr>
+<tr><td><div id="Video_Data">Video Data</div></td><td>
+        Visual and audio information presented to the user through the display device
+      </td></tr>
+<tr><td><div id="Video_Wall">Video Wall</div></td><td>
+        A tiled or overlapping set of displays that allow the video output from a single
+        selected computer to be spanned across multiple individual displays.
+      </td></tr>
+</table></div><h1 id="sfr" class="indexable" data-level="0">2 Evaluation Activities for SFRs</h1><p>The EAs presented in this section capture the actions the evaluator performs 
+    to address technology specific aspects covering specific SARs (e.g. ASE_TSS.1, 
+    ADV_FSP.1, AGD_OPE.1, and ATE_IND.1) – this is in addition to the CEM workunits 
+    that are performed in Section <a href="#sar_aas" class="dynref">3 Evaluation Activities for SARs</a>.</p><p>Regarding design descriptions (designated by the subsections labeled TSS, as 
+    well as any required supplementary material that may be treated as proprietary), 
+    the evaluator must ensure there is specific information that satisfies the EA. 
+    For findings regarding the TSS section, the evaluator’s verdicts will be 
+    associated with the CEM workunit ASE_TSS.1-1.
+    Evaluator verdicts associated with the supplementary evidence will also be 
+    associated with ASE_TSS.1-1, 
+    since the requirement to provide such evidence is specified in ASE in the PP.</p><p>For ensuring the guidance documentation provides sufficient information for 
+    the administrators/users as it pertains to SFRs, the evaluator’s verdicts will 
+    be associated with CEM workunits ADV_FSP.1-7, AGD_OPE.1-4, and AGD_OPE.1-5.</p><p>Finally, the subsection labeled Tests is where the authors have determined 
+    that testing of the product in the context of the associated SFR is necessary.
+    While the evaluator is expected to develop tests, there may be instances where 
+    it is more practical for the developer to construct tests, or where the 
+    developer may have existing tests. 
+    Therefore, it is acceptable for the evaluator to witness developer-generated 
+    tests in lieu of executing the tests. 
+    In this case, the evaluator must ensure the developer’s tests are executing both 
+    in the manner declared by the developer and as mandated by the EA. 
+    The CEM workunits that are associated with the EAs specified in this section 
+    are: ATE_IND.1-3, ATE_IND.1-4, ATE_IND.1-5, ATE_IND.1-6, and ATE_IND.1-7.</p><h2 class="indexable" data-level="1" id="aa-bpp-psd">2.1 Peripheral Sharing Devices</h2>
+      The EAs defined in this section are only applicable in cases where the TOE claims conformance
+      to a PP-Configuration that includes the PSD PP.
+     <h3 class="indexable" data-level="2" id="qq-sfrs-bpp-psd-Modified">2.1.1 Modified SFRs
+        </h3>
+        
+        <h3 class="indexable" data-level="3" id="mod_fdp">2.1.1.1 User Data Protection (FDP)</h3><div class="comp" id=""><h4>FDP_APC_EXT.1 Active PSD Connections</h4><span class="activity_pane_body"><div class="component-activity-header">FDP_APC_EXT.1</div>         
+                                  
+                
+                
+                
+              <div class="eacategory">TSS</div><div class="ea">
+			There are no additional TSS evaluation activities for this component.<br/></div><div class="eacategory">Guidance</div><div class="ea">
+			There are no additional Guidance evaluation activities for this component.<br/></div><div class="ea"><div class="eacategory">Isolation</div><div class="ea">
+                  The evaluator shall examine the Isolation Document and verify it describes how the TOE ensures that no
+                  data or electrical signals flow between connected computers in both cases (powered on, powered off).
+                </div></div><div class="eacategory">Tests</div><div class="ea"><div class="ea">                  
+                  The evaluator shall perform the following tests.
+                  
+                  <span class="testlist-"><ul>
+                    <li class="test-"><a id="APC_Test_1-VI" class="defined" href="#APC_Test_1-VI">Test FDP_APC_EXT.1:1</a>:
+      
+                      <b>Video Source Selection and Identification, TOE Off and Failure States</b><br/><br/>
+                      This test verifies the TOE switching function operates properly and will stop the video output display when
+                      in an OFF or FAILURE state.<ol>
+                        <li>Configure the TOE and the Operational Environment in accordance with the operational guidance.</li>
+                        <li>Play a different video with embedded audio on a number of computers for each TOE computer
+                          video interface.</li>
+                        <li>Connect each computer to a TOE computer video interface.</li>
+                        <li>Connect a display to each TOE display interface.</li>
+                        <li>Turn on the TOE.</li>
+                        <li>For each connected computer, ensure it is selected and verify that the video and its accompanying
+                          audio from the selected computer(s) are received on the proper display(s).</li>
+                        <li>[Conditional: if the TOE has Combiner functionality to display multiple video feeds on a single monitor] verify that
+                          video generated by the TOE has clear identification marking or text to properly identify the source
+                          computer shown.</li>
+                        <li>Turn off the TOE and verify that no video appears on any connected display.</li>
+                        <li>Power on the TOE and cause the TOE to enter a failure state. Verify that the TOE provides the user
+                          with a visual indication of failure and that no usable video appears on any connected display.</li>
+                        <li>Repeat steps 3 to 9 for each unique display protocol and port type supported by the TOE.</li>
+                       </ol>                  
+                  </li>
+                    <li class="test-"><a id="APC_Test_2-VI" class="defined" href="#APC_Test_2-VI">Test FDP_APC_EXT.1:2</a>:
+      
+                      <b>Computer Video Interface Isolation</b><br/><br/>
+                      [Conditional: perform this test if “switching can be initiated only through express user action” is selected
+                      in FDP_SWI_EXT.1.1 in the PSD PP.]<br/><br/>
+                      This test verifies that the TOE does not transfer data to any non‐selected computer video interface.<ol>
+                        <li>Configure the TOE and the Operational Environment in accordance with the operational guidance.
+                          Connect only the first computer interface cable to one computer. Turn on the TOE.</li>
+                        <li>Switch the TOE primary display to computer #1.</li>
+                        <li>Observe the primary display to verify that the selected computer is the one that is shown.</li>
+                        <li>Remove the non‐selected computer video interface cables from the TOE and connect the
+                          oscilloscope probe to the TOE #2 computer video interface to verify that no SYNC signal is passed through
+                          the TOE. Based on the connection interface protocol, this is performed as
+                          follows.<ol>
+                            <li>Video Graphics Array (VGA) – single ended probe on pins 13 and then 14</li>
+                            <li>High‐Definition Multimedia Interface (HDMI) – connect pin 19 to a 3.3V power supply via a 100
+                              Ohm resistor to provide Hot Plug Detect (HPD) signal; Check for signals ‐ differential probe
+                              between pins 10 (+) and 12 (‐)</li>
+                            <li>Digital Visual Interface (DVI)‐I – connect pin 16 to a 3.3V power supply via a 100 Ohm resistor to
+                              provide HPD signal; Check for signals ‐ single ended probe on pins 8 and C4. Differential probe
+                              between pins 23 (+) and 24 (‐)</li>
+                            <li>DVI‐D ‐ connect pin 16 to a 3.3V power supply via a 100 Ohm resistor to provide HPD signal; Check
+                              for signals ‐ Differential probe between pins 23 (+) and 24 (‐)</li>
+                            <li>DisplayPort ‐ connect pin 18 to a 3.3V power supply via 100 Ohm resistor to provide HPD signal;
+                              Check for signals ‐ Differential probe between pins 3 (‐) and 1 (+) and between 10 (‐) and 12 (+)</li>
+                            <li>USB Type‐C with DisplayPort as Alternate Function – connect pin A8 to a 3.3V power supply via a
+                              100 Ohm resistor to provide HPD signal; Check for signals – Differential probe between pins A2
+                              and A3, A10 and A11; B2 and B3, and B10 and B11</li>
+                          </ol></li>
+                        <li>Repeat steps 3 and 4 while selecting other TOE connected computers. Verify that no SYNC signal
+                          is present.</li>
+                        <li>Repeat steps 3 to 5 with the TOE unpowered. Verify that no SYNC signal is present.</li>
+                        <li>With the probe connected to the TOE computer #2 video interface, disconnect / reconnect the
+                          computer #1 video cable. Power up the TOE and select computer #1. Attempt to detect the change in the
+                          oscilloscope at each one of the TOE #2 computer video interface pins. No changes shall be detected.</li>
+                        <li>Repeat step 7 for each one of the other TOE computer video interfaces.</li>
+                        <li>Repeat steps 7 and 8, but instead of disconnecting / reconnecting the computer, disconnect and
+                          reconnect the display.</li>
+                        <li>Repeat steps 7 and 8, but instead of disconnecting / reconnecting the computer, reboot the
+                          selected computer.</li>
+                        <li>Repeat steps 2 to 10 with each connected computer.</li>
+                        <li>[Conditional: if “multiple connected displays” is selected in FDP_CDS_EXT.1.1 then] repeat steps
+                          3 to 10 with each other display connected to the TOE.</li>
+                        <li>Repeat this test for each unique display protocol and port type supported by the TOE.</li>
+                      </ol>                      
+                    </li>
+                    
+                    <li class="test-"><a id="APC_Test_3-VI" class="defined" href="#APC_Test_3-VI">Test FDP_APC_EXT.1:3</a>:
+      
+                      <b>Unauthorized Sub-Protocols</b><br/><br/>                      
+                      Note that in the following steps only native video protocol cables shall be used. No conversion from other
+                      video protocols is allowed in these tests except as directed in FDP_IPC_EXT.1.1.<br/><br/>
+                      This test verifies that unauthorized sub‐protocols are blocked.<br/><br/>
+                      Perform this test for each of the selections in FDP_PDC_EXT.3.1/VI and FDP_IPC_EXT.1.1.<br/><br/>
+                      <b>In the following steps the evaluator shall establish a verified test setup that passes video signals across
+                      the TOE.</b>
+                      <ol>
+                        <li>Connect at least one computer with a native video protocol output to the TOE computer #1 video
+                          input interface.</li>
+                        <li>Connect at least one display with native video protocol to the TOE display output.</li>
+                        <li>Power up the TOE and ensure the connected computer is selected.</li>
+                        <li>Verify that the video image is visible and stable on the user display.</li>
+                      
+                      <b>In the following steps the evaluator shall verify that the test setup properly blocks the unauthorized
+                        video sub‐protocol traffic.</b><br/><br/>
+                      
+                        <li>Open the Monitor Control Command Set (MCCS) control console program on the computer and
+                          attempt to change the display contrast and brightness. Verify that the display does not change its contrast
+                          and brightness accordingly.</li>
+                        <li>Disconnect the video cable connecting the display and the TOE and connect the display directly to
+                          the computer. Verify that the video image is visible and stable on the user display.</li>
+                        <li>Attempt to change the display contrast and brightness. Verify that the display does change its
+                          contrast and brightness accordingly.</li>
+                        <li>Connect the following testing device based on the display video protocol being tested at the
+                          peripheral display interface.<ol>
+                            <li>DisplayPort – DisplayPort AUX channel analyzer in series between the display and the TOE</li>
+                            <li>HDMI – HDMI sink test device</li>
+                            <li>USB Type‐C with DisplayPort as Alternate Function – USB sniffer in series between the display and
+                              the TOE</li>
+                            <li>VGA – VGA sink test device</li>
+                            <li>DVI-I/DVI-D - DVI sink test device</li>                            
+                          </ol></li>
+                            <li>Attempt to change the display contrast and brightness. Verify that the testing device does not
+                              capture any MCCS commands.</li>
+                            <li>Replace the computer with a source generator for each selected protocol at the computer video
+                              interface. If DVI‐I or DVI‐D is selected, use an HDMI source generator.</li>
+                            <li>Run an EDID write transaction at the generator and verify in the testing device that no EDID traffic
+                              is captured.</li>
+                            <li>[Conditional, if DisplayPort (DP++ - Dual Mode Only), HDMI, or USB Type‐C is the selected protocol being
+                              tested at the computer video interface, then] run Consumer Electronics Control (CEC) and High‐bandwidth
+                              Digital Content Protection (HDCP) tests or commands at the generator and verify in the testing device that
+                              no CEC or HDCP traffic is captured for HDMI or USB-C, or check for an absence of power on pin 14 (CONFIG2)
+                              using an oscilloscope for DisplayPort DP++ Dual Mode.</li>
+                            <li>[Conditional, if DVI‐D, DVI‐I, or HDMI is the selected protocol being tested at the computer video
+                              interface, then] run Audio Return Channel (ARC), HDMI Ethernet and Audio Return Channel (HEAC), and
+                              HDMI Ethernet Channel (HEC) tests or commands at the generator and verify in the testing device that no
+                              ARC, HEAC, or HEC traffic is captured.</li>
+                            <li>[Conditional: If “[HDMI] protocol” is selected in FDP_IPC_EXT.1.2, then] perform steps 15 and 16
+                              for both pin 13 (CEC) and 14 (UTILITY).</li>
+                            <li>Turn off the TOE. Use a multi‐meter to measure the resistance‐to‐ground of the pin at the TOE
+                              HDMI peripheral interface and verify it is greater than 2 Mega‐ohms.</li>
+                            <li>Attach a single ended oscilloscope probe between the pin and the ground, turn on the TOE, and
+                              verify that no changes between 0.0v and 0.2v and between 3.0v and 3.3v are detected.</li>
+                            <li>[Conditional: if VGA is not the selected protocol being tested, then] disconnect all devices.
+                              Connect the display to a TOE computer video interface and the oscilloscope to the TOE display interface
+                              in order to verify that no HPD signal is passed by measuring a signal voltage of less than 1.0V. Based on
+                              the selected protocol being tested, this is performed as follows<ol>
+                                <li>HDMI – connect scope to pin 19 and verify no HPD signal is detected</li>
+                                <li>DVI‐D/DVI‐I – connect scope to pin 16 and verify no HPD signal is detected</li>
+                                <li>DisplayPort ‐ connect scope to pin 18 and verify no HPD signal is detected</li>
+                                <li>USB Type‐C with DisplayPort as Alternate Function – connect scope to pin A8 and B8 and verify
+                                  no HPD signal is detected.</li>
+                              </ol></li>
+                            <li>Repeat this test for each of the selections in FDP_PDC_EXT.3.1/VI and FDP_IPC_EXT.1.2.</li>
+                      </ol></li>
+                    <li class="test-"><a id="APC_Test_4-VI" class="defined" href="#APC_Test_4-VI">Test FDP_APC_EXT.1:4</a>:
+      
+                      <b>Video and EDID Channel Unidirectional Rule</b><br/><br/>
+                      This test verifies that the TOE video path is unidirectional from the computer video interface to the display
+                      interface with the exception of EDID, which may be read from the display once at power up and then may
+                      be read by the connected computers. The evaluator should have at least two
+                      high‐resolution displays of different models and
+                      one low‐resolution display for each TOE‐supported video protocol.<br/><br/>
+                      <b>In the following steps the evaluator should attempt to read display EDID after the TOE completed its
+                      self‐test / power up. The TOE should not read the new display EDID.</b><ol>
+                        <li>Configure the TOE and the Operational Environment in accordance with the operational guidance.
+                          Connect a computer and a high‐resolution display to the TOE.</li>
+                        <li>Ensure the TOE is on, computer #1 is selected, and verify that the display shows video from
+                          computer #1 as expected.</li>
+                        <li>Turn off the TOE. Disconnect the user display from the TOE.</li>
+                        <li>Connect the low‐resolution display to the TOE and turn on the TOE. After the video is shown on
+                          the display, turn off the TOE and disconnect the low-resolution display.</li>
+                        <li>Turn on the TOE. After the TOE has completed the self‐test connect the
+                          second high-resolution display of a different model to the TOE. The TOE may fail to generate video on
+                          the user display (i.e., no EDID is read at the TOE power up). If the display is showing video, then run the
+                          EDID reading and parsing software on computer #1 and check that there is no active EDID (i.e., the
+                          computer is using a default generic display or reading older display settings from the registry).</li>
+                        <b>In the following steps the evaluator shall validate that the TOE video path is unidirectional from the
+                          computer video interface to the display interface.</b>
+                        <li>Perform steps 7‐11 for each TOE computer video interface.</li>
+                        <li>Power off the TOE and disconnect the computer #1 video output and the display. Connect the
+                          display cable to the TOE computer #1 video interface. Connect the computer #1 video cable to the TOE
+                          display interface. This configuration will attempt to force video data through the TOE in the reverse
+                          direction.</li>
+                        <li>Power up the TOE again.</li>
+                        <li>Check that the video is not visible in the display.</li>
+                        <li>Perform steps 11 while the TOE is powered on and powered off.</li>
+                        <li>Remove the display cable from the TOE and connect the oscilloscope to verify that no SYNC signal
+                          is passed through the TOE. Based on the video protocols supported, this is
+                          performed as follows.<ol>
+                            <li>VGA – single ended probe on pins 13 and 14</li>
+                            <li>HDMI – connect pin 19 to a 3.3V power supply via a 100 Ohm resistor to provide HPD signal; Check
+                              for signals ‐ differential probe between pins 10 (+) and 12 (‐)</li>
+                            <li>DVI‐I – connect pin 16 to a 3.3V power supply via a 100 Ohm resistor to provide HPD signal; Check
+                              for signals ‐ single ended probe on pins 8 and C4. Differential probe between pins 23 (+) and 24 (‐
+                              )</li>
+                            <li>DVI‐D ‐ connect pin 16 to a 3.3V power supply via a 100 Ohm resistor to provide HPD signal; Check
+                              for signals ‐ Differential probe between pins 23 (+) and 24 (‐)</li>
+                            <li>DisplayPort ‐ connect pin 18 to a 3.3V power supply via a 100 Ohm resistor to provide HPD signal;
+                              Check for signals ‐ Differential probe between pins 3 (‐) and 1 (+) and between 10 (‐) and 12 (+)</li>
+                            <li>USB Type‐C with DisplayPort as Alternate Function – connect pin A8 to a 3.3V power supply via a
+                              100 Ohm resistor to provide HPD signal; Check for signals – Differential probe between pins A2
+                              and A3, A10 and A11; B2 and B3, and B10 and B11</li>
+                          </ol></li>                        
+                      </ol>
+                    </li>
+                    <li class="test-"><a id="APC_Test_5-VI" class="defined" href="#APC_Test_5-VI">Test FDP_APC_EXT.1:5</a>:
+      
+                      <b>No Flow between Connected Computers Over Time</b><br/><br/>
+                      This test verifies that the TOE does not send data to different computers connected to the same TOE video
+                      interface over time. Repeat this test for each TOE Video port.<ol>
+                        <li>Configure the TOE and the Operational Environment in accordance with the operational guidance.
+                          Run EDID reading and parsing software on two computers and connect a display to the TOE.</li>
+                        <li>Connect computer #1 to the TOE, ensure the TOE is on, computer #1 is selected, no other
+                          computers are connected, and verify that the display shows video from computer #1 as expected.</li>
+                        <li>Capture the TOE EDID content in the software on computer #1 and save as a file with a name that
+                          indicates capture time.</li>
+                        <li>Disconnect computer #1 and connect an I2C programmer to the same port. Attempt to write the
+                          characters “FFFF” over the entire EDID address range.</li>
+                        <li>Disconnect the I2C programmer, reconnect computer #1 to the same port, and repeat step 3.</li>
+                        <li>Reboot the TOE and repeat step 3.</li>
+                        <li>Turn off the TOE and repeat step 3.</li>
+                        <li>Restart the TOE and repeat step 3.</li>
+                        <li>Disconnect computer #1 and repeat steps 2 to 8 with computer #2 on the same port.</li>
+                        <li>Repeat steps 2 to 9 for a total of 20 EDID file captures.</li>
+                        <li>Collect all 20 captured EDID files, compare them bit‐by‐bit, and
+                          verify that they are identical excluding null captures recorded in Step 7.</li>
+                      </ol>
+                    </li>
+                  </ul></span>
+                </div></div></span></div><div class="comp" id="FDP-PDC-EXT-1"><h4>FDP_PDC_EXT.1 Peripheral Device Connection</h4><span class="activity_pane_body"><div class="component-activity-header">FDP_PDC_EXT.1</div>
+                              
+                              
+              
+              
+            <div class="eacategory">TSS</div><div class="ea">
+			There are no additional TSS evaluation activities for this component.<br/></div><div class="eacategory">Guidance</div><div class="ea"><div class="ea">
+                The evaluator shall verify that the operational user guidance describes devices authorized for use with the
+                TOE in accordance with the authorized peripheral device connections.
+              </div></div><div class="ea"><div class="eacategory">Isolation</div>
+			There are no Isolation evaluation activities for this component.<br/></div><div class="eacategory">Tests</div><div class="ea"><div class="ea">
+                <span class="testlist-"><ul>
+                  <li class="test-"><a id="_t_6" class="defined" href="#_t_6">Test FDP_PDC_EXT.1:1</a>:
+      
+                    The evaluator shall verify that the TOE ports do not reject authorized devices and devices with
+                    authorized protocols as per the Peripheral Device Connections appendix in MOD_VI_V1.0.<br/><br/>
+                    Repeat this test for each of the selected protocols in FDP_PDC_EXT.3.1/VI.<ol>
+                      <li>Connect the authorized device with an authorized protocol directly to a computer. Display any
+                        image on the device. Disconnect the device from the computer.</li>
+                      <li>Configure the TOE and the Operational Environment in accordance with the operational guidance.</li>
+                      <li>Ensure the TOE is powered off.</li>
+                      <li>Connect the authorized device with an authorized protocol to the TOE peripheral interface.</li>
+                      <li>Power on the TOE and verify the TOE user indication described in the operational user guidance is
+                        not present.</li>
+                      <li>Ensure the connected computer is selected and verify that the device displays the same image as
+                        in step 1.</li>
+                      <li>Disconnect the authorized device, then reconnect it to the TOE peripheral interface.</li>
+                      <li>Verify the TOE user indication described in the operational user guidance is not present.</li>
+                      <li>Verify that the device displays the same image as in step 1 and 6 or that it displays a blank 
+                        screen. If it displays a blank screen, reboot the TOE, select the channel that was selected prior
+                        to reboot, and verify that the device now displays the same image as in step 1 and 6.</li>
+                    </ol>
+                  </li>                                  
+                </ul></span>
+              </div></div></span></div>
+        
+        <h3 class="indexable" data-level="3" id="mod_fta">2.1.1.2 TOE Access (FTA)</h3><div class="comp" id=""><h4>FTA_CIN_EXT.1 Continuous Indications</h4><span class="activity_pane_body"><div class="component-activity-header">FTA_CIN_EXT.1</div>
+              Additional testing for this component is performed in <a href="#APC_Test_1-VI" class="dynref">Test FDP_APC_EXT.1:1</a>.<br/><br/>
+            </span></div>
+      <h2 class="indexable" data-level="1" id="man-sfrs">2.2 TOE SFR Evaluation Activities</h2><h2 class="indexable" data-level="2" id="FDP">2.2.1 User Data Protection (FDP)</h2><div class="comp" id="FDP-PDC-EXT-2-VI"><h4>FDP_PDC_EXT.2/VI Peripheral Device Connection (Video Output)</h4><span class="activity_pane_body"><div class="component-activity-header">FDP_PDC_EXT.2/VI</div>
+              Evaluation Activities for this component are performed through evaluation of
+                FDP_PDC_EXT.1.<br/><br/>
+            </span></div><div class="comp" id="FDP-PDC-EXT-3-VI"><h4>FDP_PDC_EXT.3/VI Authorized Connection Protocols (Video Output)</h4><span class="activity_pane_body"><div class="component-activity-header">FDP_PDC_EXT.3/VI</div>
+              Evaluation Activities for this component are performed through evaluation of
+                FDP_PDC_EXT.1.<br/><br/>
+            </span></div><div class="comp" id="FDP-UDF-EXT-1-VI"><h4>FDP_UDF_EXT.1/VI Unidirectional Data Flow (Video Output)</h4><span class="activity_pane_body"><div class="component-activity-header">FDP_UDF_EXT.1/VI</div>
+              Evaluation Activities for this component are performed through evaluation of
+                FDP_PDC_EXT.1.<br/><br/>
+            </span></div><h2 class="indexable" data-level="1" id="opt-sfrs">2.3 Evaluation Activities for Optional SFRs</h2>The PP-Module does not define any optional requirements.<h2 class="indexable" data-level="1" id="sel-sfrs">2.4 Evaluation Activities for Selection-Based SFRs</h2><h2 class="indexable" data-level="2" id="_sec_8">2.4.1 User Data Protection (FDP)</h2><div class="comp" id=""><h4>FDP_CDS_EXT.1 Connected Displays Supported</h4><span class="activity_pane_body"><div class="component-activity-header">FDP_CDS_EXT.1</div>
+            
+            
+            
+                          
+          <div class="eacategory">TSS</div><div class="ea"><div class="ea">
+              The evaluator shall examine the TSS and verify that it describes how many connected displays may be
+              supported at a time.
+            </div></div><div class="eacategory">Guidance</div><div class="ea"><div class="ea">
+              The evaluator shall examine the operational user guidance and verify that it describes how many displays
+              are supported by the TOE.
+            </div></div><div class="ea"><div class="eacategory">Isolation</div>
+			There are no Isolation evaluation activities for this component.<br/></div><div class="eacategory">Tests</div><div class="ea">
+			There are no test activities for this component.<br/></div></span></div><div class="comp" id=""><h4>FDP_IPC_EXT.1 Internal Protocol Conversion</h4><span class="activity_pane_body"><div class="component-activity-header">FDP_IPC_EXT.1</div>
+              
+              
+              
+              
+            <div class="eacategory">TSS</div><div class="ea"><div class="ea">
+                The evaluator shall examine the TSS and verify that it describes how data DisplayPort data is converted.
+              </div></div><div class="eacategory">Guidance</div><div class="ea">
+			There are no additional Guidance evaluation activities for this component.<br/></div><div class="ea"><div class="eacategory">Isolation</div>
+			There are no Isolation evaluation activities for this component.<br/></div><div class="eacategory">Tests</div><div class="ea"><div class="ea">
+                Testing for this SFR is covered under <a href="#APC_Test_3-VI" class="dynref">Test FDP_APC_EXT.1:3</a>.
+              </div></div></span></div><div class="comp" id="FDP-SPR-EXT-1-DP"><h4>FDP_SPR_EXT.1/DP Sub-Protocol Rules (DisplayPort Protocol)</h4><span class="activity_pane_body"><div class="component-activity-header">FDP_SPR_EXT.1/DP</div>
+              
+              
+              
+              
+            <div class="eacategory">TSS</div><div class="ea"><div class="ea">
+                The evaluator shall examine the TSS and verify that it describes that the various sub‐protocols are allowed
+                or blocked by the TOE as described by the SFR.
+              </div></div><div class="eacategory">Guidance</div><div class="ea">
+			There are no additional Guidance evaluation activities for this component.<br/></div><div class="ea"><div class="eacategory">Isolation</div>
+			There are no Isolation evaluation activities for this component.<br/></div><div class="eacategory">Tests</div><div class="ea"><div class="ea">
+                Testing for this SFR is covered under <a href="#APC_Test_3-VI" class="dynref">Test FDP_APC_EXT.1:3</a> and <a href="#APC_Test_4-VI" class="dynref">Test FDP_APC_EXT.1:4</a>.
+              </div></div></span></div><div class="comp" id="FDP-SPR-EXT-1-DVI-D"><h4>FDP_SPR_EXT.1/DVID Sub-Protocol Rules (DVI-D Protocol)</h4><span class="activity_pane_body"><div class="component-activity-header">FDP_SPR_EXT.1/DVID</div>
+              
+              
+              
+              
+            <div class="eacategory">TSS</div><div class="ea"><div class="ea">
+                The evaluator shall examine the TSS and verify that it describes that the various sub‐protocols are allowed
+                or blocked by the TOE as described by the SFR.
+              </div></div><div class="eacategory">Guidance</div><div class="ea">
+			There are no additional Guidance evaluation activities for this component.<br/></div><div class="ea"><div class="eacategory">Isolation</div>
+			There are no Isolation evaluation activities for this component.<br/></div><div class="eacategory">Tests</div><div class="ea"><div class="ea">
+                Testing for this SFR is covered under <a href="#APC_Test_3-VI" class="dynref">Test FDP_APC_EXT.1:3</a> and <a href="#APC_Test_4-VI" class="dynref">Test FDP_APC_EXT.1:4</a>.
+              </div></div></span></div><div class="comp" id="FDP-SPR-EXT-1-DVI-I"><h4>FDP_SPR_EXT.1/DVII Sub-Protocol Rules (DVI-I Protocol)</h4><span class="activity_pane_body"><div class="component-activity-header">FDP_SPR_EXT.1/DVII</div>
+              
+              
+              
+              
+            <div class="eacategory">TSS</div><div class="ea"><div class="ea">
+                The evaluator shall examine the TSS and verify that it describes that the various sub‐protocols are allowed
+                or blocked by the TOE as described by the SFR.
+              </div></div><div class="eacategory">Guidance</div><div class="ea">
+			There are no additional Guidance evaluation activities for this component.<br/></div><div class="ea"><div class="eacategory">Isolation</div>
+			There are no Isolation evaluation activities for this component.<br/></div><div class="eacategory">Tests</div><div class="ea"><div class="ea">
+                Testing for this SFR is covered under <a href="#APC_Test_3-VI" class="dynref">Test FDP_APC_EXT.1:3</a> and <a href="#APC_Test_4-VI" class="dynref">Test FDP_APC_EXT.1:4</a>.
+              </div></div></span></div><div class="comp" id="FDP-SPR-EXT-1-HDMI"><h4>FDP_SPR_EXT.1/HDMI Sub-Protocol Rules (HDMI Protocol)</h4><span class="activity_pane_body"><div class="component-activity-header">FDP_SPR_EXT.1/HDMI</div>
+              
+              
+              
+              
+            <div class="eacategory">TSS</div><div class="ea"><div class="ea">
+                The evaluator shall examine the TSS and verify that it describes that the various sub‐protocols are allowed
+                or blocked by the TOE as described by the SFR.
+              </div></div><div class="eacategory">Guidance</div><div class="ea">
+			There are no additional Guidance evaluation activities for this component.<br/></div><div class="ea"><div class="eacategory">Isolation</div>
+			There are no Isolation evaluation activities for this component.<br/></div><div class="eacategory">Tests</div><div class="ea"><div class="ea">
+                Testing for this SFR is covered under <a href="#APC_Test_3-VI" class="dynref">Test FDP_APC_EXT.1:3</a> and <a href="#APC_Test_4-VI" class="dynref">Test FDP_APC_EXT.1:4</a>.
+              </div></div></span></div><div class="comp" id="FDP-SPR-EXT-1-USB-C"><h4>FDP_SPR_EXT.1/USBC Sub-Protocol Rules (USB-C Protocol)</h4><span class="activity_pane_body"><div class="component-activity-header">FDP_SPR_EXT.1/USBC</div>
+              
+              
+              
+              
+            <div class="eacategory">TSS</div><div class="ea"><div class="ea">
+                The evaluator shall examine the TSS and verify that it describes that the various sub‐protocols are allowed
+                or blocked by the TOE as described by the SFR.
+              </div></div><div class="eacategory">Guidance</div><div class="ea">
+			There are no additional Guidance evaluation activities for this component.<br/></div><div class="ea"><div class="eacategory">Isolation</div>
+			There are no Isolation evaluation activities for this component.<br/></div><div class="eacategory">Tests</div><div class="ea"><div class="ea">
+                Testing for this SFR is covered under <a href="#APC_Test_3-VI" class="dynref">Test FDP_APC_EXT.1:3</a> and <a href="#APC_Test_4-VI" class="dynref">Test FDP_APC_EXT.1:4</a>.
+              </div></div></span></div><div class="comp" id="FDP-SPR-EXT-1-VGA"><h4>FDP_SPR_EXT.1/VGA Sub-Protocol Rules (VGA Protocol)</h4><span class="activity_pane_body"><div class="component-activity-header">FDP_SPR_EXT.1/VGA</div>
+              
+              
+              
+              
+            <div class="eacategory">TSS</div><div class="ea"><div class="ea">
+                The evaluator shall examine the TSS and verify that it describes that the various sub‐protocols are allowed
+                or blocked by the TOE as described by the SFR.
+              </div></div><div class="eacategory">Guidance</div><div class="ea">
+			There are no additional Guidance evaluation activities for this component.<br/></div><div class="ea"><div class="eacategory">Isolation</div>
+			There are no Isolation evaluation activities for this component.<br/></div><div class="eacategory">Tests</div><div class="ea"><div class="ea">
+                Testing for this SFR is covered under <a href="#APC_Test_3-VI" class="dynref">Test FDP_APC_EXT.1:3</a> and <a href="#APC_Test_4-VI" class="dynref">Test FDP_APC_EXT.1:4</a>.
+              </div></div></span></div><h2 class="indexable" data-level="1" id="obj-sfrs">2.5 Evaluation Activities for Objective SFRs</h2>The PP-Module does not define any objective requirements.<h2 class="indexable" data-level="1" id="impl-sfrs-">2.6 Evaluation Activities for Implementation-dependent SFRs</h2>The PP-Module does not define any implementation-dependent requirements.<h1 id="sar_aas" class="indexable" data-level="0">3 Evaluation Activities for SARs</h1><p>The PP-Module does not define any SARs beyond those defined within the
+    
+	base PSD PP to which it must claim conformance.
+	It is important to note that a TOE that is evaluated against the PP-Module is
+	inherently evaluated against this Base-PP as well. 
+	The PSD PP 
+        includes a number of Evaluation Activities associated with both SFRs and SARs.
+	Additionally, the PP-Module includes a number of SFR-based Evaluation Activities 
+	that similarly refine the SARs of the Base-PPs.
+	The evaluation laboratory will evaluate the TOE against the Base-PP
+      
+    and supplement that evaluation with the necessary SFRs that are taken from the PP-Module.
+    </p><h1 id="sup-info" class="indexable" data-level="0">4 Required Supplementary Information</h1><p>This Supporting Document has no required supplementary information beyond the ST, operational
+guidance, and testing.</p><h1 id="biblio" class="indexable" data-level="A">Appendix A -  References</h1><table><tr class="header"><th>Identifier</th><th>Title</th></tr>    
+    <tr><td><span id="base-pp"></span>[PP_PSD_V5.0 or PSD PP]</td><td>Protection Profile for Peripheral Sharing Device, Version 5.0
+      </td></tr>
+
+  </table></body></html>
