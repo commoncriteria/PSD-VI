@@ -378,7 +378,7 @@
       
       <modified-sfrs>
         
-        <sec:mod_fdp title="User Data Protection (FDP)">
+        <sec:mod_fdp title="Class FDP: User Data Protection">
           <f-component cc-id="fdp_apc_ext.1" name="Active PSD Connections">
             <consistency-rationale>
               This SFR adds a requirement to block electrical signals that strengthens but
@@ -674,7 +674,7 @@
           </f-component>
         </sec:mod_fdp>
         
-        <sec:mod_fta title="TOE Access (FTA)">          
+        <sec:mod_fta title="Class FTA: TOE Access">          
           <f-component cc-id="fta_cin_ext.1" name="Continuous Indications">
             <consistency-rationale>
               This PP‐Module adds a new display mechanism that is unique to video/display
@@ -742,7 +742,7 @@
     </base-pp>
     
     <man-sfrs>
-      <section title="User Data Protection (FDP)" id="FDP">        
+      <section title="Class FDP: User Data Protection" id="FDP">        
         <ext-comp-def fam-id="FDP_PDC_EXT" title="Peripheral Device Connection">
           <fam-behavior>This family is defined in the PSD PP. This PP‐Module augments the extended family by adding two
             additional components, FDP_PDC_EXT.2 and FDP_PDC_EXT.3. These new components and their impact
@@ -961,7 +961,7 @@
     <opt-sfrs/>
     
     <sel-sfrs>
-      <section title="User Data Protection (FDP)">
+      <section title="Class FDP: User Data Protection">
         
         <ext-comp-def title="Connected Displays Supported" fam-id="FDP_CDS_EXT">
           <fam-behavior>
