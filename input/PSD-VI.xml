@@ -961,7 +961,7 @@
     <opt-sfrs/>
     
     <sel-sfrs>
-      <section title="Class FDP: User Data Protection">
+      <section title="Class FDP: User Data Protection" id="FDP">
         
         <ext-comp-def title="Connected Displays Supported" fam-id="FDP_CDS_EXT">
           <fam-behavior>
