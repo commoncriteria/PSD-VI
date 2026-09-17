@@ -206,10 +206,42 @@
       <cc-pt3-conf>conformant</cc-pt3-conf> 
       <cc-pp-conf/>
       <cc-pp-config-with>
-        <PP-cc-ref>Protection Profile for Peripheral Sharing Devices, Version 5.0</PP-cc-ref>
-        <Mod-cc-ref>PP-Module for Analog Audio Output Devices, Version 2.0</Mod-cc-ref>
-        <Mod-cc-ref>PP-Module for Keyboard/Mouse Devices, Version 2.0</Mod-cc-ref>
-        <Mod-cc-ref>PP-Module for User Authentication Devices, Version 2.0</Mod-cc-ref>
+        <PP-cc-ref>
+			<cc-doc-ref id="PSD">
+				<git>
+					<url>https://github.com/commoncriteria/PSD</url>
+					<branch>main</branch>
+				</git>
+				<url>https://www.niap-ccevs.org/protectionprofiles/412</url>			
+			</cc-doc-ref>		
+		</PP-cc-ref>
+        <Mod-cc-ref>
+			<cc-doc-ref id="PSD-AO">
+				<git>
+					<url>https://github.com/commoncriteria/PSD-AO</url>
+					<branch>main</branch>
+				</git>
+				<url>https://niap-ccevs.org/protectionprofiles/433</url>			
+			</cc-doc-ref>		
+		</Mod-cc-ref>
+        <Mod-cc-ref>
+			<cc-doc-ref id="PSD-KM">
+				<git>
+					<url>https://github.com/commoncriteria/PSD-KM</url>
+					<branch>main</branch>
+				</git>
+				<url>https://niap-ccevs.org/protectionprofiles/435</url>			
+			</cc-doc-ref>		
+		</Mod-cc-ref>
+        <Mod-cc-ref>
+			<cc-doc-ref id="PSD-UA">
+				<git>
+					<url>https://github.com/commoncriteria/PSD-UA</url>
+					<branch>main</branch>
+				</git>
+				<url>https://niap-ccevs.org/protectionprofiles/434</url>			
+			</cc-doc-ref>		
+		</Mod-cc-ref>
       </cc-pp-config-with>        
       <cc-pkg-claim/>
     </CClaimsInfo>
@@ -225,7 +257,7 @@
     <sec:Threats>      
       <threats>
         <threat name="T.DATA_LEAK">
-          <from base="bpp-psd"/>
+          <from base="PSD"/>
           <description>This threat from the PSD PP also applies to the functionality defined in this PP-Module.</description>
           <addressed-by>FDP_PDC_EXT.2/VI</addressed-by><rationale>Mitigates this threat by only
             allowing authorized device connections with authorized interface protocols.</rationale>
@@ -245,7 +277,7 @@
             video data transits unidirectionally between interfaces.</rationale>
         </threat>
         <threat name="T.RESIDUAL_LEAK">
-          <from base="bpp-psd"/>
+          <from base="PSD"/>
           <description>This threat from the PSD PP also applies to the functionality defined in this PP-Module.</description>
           <addressed-by>FDP_PDC_EXT.2/VI</addressed-by><rationale>Mitigates this threat by only
             allowing authorized device connections with authorized interface protocols.</rationale>
@@ -263,7 +295,7 @@
             threat by ensuring the TSF applies the specified rules for the VGA protocol.</rationale>          
         </threat>
         <threat name="T.SIGNAL_LEAK">
-          <from base="bpp-psd"/>
+          <from base="PSD"/>
           <description>This threat from the PSD PP also applies to the functionality defined in this PP-Module.</description>
           <addressed-by>FDP_PDC_EXT.2/VI</addressed-by><rationale>Mitigates this threat by only
             allowing authorized device connections with authorized interface protocols.</rationale>
@@ -283,7 +315,7 @@
             video data transits unidirectionally between interfaces.</rationale>
         </threat>
         <threat name="T.UNAUTHORIZED_DEVICES">
-          <from base="bpp-psd"/>
+          <from base="PSD"/>
           <description>This threat from the PSD PP also applies to the functionality defined in this PP-Module.</description>
           <addressed-by>FDP_PDC_EXT.2/VI</addressed-by><rationale>Mitigates this threat by only
             allowing authorized device connections with authorized interface protocols.</rationale>
@@ -307,7 +339,7 @@
             video data transits unidirectionally between interfaces.</rationale>
         </threat>
       <threat name="T.UNINTENDED_USE">
-        <from base="bpp-psd"/>
+        <from base="PSD"/>
         <description>This threat from the PSD PP also applies to the functionality defined in this PP-Module.</description>
         <addressed-by>FDP_CDS_EXT.1 (selection-based)</addressed-by><rationale>Mitigates this threat
           by specifying whether multiple displays are supported as a trigger for the TOE needing to apply on-screen display labeling for video feeds.</rationale>
@@ -363,12 +395,7 @@
 
   <sec:Security_Requirements>
     <comment>Need to add URLs once created</comment>
-    <base-pp id="bpp-psd" name="Peripheral Sharing Devices" product="Device" short="PSD" version="5.0">
-      <git>
-        <url>https://github.com/commoncriteria/VI</url>
-        <branch>main</branch>
-      </git>
-      <url>https://commoncriteria.github.io/PSD/main/PSD-release.html</url>
+    <base-pp ref="PSD">
       
       <sec-func-req-dir>
         When a TOE claims conformance to this PP‐Module, it is necessary to make claims in the PSD PP
@@ -987,7 +1014,7 @@
         
         <f-component cc-id="fdp_cds_ext.1" name="Connected Displays Supported">
           <depends on="notisolator">
-            <external-doc ref="bpp-psd"/>
+            <external-doc ref="PSD"/>
           </depends>
           <consistency-rationale>
             This SFR adds support for one or multiple connected displays. It is not in the
