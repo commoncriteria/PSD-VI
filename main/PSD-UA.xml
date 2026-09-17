@@ -1,0 +1,1379 @@
+<Module xmlns="https://niap-ccevs.org/cc/v1" xmlns:h="http://www.w3.org/1999/xhtml" xmlns:sec="https://niap-ccevs.org/cc/v1/section" name="User Authentication Devices" target-product="User Authentication Device" target-products="User Authentication Devices" boilerplate="yes" short="UA">  
+  <!-- <inline-comment color='green'>Initial PSD-UA Template on 5/8.</inline-comment> -->
+  <!-- <inline-comment color='blue' linebreak='yes'> Hello World QQQQ </inline-comment> -->
+ 
+  <PPReference>
+    <ReferenceTable>      
+		<PPTitle>PP-Module for User Authentication Devices</PPTitle>
+      <PPVersion>2.0</PPVersion>
+      <PPAuthor>National Information Assurance Partnership</PPAuthor>
+      <PPPubDate>2025-07-11</PPPubDate>
+      <Keywords>PSD, UA</Keywords>      
+    </ReferenceTable>
+  </PPReference>
+  
+  <RevisionHistory>
+    <entry>
+      <version>1.0</version>
+      <date>2019-07-19</date>
+      <subject>Initial draft</subject>
+    </entry>
+  </RevisionHistory>
+  <release-notes><h:h3>TDs Applied</h:h3></release-notes><RevisionHistory>
+    <entry>
+      <version>2.0</version>
+      <date>2025-07-11</date>
+      <subject>Updates for CC:2022</subject>
+    </entry>
+  </RevisionHistory>
+
+  <sec:Introduction>
+    <section title="Overview" id="ppoverview">
+      The scope of this PP‐Module is to describe the security functionality of a specific type of Peripheral Sharing
+      Device (PSD) product in terms of [CC] and to define functional and assurance requirements for such
+      products. A TOE that claims conformance to this PP‐Module must also claim conformance to the
+      Protection Profile for Peripheral Sharing Devices (PSD PP), Version 4.0. This is because the PSD PP is a generic
+      Protection Profile aimed at defining baseline requirements and assurance activities for a wide variety of
+      PSD products but more specific requirements and assurance activities apply depending on the types of
+      physical and logical interfaces provided by a PSD. Therefore, additional Security Functional Requirements
+      (SFRs) have been defined in this PP‐Module to define security functionality that is unique to a PSD that
+      provides the ability to support user authentication devices. <h:br/><h:br/>
+      This PP-Module is intended for use with the following Base-PPs:<h:ul>
+        <h:li>Protection Profile for Peripheral Sharing Devices, Version 5.0</h:li>
+      </h:ul>      
+    </section>
+    
+    <tech-terms>      
+      <term full="Allowlist">
+        List containing one or more device attributes that will cause the TOE to accept the
+        devices having that attribute.
+      </term>
+      <term abbr="CDF" full="Configurable Device Filtration">
+        PSD function that accepts or rejects peripheral devices based on field‐configurable
+        parameters or allowlist and denylist.
+      </term>
+      <term full="Denylist">
+        List containing one or more device attributes that will cause the PSD to reject the
+        devices having that attribute.
+      </term>
+      <term full="Disconnection of authentication element">
+        Removal of the authentication element, disconnection of a peripheral authentication
+        device (if possible), or switching to a different connected computer (if possible).
+      </term>
+      <term full="External Authentication Device">
+        An authentication device that has an exposed USB interface.
+      </term>
+      <term abbr="FDF" full="Fixed Device Filtration">
+        PSD function that accepts or rejects peripheral devices based on fixed parameters
+        loaded during production.
+      </term>
+      <term full="Internal Authentication Device">
+        An authentication device that has no exposed interface.
+      </term>
+      <term full="Removal of authentication element">
+        Removal of smart‐card, token, or proximity card from the authentication device
+        reader.
+      </term>
+      <term abbr="OSP" full="Organizational Security Policies"/>
+      <term abbr="PP" full="Protection Profile"/>
+      <term abbr="PSD" full="Peripheral Sharing Device"/>
+      <term abbr="SFR" full="Security Functional Requirement"/>
+      <term abbr="USB" full="Universal Serial Bus"/>
+      <term full="USB Dummy Load">
+        A USB Type A plug with resistor connected between positions 1 and 4 and used to
+        simulate overloading a TOE USB peripheral device interface.  
+      </term>
+      <term full="User Authentication Device">
+        A peripheral device used to authenticate the identity of the user, such as a smart-card
+        reader, biometric authentication device, or proximity card reader.
+      </term>
+      <term full="User Authentication Session">
+        The exchange of user credentials – typically a user token presented through a User
+        Authentication Device – and the Selected Computer.
+      </term>
+      <term full="User Authentication Session Information">
+        User data for user authentication devices.
+      </term>        
+    </tech-terms>    
+    
+    <section title="Compliant Targets of Evaluation" id="TOEdescription">
+      Any Target of Evaluation (TOE) that conforms to the PSD PP and includes user authentication device
+      functionality is considered to be a candidate TOE for claiming conformance to this PP‐Module. In 
+      particular, a compliant TOE is expected to support one or more user authentication devices for one or
+      more connected computers.<h:br/><h:br/>
+      A compliant TOE will have a USB protocol connection for the TOE computer interface and can implement
+      the TOE peripheral connection in the following ways:<h:ul>
+        <h:li>External ‐ The TOE supports an external user authentication device with an exposed USB interface,
+      and whose functionality may be separated from the PSD.</h:li>
+        <h:li>Internal ‐ The TOE implements an internal user authentication device whose functionality may
+      not be separated from the PSD.</h:li>
+      </h:ul>
+      A compliant TOE will not emulate the user authentication device or support simultaneous user
+      authentication sessions across multiple computers.<h:br/><h:br/>
+      All of the requirements and restrictions that are defined in the PSD PP apply to a conformant TOE. A
+      compliant TOE will also satisfy all of the specific data protection/isolation capabilities that are required by
+      this PP‐Module. A compliant TOE will embody one or more of the use cases defined in the PSD PP. It may
+      also provide PSD functionality for additional types of computer interfaces (e.g. keyboard/mouse). In this
+      case, the TOE will claim conformance to all applicable PP‐Modules.
+    </section>      
+      <section title="TOE Boundary" id="TOEboundary">
+        The TOE boundary is the same as that which is defined for a Peripheral Sharing Device in general. Refer to
+        the PSD PP for an outline of the TOE boundary. A TOE that claims conformance to this PP‐Module is not
+        prevented from claiming conformance to other PSD PP‐Modules; all relevant PP‐Modules should be
+        claimed by the TOE based on the specific types of functionality that it provides.
+      </section>      
+    <section title="Use Cases" id="usecases">
+      No additional use cases are defined for this PP‐Module. The TOE is expected to embody one or more use
+      cases as defined by the PSD PP. The functionality defined by this PP‐Module is implementation-dependent
+      (i.e. not tied to any specific use cases) and is related entirely to the specific security
+      requirements related to security of the physical and logical interfaces for user authentication devices.
+    </section>
+    <section title="Test Environment for Evaluation Activities">
+      In order to ensure that the TOE demonstrates the functionality required by the EAs, it is necessary for
+      the evaluator to ensure that they have appropriate equipment to conduct the required testing. The
+      following is a list of the additional equipment needed to perform the testing described in this
+      Supplementary Document along with the purpose of each piece of equipment:<h:ul>
+        <h:li><h:b>Digital voltmeter</h:b> – Used to verify power flow to the user authentication device; must have a time
+          lapse feature</h:li>
+        <h:li><h:b>Switchable 5 volt power supply with any compatible USB plug</h:b> – Used to verify electrical signals are not
+          sent to non‐selected computers</h:li>        
+        <h:li><h:b>USB audio headset</h:b> – Used to verify the peripheral device connections</h:li>
+        <h:li><h:b>USB camera</h:b> – Used to verify the peripheral device connections</h:li>
+        <h:li><h:b>USB composite device evaluation board</h:b> – Used to verify the peripheral device connections</h:li>
+        <h:li><h:b>USB dummy load</h:b> – Used to verify electrical signals are not sent to non‐selected computers</h:li>        
+        <h:li><h:b>USB hub</h:b> – Used to verify the peripheral device connections</h:li>
+        <h:li><h:b>USB keyboard</h:b> – Used to verify the peripheral device connections and that the user authentication
+          function is isolated from other USB functions</h:li>        
+        <h:li><h:b>USB printer</h:b> – Used to verify the peripheral device connections</h:li>
+        <h:li><h:b>USB protocol analyzer software</h:b> – Used to verify the presence or absence of USB traffic</h:li>        
+        <h:li><h:b>USB sniffer</h:b> – Used to verify the presence or absence of USB traffic; may be used in place of the
+          USB analyzer</h:li>
+        <h:li><h:b>USB Type-C with DisplayPort as alternate function monitor</h:b> – Used to verify the user authentication
+          function is isolated from other USB functions</h:li>
+        <h:li><h:b>USB user authentication device with power LED</h:b> – Used to connect authenticate sessions</h:li>
+        <h:li><h:b>USB wireless LAN dongle</h:b> – Used to verify the peripheral device connections</h:li>        
+      </h:ul>      
+      When conducting testing, the evaluator must ensure that all device configuration combinations are
+      tested. For example, if testing a device with two peripheral device interfaces and eight computer
+      interfaces, the evaluator may use two connected computers, but must change the selected peripheral
+      several times to ensure that each of the possible device configuration permutations is tested. Some
+      equivalency arguments between ports are allowed.
+    </section>    
+  </sec:Introduction>
+
+  <section title="Conformance Claims" id="sec-cclaims" boilerplate="no">
+    <CClaimsInfo cc-version="cc-2022r1" cc-approach="direct-rationale" display="yes">
+      <cc-st-conf>exact</cc-st-conf>
+      <cc-pt2-conf>extended</cc-pt2-conf>           
+      <cc-pt3-conf>conformant</cc-pt3-conf> 
+      <cc-pp-conf/>
+      <cc-pp-config-with>
+        <PP-cc-ref>
+			<cc-doc-ref id="PSD">
+				<git>
+					<url>https://github.com/commoncriteria/PSD</url>
+					<branch>main</branch>
+				</git>
+				<url>https://www.niap-ccevs.org/protectionprofiles/412</url>			
+			</cc-doc-ref>		
+		</PP-cc-ref>
+        <Mod-cc-ref>
+			<cc-doc-ref id="PSD-AO">
+				<git>
+					<url>https://github.com/commoncriteria/PSD-AO</url>
+					<branch>main</branch>
+				</git>
+				<url>https://niap-ccevs.org/protectionprofiles/433</url>			
+			</cc-doc-ref>		
+		</Mod-cc-ref>
+        <Mod-cc-ref>
+			<cc-doc-ref id="PSD-KM">
+				<git>
+					<url>https://github.com/commoncriteria/PSD-KM</url>
+					<branch>main</branch>
+				</git>
+				<url>https://niap-ccevs.org/protectionprofiles/435</url>			
+			</cc-doc-ref>		
+		</Mod-cc-ref>
+        <Mod-cc-ref>
+			<cc-doc-ref id="PSD-VI">
+				<git>
+					<url>https://github.com/commoncriteria/PSD-VI</url>
+					<branch>main</branch>
+				</git>
+				<url>https://niap-ccevs.org/protectionprofiles/436</url>			
+			</cc-doc-ref>		
+		</Mod-cc-ref>
+      </cc-pp-config-with>        
+      <cc-pkg-claim/>
+    </CClaimsInfo>
+  </section>
+  
+  <sec:Security_Problem_Definition>    
+    The security problem is described in terms of the threats that the TOE is expected to address, assumptions
+    about its operational environment, and any organizational security policies that the TOE is expected to
+    enforce.<h:br/><h:br/>
+    Note that as a PP‐Module of the PSD PP, all threats, assumptions, and Organizational Security Policies
+    (OSP) defined in the PSD PP will also apply to the TOE unless otherwise specified.
+    
+    <sec:Threats>      
+      <threats>
+        <threat name="T.DATA_LEAK">
+          <from base="PSD"/>
+          <description>This threat from the PSD PP also applies to the functionality defined in this PP-Module.</description>
+          <addressed-by>FDP_FIL_EXT.1/UA</addressed-by><rationale>Mitigates this threat
+            by filtering unauthorized devices that could facilitate data leakage.</rationale>
+          <addressed-by>FDP_PDC_EXT.2/UA</addressed-by><rationale>Mitigates this threat by only
+            allowing device connections with authorized interface protocols.</rationale>
+
+          <addressed-by>FDP_TER_EXT.1</addressed-by><rationale>Mitigates this threat by requiring
+            session termination on a connected computer when the authentication element is removed.</rationale>
+          <addressed-by>FDP_UAI_EXT.1</addressed-by><rationale>Mitigates this threat by enforcing isolation of the authentication peripheral interface communications from the rest of the TSF.</rationale>
+          <addressed-by>FDP_TER_EXT.2 (selection-based)</addressed-by><rationale>Mitigates this
+            threat by requiring session termination when an external authentication device is removed.</rationale>
+          <addressed-by>FDP_TER_EXT.3 (selection-based)</addressed-by><rationale>Mitigates this
+            threat by requiring session termination and power reset when switching to a different computer.</rationale>          
+        </threat>
+        
+        <threat name="T.RESIDUAL_LEAK">
+          <from base="PSD"/>
+          <description>This threat from the PSD PP also applies to the functionality defined in this PP-Module.</description>
+          <addressed-by>FDP_TER_EXT.3 (selection-based)</addressed-by><rationale>If the TOE has the capability of switching between multiple computers, this SFR mitigates the threat by performing a power reset of the authentication interface when the selected computer is switched.</rationale>
+        </threat>
+        
+        <threat name="T.SIGNAL_LEAK">
+          <from base="PSD"/>
+          <description>This threat from the PSD PP also applies to the functionality defined in this PP-Module.</description>
+          <addressed-by>FDP_FIL_EXT.1/UA</addressed-by><rationale>Mitigates this threat
+            by filtering unauthorized devices that could facilitate signal leakage.</rationale>
+          <addressed-by>FDP_PDC_EXT.2/UA</addressed-by><rationale>Mitigates this threat by only
+            allowing device connections with authorized interface protocols.</rationale>
+          
+          <addressed-by>FDP_TER_EXT.1</addressed-by><rationale>Mitigates this threat by requiring
+            session termination on a connected computer when the authentication element is removed.</rationale>
+          <addressed-by>FDP_UAI_EXT.1</addressed-by><rationale>Mitigates this threat by enforcing isolation of the authentication peripheral interface communications from the rest of the TSF.</rationale>
+          <addressed-by>FDP_TER_EXT.2 (selection-based)</addressed-by><rationale>Mitigates this
+            threat by requiring session termination when an external authentication device is removed.</rationale>
+          <addressed-by>FDP_TER_EXT.3 (selection-based)</addressed-by><rationale>Mitigates this
+            threat by requiring session termination and power reset when switching to a different computer.</rationale>     
+        </threat>
+        <threat name="T.UNAUTHORIZED_DEVICES">
+          <from base="PSD"/>      
+          <description>This threat from the PSD PP also applies to the functionality defined in this PP-Module.</description> 
+          <addressed-by>FDP_FIL_EXT.1/UA</addressed-by><rationale>Mitigates this threat
+            by limiting the devices that are authorized to interface with the TOE through device filtration.</rationale>
+          <addressed-by>FDP_PDC_EXT.2/UA</addressed-by><rationale>Mitigates this threat by only
+            allowing authorized device connections with authorized interface protocols.</rationale>
+          <addressed-by>FDP_PDC_EXT.4/UA</addressed-by><rationale>Mitigates this threat by identifying whether the TSF supports (and therefore authorizes) an internal or external authentication device.</rationale>
+          <addressed-by>FPD_PWR_EXT.1</addressed-by><rationale>Mitigates this threat by preventing
+            connected computers from powering the TSF.</rationale>
+        </threat>
+      </threats> 
+    </sec:Threats>
+    
+    <sec:Assumptions>
+      <assumptions/>
+    </sec:Assumptions>
+      
+    <sec:Organizational_Security_Policies>
+      <OSPs/>
+    </sec:Organizational_Security_Policies>
+  </sec:Security_Problem_Definition>
+
+  <sec:Security_Objectives>
+    
+    <sec:Security_Objectives_for_the_Operational_Environment>
+      Because this PP‐Module does not define any additional assumptions or organizational security policies,
+      there are no additional security objectives for the Operational Environment to satisfy.
+    </sec:Security_Objectives_for_the_Operational_Environment>    
+    
+  </sec:Security_Objectives>
+
+  <sec:Security_Requirements>
+    <comment>Need to add URLs once created</comment>
+    <base-pp ref="PSD">
+      
+      <sec-func-req-dir>
+        When a TOE claims conformance to this PP‐Module, it is necessary to make claims in the Base‐PP
+        requirements that are consistent with the functionality provided by the PP‐Module. The following sections
+        describe any Base‐PP claims that must be made and any additional evaluation activities that must be
+        performed when the TOE boundary includes the functionality described by this PP‐Module.
+      </sec-func-req-dir>
+      
+      <modified-sfrs>
+        <sec:mod_fau title="Class FAU: Security Audit">
+          <f-component cc-id="fau_gen.1" name="Audit Data Generation">
+            <consistency-rationale>
+              This SFR is not modified, but is changed from optional to selection-based. It shall be
+              included if "configurable" is selected in FDP_FIL_EXT.1.1/UA.
+            </consistency-rationale>
+            <description>
+            This SFR is unchanged when the TOE claim includes this PP‐Module. However, this SFR is an optional
+            requirement in the PSD PP. This PP‐Module defines functionality that would require this SFR to be claimed
+            if a certain selection is made. Therefore, this PP‐Module re‐categorizes this optional
+            SFR as selection-based. It shall be included in the TSF if ‘configurable’ is selected in FDP_FIL_EXT.1.1/UA.
+          </description>
+          </f-component>
+        </sec:mod_fau>
+        
+        <sec:mod_fdp title="Class FDP: User Data Protection">
+          <f-component cc-id="fdp_apc_ext.1" name="Active PSD Connections">
+            <consistency-rationale>
+              This SFR adds a requirement to block electrical signals that strengthens but
+              does not conflict with the requirement in the PSD PP.
+            </consistency-rationale>
+            <f-element id="fdp-apc-ext-1e1">
+              <title> The TSF shall route user data only to <h:s>or from</h:s> the interfaces selected by the
+                user. 
+              </title>
+            </f-element>
+            <f-element id="fdp-apc-ext-1e2">
+              <title>The TSF shall ensure that no data <h:b>or electrical signals</h:b> flow between connected computers whether the
+                TOE is powered on or powered off.
+              </title>
+              <note role="application">
+                This SFR is refined from the PSD PP for this PP‐Module to include further
+                restrictions for electrical signals. It is unlikely that this element can be satisfied
+                unless user authentication peripheral device interfaces are electrically and
+                logically isolated from the connected computer interfaces or through other
+                methods.<h:br/><h:br/>
+                If the TOE claims conformance to multiple PP‐Modules, each PP‐Module modifies
+                this SFR in a different manner for the interfaces that are unique to that module.
+                In this case, the ST author should reference this modification of the SFR as
+                “FDP_APC_EXT.1/UA” for uniqueness. Note that all elements of FDP_APC_EXT.1
+                must be included in this iteration, not just the ones that are modified by this PP-Module.                
+              </note>              
+              <aactivity>                
+                                  
+                <TSS/>                  
+                <Guidance/>
+                <CustomEA name="Isolation"/>
+                <Tests>
+                  For tests that use the USB sniffer or USB analyzer software, the evaluator verifies whether traffic is sent
+                  or not sent by inspection of the passing USB transactions and ensuring they do not contain USB data
+                  payloads other than any expected traffic, as well as USB NAK transactions or system messages. To avoid
+                  clutter during USB traffic capture, the evaluator may filter NAK transactions and system messages.
+                  <h:b>Test Setup</h:b><h:br/><h:br/>
+                  For each of the below tests, the evaluator shall perform the following test set
+                  up:<h:ul>
+                    <h:li>Configure the TOE and the operational environment in accordance with the operational guidance.</h:li>
+                    <h:li>Connect a computer to each TOE UA computer interface and a display to each connected
+                    computer.</h:li>
+                    <h:li>Open a real‐time hardware information console and USB protocol analyzer software on each
+                    connected computer.</h:li>
+                    <h:li>Ensure the user authentication application and driver for the authorized user authentication
+                    device used for testing is installed.</h:li>
+                    <h:li>[Conditional: if “external” is selected in FDP_PDC_EXT.4.1/UA, then:] connect an authorized user
+                    authentication device with a power LED and a connected DVM to each PSD UA peripheral device
+                    interface.</h:li>
+                  </h:ul>
+                  <testlist>
+                    <test id="APC_Test_1-UA">
+                      <h:b>UA Switching Methods</h:b><h:br/><h:br/>
+                      [Conditional: Perform this test if “switching can be initiated only through express user action” is selected
+                      in FDP_SWI_EXT.1.1 in the PSD PP]<h:br/><h:br/>
+                      This test verifies the functionality of the TOE’s UA switching methods.<h:br/><h:br/>
+                      While performing this test, ensure that switching is always initiated through express user action.<h:ol>
+                        <h:li>Turn on the TOE and ensure computer #1 is selected.</h:li>
+                        <h:li>Verify that the real‐time hardware information console on computer #1 indicates the presence of
+                          the user authentication device. [Conditional: if “external” is selected in
+                          FDP_PDC_EXT.4.1/UA, then:] verify
+                          the UA device power LED is illuminated and the DVM reads between 4.75 and 5.25 VDC.</h:li>
+                        <h:li>Perform steps 4‐6 for each connected computer.</h:li>
+                        <h:li>For each switching method selected in FDP_SWI_EXT.2.2, switch selected computers in accordance
+                          with the operational guidance.</h:li>
+                        <h:li>[Conditional: if “external” is selected in FDP_PDC_EXT.4.1/UA, then:] verify that the LED for the UA
+                          device is not illuminated for at least one second while the DVM reads 0.5 VDC or less for at least one
+                          second.</h:li>
+                        <h:li>Verify that the real‐time hardware console on the newly selected computer indicates the presence
+                          of the user authentication device. [Conditional: if “external” is selected in FDP_PDC_EXT.4.1/UA, then:] verify
+                          the UA device power LED is illuminated and the DVM reads between 4.75 and 5.25 VDC.</h:li>                                                
+                      </h:ol>                      
+                    </test>
+                    
+                    <test id="APC_Test_2-UA">
+                      <h:b>Positive and Negative UA Data Flow Rules Testing</h:b><h:br/><h:br/>                      
+                      This test verifies correct data flows of a UA device during different power states of the selected computer.
+                      <h:ol>
+                        <h:li>For each connected computer, connect a USB sniffer between it and the TOE or ensure the USB
+                          analyzer software is opened. Perform steps 2‐14 with each connected computer as the selected computer.</h:li>
+                        <h:li>Connect an authentication session and verify that the session is connected on the selected
+                          computer and that the expected traffic is sent and captured using the USB analyzer.</h:li>
+                        <h:li>Remove the authentication element and verify the session is terminated on the selected computer.</h:li>
+                        <h:li>Insert the authentication element. Reconnect an authentication session, verify that the session is
+                          connected on the selected computer and that the expected traffic is sent and captured using the USB
+                          analyzer
+                          </h:li>
+                        [Conditional: Perform steps 5‐6 if “external” is selected in FDP_PDC_EXT.4.1/UA.]
+                        <h:li>Disconnect the UA device and verify the session is terminated on the selected computer and that
+                          the real‐time hardware console does not show the device and that no traffic is sent on the USB analyzer.</h:li>
+                        <h:li>Reconnect the UA device. Reconnect an authentication session, verify that the session is connected
+                          on the selected computer and that the expected traffic is sent and captured using the USB analyzer.
+                          </h:li>
+                        [Conditional: Perform steps 7‐14 if “switching can be initiated only through express user action” is selected
+                          in FDP_SWI_EXT.1.1 in the PSD PP.]
+                        <h:li>Verify that the real‐time hardware console on each of the non‐selected computers does not show
+                          the UA device and that no traffic is sent on the other USB analyzers.</h:li>
+                        <h:li>Switch to another connected computer. Verify that the authentication session on the previously
+                          selected computer is terminated, the real‐time hardware console on each non‐selected computer does
+                          not show the UA device, and that no traffic is sent on the other USB analyzers.</h:li>
+                        <h:li>Connect an authentication session and verify that the session is connected on the selected
+                          computer, the expected traffic is sent and captured using the USB analyzer, and no traffic is sent on the
+                          other USB analyzers.</h:li>
+                        <h:li>Switch to the originally selected computer. Verify the authentication session is still terminated,
+                          and reconnect an authentication session. Verify that no traffic is sent on the other USB analyzers.</h:li>
+                        <h:li>Disconnect and reconnect the TOE interface cables connected to the selected computer. Examine
+                          the USB analyzers on each of the non‐selected computers and verify that no traffic is sent.</h:li>
+                        <h:li>Reconnect an authentication session and verify that no traffic is sent on the other USB analyzers.
+                          Reboot the selected computer. Examine the USB analyzers on each of the non‐selected computers and
+                          verify that no traffic is sent.</h:li>
+                        <h:li>Reconnect an authentication session and verify that no traffic is sent on the other USB analyzers.
+                          Enter sleep or suspend mode in the selected computer. Examine the USB
+                          analyzers on each of the non-selected
+                          computers and verify that no traffic is sent.</h:li>
+                        <h:li>Exit sleep or suspend mode in the selected computer. Examine the USB analyzers on each of the
+                          non‐selected computers and verify that no traffic is sent.</h:li>
+                        <h:li>Perform steps 16‐17 when the TOE is off and then in a failure state.</h:li>
+                        <h:li>Verify that for each connected computer, no real‐time hardware console shows the device and
+                          no traffic is sent on the USB analyzer.</h:li>
+                        <h:li>Verify the authentication session is terminated on the selected computer.</h:li>                        
+                      </h:ol>
+                    </test>
+                    
+                    <test id="APC_Test_3-UA">
+                      <h:b>No Electrical Flow between Computer Interfaces</h:b><h:br/><h:br/>
+                      [Conditional: Perform this test if “switching can be initiated only through express user action” is selected
+                      in FDP_SWI_EXT.1.1 in the PSD PP]<h:br/><h:br/>
+                      This test verifies no electrical signals flow between connected computers when the TOE is powered on or
+                      off.<h:br/><h:br/>
+                      Perform this test for each TOE UA computer interface. Perform this test when the TOE is powered on and
+                      off.
+                      <h:ol>
+                        <h:li>Disconnect the first computer and replace it with a switchable 5 volt power supply with a USB
+                          Type‐B plug. Modulate the 5 volt supply manually at various speeds from approximately one cycle per five
+                          seconds to one cycle per second. Verify that no new USB traffic is captured on the non‐selected USB
+                          analyzers.</h:li>
+                        [Conditional: Perform steps 2‐4 if “external” is selected in FDP_PDC_EXT.4.1/UA.]
+                        <h:li>Disconnect the power supply and replace it with the computer.</h:li>
+                        <h:li>Connect the USB dummy load into the TOE UA peripheral device interface. Examine the USB
+                          analyzers on all non‐selected computers and verify that no new USB traffic is captured.</h:li>
+                        <h:li>Disconnect the USB dummy load and replace it with a switchable 5 volt power supply with a USB
+                          Type‐B plug. Modulate the 5 volt supply manually at various speeds from approximately one cycle per five
+                          seconds to one cycle per second. Verify that no new USB traffic is captured on the non‐selected USB
+                          analyzers.</h:li>                        
+                      </h:ol>
+                    </test>
+                    
+                    <test id="APC_Test_4-UA">
+                      <h:b>No Flow between Connected Computers over Time</h:b><h:br/><h:br/>
+                      This test verifies that the TOE does not send data to different computers connected to the same interface
+                      at different times. Repeat this test for each TOE UA computer port.<h:br/><h:br/>
+                      Note that instead of the session ID, the evaluator may substitute authentication element or other unique
+                      session identification characteristic detectable by the USB analyzer.
+                          
+                      <h:ol>
+                        <h:li>Ensure only one computer is connected to the TOE and it is selected.</h:li>
+                        <h:li>Connect an authentication session and record the authentication session ID using the USB
+                          analyzer.</h:li>
+                        <h:li>Disconnect the first computer, connect the second computer to the same port, connect an
+                          authentication session, and record the authentication session ID in less time than the authentication
+                          device timeout.</h:li>
+                        <h:li>Verify that the authentication session ID is different.</h:li>
+                        <h:li>Disconnect the second computer, connect the first computer to the same port, reconnect the
+                          authentication session, and record the authentication session ID in less time than the authentication
+                          device timeout.</h:li>
+                        <h:li>Verify that the authentication session ID is different from the first two.</h:li>                                               
+                      </h:ol>
+                    </test>
+                  </testlist>
+                </Tests>
+              </aactivity>              
+            </f-element>
+          </f-component>
+          
+          <f-component cc-id="fdp_pdc_ext.1" name="Peripheral Device Connection">
+            <consistency-rationale>
+              This SFR is not modified by the PP‐Module. It adds user authentication
+              devices to the set of authorized peripherals, which are specific types of
+              peripherals not specified in the PSD PP.
+            </consistency-rationale>
+            <f-element>
+              <title>
+                Because of additions to the Peripheral Device Connections Policy, there is an additional application note
+            and additional evaluation activities for this SFR.
+              </title>
+            
+            <note role="application">
+              The TSF may elect to enforce rejection of unauthorized devices connected to the
+              PSD through a USB hub by considering USB hubs as unauthorized devices, even
+              though USB hubs are authorized devices. If “internal” is the only selection made
+              in FDP_PDC_EXT.4.1/UA, then the TSF does not have to support USB as an authorized
+              interface unless the KM Module is also claimed by the ST author.
+            </note>            
+            
+            <aactivity>
+              
+              <TSS/>                
+              <Guidance>
+                The evaluator shall verify that the operational user guidance describes devices
+                authorized for use with the TOE in accordance with the authorized peripheral device
+                connections.
+              </Guidance>                
+              <CustomEA name="Isolation"/>
+              <Tests>
+                <testlist>
+                  <test>
+                    <h:b>Unauthorized Device Rejection</h:b><h:br/><h:br/>
+                    [Conditional: Perform this test if “external” is selected in FDP_PDC_EXT.4.1/UA]<h:br/><h:br/>
+                    This test verifies that the TOE ports properly reject unauthorized devices and devices with unauthorized
+                    protocols as per the unauthorized peripheral device connections.<h:br/><h:br/>
+                    For this test, verify device rejection through TOE user indication in accordance with the operational user
+                    guidance, an immediate cessation of traffic following device detection or enumeration, no traffic captured
+                    on the USB sniffer or analyzer software other than NAK transactions or system messages, or
+                    incompatibility of the device interface with the peripheral interface. Also verify device rejection through
+                    examination of the USB sniffer or analyzer software for no traffic captured other than NAK transactions
+                    or system messages and through examination of the real‐time hardware console for no display of new
+                    USB devices (recognized or not recognized).<h:br/><h:br/>
+                    Perform this test for an unauthorized device presenting itself as a composite device, a USB camera, a USB
+                    audio headset, a USB printer, a USB keyboard, a USB wireless dongle, and any device listed on the PSD UA
+                    denylist.<h:br/><h:br/>
+                    Repeat this for each user authentication TOE peripheral interface.<h:ol>
+                      <h:li>Ensure the TOE is powered off and connected to a computer. Run USB analyzer software and open
+                        the real‐time hardware console on the connected computer, and connect a USB sniffer to the
+                        unauthorized device.</h:li>
+                      <h:li>Attempt to connect the unauthorized device via the USB sniffer to the TOE UA peripheral interface.</h:li>
+                      <h:li>Power on the TOE. Verify the device is rejected.</h:li>
+                      <h:li>Ensure the unauthorized device is disconnected from the TOE UA peripheral interface, then
+                        attempt to connect it again.</h:li>
+                      <h:li>Verify the device is rejected.</h:li>
+                      <h:li>Repeat steps 1‐5 with a USB hub connected between the USB device and the USB sniffer and
+                        observe that the results are identical.</h:li>
+                    </h:ol>
+                  </test>
+                  <test>
+                    <h:b>Authorized Device Acceptance</h:b><h:br/><h:br/>
+                    [Conditional: Perform this test if “external” is selected in FDP_PDC_EXT.4.1/UA]<h:br/><h:br/>
+                    This test verifies that the TOE ports do not reject authorized devices and devices with authorized protocols
+                    as per the Peripheral Device Connection Policy.<h:br/><h:br/>
+                    Perform this test for a USB device identified as User Authentication and any device listed on the PSD UA
+                    allowlist:
+                    <h:ol>
+                      <h:li>Ensure the TOE is powered off.</h:li>
+                      <h:li>Connect the authorized device to the TOE peripheral interface.</h:li>
+                      <h:li>Power on the TOE. Verify the TOE user indication described in the
+                        operational user guidance is not present.</h:li>
+                      <h:li>Ensure the connected computer is selected and attempt to connect an authentication session.
+                        Verify that the authentication session is successfully connected on the connected computer.</h:li>
+                      <h:li>Disconnect the authorized device, then reconnect it to the TOE peripheral interface.</h:li>
+                      <h:li>Verify the TOE user indication described in the operational user guidance is not present.</h:li>
+                      <h:li>Attempt to start an authentication session. Verify that the authentication session begins on the
+                        connected computer.</h:li>
+                    </h:ol>
+                  </test>                  
+                </testlist>
+              </Tests>
+            </aactivity>
+            </f-element>
+          </f-component> 
+          
+          <f-component cc-id="fdp_swi_ext.2" name="PSD Switching">
+            <consistency-rationale>
+              This SFR is not modified by the PP‐Module. It adds evaluation activities that
+              are specific to this technology type but does not alter anything that the
+              Base‐PP requires.
+            </consistency-rationale>
+            <f-element>
+              <title>
+                There is no modification to this SFR in this PP‐Module. However, there are additional Evaluation Activities
+            defined in FDP_APC_EXT.1 in the Supporting Document Mandatory Technical Document PP‐Module for
+            User Authentication Devices.
+              </title>            
+            <aactivity>
+              <no-tests>Test performed in FDP_APC_EXT.1 above.</no-tests>
+            </aactivity>
+            </f-element>
+          </f-component>
+        </sec:mod_fdp>
+        
+        <sec:mod_fia title="Class FIA: Identification and Authentication">
+          
+          <f-component cc-id="fia_uau.2" name="User Authentication Before Any Action">            
+            <consistency-rationale>
+              This SFR is not modified, but is changed from optional to selection-based. It shall be
+              included if "configurable" is selected in FDP_FIL_EXT.1.1/UA.
+            </consistency-rationale>
+            <description>There are no changes to the EAs for this SFR. MOD_UA_V1.0 changes this requirement from optional to
+              selection‐based, but otherwise makes no changes to it.</description>
+          </f-component>
+          
+          <f-component cc-id="fia_uid.2" name="User Identification Before Any Action">
+            <consistency-rationale>
+              This SFR is not modified, but is changed from optional to selection-based. It shall be
+              included if "configurable" is selected in FDP_FIL_EXT.1.1/UA.
+            </consistency-rationale>            
+            <description>There are no changes to the EAs for this SFR. MOD_UA_V1.0 changes this requirement from optional to
+            selection‐based, but otherwise makes no changes to it.</description>
+          </f-component>
+        </sec:mod_fia>
+        
+        <sec:mod_fmt title="Class FMT: Security Management">
+          <f-component cc-id="fmt_mof.1" name="Management of Security Functions Behavior"> 
+            <consistency-rationale>
+              This SFR is not modified, but is changed from optional to selection-based. It shall be
+              included if "configurable" is selected in FDP_FIL_EXT.1.1/UA.
+            </consistency-rationale>
+        <description>This SFR is unchanged when the TOE claim includes this PP‐Module. However, this SFR is an optional
+        requirement in the PSD PP. This PP‐Module defines functionality that would require this SFR to be claimed
+        if a certain selection is made. Therefore, this PP‐Module re‐categorizes this optional SFR
+        as selection-based.<h:br/><h:br/>
+        It shall be included in the TSF if ‘configurable’ is selected in
+        FDP_FIL_EXT.1.1/UA.</description>
+      </f-component>
+          <f-component cc-id="fmt_smf.1" name="Specification of Management Functions">
+            <consistency-rationale>
+              This SFR is not modified, but is changed from optional to selection-based. It shall be
+              included if "configurable" is selected in FDP_FIL_EXT.1.1/UA.
+            </consistency-rationale>
+            <description>
+            This SFR is unchanged when the TOE claim includes this PP‐Module. However, this SFR is an optional
+            requirement in the PSD PP. This PP‐Module defines functionality that would require this SFR to be claimed
+            if a certain selection is made. Therefore, this PP‐Module re‐categorizes this optional
+            SFR as selection-based.<h:br/><h:br/>
+            It shall be included in the TSF if ‘configurable’ is selected in FDP_FIL_EXT.1.1/UA.</description>
+          </f-component>
+          <f-component cc-id="fmt_smr.1" name="Security Roles">
+            <consistency-rationale>
+              This SFR is not modified, but is changed from optional to selection-based. It shall be
+              included if "configurable" is selected in FDP_FIL_EXT.1.1/UA.
+            </consistency-rationale>
+            <description>
+            This SFR is unchanged when the TOE claim includes this PP‐Module. However, this SFR is an optional
+            requirement in the PSD PP. This PP‐Module defines functionality that would require this SFR to be claimed
+            if a certain selection is made. Therefore, this PP‐Module re‐categorizes this optional
+            SFR as selection-based.<h:br/><h:br/>
+            It shall be included in the TSF if ‘configurable’ is selected in FDP_FIL_EXT.1.1/UA.</description>
+          </f-component>
+          </sec:mod_fmt>
+        
+        <sec:mod_fpt title="Class FPT: Protection of the TSF">
+          <f-component cc-id="fpt_stm.1" name="Reliable Time Stamps">
+            <consistency-rationale>
+              This SFR is not modified, but is changed from optional to selection-based. It shall be
+              included if "configurable" is selected in FDP_FIL_EXT.1.1/UA.
+            </consistency-rationale>
+            <description>
+            This SFR is unchanged when the TOE claim includes this PP‐Module. However, this SFR is an optional
+            requirement in the PSD PP. This PP‐Module defines functionality that would require this SFR to be claimed
+            if a certain selection is made. Therefore, this PP‐Module re‐categorizes this optional
+            SFR as selection-based.<h:br/><h:br/>
+            It shall be included in the TSF if ‘configurable’ is selected in FDP_FIL_EXT.1.1/UA.</description>
+          </f-component>
+        </sec:mod_fpt>
+      </modified-sfrs>
+      <additional-sfrs/>
+      
+      <!-- 6.1.1 Consistency of TOE Type -->
+      <con-toe>
+        The PSD PP defines the boundaries of a PSD – a device that offers a mechanism for securely connecting a
+        set of peripherals to one or more attached computers. This PP‐Module builds on this by defining functional
+        capabilities specific to user authentication devices. One of the functions of the device must be the ability
+        for it to support user authentication devices. The requirements of this PP‐Module do not prevent a
+        conformant TOE from implementing mandatory requirements of the PSD PP.
+      </con-toe>
+      
+      <!-- 6.1.2 Consistency of Security Problem Definition -->
+      <con-sec-prob>This PP‐Module does not define additional threats beyond those the PSD PP defines. Therefore, there is
+        no inconsistency between this PP‐Module and the PSD with respect to the security problem definition.</con-sec-prob>
+      
+      <!-- 6.1.3 Consistency of Objectives -->
+      
+	  <con-op-en>
+			This PP-Module defines no environmental security objectives because the TOE's security environment 
+			is identical to that specified by the PSD PP.
+	  </con-op-en>
+      
+      
+      <con-mod ref="T.DATA_LEAK">
+        This threat is from the PSD PP, thus no conflict exists.
+      </con-mod>
+      <con-mod ref="T.RESIDUAL_LEAK">
+        This threat is from the PSD PP, thus no conflict exists.
+      </con-mod>
+      <con-mod ref="T.SIGNAL_LEAK">
+        This threat is from the PSD PP, thus no conflict exists.
+      </con-mod>
+      <con-mod ref="T.UNAUTHORIZED_DEVICES">
+        This threat is from the PSD PP, thus no conflict exists.
+      </con-mod>
+    </base-pp>
+    
+    <man-sfrs>
+      <section title="Class FDP: User Data Protection" id="FDP">
+        <ext-comp-def fam-id="FDP_FIL_EXT" title="Device Filtering">
+          <fam-behavior>Components in this family define the requirements for device filtering.</fam-behavior>
+        </ext-comp-def>
+        
+        <ext-comp-def fam-id="FDP_PDC_EXT" title="Peripheral Device Connection">
+          <fam-behavior>This family is defined in the PSD PP. This PP‐Module augments the extended family by adding two
+            additional components, FDP_PDC_EXT.2 and FDP_PDC_EXT.4. The new components and their impact on
+            the extended family’s component leveling are shown below; reference the PSD PP for all other definitions
+            for this family.</fam-behavior>
+        </ext-comp-def>
+        
+        <ext-comp-def fam-id="FDP_PWR_EXT" title="Powered by Computer">
+          <fam-behavior>Components in this family define the requirements for device powering.</fam-behavior>
+        </ext-comp-def>
+                
+        <ext-comp-def fam-id="FDP_TER_EXT" title="Session Termination">
+          <fam-behavior>Components in this family define the requirements for termination of open sessions.</fam-behavior>
+        </ext-comp-def>
+        
+        <ext-comp-def title="User Authentication Isolation" fam-id="FDP_UAI_EXT">
+          <fam-behavior>Components in this family define the requirements for user authentication
+            isolation.</fam-behavior>
+        </ext-comp-def>
+        
+        <f-component name="Device Filtering" cc-id="fdp_fil_ext.1" status="invisible">
+          <comp-lev>requires the TSF to specify the method of device filtering used for
+            peripheral interfaces and defines requirements for handling allowlists and denylists.</comp-lev>
+          <management>The following actions could be considered for the management functions in
+            FMT:<h:ul>
+              <h:li>Ability to configure allowlist and denylist members</h:li>
+            </h:ul>
+          </management>
+          <audit>The following actions should be auditable if FAU_GEN Security audit data generation
+          is included in the PP/ST:<h:ul>
+            <h:li>Configuration of allowlist and denylist members</h:li>
+          </h:ul></audit>
+          <dependencies>FDP_PDC_EXT.1 Peripheral Device Connection</dependencies>
+          <f-element id="fdp-fil-ext-1e1-ua">
+            <title>
+              The TSF shall have <selectables>
+                  <selectable>configurable</selectable>
+                  <selectable>fixed</selectable>
+                </selectables> device filtering for <assignable>list of supported peripheral interface types</assignable>
+                interfaces.
+            </title>
+          </f-element>
+          
+          <f-element id="fdp-fil-ext-1e2-ua">
+            <title>
+              The TSF shall consider all <assignable>denylist name</assignable> denylisted devices as
+                unauthorized devices for <assignable>list of supported peripheral interface types</assignable>
+                interfaces in peripheral device connections.
+            </title>
+          </f-element>
+          
+          <f-element id="fdp-fil-ext-1e3-ua">
+            <title>
+              The TSF shall consider all <assignable>allowlist name</assignable> allowlisted devices as
+              authorized devices for peripheral device connections only if they are not on the
+              <assignable>denylist name</assignable> denylist or otherwise unauthorized.
+            </title>
+          </f-element>
+        </f-component>
+        
+        <f-component cc-id="fdp_fil_ext.1" name="Device Filtering (User Authentication Devices)" iteration="UA" id="fdp-fil-ext-1-ua">
+          <consistency-rationale>This SFR defines device filtering specific to this PP‐Module. This does not
+            prevent the enforcement of any PSD PP SFRs.
+          </consistency-rationale>
+          
+          <f-element id="fdp-fil-ext-1e1-ua">
+            <title>
+              The TSF shall have <selectables>
+                <selectable>configurable</selectable>
+                <selectable>fixed</selectable>
+              </selectables> device filtering for [<h:i>user authentication device</h:i>] interfaces.
+            </title>
+             <note role="application">
+              The ST author must make the selection for the device which the TOE has: configurable,
+              fixed, or both.
+            </note> 
+          </f-element>
+          
+          <f-element id="fdp-fil-ext-1e2-ua">
+            <title>
+              The TSF shall consider all [<h:i>PSD UA</h:i>] denylisted devices as
+              unauthorized devices for <selectables>
+                <selectable>keyboard</selectable>
+                <selectable>mouse</selectable>
+              </selectables> [<h:i>user authentication device</h:i>] interfaces in peripheral device connections.
+            </title>
+          </f-element>
+          
+          <f-element id="fdp-fil-ext-1e3-ua">
+            <title>
+              The TSF shall consider all [<h:i>PSD UA</h:i>] allowlisted devices as
+              authorized devices for [<h:i>user authentication device</h:i>] interfaces in peripheral
+              device connections only if they are not on the [<h:i>PSD UA</h:i>] denylist or otherwise unauthorized.
+            </title>           
+            
+            <aactivity>
+              Note: if “configurable” is selected in FDP_FIL_EXT.1.1/UA, the evaluator shall perform these activities in
+              conjunction with the FMT_MOF.1 and FMT_SMF.1 evaluation activities specified in the PSD PP because
+              configuring the device filtration rules involves use of the TOE’s management functionality.
+              
+              <TSS>
+                The evaluator shall examine the TSS and verify that it describes whether the PSD has configurable or fixed
+                device filtering.<h:br/><h:br/>
+                [Conditional – If “configurable” is selected in FDP_FIL_EXT.1.1/UA, then:] The evaluator shall examine the
+                TSS and verify that it describes the process of configuring the TOE for allowlisting and denylisting UA
+                peripheral devices, including information on how this function is restricted to administrators.<h:br/><h:br/>
+                [Conditional - If the TOE includes an internal UA device with no administrative interface for inspection of a
+                fixed device filtering list, then:] The evaluator shall examine the TSS and verify that it specifies the devices
+                on the fixed device filtering list.
+              </TSS>
+              <Guidance>
+                [Conditional – If “configurable” is selected in FDP_FIL_EXT.1.1/UA, then:] the evaluator shall examine the
+                guidance documentation and verify that it describes the process of configuring the TOE for allowlisting
+                and denylisting UA peripheral devices and the administrative privileges required to do this.
+              </Guidance>
+              <CustomEA name="Isolation"/>
+              <Tests>
+                <testlist>
+                  <test>
+                    Perform the test steps in FDP_PDC_EXT.1 with all devices on the PSD UA denylist and verify that they are
+                    rejected as expected.
+                  </test>
+                  
+                  <test>
+                    [Conditional: Perform this only if “configurable” is selected in FDP_FIL_EXT.1.1/UA]<h:br/><h:br/>
+                    In the following steps the evaluator shall verify that allowlisted and denylisted devices are treated
+                    correctly.<h:ol>
+                      <h:li>Configure the TOE UA CDF to allowlist an authorized user authentication device, connect it to the
+                        TOE UA peripheral device interface, and verify that the device is accepted through real‐time device
+                        console and USB sniffer capture.</h:li>                    
+                      <h:li>Configure the TOE UA CDF to denylist the device and verify that the device is rejected through
+                        real‐time device console and USB sniffer capture.</h:li>
+                      <h:li>Attempt to configure the TOE UA CDF to both allowlist and denylist the device and verify that the
+                        device is rejected through real‐time device console and USB sniffer capture.</h:li>                      
+                    </h:ol>                  
+                  </test>
+                  <test>
+                    [Conditional - Perform this only if "fixed" is selected in
+                    FDP_FIL_EXT.1.1/UA and TOE does not include an internal UA device].<h:br/><h:br/>
+                    The evaluator shall examine the PSD UA allowlist and verify that all devices are
+                    authorized devices.
+                  </test>
+                </testlist>
+              </Tests>
+            </aactivity>
+          </f-element>
+        </f-component>
+        
+        <f-component name="Authorized Devices" cc-id="fdp_pdc_ext.2" status="invisible">
+          <comp-lev>defines the types of physical devices that the TSF will permit to
+            connect to it.</comp-lev>
+          <management>No specific management functions are identified.</management>
+          <audit>There are no auditable events foreseen.</audit>
+          <dependencies>FDP_PDC_EXT.1 Peripheral Device Connection</dependencies>
+          
+          <f-element id="fdp-pdc-ext-2e1-ua">
+            <title>
+              The TSF shall allow connections with authorized devices as defined in
+                <assignable> devices specified in the PP or PP‐Module in which this SFR is defined</assignable>
+                and <assignable> devices specified in another PP or PP‐Module that shares a PP-Configuration
+                  with the PP or PP‐Module in which this SFR is defined</assignable> upon TOE
+                power up and connection of a peripheral device to a powered‐on TOE.
+            </title>
+          </f-element>
+          
+          <f-element id="fdp-pdc-ext-2e2-ua">
+            <title>
+              The TSF shall allow connections with authorized devices presenting authorized
+                interface protocols as defined in <assignable>devices specified in the PP or PP-Module
+                  in which this SFR is defined</assignable> and <assignable>devices specified in another
+                PP or PP‐Module that shares a PP‐Configuration with the PP or PP‐Module in
+                which this SFR is defined</assignable> upon TOE power up and upon connection of a
+                peripheral device to a powered‐on TOE.
+            </title>
+          </f-element>
+        </f-component>
+        
+        <f-component cc-id="fdp_pdc_ext.2" name="Authorized Devices (User Authentication Devices)" iteration="UA" id="fdp-pdc-ext-2-ua">
+          <consistency-rationale>
+            This SFR defines the devices that are authorized by this PP‐Module. This is
+            dependent on the other PP‐Modules that are claimed in the TOE’s ST. The
+            Base‐PP is written specifically not to discuss the supported device types,
+            instead leaving it to the various PP‐Modules to define what they support.
+          </consistency-rationale>        
+          
+          <f-element id="fdp-pdc-ext-2e1-ua">            
+            <title>The TSF shall allow connections with authorized devices as defined
+              in [<h:i>Appendix E</h:i>] and <selectables>
+                <selectable>authorized devices as defined in the PP‐Module for Keyboard/Mouse Devices</selectable>
+                <selectable>authorized devices as defined in the PP‐Module for Audio Output
+                  Devices</selectable>                
+                <selectable>authorized devices as defined in the PP‐Module for Video/Display
+                  Devices</selectable>
+                <selectable>no other devices</selectable>
+              </selectables>
+              upon TOE power up and connection of a peripheral device to a powered-on TOE.          
+            </title>
+          </f-element>
+          
+          <f-element id="fdp-pdc-ext-2e2-ua">            
+            <title>The TSF shall allow connections with authorized devices presenting authorized
+              interface protocols as defined in [<h:i>Appendix E</h:i>] and <selectables>
+                <selectable>authorized devices presenting authorized interface protocols as defined
+                  in the PP‐Module for Keyboard/Mouse Devices</selectable>
+                <selectable>authorized devices presenting authorized interface protocols as defined
+                  in the PP‐Module for Audio Output Devices</selectable>                
+                <selectable>authorized devices presenting authorized interface protocols as defined
+                  in the PP‐Module for Video/Display Devices</selectable>
+                <selectable>no other devices</selectable>
+              </selectables>
+              upon TOE power up and connection of a peripheral device to a powered-on TOE.              
+            </title>
+            <note role="application">
+              The TSF must claim conformance to a PP‐Configuration that includes each PP-Module
+              contained in any selections. The ST author should select all devices and
+              interfaces supported by the TOE.
+            </note>            
+            <aactivity>
+              <no-tests>The EAs for this SFR are performed as part of activities for FDP_PDC_EXT.1 above.</no-tests>
+            </aactivity>
+          </f-element>          
+        </f-component>
+        
+        <f-component name="Supported Authentication Device" cc-id="fdp_pdc_ext.4" status="invisible">
+          <comp-lev>defines whether the TSF includes an internal or
+            external authentication device.</comp-lev>
+          <management>No specific management functions are identified</management>
+          <audit>There are no auditable events foreseen.</audit>
+          <dependencies>FDP_PDC_EXT.1 Peripheral Device Connection<h:br/><h:br/>
+          FDP_PDC_EXT.2 Authorized Devices</dependencies>
+          
+          <f-element>
+            <title>
+              The TSF shall have an <selectables>
+                <selectable>internal</selectable>
+                <selectable>external</selectable>                  
+              </selectables> user authentication device.
+            </title>
+          </f-element>
+        </f-component>
+        
+        <f-component cc-id="fdp_pdc_ext.4" name="Supported Authentication Device" iteration="UA" id="fdp-pdc-ext-4-ua">
+          <consistency-rationale>
+            This SFR further defines whether the TOE includes an internal or external
+            authentication device. This does not prevent the enforcement of any PSD PP
+            SFRs.
+          </consistency-rationale>
+          
+          <f-element id="fdp-pdc-ext-4e1-ua">
+            <title>
+              The TSF shall have an <selectables>
+                  <selectable>internal</selectable>
+                  <selectable id="externalauthdevice">external</selectable>                  
+                </selectables> user authentication device.
+            </title>
+            <note role="application">
+              The ST author must make the selection for the device, whether the TOE has internal,
+              external, or both.
+            </note>
+            <aactivity>
+              
+              <TSS>
+                The evaluator shall examine the TSS and verify that it describes whether the PSD has internal or external
+                authentication devices.<h:br/><h:br/>
+                Additional evaluation activities for STs that include the selection “external” are performed under
+                FDP_PDC_EXT.1 in PSD PP.
+              </TSS>
+              <Guidance/>
+              <CustomEA name="Isolation"/>
+              <Tests/>
+            </aactivity>            
+          </f-element>          
+        </f-component>
+        
+        <f-component cc-id="fdp_pwr_ext.1" name="Powered By Computer">
+          <consistency-rationale>
+            This SFR requires the TSF not be powered by a connected computer. The
+            Base‐PP does not have any requirements for the TSF to be powered by a
+            connected computer and therefore does not prevent the enforcement of
+            any PSD PP SFRs.
+          </consistency-rationale>
+          
+          <comp-lev>requires the TSF to not be powered by a connected computer.</comp-lev>
+          <management>No specific management functions are identified.</management>
+          <audit>There are no auditable events foreseen.</audit>
+          <dependencies>No dependencies</dependencies>  
+          
+          <f-element id="fdp-pwr-ext-1e1">
+            <title>
+              The TSF shall not be powered by a connected computer.
+            </title>
+            <aactivity>
+                              
+              <TSS>
+                The evaluator shall examine the TSS and verify that the connected computer does not
+                power the TOE.
+              </TSS>
+              <Guidance/>
+              <CustomEA name="Isolation"/>
+              <Tests>
+                The evaluator shall perform the following test for each connected computer:<h:ol>
+                  <h:li>Ensure the power source is disconnected from the TOE.</h:li>
+                  <h:li>Connect a USB sniffer between a TOE UA computer interface and its computer, attempt to turn on
+                    the TOE, and verify the TOE is not powered on, the user authentication device is not present in the real
+                    time hardware console, and no traffic is captured in the USB sniffer.</h:li>
+                </h:ol>          
+              </Tests>
+            </aactivity>
+          </f-element>  
+        </f-component>
+
+        <f-component cc-id="fdp_ter_ext.1" name="Session Termination">
+          <consistency-rationale>
+            This SFR defines specific handling for user authentication peripheral devices.
+            This does not prevent the enforcement of any PSD PP SFRs.
+          </consistency-rationale>
+          
+          <comp-lev>requires the TSF to terminate an open session upon removal of the
+            authentication element.</comp-lev>
+          <management>No specific management functions are identified.</management>
+          <audit>There are no auditable events foreseen.</audit>
+          <dependencies>No dependencies</dependencies>  
+          
+          <f-element id="fdp-ter-ext-1e1">
+            <title>
+              The TSF shall terminate an open session upon removal of the authentication element.
+            </title>
+            <aactivity>
+              
+              <TSS>
+                The evaluator shall examine the TSS and verify that the TOE terminates an open
+                session upon removal of the authentication element.
+              </TSS>
+              <Guidance>
+                The evaluator shall examine the guidance documentation and verify that the TOE
+                terminates an open session upon removal of the authentication element.
+              </Guidance>
+              <CustomEA name="Isolation"/>
+              <Tests>
+                Testing for this component is performed as part of <xref to="APC_Test_2-UA"/>.
+              </Tests>
+            </aactivity>
+          </f-element>
+        </f-component>
+        
+        <f-component cc-id="fdp_uai_ext.1" name="User Authentication Isolation">
+          <consistency-rationale>
+            This SFR defines specific handling for user authentication peripheral devices.
+            This does not prevent the enforcement of any PSD PP SFRs.
+          </consistency-rationale>
+          
+          <comp-lev>requires the TSF to isolate the user authentication function
+            from all other TOE USB functions.</comp-lev>
+          <management>No specific management functions are identified.</management>
+          <audit>There are no auditable events foreseen.</audit>
+          <dependencies>No dependencies</dependencies>  
+          
+          <f-element id="fdp-uai-ext-1e1">
+            <title>
+              The TSF shall isolate the user authentication function from all other TOE USB
+              functions.
+            </title>
+            <note role="application">
+              This SFR requires additional information for the Isolation Documentation and
+              Assessment. Refer to Appendix D for this information.
+            </note>
+            <aactivity>
+              <TSS>
+                The evaluator shall examine the TSS and verify that it states that the TOE has separate USB connections
+                for user authentication functions and any other USB functions.
+              </TSS>
+              <Guidance>
+                The evaluator shall examine the guidance and verify that it states that the TOE has separate USB
+                connections for user authentication functions and any other USB functions.
+              </Guidance>
+              <CustomEA name="Isolation">
+                The evaluator shall examine the Isolation Documentation and verify that it describes how the TOE
+                enforces user authentication isolation from other TOE USB functions.
+              </CustomEA>
+              <Tests>
+                <testlist>
+                  <test>
+                This test verifies that UA functionality is not sent to other USB
+                interfaces.<h:br/><h:br/>
+                Perform this test for each computer interface.<h:ol>
+                  <h:li>Configure the TOE and the Operational Environment in accordance with the operational guidance.
+                    Connect a display directly to each connected computer. Run USB protocol analyzer software and open a
+                    real‐time hardware information console and a text editor on each connected computer. Ensure an
+                    authorized user authentication device is connected.</h:li><h:br/><h:br/>
+                  Perform steps 2-4 for each TOE USB peripheral interface other than UA.
+                  <h:li>Connect a USB sniffer to the TOE USB peripheral interface.</h:li>
+                  <h:li>Connect an authentication session and verify no traffic is captured on the USB sniffer.</h:li>
+                  <h:li>Disconnect the USB sniffer and the authentication session.</h:li><h:br/><h:br/>
+                  Perform steps 5‐7 for each TOE USB computer interface other than UA.
+                  <h:li>Connect a USB sniffer to the TOE USB computer interface and ensure that computer is selected.</h:li>
+                  <h:li>Connect an authentication session and verify no traffic is captured on the USB sniffer.</h:li>
+                  <h:li>Disconnect the USB sniffer and the authentication session.</h:li>
+                  <h:li>Power down the TOE.</h:li>
+                  <h:li>For each TOE USB interface (peripheral device and computer) other than UA, connect the USB
+                    sniffer and verify no traffic is captured.</h:li>                  
+                </h:ol>
+                  </test>
+                  <test>
+                    [Conditional: Perform this test only if the TOE supports KM functionality.]<h:br/><h:br/>
+                    This test verifies that KM functionality is not sent to UA interfaces.<h:br/><h:br/>
+                    Perform this test while the TOE is powered on and powered off.<h:ol>
+                      <h:li>Connect a KM device to the TOE KM peripheral interface.</h:li><h:br/><h:br/>
+                      Perform steps 2‐3 for each TOE UA computer interface.
+                      <h:li>Connect a USB sniffer to the TOE UA computer interface.</h:li>
+                      <h:li>Exercise the functions of the peripheral device type(s) selected in
+                        FDP_PDC_EXT.3.1/UA in
+                        MOD_KM_V2.0 and verify that no traffic is sent and captured on the USB sniffer.</h:li><h:br/><h:br/>
+                      [Conditional: Perform steps 4‐5 only if “external” is selected in FDP_PDC_EXT.4.1/UA]
+                      <h:li>Disconnect the USB sniffer and connect it to the TOE UA peripheral device interface.</h:li>
+                      <h:li>Exercise the functions of the peripheral device type(s) selected in FDP_PDC_EXT.3.1/UA in
+                        MOD_KM_V2.0 and verify that no traffic is sent and captured on the USB sniffer.</h:li>
+                    </h:ol>
+                  </test>
+                  <test>
+                    [Conditional: Perform this test only if the TOE supports video functionality and “USB Type‐C with
+                    DisplayPort as alternate function” is selected in FDP_PDC_EXT.3.1/VI in
+                    MOD_VI_V2.0.]<h:br/><h:br/>
+                    This test verifies that USB video functionality is not sent to UA interfaces.<h:br/><h:br/>
+                    Perform this test while the TOE is powered on and powered off.<h:br/><h:br/>
+                    Perform steps 1-3 for each TOE UA computer interface and TOE USB type-C video
+                    peripheral interface.
+                    <h:ol>
+                      <h:li>Connect a USB sniffer to the TOE UA computer interface.</h:li>
+                      <h:li>Connect a monitor to the TOE USB type‐C video peripheral interface and verify that no traffic is
+                        sent and captured on the USB sniffer.</h:li>
+                      <h:li>Play a video on the selected computer and verify that no traffic is sent and captured on the USB
+                        sniffer.</h:li><h:br/><h:br/>
+                      [Conditional: Perform steps 4‐7 only if “external” is selected in FDP_PDC_EXT.4.1/UA]
+                      <h:li>Disconnect the monitor.</h:li>
+                      <h:li>Disconnect the USB sniffer and connect it to the TOE UA peripheral device interface.</h:li>
+                      <h:li>Reconnect the monitor to the TOE USB type-C video peripheral interface
+                        and verify that no traffic is sent and captured on the USB sniffer.</h:li>
+                      <h:li>Play a video on the selected computer and verify that no traffic is sent
+                      and captured on the USB sniffer.</h:li>
+                    </h:ol>
+                  </test>
+                </testlist>                
+              </Tests>
+            </aactivity>
+          </f-element>
+        </f-component>
+      </section>      
+    </man-sfrs>  
+    <opt-sfrs/>
+    <sel-sfrs>
+      <section title="Class FDP: User Data Protection" id="FDP">
+        
+        <f-component cc-id="fdp_ter_ext.2" name="Session Termination of Removed Devices">
+          <depends on-sel="externalauthdevice"/>
+          <consistency-rationale>
+            This SFR defines specific handling for user authentication devices. This does
+            not prevent the enforcement of any PSD PP SFRs.
+          </consistency-rationale>
+          
+          <comp-lev>requires the TSF to terminate an open session
+            upon removal of the user authentication device.</comp-lev>
+          <management>No specific management functions are identified.</management>
+          <audit>There are no auditable events foreseen.</audit>
+          <dependencies>FDP_PDC_EXT.2 Authorized Devices</dependencies>
+          
+          <f-element id="fdp-ter-ext-2e1">
+            <title>
+            The TSF shall terminate an open session upon removal of the user authentication device.
+          </title>
+          <note role="application">
+            This SFR must be claimed if "external" is selected in FDP_PDC_EXT.4.1/UA.
+          </note>
+          <aactivity>
+            
+            <TSS>
+              The evaluator shall examine the TSS and verify that the TOE terminates an open session upon removal of
+              the authentication device.
+            </TSS>
+            <Guidance>
+              The evaluator shall examine the guidance documentation and verify that the TOE terminates an open
+              session upon removal of the authentication device.
+            </Guidance>
+            <CustomEA name="Isolation"/>
+            <Tests>
+              Testing for this component performed as part of <xref to="APC_Test_2-UA"/>.
+            </Tests>
+          </aactivity>
+          </f-element>
+        </f-component>
+        <f-component cc-id="fdp_ter_ext.3" name="Session Termination Upon Switching">
+          <depends on="notisolator">
+            <external-doc ref="PSD"/>
+          </depends>
+          <consistency-rationale>
+            This SFR defines specific handling for user authentication peripheral devices.
+            This does not prevent the enforcement of any PSD PP SFRs.
+          </consistency-rationale>
+          
+          <comp-lev>requires the TOE to terminate an open session upon
+            switching to a different computer; and reset the power to the user authentication device for at least one
+            second upon switching to a different computer.</comp-lev>
+          <management>No specific management functions are identified.</management>
+          <audit>There are no auditable events foreseen.</audit>
+          <dependencies>FDP_SWI_EXT.1 PSD Switching</dependencies>
+          
+          <f-element id="fdp-ter-ext-3e1">
+            <title>
+              The TSF shall terminate an open session upon switching to a different computer.
+            </title>
+          </f-element>
+          <f-element id="fdp-ter-ext-3e2">
+            <title>
+              The TSF shall reset the power to the user authentication device for at least one
+              second upon switching to a different computer.
+            </title>
+            <note role="application">
+              This SFR must be claimed if “switching can be initiated only through express user
+              action” is selected in FDP_SWI_EXT.1.1 in the PSD‐PP.
+            </note>
+            <aactivity>
+              
+              <TSS>
+                The evaluator shall examine the TSS and verify that the TOE terminates an open session upon switching
+                to a different computer.
+              </TSS>
+              <Guidance>
+                The evaluator shall examine the guidance documentation and verify that the TOE terminates an open
+                session upon switching to a different computer.
+              </Guidance>
+              <CustomEA name="Isolation">
+                The evaluator shall examine the isolation document and verify that it describes how power is reset to the
+                user authentication device upon switching.
+              </CustomEA>
+              <Tests>
+                Testing for this component is performed as part of <xref to="APC_Test_2-UA"/>.
+              </Tests>
+            </aactivity>
+          </f-element>
+        </f-component>
+      </section>
+    </sel-sfrs>
+    <obj-sfrs/>
+    <impl-dep-sfrs/>    
+        
+  </sec:Security_Requirements>
+    
+  <appendix title="Isolation Documentation and Assessment" id="iso-doc-assess">
+    The TOE requires additional supplementary information to describe its isolation concepts beyond the
+    requirements outlined in the ‘Isolation Documentation and Assessment’ sections in Appendix D of the
+    Base‐PP. As with other Base‐PP requirements, the isolation documentation also applies to the specific
+    isolation and data flow SFRs in this PP‐module in addition to the functionality required by the Base‐PP.
+    The following additions are included in the sections below.
+    <section title="General">
+      The documentation of the isolation should be detailed enough that, after reading, the evaluator will
+      thoroughly understand the isolation concepts and implementation in the TOE and why it can be relied
+      upon to provide proper isolation of the user authentication function from all other TOE USB functions.
+      The isolation documentation must be especially detailed for any internal user authentication devices.
+    </section>
+    <section title="Design Description">
+      In addition to user authentication isolation from other TOE USB functions, if FDP_TER_EXT.3 is claimed by
+      the ST, then when describing how power source or power loading may affect isolation between data
+      paths, the documentation shall describe how power is reset to the user authentication device upon
+      switching.
+    </section>
+    <section title="Isolation Means Justification">
+      No change.
+    </section>
+    <section title="Firmware Dependencies">
+      No change.
+    </section>
+  </appendix>
+  
+  <appendix title="Peripheral Device Connections" id="perdevcon">
+    <section title="General">
+      This appendix expands the PSD PP Peripheral Device Connections appendix, and offers additional direction
+      on peripheral devices and interface protocols with TOEs claiming compliance with this PP‐Module. This
+      appendix is in conjunction with the PSD PP’s appendix and does not replace it.
+    </section>
+    
+    <section title="Unauthorized Peripheral Devices">
+      The following are unauthorized devices:<h:ul>
+        <h:li>USB device that is denylisted</h:li>
+        <h:li>USB audio input device connected to a user authentication peripheral interface</h:li>
+        <h:li>USB audio output device connected to a user authentication peripheral interface</h:li>
+        <h:li>USB camera</h:li>
+        <h:li>USB keyboard connected to a user authentication peripheral interface</h:li>
+        <h:li>USB printer</h:li>
+        <h:li>USB wireless LAN dongle</h:li>
+        <h:li>Any unauthorized device that presents itself to the PSD as a composite device and is
+          connected to a user authentication peripheral interface</h:li>
+        <h:li>Any device not specifically authorized</h:li>
+      </h:ul>     
+    </section>
+    
+    <section title="Unauthorized Interface Protocols">
+      The following are unauthorized interface protocols:<h:ul>
+        <h:li>Any interface protocol not specifically authorized</h:li>        
+      </h:ul>
+    </section>
+    <section title="Authorized Peripheral Devices">
+      The following are authorized devices and functions:<h:ul>
+        <h:li>USB device identified as User Authentication</h:li>
+        <h:li>USB device that is allowlisted</h:li>
+        <h:li>Internal authentication device</h:li>
+      </h:ul>
+    </section>
+    
+    <section title="Authorized Interface Protocols">
+      The following are authorized interface protocols:<h:ul>
+        <h:li>USB</h:li>
+      </h:ul>
+    </section>
+  </appendix> 
+  
+  <appendix title="Interactions between PP-Modules" id="interbetmod">
+    This appendix provides any additional guidance required to address interactions between multiple
+    PP-Modules
+    when they are both contained within a PP‐Configuration.
+    <section title="PP-Module for Audio Output Devices">
+      Unauthorized devices identified in both PP‐Modules are considered unauthorized devices for the TOE as
+      per FDP_PDC_EXT.1.<h:br/><h:br/>
+      Authorized devices identified in both PP‐Modules are considered authorized devices for the TOE as per
+      the claimed iterations of FDP_PDC_EXT.2.<h:br/><h:br/>
+      Power events at a user authentication interface for one connected computer cannot impact power events
+      at an analog audio output interface for another connected computer and vice versa, as per
+      FDP_APC_EXT.1. This evaluation activity is tested in FDP_APC_EXT.1:3 in the PP-Module for Audio
+      Output.<h:br/><h:br/>
+      Both PP‐Modules modify the Base‐PP SFR FDP_APC_EXT.1 in ways that are specific to their respective
+      peripheral types. The ST author should make two iterations of this SFR, FDP_APC_EXT.1/UA and
+      FDP_APC_EXT.1/AO, to show the different modifications made for each specific peripheral type.
+    </section>
+    <section title="PP-Module for Keyboard/Mouse Devices">
+      Unauthorized devices identified in both PP‐Modules are considered unauthorized devices for the TOE as
+      per FDP_PDC_EXT.1.<h:br/><h:br/>
+      Authorized devices identified in both PP‐Modules are considered authorized devices for the TOE as per
+      the claimed iterations of FDP_PDC_EXT.2.<h:br/><h:br/>
+      User authentication functionality must be isolated from KM functionality and vice versa as per
+      FDP_UAI_EXT.1.<h:br/><h:br/>
+      Both PP‐Modules modify the Base‐PP SFR FDP_APC_EXT.1 in ways that are specific to their respective
+      peripheral types. The ST author should make two iterations of this SFR, FDP_APC_EXT.1/UA and
+      FDP_APC_EXT.1/UA, to show the different modifications made for each specific peripheral type.
+    </section>
+    <section title="PP-Module for Video/Display Devices">
+      Unauthorized devices identified in both PP‐Modules are considered unauthorized devices for the TOE as
+      per FDP_PDC_EXT.1.<h:br/><h:br/>
+      Authorized devices identified in both PP‐Modules are considered authorized devices for the TOE as per
+      the claimed iterations of FDP_PDC_EXT.2.<h:br/><h:br/>
+      Any USB‐C functionality that is supported by the TOE must be isolated from user authentication
+      functionality and vice versa as per FDP_UAI_EXT.1.<h:br/><h:br/>      
+      Both PP‐Modules modify the Base‐PP SFR FDP_APC_EXT.1 in ways that are specific to their respective
+      peripheral types. The ST author should make two iterations of this SFR, FDP_APC_EXT.1/UA and
+      FDP_APC_EXT.1/VI, to show the different modifications made for each specific peripheral type.
+    </section>
+  </appendix>    
+  
+  
+  <bibliography>    
+    <entry id="base-pp">
+      <tag>PP_PSD_V5.0 or PSD PP</tag>
+      <description>Protection Profile for Peripheral Sharing Device, Version 5.0
+      </description>    
+    </entry>
+  </bibliography>
+</Module>

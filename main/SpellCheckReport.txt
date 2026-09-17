@@ -20,6 +20,7 @@ output/PSD-VI-release-linkable.html: DisplayPort
 output/PSD-VI-release-linkable.html: FFFF
 output/PSD-VI-release-linkable.html: I2C
 output/PSD-VI-release-linkable.html: PCI
+output/PSD-VI-release-linkable.html: PSDPP
 output/PSD-VI-release-linkable.html: SPD
 output/PSD-VI-release-linkable.html: SWI
 output/PSD-VI-release-linkable.html: UAI
@@ -35,6 +36,7 @@ output/PSD-VI-release.html: CEM
 output/PSD-VI-release.html: DisplayPort
 output/PSD-VI-release.html: I2C
 output/PSD-VI-release.html: PCI
+output/PSD-VI-release.html: PSDPP
 output/PSD-VI-release.html: SPD
 output/PSD-VI-release.html: SWI
 output/PSD-VI-release.html: UAI
@@ -95,6 +97,7 @@ output/PSD-VI.html: DisplayPort
 output/PSD-VI.html: FFFF
 output/PSD-VI.html: I2C
 output/PSD-VI.html: PCI
+output/PSD-VI.html: PSDPP
 output/PSD-VI.html: SPD
 output/PSD-VI.html: SWI
 output/PSD-VI.html: UAI

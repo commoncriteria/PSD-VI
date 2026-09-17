@@ -1,0 +1,1046 @@
+<Module xmlns="https://niap-ccevs.org/cc/v1" xmlns:h="http://www.w3.org/1999/xhtml" xmlns:sec="https://niap-ccevs.org/cc/v1/section" name="Analog Audio Output Devices" target-product="Audio Output Device" target-products="Audio Output Devices" boilerplate="yes" short="AI">  
+  <!-- <inline-comment color='green'>Initial PSD-AO Template on 5/8.</inline-comment> -->
+  <!-- <inline-comment color='blue' linebreak='yes'> Hello World QQQQ </inline-comment> -->
+ 
+  <PPReference>
+    <ReferenceTable>
+      <PPTitle>PP-Module for Analog Audio Output Devices</PPTitle>
+      <PPVersion>2.0</PPVersion>
+      <PPAuthor>National Information Assurance Partnership</PPAuthor>
+      <PPPubDate>2025-07-11</PPPubDate>
+      <Keywords>PSD, AO</Keywords>      
+    </ReferenceTable>
+  </PPReference>
+  
+  <RevisionHistory>
+    <entry>
+      <version>1.0</version>
+      <date>2019-07-19</date>
+      <subject>Initial draft</subject>
+    </entry>
+    <entry>
+      <version>2.0</version>
+      <date>2025-07-11</date>
+      <subject>Updates for CC:2022</subject>
+    </entry>
+  </RevisionHistory>
+
+  <release-notes><h:h3>TDs Applied</h:h3></release-notes><sec:Introduction>
+    <section title="Overview" id="ppoverview">
+      The scope of this Protection Profile (PP)‐Module is to describe the security functionality of a specific type
+      of Peripheral Sharing Device (PSD) product in terms of Common Criteria for Information Technology
+      Security Evaluation, cc:2022, Release 1 [CC] and to define functional and assurance requirements for
+      such products.<h:br/><h:br/>
+      A Target of Evaluation (TOE) claiming conformance to this PP‐Module must also claim conformance to the
+      Protection Profile for Peripheral Sharing Devices (PSD PP) as its Base‐PP. This is because the PSD PP is a generic
+      Protection Profile aimed at defining baseline requirements and Evaluation Activities for a wide variety of
+      PSD products, but more specific requirements and Evaluation Activities apply depending on the types of
+      physical and logical interfaces a PSD includes. Therefore, this PP‐Module defines additional Security
+      Functional Requirements (SFRs) for security functionality unique to a PSD that supports peripheral audio
+      output devices.     <h:br/><h:br/>
+      This PP-Module is intended for use with the following Base-PPs:<h:ul>
+        <h:li>Peripheral Sharing Devices Protection Profile, Version 5.0</h:li>
+      </h:ul>
+    </section>
+    
+    <tech-terms>
+      <term full="Analog Audio">
+        Data stream that uses voltage to describe a sound wave.
+      </term>
+      <term full="Analog Audio Output Computer Interface, or Computer Interface">
+        The connector on a PSD through which analog audio data enters the PSD from a connected
+        computer.
+      </term>
+      <term full="Analog Audio Output Peripheral Interface, or Peripheral Interface">
+        The connector on a PSD through which analog audio data exits the PSD bound for a
+        peripheral device.
+      </term>      
+      <term full="Attenuation">
+        A reduction in signal strength commonly occurring while transmitting analog or
+        digital signals over long distances.
+      </term>
+      <term full="Audio codec">
+        PC subsystem capable of encoding and decoding a digital data stream of audio.
+      </term>
+      <term full="Audio Output Peripheral Device">
+        Speakers, handset, and earphones.
+      </term>      
+      <term abbr="dB" full="Decibel"/>
+      <term abbr="dBV" full="Decibel Volt">
+        A measurement of voltage ratio to 1 volt.
+      </term>
+      <term full="Digital Audio">
+        Data stream that uses digital values to describe a sound wave in sampled intervals.
+      </term>
+      <term full="Extended Audio Frequency Range">
+        The range from 1Hz to 60 kHz.
+      </term>
+      <term full="Headphones">
+        Computer audio peripheral device with one or more small speakers.
+      </term>
+      <term abbr="KHz" full="Kilohertz"/>
+      <term abbr="mV" full="Millivolt"/>
+      <term abbr="PSD" full="Peripheral Sharing Device"/>
+      <term abbr="S/PDIF" full="Sony/Philips Digital Interface Format"/>
+      <term full="USB Audio codec">
+        Computer audio peripheral device with USB digital input/output, one or more
+        analog audio outputs and one or more analog audio inputs.
+      </term>
+    </tech-terms>    
+    
+    <section title="Compliant Targets of Evaluation" id="TOEdescription">
+      A compliant Target of Evaluation (TOE) for this PP‐Module is any PSD that supports connectivity between
+      one or more computers and one or more analog audio output peripheral devices. All of the requirements
+      and restrictions that are defined in the PSD PP apply to a conformant TOE. A conformant TOE satisfies all
+      of the specific data protection/isolation capabilities that are required by the PSD PP.<h:br/><h:br/>
+      A conformant TOE embodies one or more of the use cases defined in the PSD PP. It may also provide PSD
+      functionality for additional types of computer interfaces (e.g., display, keyboard/mouse, user
+      authentication device). In such a case, the TOE must claim conformance to all applicable PP‐Modules to
+      the PSD PP.<h:br/><h:br/>
+      In general, computer audio may be routed in various ways:<h:ul>
+        <h:li>Analog audio signals</h:li>
+        <h:li>Digital audio embedded in the video stream or independent digital audio (e.g., Sony/Philips Digital
+          Interface Format, or S/PDIF)</h:li>
+        <h:li>USB audio peripheral devices</h:li>
+      </h:ul>
+      Analog audio output requires special attention during TOE design as it may introduce analog leakage
+      concerns. There is an additional concern an attacker may be able to use an audio output device
+      as a low gain
+      microphone for eavesdropping on the surrounding area or bridging an air‐gap to nearby computers.
+      Analog audio output presents few security problems with respect to switching, since the person listening
+      to the audio must be authorized to hear the output of all the connected computers. And in some
+      operational environments, it is required that the user be able to hear more than one channel at a time.<h:br/><h:br/>
+      Digital audio embedded in a video stream or passed through separate lines is not a security concern for
+      this PP‐Module since it does not introduce analog signal leakage vulnerabilities. The capability for digital
+      video is addressed in the PP‐Module for Video/Display Devices.<h:br/><h:br/>
+      USB audio devices (i.e., codecs) are not authorized for use with the TOE. USB audio codecs have
+      configuration memory that may be exploited to enable unauthorized data flows.
+      <section title="TOE Boundary" id="TOEboundary">
+        The TOE boundary is the same as for a Peripheral Sharing Device in general. Refer to the PSD PP for an
+        outline of the TOE boundary. Note that a TOE that claims conformance to this PP‐Module must specifically
+        include support for analog audio output peripherals. A TOE that claims conformance to this PP‐Module is
+        not prevented from claiming conformance to other PSD PP‐Modules. All relevant PP‐Modules must be
+        claimed by the TOE based on the specific types of peripheral device functionality provided.
+      </section>      
+    </section>      
+    <section title="Use Cases" id="usecases">
+      No additional use cases are defined for this PP‐Module. The TOE is expected to embody one or more use
+      cases as defined by the PSD PP. The functionality defined by this PP‐Module is implementation-dependent
+      (i.e., not tied to any specific use cases) and is related entirely to the specific security
+      requirements related to security of the physical and logical interfaces for analog audio output devices.
+    </section>
+    <section title="Test Environment for Evaluation Activities">
+      In order to ensure that the TOE demonstrates the functionality required by the EAs, it is necessary for the
+      evaluator to ensure that they have appropriate equipment to conduct the required testing. In addition to
+      the equipment that is relevant for testing any PSD as defined in the PSD PP, the following additional
+      equipment should be used in testing:<h:ul>
+        <h:li><h:b>Amplified speakers</h:b> – The tests depend upon the use of high‐quality system 2.1 standard
+          and higher amplified speakers with a separate subwoofer.</h:li>
+        <h:li><h:b>Tone generator software application</h:b> – The tests require the use of a tone generator
+          software application that can generate sine wave audio at configurable pitch (in Hz) and volume
+          levels.</h:li>
+        <h:li><h:b>Computer microphone (analog)</h:b> – The tests require the use of an analog microphone to
+          be connected to the TOE to demonstrate that it will not transmit audio signals when this occurs.</h:li>
+        <h:li><h:b>3.5 mm stereo plug with open end wires or solderable tabs</h:b> – This plug is used by some of the tests
+          in this Supporting Document to enable audio signal injection or detection at the TOE analog audio
+          interfaces.</h:li>
+        <h:li><h:b>Digital voltmeter</h:b> – The tests require the use of a digital voltmeter to measure the DC
+          voltage over TOE peripheral interfaces to confirm that current is not supplied to a connected
+          microphone.</h:li>
+        <h:li><h:b>Audio signal generator</h:b> – The tests require the use of an audio signal generator that is
+          capable of generating a sine wave with positive/negative bias from DC up to 100 KHz to test that
+          the TOE does not experience audio signal leakage.</h:li>
+        <h:li><h:b>Audio spectrum analyzer software – The tests require the use of software with a Fast
+          Fourier Transform (FFT) capability that can display real‐time audio spectrum data, including
+          frequencies, attenuation dB, and voltage of audio signals, and is used to detect signal leakage
+          between interfaces. Note that any use of a computer with audio spectrum analyzer software may
+          be replaced by an audio spectrum analyzer or an Oscilloscope with FFT capability.</h:b></h:li>
+        <h:li><h:b>Oscilloscope</h:b> – The tests require the use of an oscilloscope to detect signal leakage
+          between peripheral interfaces. Any oscilloscope with an FFT capability and bandwidth of at least
+          1 MHz may be used. Note that any use of an oscilloscope may be replaced by a computer with
+          audio spectrum analyzer software or an audio spectrum analyzer.</h:li>
+        <h:li><h:b>Tone generator software</h:b> – The tests require the use of tone generator software to verify
+          how data is routed.</h:li>
+        <h:li><h:b>USB dummy load</h:b> – The tests require the use of a USB dummy load
+          to verify that electrical signals are not sent to non-selected computers.</h:li>
+      </h:ul>
+      This equipment is required in addition to that which is relevant for testing any PSD as defined in the PSD
+      PP. Additional equipment may apply if the TOE claims support for additional peripheral types as defined
+      by the other PP‐Modules that extend the PSD PP.<h:br/><h:br/>      
+      When conducting testing, the evaluator must ensure that all combinations of switch selections are tested.
+      For example, if testing a device with 2 audio output interfaces and eight computer interfaces, the
+      evaluator may use two connected computers, but must change the connected ports several times to
+      ensure that each of the possible permutations of switch positions is tested. Some equivalency arguments between ports are allowed.
+    </section>    
+  </sec:Introduction>
+
+  <section title="Conformance Claims" id="sec-cclaims" boilerplate="no">
+    <CClaimsInfo cc-version="cc-2022r1" cc-approach="direct-rationale" display="yes">
+      <cc-st-conf>exact</cc-st-conf>
+      <cc-pt2-conf>extended</cc-pt2-conf>           
+      <cc-pt3-conf>conformant</cc-pt3-conf> 
+      <cc-pp-conf/>
+      <cc-pp-config-with>
+        <PP-cc-ref>
+			<cc-doc-ref id="PSD">
+				<git>
+					<url>https://github.com/commoncriteria/PSD</url>
+					<branch>main</branch>
+				</git>
+				<url>https://www.niap-ccevs.org/protectionprofiles/412</url>			
+			</cc-doc-ref>		
+		</PP-cc-ref>
+        <Mod-cc-ref>
+			<cc-doc-ref id="PSD-KM">
+				<git>
+					<url>https://github.com/commoncriteria/PSD-KM</url>
+					<branch>main</branch>
+				</git>
+				<url>https://niap-ccevs.org/protectionprofiles/435</url>			
+			</cc-doc-ref>		
+		</Mod-cc-ref>
+        <Mod-cc-ref>
+			<cc-doc-ref id="PSD-UA">
+				<git>
+					<url>https://github.com/commoncriteria/PSD-UA</url>
+					<branch>main</branch>
+				</git>
+				<url>https://niap-ccevs.org/protectionprofiles/434</url>			
+			</cc-doc-ref>		
+		</Mod-cc-ref>
+        <Mod-cc-ref>
+			<cc-doc-ref id="PSD-VI">
+				<git>
+					<url>https://github.com/commoncriteria/PSD-VI</url>
+					<branch>main</branch>
+				</git>
+				<url>https://niap-ccevs.org/protectionprofiles/436</url>			
+			</cc-doc-ref>		
+		</Mod-cc-ref>
+      </cc-pp-config-with>        
+      <cc-pkg-claim/>
+    </CClaimsInfo>
+  </section>
+  
+  <sec:Security_Problem_Definition>    
+      This PP‐Module describes the security problem in terms of the threats the TOE is expected to address,
+      assumptions about its operational environment, and any organizational security policies (OSPs) that the
+      TOE is expected to enforce.<h:br/><h:br/>
+      Note that as a PP‐Module of the PSD PP, all threats, assumptions, and Organizational Security Policies (OSP)
+      defined in the base PP will also apply to the TOE unless otherwise specified.
+      
+      <sec:Threats>
+          <threats>
+      <threat name="T.AUDIO_REVERSED">
+        <description>A malicious agent could re-purpose an authorized audio output peripheral device by converting it to a
+          low‐gain microphone to eavesdrop on the surrounding audio or transfer data across an air‐gap
+          through audio signaling.</description>
+        <addressed-by>FDP_AFL_EXT.1</addressed-by><rationale>Mitigates this threat by audio signal attenuation that prevents inadvertent transmission of audio data.</rationale>
+        <addressed-by>FDP_UDF_EXT.1/AO</addressed-by><rationale>Mitigates this threat by ensuring
+          the audio output jack cannot be used to transmit data into the TOE or a connected computer as a microphone.</rationale>
+      </threat>
+            
+      <threat name="T.DATA_LEAK">
+        <from base="PSD"/>
+        <description>This threat from the PSD PP also applies to the functionality defined in this PP-Module.</description>
+        <addressed-by>FDP_AFL_EXT.1</addressed-by><rationale>Mitigates this threat by attenuating audio signals that could otherwise be data leakage.</rationale>
+        <addressed-by>FDP_UDF_EXT.1/AO</addressed-by><rationale>Mitigates this threat by ensuring
+          output data transit unidirectionally between interfaces.</rationale>
+      </threat>
+      
+      <threat name="T.MICROPHONE_USE">  
+        <description>A malicious agent could use an unauthorized peripheral device such as a microphone, connected to
+          the TOE audio out peripheral device interface to eavesdrop or transfer data across an air‐gap through
+          audio signaling.</description>
+        <addressed-by>FDP_PDC_EXT.2/AO</addressed-by><rationale>Mitigates this threat by only
+          supporting audio output devices.
+      </rationale>
+        <addressed-by>FDP_UDF_EXT.1/AO</addressed-by><rationale>Mitigates this threat by ensuring
+          output data transit unidirectionally between interfaces.</rationale>      
+      </threat>
+
+      <threat name="T.SIGNAL_LEAK">
+        <from base="PSD"/>
+        <description>This threat from the PSD PP also applies to the functionality defined in this PP-Module.</description>
+        <addressed-by>FDP_AFL_EXT.1</addressed-by><rationale>Mitigates this threat by ensuring
+          signals are filtered within the range of human hearing.</rationale>
+        <addressed-by>FDP_UDF_EXT.1/AO</addressed-by><rationale>Mitigates this threat by ensuring
+          signals transit unidirectionally between interfaces.</rationale>        
+      </threat>
+            
+            <threat name="T.UNAUTHORIZED_DEVICES">
+              <from base="PSD"/>     
+              <description>This threat from the PSD PP also applies to the functionality defined in this PP-Module.</description>
+              <addressed-by>FDP_PDC_EXT.2/AO</addressed-by><rationale>Mitigates this threat by implementing audio functionality using an analog port so that digital audio devices or other unauthorized devices are not accepted.</rationale>
+              <addressed-by>FDP_PUD_EXT.1</addressed-by><rationale>Mitigates this threat by having the TOE's audio ports be unpowered so that devices that require a power source over this interface are not supported.</rationale>
+            </threat>
+          </threats>
+      </sec:Threats>
+    
+      <sec:Assumptions>
+          This PP‐Module defines the following additional assumption beyond those defined in the PSD PP
+    <assumptions>
+      <assumption name="A.NO_MICROPHONES">
+        <description>
+          Users are trained not to connect a microphone to the TOE audio output interface.          
+        </description>
+        
+        <consistency-rationale>
+          The assumption is upheld by the objective since the users in the environment are trained
+          not to connect a microphone to the TOE audio output interface.
+        </consistency-rationale>
+        
+        <objective-refer ref="OE.NO_MICROPHONES">
+          <rationale>The assumption is upheld by the objective
+            since the users in the environment are trained
+            not to connect a microphone to the TOE audio
+            output interface.</rationale>
+        </objective-refer>
+      </assumption>
+    </assumptions>
+    </sec:Assumptions>
+    
+    <sec:Organizational_Security_Policies>
+      <OSPs/>
+    </sec:Organizational_Security_Policies>
+  </sec:Security_Problem_Definition>
+
+  <sec:Security_Objectives>
+    <sec:Security_Objectives_for_the_Operational_Environment>
+      <SOEs>
+        <SOE name="OE.NO_MICROPHONES">
+          <description>The operational environment is expected to ensure that microphones are not plugged into the TOE
+            audio output interfaces.</description>
+          <consistency-rationale>
+            The Base-PP does not contain any requirements about microphone use, thus there is no
+            conflict with the Base-PP. 
+          </consistency-rationale>
+        </SOE>
+      </SOEs>
+      </sec:Security_Objectives_for_the_Operational_Environment>
+    
+    <sec:Security_Objectives_Rationale/>
+  </sec:Security_Objectives>
+
+  <sec:Security_Requirements>
+    <comment>Need to add URLs once created</comment>
+    <base-pp ref="PSD">
+      
+      <sec-func-req-dir>
+        When a TOE claims compliance to this PP‐Module, it is necessary to make claims in the PSD PP
+        requirements that are consistent with the functionality provided by the PP‐Module. The following sections
+        describe any PSD PP claims that must be made when the TOE boundary includes the functionality
+        described by this PP‐Module. Note that for some requirements, only certain individual elements within
+        the SFR have been modified for this PP‐Module. Any SFR elements that were omitted from the selections
+        below are to be included in a conformant ST unmodified from their definition in the PSD PP.
+      </sec-func-req-dir>
+      
+      <modified-sfrs>
+        <sec:mod_fdp title="Class FDP: User Data Protection">
+          <f-component cc-id="fdp_apc_ext.1" name="Active PSD Connections">
+            <consistency-rationale>
+              This SFR adds a requirement to block electrical signals that strengthens but
+              does not conflict with the requirement in the PSD PP.
+            </consistency-rationale>
+            <f-element id="fdp-apc-ext-1e1">
+              <title> The TSF shall route user data only <h:s>to or</h:s> from the interfaces selected by the
+                user. 
+              </title>
+            </f-element>
+            <f-element id="fdp-apc-ext-1e2">
+              <title>The TSF shall ensure that no data <h:b>or electrical signals </h:b>flow between connected computers whether the
+                TOE is powered on or powered off.
+              </title>
+              <note role="application">
+                This SFR is refined from the PSD PP for this PP‐Module to include further
+                restrictions on how data may be routed in regards to interfaces selected by the
+                user.<h:br/><h:br/>
+                This SFR is refined from the PSD PP for this PP‐Module to include further
+                restrictions for electrical signals. Electrical signals are considered not to flow
+                between connected computers and data is considered not to transit the TOE if no
+                signal greater than 45dB of attenuation at the extended audio frequency range is
+                received. It is very unlikely that this element can be satisfied unless all unselected
+                computer interfaces are shorted to ground by the TSF.<h:br/><h:br/>
+                Note that the above port‐to‐port attenuation pass criterion is calculated based on
+                the following: 45 dBV = 177.82 signal to voltage ratio. When the signal inserted
+                on one TOE computer interface audio input is 2.00 V peak‐to‐peak sine wave, the
+                maximum allowed output signal voltage measured at another TOE computer
+                interface is therefore 11.2mV (or well below noise level). Negative swing is
+                measured when the generated audio signal average voltage is 0V.<h:br/><h:br/>
+                If the peripheral interface supports multiple signals (such as right and left audio,
+                or audio bias), then all those supported signals should comply with the above
+                SFRs.<h:br/><h:br/>
+                If the TOE claims conformance to multiple PP‐Modules, each PP‐Module modifies
+                this SFR in a different manner for the interfaces that are unique to that module. In
+                this case, the ST author should reference this modification of the SFR as
+                “FDP_APC_EXT.1/AO” for uniqueness. Note that all elements of FDP_APC_EXT.1
+                must be included in this iteration, not just the ones that are modified by this PP-Module.
+              </note>              
+              <aactivity>                
+                
+                  The evaluator shall examine the Isolation Documentation to determine that it describes the logic under
+                  which the TSF permits audio flows from a connected computer to a connected audio output interface.<h:br/><h:br/>
+                  The evaluator shall examine the Isolation Documentation to determine that it describes how the TOE
+                  enforces audio output data flow isolation from other TOE functions, such that it is not possible for two
+                  computers connected to the TOE to use the TOE to communicate with one another. The description shall
+                  ensure the signal attenuation in the extended audio frequency range between any computer audio output
+                  interfaces is at least 45 dB measured with a 2V input pure sine wave at the extended audio frequency
+                  range, including negative swing signal.<h:br/><h:br/>
+                  The evaluator shall examine the Isolation Documentation to determine that it describes how the TOE
+                  prevents the audio output signal from traversing the TOE while the TOE is powered off.<h:br/><h:br/>
+                
+                <TSS/>                  
+                <Guidance>
+                  If the ability of the TOE to grant or deny authorization to audio communications is configurable, the
+                  evaluator shall verify that the operational guidance describes how to configure the TSF to behave in the
+                  manner specified by the SFR. This includes the possibility of both administratively configured TOE settings
+                  and any peripherals/connectors that are included with the TOE that cause data flows to behave differently
+                  if peripherals are connected through them.
+                </Guidance>
+                <CustomEA name="Isolation"/>                  
+                <Tests>
+                  <h:b>Test Setup</h:b><h:br/><h:br/>
+                  The evaluator shall perform the following setup steps.<h:ul>
+                    <h:li>Configure the TOE and the operational environment in accordance with the operational
+                      guidance.</h:li>
+                    <h:li>Play a different audio file on a number of computers for each TOE computer
+                      analog audio interface.</h:li>
+                    <h:li>Connect each computer to a TOE computer analog audio interface.</h:li>
+                    <h:li>Turn on the TOE.</h:li>
+                  </h:ul>
+                  Note that for a TOE that provides audio mixing functions the evaluator shall maximize the volume on a
+                  specific channel where instructed in the following text to assign that specific computer.<h:br/><h:br/>
+                  Note: Electrical signals are considered not to flow between connected computers and data is considered
+                  not to transit the TOE if no signal greater than 45 dB of attenuation at the specific audio frequency is
+                  received. <h:br/><h:br/>                 
+                  <testlist>
+                    <test id="Test_1-AO"><h:br/><h:br/>
+                      <h:b>Analog Audio Output Data Routing Methods</h:b><h:br/><h:br/>
+                      This test verifies the functionality of the TOE routing methods while powered on, powered off, and in
+                      failure state.<h:br/><h:br/><h:ol>
+                        <h:li>Connect amplified speakers to the TOE audio output device interface. Set the speakers to
+                          approximately 25 percent volume.</h:li>
+                        <h:li>[Conditional: If “switching can be initiated only through express user action” is selected in
+                          FDP_SWI_EXT.1.1 in the PSD PP, then] perform step 3 for each switching method selected in
+                          FDP_SWI_EXT.2.2 in accordance with the operational user guidance.</h:li>
+                        <h:li>For each connected computer, ensure it is selected, listen to the amplified speakers, and verify
+                          that the audio is coming from the selected computer(s). Adjust the volume if necessary.</h:li>
+                        <h:li>Replace the speakers with a computer connected to the TOE analog audio output device interface
+                          and run audio spectrum analyzer software on it. Run tone generator software on all connected computers.</h:li>
+                        <h:li>Turn off the TOE, and for each connected computer, use the tone generator program to generate
+                          a sine wave audio tone for each of the designated frequencies and verify that no audio is present in the
+                          audio spectrum analyzer software on the computer connected to the TOE analog audio output device
+                          interface.</h:li>
+                        <h:li>Power on the TOE, cause the TOE to enter a failure state, and verify that the TOE provides the user
+                          with an indication of failure. For each connected computer use the tone generator program to generate
+                          a sine wave audio tone for each of the designated frequencies and verify that no audio is present in the
+                          audio spectrum analyzer software on the computer connected to the TOE analog audio output device
+                          interface.</h:li>                        
+                      </h:ol>                      
+                    </test><h:br/><h:br/>
+                    
+                    <test><h:br/><h:br/>
+                      <h:b>Analog Audio Output Interface Isolation</h:b><h:br/><h:br/>
+                      [Conditional: Perform this test if “switching through express user action” is selected in FDP_SWI_EXT.1.1
+                      in the PSD PP.]<h:br/><h:br/>
+                      This test verifies that no data or electrical signals flow between connected computers while the TOE is
+                      powered on or off.<h:br/><h:br/>
+                      <h:ol>
+                        <h:li>Continue with the setup from <xref to="Test_1-AO"/>.</h:li>
+                        <h:li>Connect a computer to the TOE analog audio output device interface. Run audio spectrum analyzer
+                          software on all computers.</h:li>
+                        <h:li>Perform steps 4‐13 for each TOE analog audio computer interface.</h:li>
+                        <h:li>Turn on the TOE and ensure the first computer is selected.</h:li>
+                        <h:li>Use the tone generator program on the first computer to generate a sine wave audio tone for each
+                          of the designated frequencies. Verify that the audio is present in the audio spectrum analyzer software
+                          on the computer connected to the TOE analog audio output device interface and is not present in the
+                          audio spectrum analyzer software on any of the non‐selected computers.
+                          This step does not fail if frequencies above 20 kHz are not present in the
+                        software on the connected computer due to attenuation as per FDP_AFL_EXT.1.</h:li>
+                        <h:li>For each other TOE analog audio computer interface, select that computer and use the tone
+                          generator program on the first computer (now no longer selected) to generate a sine wave audio tone for
+                          each of the designated frequencies. Verify that the audio is not present in the audio spectrum analyzer
+                          software on the selected computer, the other non‐selected computers, or the computer connected to the
+                          TOE analog audio output device interface.</h:li>
+                        <h:li>Power off the TOE and use the tone generator program on the first computer to generate a sine
+                          wave audio tone for each of the designated frequencies. Verify that the audio is not present in the audio
+                          spectrum analyzer software on any of the other connected computers.</h:li>
+                        <h:li>Restart the TOE, select the first computer, and replace it with an external audio signal generator.</h:li>
+                        <h:li>For each non‐selected computer connected to the TOE analog audio output computer interface,
+                          replace it with an oscilloscope set to measure the peak‐to‐peak voltage and perform steps 10‐14.</h:li>
+                        <h:li>Perform steps 11‐13 with the signal generator set to the following
+                          settings:<h:ul>
+                            <h:li>Pure sine wave around the average voltage of half output (positive signal only), with the output signal set
+                              to 2.00 V peak‐to‐peak, calibrating the signal with the oscilloscope as needed</h:li>
+                            <h:li>Signal average to 0v (negative swing)</h:li>
+                          </h:ul>                          
+                        </h:li>
+                        <h:li>Set the signal generator to generate the designated frequencies and verify the signal on the
+                          oscilloscopes is 11.2 mV or less. This level of signal ensures signal attenuation of 45 dB in the extended
+                          audio frequency range.</h:li>
+                        <h:li>For each other TOE analog audio computer interface, select it, set the signal generator to
+                          generate the designated frequencies, and verify the signal on the oscilloscopes is 11.2 mV or less.</h:li>
+                        <h:li>Power off the TOE and set the signal generator to generate the designated frequencies and verify
+                          the signal on the oscilloscopes is 11.2 mV or less.</h:li>
+                        </h:ol>
+                    </test><h:br/><h:br/>
+                    <test><h:br/><h:br/>
+                      <h:b>No Flow between Computers with Other Peripheral Device Types</h:b><h:br/><h:br/>
+                      [Conditional: Perform this test only if a PP‐Module aside from the Analog Audio Output PP‐Module is part
+                      of the PP‐Configuration being claimed AND if “switching through express user action” is selected in
+                      FDP_SWI_EXT.1.1 in the PSD PP.]<h:br/><h:br/>
+                      This test verifies that power events at one TOE USB computer interface do not affect the analog audio
+                      output computer interface of another computer.<h:br/><h:br/>
+                      Note: “No sound appears” is defined as a temporary jump of at least 4 dB from the existing ambient noise
+                      floor.
+                      <h:ol>
+                        <h:li>Connect a computer to the TOE analog audio output peripheral interface and run audio spectrum
+                          analyzer software on it and each connected computer.</h:li>
+                        <h:li>Perform steps 3‐9 for each connected computer.</h:li>
+                        <h:li>Ensure the first computer is selected and perform steps 4‐8 while the TOE is powered on and
+                          powered off.</h:li>
+                        [Conditional: Perform steps 4 and 5 only if the PP‐Module for Video/Display
+                        Devices is part of the PP-Configuration
+                        being claimed.]<h:br/><h:br/>
+                        <h:li>For each other connected computer, disconnect and reconnect the video cables from the TOE
+                          computer interface several times. Verify that no sound appears on the audio analyzer software on the
+                          first computer.</h:li>
+                        <h:li>Disconnect and reconnect the first computer’s video cables from the TOE computer interface
+                          several times. Verify that no sound appears on the audio analyzer software on the other connected
+                          computers.</h:li>
+                        <h:li>[Conditional: If the PP‐Module for Keyboard/Mouse Devices or PP‐Module for User Authentication
+                          Devices is part of the PP‐Configuration being claimed, then:] for each other connected computer,
+                          disconnect and reconnect the USB cable from the TOE USB computer interface several times. Verify that
+                          no sound appears on the audio analyzer software on the computer connected to the TOE analog audio
+                          output peripheral interface or any connected computers.</h:li>
+                        <h:li>[Conditional: If the PSD PP‐Module for Keyboard/Mouse Devices is part of the PP‐Configuration
+                          being claimed, then:] disconnect and reconnect the peripheral device type(s) selected in
+                          FDP_PDC_EXT.3.1/KM from the TOE KM peripheral device interface several times. Verify that no sound
+                          appears on the audio analyzer software on the other connected computers.</h:li>
+                        <h:li>[Conditional: If the PP‐Module for User Authentication Devices is part of the PP‐Configuration
+                          being claimed and “external” is selected in FDP_PDC_EXT.4.1, then:] disconnect and reconnect the UA
+                          peripheral device from the TOE UA peripheral device interface several times. Verify that no sound appears
+                          on the audio analyzer software on the other connected computers.</h:li>
+                        <h:li>[Conditional: If the PP‐Module for User Authentication Devices is part of the PP‐Configuration
+                          being claimed, then:] connect an authentication session to the first computer and verify that no sounds
+                          appears on the audio analyzer software on the other connected computers.</h:li></h:ol>
+                    </test><h:br/><h:br/>
+                    <test>
+                      This test verifies that the TOE does not send data to different computers connected to the same interface
+                      at different times. Repeat this test for each TOE Analog Audio Output
+                      port.<h:ol>
+                        <h:li>Ensure only one computer is connected and it is selected. Run a tone generator program on the
+                          connected computer and the audio analyzer software on a non‐connected computer.</h:li>
+                        <h:li>Perform steps 3‐11 while the TOE is powered on and powered off.</h:li>
+                        <h:li>Perform steps 4‐5 for each of the designated frequencies.</h:li>
+                        <h:li>Use the tone generator program on the connected computer to generate a sine wave audio tone.</h:li>
+                        <h:li>Disconnect the connected computer, wait two minutes, connect the other computer, and verify
+                          that the generated audio frequency is not present in the audio spectrum analyzer software.</h:li>
+                        <h:li>Replace the connected computer with an external audio signal generator.</h:li>
+                        <h:li>Perform steps 8‐11 with the signal generator set to the following
+                          settings:<h:ul>
+                            <h:li>Pure sine wave around the average voltage of half output (positive signal only), with the output signal set
+                              to 2.00 V peak‐to‐peak, calibrating the signal with the oscilloscope as needed</h:li>
+                            <h:li>Signal average to 0v (negative swing)</h:li>
+                          </h:ul></h:li>
+                        <h:li>Perform steps 9‐11 for each of the designated frequencies.</h:li>
+                        <h:li>Use the signal generator to generate the signal.</h:li>
+                        <h:li>Disconnect the signal generator, wait two minutes, and replace it with an oscilloscope set to
+                          measure the peak‐to‐peak voltage.</h:li>
+                        <h:li>Verify the signal on the oscilloscope is 11.2 mV or less at the generated frequency.</h:li>                        
+                      </h:ol>
+                    </test>
+                  </testlist>
+                </Tests>
+              </aactivity>              
+            </f-element>
+          </f-component>
+          
+          <f-component cc-id="fdp_pdc_ext.1" name="Peripheral Device Connection">
+            
+            <consistency-rationale>
+              This SFR is not changed by this PP‐Module and only defines existing Evaluation
+              Activities for audio output devices, which does not conflict with the PSD PP.
+            </consistency-rationale>
+            <f-element>
+              <title>There is no modification to this SFR in this PP‐Module. However, there are additions to the supported
+              peripheral device connections (see Appendix E) that are associated with this SFR and
+              additional evaluation activities.</title>            
+            <aactivity>              
+              <TSS/>                
+              <Guidance/>                
+              <CustomEA name="Isolation"/>
+              <Tests>
+                <testlist>
+                  <test>
+                    The evaluator shall verify that the TOE ports properly reject unauthorized devices and devices with
+                    unauthorized protocols as per the unauthorized peripheral device connections.<h:br/><h:br/>
+                    For this test, verify device rejection through TOE user indication in accordance with the operational user
+                    guidance or an immediate cessation of traffic following device detection or enumeration, or
+                    incompatibility of the device interface with the peripheral interface.<h:br/><h:br/>
+                    <h:ol>
+                      <h:li>Ensure the TOE is powered off and audio analyzer software is running on the connected computer.</h:li>
+                      <h:li>Connect an analog microphone to the TOE analog audio output peripheral interface.</h:li>
+                      <h:li>Power on the TOE, speak loudly into the microphone from approximately one‐inch distance, and
+                        verify no audio is present in the audio analyzer software.</h:li>
+                      <h:li>Disconnect the microphone and reconnect it to the TOE peripheral interface.</h:li>
+                      <h:li>Speak loudly into the microphone from approximately one‐inch distance, and verify no audio is
+                        present in the audio analyzer software.</h:li>
+                    </h:ol>
+                  </test>                  
+                </testlist>
+              </Tests>
+            </aactivity>
+            </f-element>
+          </f-component>         
+        </sec:mod_fdp>
+      </modified-sfrs>
+      
+      <additional-sfrs/>
+      
+      <!-- 6.1.1 Consistency of TOE Type -->
+      <con-toe>
+        The PSD PP defines the boundaries of a PSD—a device that provides a mechanism for securely connecting
+        a set of peripherals to one or more attached computers. This PP‐Module builds on this by defining
+        functional capabilities that are specific to devices that can share audio output peripherals. The
+        requirements of this PP do not prevent a conformant TOE from implementing mandatory requirements of
+        the PSD PP.
+      </con-toe>
+      
+      <!-- 6.1.2 Consistency of Security Problem Definition -->
+      <con-sec-prob>The threats and assumptions defined by this PP-Module (see sections 3.1 and 3.2) supplement those defined
+        in the PSD PP as follows: </con-sec-prob>
+      
+      <!-- 6.1.3 Consistency of Objectives -->
+      
+      <con-op-en/>
+      <con-mod ref="T.AUDIO_REVERSED">
+        The PSD PP does not identify any threats specific to analog audio output peripheral devices. This threat is specific to analog audio output devices and therefore is an additional threat to this module supplementing those in PSD PP.
+      </con-mod>
+      <con-mod ref="T.DATA_LEAK">
+        This threat is from the PSD PP, thus no conflict exists.
+      </con-mod>
+      <con-mod ref="T.MICROPHONE_USE">
+        The PSD PP does not identify any threats specific to analog audio output peripheral devices. This threat is specific to analog audio output devices and therefore is an additional threat to this module supplementing those in PSD PP.
+      </con-mod>
+      <con-mod ref="T.SIGNAL_LEAK">
+        This threat is from the PSD PP, thus no conflict exists.
+      </con-mod>
+      <con-mod ref="T.UNAUTHORIZED_DEVICES">
+        This threat is from the PSD PP, thus no conflict exists.
+      </con-mod>
+    </base-pp>
+    
+    <man-sfrs>
+      <section title="Class FDP: User Data Protection" id="FDP">
+        <ext-comp-def fam-id="FDP_AFL_EXT" title="Audio Filtration">
+          <fam-behavior>Components in this family define the requirements for device filtering.</fam-behavior>
+        </ext-comp-def>
+        
+        <ext-comp-def fam-id="FDP_PDC_EXT" title="Peripheral Device Connection">
+          <fam-behavior>This family is defined in the PSD PP. This PP‐Module augments the extended family by adding one
+            additional component, FDP_PDC_EXT.2. The new component and its impact on the extended family’s
+            component leveling are shown below; reference the PSD PP for all other definitions for this family.</fam-behavior>
+        </ext-comp-def>
+        
+        <ext-comp-def fam-id="FDP_PUD_EXT" title="Powering Unauthorized Devices">
+          <fam-behavior>Components in this family define the requirements for unauthorized device
+            powering.</fam-behavior>
+        </ext-comp-def>
+        
+        <ext-comp-def fam-id="FDP_UDF_EXT" title="Unidirectional Data Flow">
+          <fam-behavior>Components in this family define unidirectional transmission of user data.</fam-behavior>
+        </ext-comp-def>
+        
+        <f-component cc-id="fdp_afl_ext.1" name="Audio Filtration">
+          <consistency-rationale>
+            This SFR defines the filtering levels that outgoing audio signals must enforce.
+            This function is specific to audio output devices and does not prevent the
+            enforcement of any PSD PP SFRs.
+          </consistency-rationale>
+          
+          <comp-lev>requires the TSF to enforce outgoing audio filtration levels.</comp-lev>
+          <management>No specific management functions are identified.</management>
+          <audit>There are no auditable events foreseen.</audit>
+          <dependencies>FDP_PDC_EXT.1 Peripheral Device Connection</dependencies>
+          
+          <f-element id="fdp-afl-ext-1e1">
+            <title>The TSF shall ensure outgoing audio signals are filtered as per the [<h:i>Audio Filtration
+              Specifications Table</h:i>].
+              <h:table name="Audio Filtration Specifications Table" border="1" style="width:100%">
+              <h:tr class="header">
+                <h:td>Frequency (kHz)</h:td>
+                <h:td>Minimum Attenuation (dB)</h:td>
+                <h:td>Maximum Voltage After Attenuation</h:td>
+              </h:tr>
+              <h:tr>
+                <h:td>14</h:td>
+                <h:td>23.9</h:td>
+                <h:td>127.65 mV</h:td>
+              </h:tr>
+                <h:tr>
+                  <h:td>15</h:td>
+                  <h:td>26.4</h:td>
+                  <h:td>95.73 mV</h:td>
+                </h:tr>
+                <h:tr>
+                  <h:td>16</h:td>
+                  <h:td>30.8</h:td>
+                  <h:td>57.68 mV</h:td>
+                </h:tr>
+                <h:tr>
+                  <h:td>17</h:td>
+                  <h:td>35.0</h:td>
+                  <h:td>35.57 mV</h:td>
+                </h:tr>
+                <h:tr>
+                  <h:td>18</h:td>
+                  <h:td>38.8</h:td>
+                  <h:td>22.96 mV</h:td>
+                </h:tr>
+                <h:tr>
+                  <h:td>19</h:td>
+                  <h:td>43.0</h:td>
+                  <h:td>14.15 mV</h:td>
+                </h:tr>
+                <h:tr>
+                  <h:td>20</h:td>
+                  <h:td>46.0</h:td>
+                  <h:td>10.02 mV</h:td>
+                </h:tr>
+                <h:tr>
+                  <h:td>30</h:td>
+                  <h:td>71.4</h:td>
+                  <h:td>0.53 mV</h:td>
+                </h:tr>
+                <h:tr>
+                  <h:td>40</h:td>
+                  <h:td>71.4</h:td>
+                  <h:td>0.53 mV</h:td>
+                </h:tr>
+                <h:tr>
+                  <h:td>50</h:td>
+                  <h:td>71.4</h:td>
+                  <h:td>0.53 mV</h:td>
+                </h:tr>
+                <h:tr>
+                  <h:td>60</h:td>
+                  <h:td>71.4</h:td>
+                  <h:td>0.53 mV</h:td>
+                </h:tr>
+              </h:table>
+            </title>
+            <ext-comp-def-title>
+              <title>
+                The TSF shall ensure outgoing audio signals are filtered as per <assignable>
+                  document reference to the table below.</assignable>
+              </title>
+            </ext-comp-def-title>
+            <note role="application">
+              The above security requirement is designed to reduce the likelihood that speakers
+              emitting a signaling event at frequencies outside the range of human hearing
+              could be successfully used to bridge an air‐gap to another computer.
+            </note>
+            
+            <aactivity>
+              
+              <TSS>The evaluator shall check the TSS to verify that the TOE audio function implementation properly filters
+                the audio passing through the TOE.</TSS>
+              <Guidance/>
+              <CustomEA name="Isolation"/>
+              <Tests>
+                <testlist>
+                  <test>
+                <h:ol>
+                  <h:li>Connect a computer to the TOE analog audio output peripheral interface and run audio analyzer
+                    software on it.</h:li>
+                  <h:li>For each connected computer, ensure it is selected, use its tone generator software to generate a
+                    sine wave audio tone for each of the frequencies in the Audio Filtration Specifications table and verify in
+                    the audio analyzer software that they are attenuated by at least the amount specified in the Audio
+                    Filtration Specifications table.</h:li>
+                  <h:li>Connect an oscilloscope to the TOE analog audio output peripheral interface and set it to measure
+                    the peak‐to‐peak voltage.</h:li>
+                  <h:li>For each connected computer, perform Step 5 with the signal generator set to
+                    the following settings:<h:ul>
+                      <h:li>Pure sine wave around the average voltage of half output (positive signal only), with the output
+                        signal set to 2.00 V peak‐to‐peak, calibrating the signal with the oscilloscope as needed</h:li>
+                      <h:li>Signal average to 0V (negative swing)</h:li>
+                    </h:ul></h:li>
+                  <h:li>Set the signal generator to generate the frequencies in Audio Filtration Specifications table and
+                    verify the signal on the oscilloscope does not exceed the corresponding maximum voltage after
+                    attenuation.</h:li>
+                </h:ol>
+                  </test>
+                </testlist>
+              </Tests>
+            </aactivity>
+          </f-element>
+          
+        </f-component>
+        
+        <f-component name="Peripheral Device Connection" cc-id="fdp_pdc_ext.2" status="invisible">
+          <comp-lev>defines the types of physical devices that the TSF will permit to
+            connect to it.</comp-lev>
+          <management>No specific management functions are identified</management>
+          <audit>There are no auditable events foreseen.</audit>
+          <dependencies>FDP_PDC_EXT.1 Peripheral Device Connection</dependencies>
+          
+          <f-element id="fdp-pdc-ext-2e1">
+            <title>The TSF shall allow connections with authorized devices as defined in
+              <assignable>devices specified in the PP or PP‐Module in which this SFR is defined</assignable>
+              and <assignable>devices specified in another PP or PP‐Module that shares a PP-Configuration
+                with the PP or PP‐Module in which this SFR is defined</assignable> upon TOE
+              power up and upon connection of a peripheral device to a powered‐on TOE.</title>
+          </f-element>
+          
+          <f-element id="fdp-pdc-ext-2e2">
+            <title>The TSF shall allow connections with authorized devices presenting authorized
+                interface protocols as defined in <assignable>devices specified in the PP or PP-Module
+                in which this SFR is defined</assignable> and <assignable>devices specified in another
+                PP or PP‐Module that shares a PP‐Configuration with the PP or PP‐Module in
+                which this SFR is defined</assignable> upon TOE power up and connection of a
+                peripheral device to a powered‐on TOE.</title>
+          </f-element>
+        </f-component>
+        
+        <f-component cc-id="fdp_pdc_ext.2" name="Peripheral Device Connection (Audio Output)" iteration="AO" id="fdp-pdc-ext-2-ao">
+          <consistency-rationale>
+            This SFR defines the devices that are authorized by this PP‐Module. This is
+            dependent on the other PP‐Modules that are claimed in the TOE’s ST. The
+            Base‐PP is written specifically not to discuss the supported device types,
+            instead leaving it to the various PP‐Modules to define what they support.
+          </consistency-rationale>
+          
+          <f-element id="fdp-pdc-ext-2e1-ai">
+            <title>
+              The TSF shall allow connections with authorized devices as defined in [<h:i>Appendix
+                E</h:i>] and <selectables>
+                  <selectable>authorized devices and functions as defined in the PP‐Module for
+                    Keyboard/Mouse Devices</selectable>
+                  <selectable>authorized devices as defined in the PP‐Module for User Authentication
+                    Devices</selectable>
+                  <selectable>authorized devices as defined in the PP‐Module for Video/Display
+                    Devices</selectable>
+                  <selectable>no other device</selectable>
+                </selectables> upon TOE power up and connection of a peripheral device
+              to a powered‐on TOE.
+            </title>
+            
+          </f-element>
+          <f-element id="fdp-pdc-ext-2e2-ai">
+            <title>
+              The TSF shall allow connections with authorized devices presenting authorized
+              interface protocols as defined in [<h:i>Appendix E</h:i>] and <selectables>
+                <selectable>authorized devices presenting authorized interface protocols as defined
+                  in the PP‐Module for Keyboard/Mouse Devices</selectable>
+                <selectable>authorized devices presenting authorized interface protocols as defined
+                  in the PP‐Module for User Authentication Devices</selectable>
+                <selectable>authorized devices presenting authorized interface protocols as
+                  defined in the PP‐Module for Video/Display Devices</selectable>
+                <selectable>no other devices</selectable>
+              </selectables> upon TOE power up and connection of a peripheral device to a powered‐on TOE.
+            </title>
+            <note role="application">
+              The TSF must claim conformance to a PP‐Configuration that includes each PP-Module
+              contained in any selections. The ST author should select all devices and
+              interfaces supported by the TOE.
+            </note>
+            <aactivity>
+              
+              <TSS/>                
+              <Guidance>
+                The evaluator shall verify that the operational guidance describes devices authorized for use with the TOE
+                in accordance with the authorized peripheral device connections.
+              </Guidance>
+              <CustomEA name="Isolation"/>
+              <Tests>
+                The evaluator shall verify that the TOE ports do not reject authorized devices and devices with authorized
+                protocols as per the authorized peripheral device connections.<h:br/><h:br/>
+                Repeat this test for each of the following devices: analog headphone and analog
+                speakers.
+                <testlist>
+                  <test>
+                <h:ol>
+                  <h:li>Ensure the TOE is powered off.</h:li>
+                  <h:li>Connect the authorized device to the TOE peripheral interface.</h:li>
+                  <h:li>Power on the TOE. Verify the TOE user indication described in the operational user guidance is not
+                    present.</h:li>
+                  <h:li>Play an audio file on the connected computer and verify the sound is heard through the authorized
+                    device.</h:li>
+                  <h:li>Disconnect the authorized device, then reconnect it to the TOE peripheral interface.</h:li>
+                  <h:li>Verify the TOE user indication described in the operational user guidance is not present.</h:li>
+                  <h:li>Play an audio file on the connected computer and verify the sound is heard through the authorized
+                    device.</h:li>
+                </h:ol>
+                  </test>
+                </testlist>
+              </Tests>
+            </aactivity>
+          </f-element>
+        </f-component>
+        
+        <f-component cc-id="fdp_pud_ext.1" name="Powering Unauthorized Devices">
+          <consistency-rationale>
+            This SFR requires the TSF not provide power to any unauthorized device
+            connected to the analog audio peripheral interface in addition to the PSD PP
+            requirement of rejecting it. The PSD PP does not define any requirements to
+            provide power to peripherals, therefore this does not conflict with the PSD PP
+            but is supplementary to the PSD PP.
+          </consistency-rationale>
+          
+          <comp-lev>the TSF to not power any unauthorized devices
+            connected to the peripheral interface.</comp-lev>
+          <management>No specific management functions are identified.</management>
+          <audit>There are no auditable events foreseen.</audit>
+          <dependencies>FDP_PDC_EXT.1 Peripheral Device Connection</dependencies>
+          
+          <f-element id="fdp_pud_ext-1e1">
+            <title>The TSF shall not provide power to any unauthorized device connected to the
+              analog audio peripheral interface.</title>
+            <aactivity>
+              
+              <TSS>
+                The evaluator shall verify the TSS states that the TOE does not supply power to an unauthorized device
+                connected to the analog audio output interface.<h:br/><h:br/>
+                The evaluator shall also verify that the TOE cannot be configured to supply power to a device connected
+                to the analog audio output interface.
+              </TSS>
+              <Guidance>
+                The evaluator shall verify that the guidance states that a microphone should never be connected to the
+                TOE’s analog audio output interface.
+              </Guidance>
+              <CustomEA name="Isolation"/>
+              <Tests>
+                <testlist>
+                  <test>
+                <h:ol>
+                  <h:li>Connect the amplified speakers directly to computer #1’s analog audio output interface (typically
+                    green in color). Set the volume at the speakers to approximately 25 percent.</h:li>
+                  <h:li>Connect the computer interface audio cable to the TOE audio output computer interface and
+                    computer #1’s analog audio microphone input interface (typically pink in color) instead of the computer
+                    analog audio output interface.</h:li>
+                  <h:li>Connect an open 3.5 millimeter stereo plug to the TOE analog audio peripheral interface.</h:li>
+                  <h:li>Power up the TOE and ensure computer #1 is selected.</h:li>
+                  <h:li>Measure the DC voltage of stereo plug from the TOE analog audio peripheral interface between
+                    the ground terminal and each one of the other two terminals (tip and ring) using a digital voltmeter.</h:li>
+                  <h:li>Verify the voltage is 0.2 volts or less, ensuring there is no DC bias voltage supplied to the
+                    microphone.</h:li>                                    
+                </h:ol>
+                  </test>
+                </testlist>
+              </Tests>
+            </aactivity>
+          </f-element>          
+        </f-component>
+        
+        <f-component name="Unidirectional Data Flow" cc-id="fdp_udf_ext.1" status="invisible">
+          <comp-lev>requires the TSF to provide unidirectional (one‐way)
+            communications between a given pair of interface types.</comp-lev>
+          <management>No specific management functions are identified.</management>
+          <audit>There are no auditable events foreseen.</audit>
+          <dependencies>FDP_APC_EXT.1 Active PSD Connections</dependencies> 
+          <f-element>
+              <title>
+                The TSF shall ensure <assignable>type of data</assignable> data transits the TOE
+                unidirectionally from the <assignable>origin point of data</assignable> interface to the
+                <assignable>destination point of data</assignable> interface.
+              </title>
+            </f-element>
+          
+        </f-component>
+        
+        <f-component cc-id="fdp_udf_ext.1" name="Unidirectional Data Flow" iteration="AO" id="fdp-udf-ext-1-ao">
+          <consistency-rationale>
+            This SFR requires the specific types of peripheral data defined in this PP-Module
+            to flow unidirectionally. This does not prevent the enforcement of
+            any PSD PP SFRs.
+          </consistency-rationale>
+          
+          <f-element id="fdp-udf-ext-1e1-ai">
+            <title>
+              The TSF shall ensure that [<h:i>analog audio output data</h:i>] transits the TOE
+              unidirectionally from the [<h:i>TOE analog audio output computer</h:i>] interface to the
+              [<h:i>TOE analog audio input computer interface</h:i>].
+            </title>
+            <note role="application">
+              For audio signals, the TOE analog audio output computer interface is
+              considered to be unidirectional if it receives no signal greater than 45 dB of
+              attenuation at the extended audio frequency range. It is very unlikely that this
+              element can be satisfied unless all unselected computer interfaces are shorted
+              to ground by the TSF.<h:br/><h:br/>
+              If the peripheral interface supports multiple signals (such as right and left
+              audio, or audio bias), then all those supported signals should comply with the
+              above SFR.
+            </note>
+            <aactivity>
+              
+                The evaluator shall examine the Isolation Documentation to determine that it describes how the TOE
+                enforces audio output data flow isolation from other TOE functions, such that the audio output peripheral
+                interface is unidirectional and no data can be routed from a connected peripheral back to a connected
+                computer. The description shall ensure the signal attenuation between any TOE audio output peripheral
+                device interface and any other TOE computer audio output interface is at least 45 dB measured with a 2V
+                input pure sine wave at the extended audio frequency range, including negative swing signal.
+              
+              <TSS/>
+              <Guidance/>
+              <CustomEA name="Isolation"/>
+              <Tests>
+                Note: Data is considered not to transit the TOE if no signal greater than 45 dB of attenuation at the specific
+                audio frequency is received.<h:br/><h:br/>
+                The evaluator shall perform the following test.
+                <testlist>
+                  <test>
+                <h:ol>
+                  <h:li>Connect a computer to the TOE analog audio output peripheral interface, run its tone generator
+                    software, and run audio analyzer software on the connected computer.</h:li>
+                  <h:li>Perform steps 3‐6 for each TOE analog audio output peripheral interface.</h:li>
+                  <h:li>For each connected computer, ensure it is selected, use the tone generator on the computer
+                    connected to the TOE analog audio output peripheral interface to generate the designated frequencies,
+                    and verify that the audio is not present on the selected computer’s audio analyzer software.</h:li>
+                  <h:li>Replace the selected computer with an oscilloscope and connect an external audio signal
+                    generator to the TOE analog audio output peripheral interface. Perform step 5 with the signal generator
+                    set to the following settings.<h:ul>
+                  <h:li>Pure sine wave around the average voltage of half output (positive signal only), with the
+                      output signal set to 2.00 V peak‐to‐peak, calibrating the signal with the oscilloscope as
+                      needed.</h:li>
+                  <h:li>Signal average to 0v (negative swing)</h:li>
+                </h:ul>
+                  </h:li>
+                  <h:li>Set the signal generator to generate the designated frequencies, and verify the signal on the
+                    oscilloscope is 11.2 mV or less.</h:li>
+                </h:ol> 
+                  </test>
+                </testlist>
+              </Tests>
+            </aactivity>
+          </f-element>  
+        </f-component>        
+      </section>      
+    </man-sfrs>
+    <opt-sfrs/>
+    <sel-sfrs/>
+    <obj-sfrs/>
+    <impl-dep-sfrs/>
+  </sec:Security_Requirements>
+
+  <appendix title="Required Supplementary Information" id="req-supp-info">
+    This Supporting Document refers in various places to the possibility that ‘supplementary information’ may
+    need to be supplied as part of the deliverables for an evaluation. This term is intended to describe
+    information that is not necessarily included in the Security Target or operational guidance, and that may
+    not necessarily be public. Examples of such information could be a Letter of Volatility or isolation
+    documentation. The requirement for any such supplementary information will be identified in the
+    relevant PP, PP‐Module, or Supporting Document.<h:br/><h:br/>
+    The PSD PP requires an Isolation Document to be included with the TOE for evaluation of isolation
+    requirements. The EAs the evaluator is to perform are captured under the appropriate SFR.
+  </appendix>
+  
+  
+  <bibliography>    
+    <entry id="base-pp">
+      <tag>PP_PSD_V5.0 or PSD PP</tag>
+      <description>Protection Profile for Peripheral Sharing Device, Version 5.0
+      </description>    
+    </entry>
+  </bibliography>
+
+    </Module>

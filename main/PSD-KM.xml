@@ -1,0 +1,1516 @@
+<Module xmlns="https://niap-ccevs.org/cc/v1" xmlns:h="http://www.w3.org/1999/xhtml" xmlns:sec="https://niap-ccevs.org/cc/v1/section" name="Keyboard/Mouse Devices" target-product="Keyboard/Mouse Device" target-products="Keyboard/Mouse Devices" boilerplate="yes" short="KM">  
+  <!-- <inline-comment color='green'>Initial PSD-KM Template on 5/8.</inline-comment> -->
+  <!-- <inline-comment color='blue' linebreak='yes'> Hello World QQQQ </inline-comment> -->
+ 
+  <PPReference>
+    <ReferenceTable>      
+		<PPTitle>PP-Module for Keyboard/Mouse Devices</PPTitle>
+		<PPVersion>2.0</PPVersion>
+      <PPAuthor>National Information Assurance Partnership</PPAuthor>
+      <PPPubDate>2025-07-11</PPPubDate>
+      <Keywords>PSD, KM</Keywords>      
+    </ReferenceTable>
+  </PPReference>
+  
+  <RevisionHistory>
+    <entry>
+      <version>1.0</version>
+      <date>2019-07-19</date>
+      <subject>Initial draft</subject>
+    </entry>
+  </RevisionHistory>
+  <release-notes><h:h3>TDs Applied</h:h3></release-notes><RevisionHistory>
+    <entry>
+      <version>2.0</version>
+      <date>2025-07-11</date>
+      <subject>Updates for CC:2022</subject>
+    </entry>
+  </RevisionHistory>
+
+
+  <sec:Introduction>
+    <section title="Overview" id="ppoverview">
+      The scope of this Protection Profile (PP)‐Module is to describe the security functionality of a specific type
+      of Peripheral Sharing Device (PSD) product in terms of Common Criteria for Information Technology
+      Security Evaluation, version 3.1, Release 5 [CC] and to define functional and assurance requirements for
+      such products.<h:br/><h:br/>
+      A Target of Evaluation (TOE) claiming conformance to this PP‐Module must also claim conformance to the
+      Protection Profile for Peripheral Sharing Devices (PSD PP) as its Base‐PP. This is because the PSD PP is a generic
+      Protection Profile aimed at defining baseline requirements and Evaluation Activities for a wide variety of
+      PSD products, but more specific requirements and Evaluation Activities apply depending on the types of
+      physical and logical interfaces a PSD includes. Therefore, this PP‐Module defines additional Security
+      Functional Requirements (SFRs) for security functionality unique to a PSD that includes the ability to
+      manipulate or assign human interface devices (HIDs) (e.g., keyboard and pointing device) to one or more
+      computers connected to the PSD. <h:br/><h:br/>
+      This PP-Module is intended for use with the following Base-PPs:<h:ul>
+        <h:li>Protection Profile for Peripheral Sharing Devices, Version 5.0</h:li>
+      </h:ul>
+    </section>
+    
+    <tech-terms>      
+      <term full="Allowlist">
+        List containing one or more device attributes that will cause the TOE to accept the
+        devices having that attribute.
+      </term>
+      <term full="Composite Device (USB)">
+        A peripheral device that supports more than one device class.
+      </term>
+      <term abbr="CDF" full="Configurable Device Filtration">
+        PSD function that accepts or rejects peripheral devices based on field‐configurable
+        parameters or allowlist and denylist.
+      </term>
+      <term full="Denylist">
+        List containing one or more device attributes that will cause the PSD to reject the
+        devices having that attribute.
+      </term>
+      <term full="Emulate">
+        Imitate the behavior of a device or a function in a device.
+      </term>
+      <term full="Endpoint (USB)">
+        A source or a sink of data. Universal Serial Bus (USB) host is centric; endpoints occur
+        at the end of the communications channel at the USB function.
+      </term>
+      <term full="Enumeration (USB)">
+        A process that starts as soon as a device connects to the USB host. In this process, the
+        host and the device jointly define the communications and power settings.
+      </term>
+      <term abbr="FDF" full="Fixed Device Filtration">
+        PSD function that accepts or rejects peripheral devices based on fixed parameters
+        loaded during production.
+      </term>
+      <term full="Guard">
+        A PSD function that requires multiple express user actions to switch between
+        connected computers using connected peripheral devices.
+      </term>
+      <term abbr="HID" full="Human Interface Device">
+        A device that allows input from or sends output to human users.
+      </term>
+      <term full="Host (USB)">
+        Initiates all communication on the USB and numbers the connected devices.
+      </term>
+      <term full="Interface (USB)">
+        Groups of endpoints. Each interface relates with a single device function. An
+        exception to this is endpoint zero, which is for device configuration and not
+        associated with any interface.
+      </term>
+      <term abbr="OSP" full="Organizational Security Policies"/>
+      <term abbr="PP" full="Protection Profile"/>
+      <term abbr="PSD" full="Peripheral Sharing Device"/>
+      <term abbr="SFR" full="Security Functional Requirement"/>
+      <term abbr="USB" full="Universal Serial Bus"/>
+      <term full="USB Device">
+        A USB peripheral that is connected to a host with one or more peripherals connected to it, which
+        is based on the number of USB ports the peripheral has.  
+      </term>
+      <term full="USB Hub">
+        A device that expands a single USB port into several so there are more ports available to
+        connect devices to a host system.
+      </term>
+    </tech-terms>    
+    
+    <section title="Compliant Targets of Evaluation" id="TOEdescription">
+      A compliant Target of Evaluation (TOE) for this PP‐Module is any PSD that supports connectivity between
+      one or more computers and one or more HID peripheral devices, in particular USB devices. Specifically,
+      the TOE may support keyboard and/or pointing devices. As the most common pointing device expected
+      for use with the TOE is a mouse, this term will be used throughout this PP‐Module to refer to all pointing
+      devices collectively. All of the requirements and restrictions that the PSD PP defines apply to a conformant
+      TOE. A conformant TOE satisfies all of the specific data protection/isolation capabilities that the PSD PP
+      requires. A conformant TOE embodies one or more of the use cases defined in the PSD PP.<h:br/><h:br/>
+      A candidate TOE for claiming conformance to this PP‐Module is any TOE that conforms to the PSD PP and
+      includes keyboard and/or mouse connected peripherals (KM). In particular, a conformant TOE should
+      support one or more USB keyboard and/or mouse devices.<h:br/><h:br/>
+      The TOE may include functionality for additional types of computer interfaces (e.g. video display, user
+      authentication device). When this is the case, the TOE will claim conformance to all applicable PP‐Modules
+      that extend the PSD PP.<h:br/><h:br/>
+      Note that this PP‐Module covers PSD functionality supporting USB peripherals only.
+    </section>      
+      <section title="TOE Boundary" id="TOEboundary">
+        The TOE boundary is a PSD. Refer to the PSD PP for an outline of the TOE boundary. When claiming
+        conformance to this PP‐Module, the TOE boundary will include one or more each of USB peripheral and
+        USB computer interfaces that can be used to transmit human user input. It is permissible to
+        use this PP-Module
+        in conjunction with other PP‐Modules that also extend the PSD PP by claiming conformance to a
+        PP‐Configuration that includes all applicable PP‐Modules. In this manner, a single TOE may support
+        multiple different types of peripherals.
+      </section>      
+    <section title="Use Cases" id="usecases">
+      This PP‐Module does not define additional use cases beyond what the PSD PP defines. The TOE should
+      embody one or more use cases from the PSD PP. This PP‐Module’s functionality defines
+      implementation-independent
+      functionality (i.e. not tied to any specific use cases) and relates entirely to the specific
+      security requirements related to security of the physical and logical interfaces for supporting keyboard and
+      mouse devices.
+    </section>    
+
+ <section title="Implementation-Based Features" id="sec-features">
+      A conformant TOE may implement certain features that are not strictly necessary in order to achieve the desired level of security, but if these features are implemented, it is expected that they conform to certain requirements governing their behavior.
+      <implements>
+        <feature id="filtration" title="Device Filtration">
+          <description>The TSF implements a filtration mechanism above and beyond only allowing the authorized peripheral device types that are defined in Appendix E. This may be a fixed mechanism (e.g., a device may be bundled with a purpose-built keyboard that is the only keyboard recognized by the TOE's peripheral keyboard port) or a configurable one.</description>
+        </feature>
+        <feature id="rejectreenumeration" title="Rejection of Re-Enumeration">
+          <description>The TSF automatically rejects any USB device that attempts to re-enumerate as a different device.</description>
+        </feature>
+      </implements>			
+    </section>   
+    
+    <section title="Test Environment for Evaluation Activities">
+      In order to ensure that the TOE demonstrates the functionality required by the EAs, it is necessary for the
+      evaluator to ensure that they have appropriate equipment to conduct the required testing. In addition to
+      the equipment that is relevant for testing any PSD as defined in the PSD PP, the following additional
+      equipment should be used in testing:<h:ul>
+        <h:li><h:b>Keyboard</h:b> – Used to generate text entry inputs </h:li>
+        <h:li><h:b>Keyboard emulator software application</h:b> – Used to verify unidirectional
+          communication</h:li>
+        <h:li><h:b>Mouse</h:b> – Used to generate pointing device inputs</h:li>
+        <h:li><h:b>Switchable 5 volt power supply with any compatible USB plug</h:b> – Used to verify electrical signals are not
+          sent to non‐selected computers</h:li>
+        <h:li><h:b>USB audio headset</h:b> – Used to verify the peripheral device connections</h:li>
+        <h:li><h:b>USB camera</h:b> – Used to verify the peripheral device connections</h:li>
+        <h:li><h:b>USB composite device evaluation board</h:b> – Used to verify the peripheral device connections</h:li>
+        <h:li><h:b>USB dummy load</h:b> – Used to verify electrical signals are not sent to non‐selected computers</h:li>
+        <h:li><h:b>USB gaming mouse with programmable LEDs</h:b> – Used to verify unidirectional communication</h:li>
+        <h:li><h:b>USB generator</h:b> – Used to verify emulation of keyboard and mouse functions</h:li>
+        <h:li><h:b>USB hub</h:b> – Used to verify the peripheral device connections</h:li>
+        <h:li><h:b>USB mass storage device</h:b> – Used to verify the peripheral device connections</h:li>
+        <h:li><h:b>USB printer</h:b> – Used to verify the peripheral device connections</h:li>
+        <h:li><h:b>USB protocol analyzer software</h:b> – Used to verify the presence or absence of USB traffic</h:li>
+        <h:li><h:b>USB rubber ducky, BadUSB, and Programmable Keyboard</h:b> – Used to verify the TOE rejects devices
+          that re‐enumerate as unauthorized devices</h:li>
+        <h:li><h:b>USB sniffer</h:b> – Used to verify the presence or absence of USB traffic</h:li>
+        <h:li><h:b>USB wireless LAN dongle</h:b> – Used to verify the peripheral device connections</h:li>        
+      </h:ul>
+      This equipment is required in addition to that which is relevant for testing any PSD as defined in the PSD
+      PP.<h:br/><h:br/>      
+      When conducting testing, the evaluator must be sure to test all combinations of switch selections. For
+      example, if testing a device with two HID interfaces and eight computer interfaces, the evaluator may use
+      two connected computers, but must change the connected ports several times to be sure to test each of
+      the possible variations of switch positions. Some equivalency arguments between ports are allowed.
+    </section>
+  </sec:Introduction>
+
+  <section title="Conformance Claims" id="sec-cclaims" boilerplate="no">
+    <CClaimsInfo cc-version="cc-2022r1" cc-approach="direct-rationale" display="yes">
+      <cc-st-conf>exact</cc-st-conf>
+      <cc-pt2-conf>extended</cc-pt2-conf>           
+      <cc-pt3-conf>conformant</cc-pt3-conf> 
+      <cc-pp-conf/>
+      <cc-pp-config-with>
+        <PP-cc-ref>
+			<cc-doc-ref id="PSD">
+				<git>
+					<url>https://github.com/commoncriteria/PSD</url>
+					<branch>main</branch>
+				</git>
+				<url>https://niap-ccevs.org/protectionprofiles/412</url>			
+			</cc-doc-ref>		
+		</PP-cc-ref>
+        <Mod-cc-ref>
+			<cc-doc-ref id="PSD-AO">
+				<git>
+					<url>https://github.com/commoncriteria/PSD-AO</url>
+					<branch>main</branch>
+				</git>
+				<url>https://niap-ccevs.org/protectionprofiles/433</url>			
+			</cc-doc-ref>		
+		</Mod-cc-ref>
+        <Mod-cc-ref>
+			<cc-doc-ref id="PSD-UA">
+				<git>
+					<url>https://github.com/commoncriteria/PSD-UA</url>
+					<branch>main</branch>
+				</git>
+				<url>https://niap-ccevs.org/protectionprofiles/434</url>			
+			</cc-doc-ref>		
+		</Mod-cc-ref>
+        <Mod-cc-ref>
+			<cc-doc-ref id="PSD-VI">
+				<git>
+					<url>https://github.com/commoncriteria/PSD-VI</url>
+					<branch>main</branch>
+				</git>
+				<url>https://niap-ccevs.org/protectionprofiles/436</url>			
+			</cc-doc-ref>		
+		</Mod-cc-ref>
+      </cc-pp-config-with>        
+      <cc-pkg-claim/>
+    </CClaimsInfo>
+  </section>
+  
+  <sec:Security_Problem_Definition>   
+    This PP‐Module describes the security problem in terms of the threats the TOE is expected to address,
+    assumptions about its operational environment, and any organizational security policies (OSPs) that the
+    TOE is expected to enforce.<h:br/><h:br/>
+    Note that as a PP‐Module of the PSD PP, all threats, assumptions, and OSPs 
+    defined in the PSD PP will also apply to the TOE unless otherwise specified.
+    
+    <sec:Threats>      
+      <threats>
+        <threat name="T.DATA_LEAK">
+          <from base="PSD"/>
+          <description>This threat from the PSD PP also applies to the functionality defined in this PP-Module.</description>
+           <addressed-by>FDP_PDC_EXT.2/KM</addressed-by><rationale>Mitigates this threat by blocking the acceptance of devices that could be used to attempt to leak data through the TOE.</rationale>
+   <addressed-by>FDP_PDC_EXT.3/KM</addressed-by><rationale>Mitigates this threat by
+            emulating devices on connected computers so that any functionality used to attempt to leak data would not be recognized by a connected computer.</rationale>
+          
+          <addressed-by>FDP_UDF_EXT.1/KM</addressed-by><rationale>Mitigates this threat by ensuring
+            unidirectional data flow from the peripherals to connected computers, such that data cannot leak from a connected computer to the TOE.</rationale>
+          <addressed-by>FDP_FIL_EXT.1/KM (implementation-dependent)</addressed-by><rationale>Mitigates this threat
+            by blocking the use of untrusted devices that could be used to attempt data leakage.</rationale>
+    
+          
+        </threat>
+        <threat name="T.LOGICAL_TAMPER">
+          <from base="PSD"/>
+          <description>This threat from the PSD PP also applies to the functionality defined in this PP-Module.</description>
+          <addressed-by>FDP_PDC_EXT.2/KM</addressed-by><rationale>Mitigates this threat by blocking the acceptance of devices that could be used to attempt to logically tamper with the TOE.</rationale>
+        </threat>
+        <threat name="T.RESIDUAL_LEAK">
+          <from base="PSD"/>
+          <description>This threat from the PSD PP also applies to the functionality defined in this PP-Module.</description>
+          <addressed-by>FDP_UDF_EXT.1/KM</addressed-by><rationale>Mitigates this threat by ensuring that data flow is unidirectional such that the TOE does not receive data from a connected computer.</rationale>
+          <addressed-by>FDP_RIP.1/KM (selection‐based)</addressed-by><rationale>Mitigates this
+            threat by ensuring that any data in volatile memory is purged when switching computers.</rationale>
+        </threat>
+        
+        <threat name="T.SIGNAL_LEAK">
+          <from base="PSD"/>
+          <description>This threat from the PSD PP also applies to the functionality defined in this PP-Module.</description>
+           <addressed-by>FDP_PDC_EXT.2/KM</addressed-by><rationale>Mitigates this threat by blocking the acceptance of devices that could be used to attempt to leak data through the TOE via a signaling mechanism.</rationale>
+   
+          <addressed-by>FDP_UDF_EXT.1/KM</addressed-by><rationale>Mitigates this threat by ensuring
+            unidirectional data flow from the peripherals to connected computers, such that data cannot leak from a connected computer to the TOE.</rationale>
+          <addressed-by>FDP_FIL_EXT.1/KM (implementation-dependent)</addressed-by><rationale>Mitigates this threat
+            by blocking the use of untrusted devices that could be used to attempt data leakage.</rationale>
+        </threat>
+        <threat name="T.UNAUTHORIZED_DEVICES">
+          <from base="PSD"/>          
+          <description>This threat from the PSD PP also applies to the functionality defined in this PP-Module.</description>  
+          <addressed-by>FDP_PDC_EXT.2/KM</addressed-by><rationale>Mitigates this threat by enforcing the recognition of only authorized devices.</rationale>
+          <addressed-by>FDP_PDC_EXT.3/KM</addressed-by><rationale>Mitigates this threat by
+            emulating connected devices so that unauthorized functionality of any peripherals is not recognized by a connected computer.</rationale>
+          <addressed-by>FDP_FIL_EXT.1/KM (implementation-dependent)</addressed-by><rationale>Mitigates this threat
+            by implementing a filtration mechanism to further tailor the set of authorized devices.</rationale>
+          <addressed-by>FDP_RDR_EXT.1 (implementation-dependent)</addressed-by><rationale>Mitigates
+            this threat by preventing an unauthorized device from re-enumerating as an authorized one.</rationale>
+        </threat>
+        <threat name="T.UNINTENDED_USE">
+          <from base="PSD"/>
+          <description>This threat from the PSD PP also applies to the functionality defined in this PP-Module.</description>
+          <addressed-by>FDP_SWI_EXT.3 (selection‐based)</addressed-by><rationale>Mitigates this
+            threat by ensuring all peripherals are switched to the same selected computer.</rationale>
+        </threat>
+      </threats> 
+    </sec:Threats>
+    
+    <sec:Assumptions>
+      This PP‐Module defines no additional assumptions. Note however that the A.NO_TEMPEST assumption
+      from the PSD PP has the following additional interpretation when the TOE claims conformance to
+      this PP-Module:<h:ul>
+        <h:li>The TSF may or may not isolate the ground of the keyboard and mouse computer interfaces (the
+      USB ground). The Operational Environment is assumed not to support TEMPEST red‐black ground
+      isolation.</h:li>
+      </h:ul>
+      <assumptions/>
+    </sec:Assumptions>
+    
+    
+    <sec:Organizational_Security_Policies>
+      <OSPs/>
+    </sec:Organizational_Security_Policies> 
+  </sec:Security_Problem_Definition>
+
+  <sec:Security_Objectives>
+    
+    <sec:Security_Objectives_for_the_Operational_Environment>
+      All environmental security objectives from the PSD PP also apply to the TOE’s environment when it
+      includes this PP‐Module in its conformance claims.
+    </sec:Security_Objectives_for_the_Operational_Environment>
+    
+  </sec:Security_Objectives>
+
+  <sec:Security_Requirements>
+    <comment>Need to add URLs once created</comment>
+    <base-pp ref="PSD">
+      
+      <sec-func-req-dir>
+        When a TOE claims conformance to this PP‐Module, it is necessary to make claims in the PSD PP
+        requirements consistent with the functionality in the PP‐Module. The following sections describe any PSD
+        PP claims that must be made when the TOE boundary includes the functionality this PP‐Module describes.
+        For some requirements, only certain individual elements within the SFR have been modified
+        for this PP-Module.
+        Any SFR elements omitted from the selections below are to be included in a conformant ST
+        unmodified from their definition in the PSD PP.
+      </sec-func-req-dir>
+      
+      <modified-sfrs>
+        <sec:mod_fau title="Class FAU: Security Audit">
+          <f-component cc-id="fau_gen.1" name="Audit Data Generation">
+            <consistency-rationale>
+              There is no change to this SFR in this PP‐Module. However, because this PP-Module
+              includes a condition that would require it to be included in the TOE
+              boundary, the SFR is treated as selection‐based when this PP‐Module is
+              claimed.
+            </consistency-rationale>
+            <description>
+            This SFR is unchanged when the TOE claim includes this PP‐Module. However, this SFR is an optional
+            requirement in the PSD PP. This PP‐Module defines functionality that would require this SFR to be claimed
+            if a certain selection is made. Therefore, this PP‐Module re‐categorizes this optional
+            SFR as selection-based.
+            It shall be included in the TSF if ‘configurable’ is selected in FDP_FIL_EXT.1.1/KM.
+            </description>
+          </f-component>
+        </sec:mod_fau>
+        
+        <sec:mod_fdp title="Class FDP: User Data Protection">
+          <f-component id="fdp_apc_ext.1" cc-id="fdp_apc_ext.1" name="Active PSD Connections">
+            <consistency-rationale>
+              This SFR adds a requirement to block electrical signals that strengthens but
+              does not conflict with the requirement in the PSD PP.
+            </consistency-rationale>
+            <f-element id="fdp-apc-ext-1e1">
+              <title> The TSF shall route user data only to <h:s>or from</h:s> the interfaces selected by the
+                user. 
+              </title>
+            </f-element>
+            <f-element id="fdp-apc-ext-1e2">
+              <title>The TSF shall ensure that no data <h:b>or electrical signals</h:b>flow between connected computers whether the
+                TOE is powered on or powered off.
+              </title>
+              <note role="application">
+                This SFR is refined from the PSD PP for this PP‐Module to include further
+                restrictions for electrical signals. It is unlikely that this element can be satisfied
+                unless mouse and keyboard peripheral device interfaces are electrically and
+                logically isolated from the connected computer interfaces or through other
+                methods, such as USB host and USB device emulation.<h:br/><h:br/>
+                For TOEs that support only a keyboard or mouse, but not both, tests and portions
+                of tests that involve using the non‐supported peripheral are considered
+                conditional.<h:br/><h:br/>
+                If the TOE claims conformance to multiple PP‐Modules, each PP‐Module modifies
+                this SFR in a different manner for the interfaces that are unique to that module. In
+                this case, the ST author should reference this modification of the SFR as
+                “FDP_APC_EXT.1/KM” for uniqueness. Note that all elements of FDP_APC_EXT.1
+                must be included in this iteration, not just the ones that are modified by this PP-Module.                
+              </note>              
+              <aactivity>                
+                
+                <TSS/>                  
+                <Guidance/>
+                <CustomEA name="Isolation">
+                  The evaluator shall examine the Isolation Document and verify it describes how the TOE ensures that no
+                  data or electrical signals flow between connected computers in both cases (powered on, powered off).
+                </CustomEA>
+                <Tests>
+                  For tests that use the USB sniffer or USB analyzer software, the evaluator verifies whether traffic is sent
+                  or not sent by inspection of the passing USB transactions and ensuring they do not contain USB data
+                  payloads other than any expected traffic, as well as USB NAK transactions or system messages. To avoid
+                  clutter during USB traffic capture, the evaluator may filter NAK transactions and system messages.<h:br/><h:br/>
+                  The evaluator shall perform the following tests:
+                  <testlist>
+                    <test id="APC_Test_1-KM"><h:br/><h:br/>
+                      <h:b>KM Switching Methods</h:b><h:br/><h:br/>
+                      [Conditional: Perform this test if “switching can be initiated only through express user action” is selected
+                      in FDP_SWI_EXT.1.1 in the PSD PP]<h:br/><h:br/>
+                      While performing this test, ensure that switching is always initiated through express user action.<h:br/><h:br/>
+                      This test verifies the functionality of the TOE’s KM switching methods.<h:ol>
+                        <h:li>Configure the TOE and the Operational Environment in accordance with the operational guidance.
+                          Connect an authorized peripheral device for each peripheral device type selected in
+                          FDP_PDC_EXT.3.1/KM. Run an instance of a text editor on each connected computer.</h:li>
+                        <h:li>Connect a display to each computer in order to see all computers at the same time, turn on the
+                          TOE, and enter text or move the cursor to verify which connected computer is selected.</h:li>
+                        <h:li>For each switching method selected in FDP_SWI_EXT.2.2, switch selected computers in accordance
+                          with the operational user guidance, and verify that it succeeds.</h:li>
+                        <h:li>For each peripheral device type selected in FDP_PDC_EXT.3.1/KM, attempt to switch the device
+                          to more than one computer at once and verify that the TOE ignores all such commands or otherwise
+                          prevents the operation from executing.</h:li>
+                        <h:li>[Conditional: If “keyboard” is selected in FDP_PDC_EXT.3.1/KM, then] attempt to control the
+                          computer selection using the following standard keyboard shortcuts, where ‘#’ represents a computer
+                          channel number, and verify that the selected computer is not
+                          switched:<h:ul>
+                            <h:li>Control ‐ Control ‐ # ‐ Enter</h:li>
+                            <h:li>Shift ‐ Shift ‐ #</h:li>
+                            <h:li>Num Lock ‐ Minus ‐ #</h:li>
+                            <h:li>Scroll Lock ‐ Scroll Lock ‐ #</h:li>
+                            <h:li>Scroll Lock ‐ Scroll Lock ‐ Function #</h:li>
+                            <h:li>Scroll Lock ‐ Scroll Lock ‐ arrow (up or down)</h:li>
+                            <h:li>Scroll Lock ‐ Scroll Lock ‐ # ‐ enter</h:li>
+                            <h:li>Control ‐ Shift ‐ Alt ‐ # ‐ Enter</h:li>
+                            <h:li>Alt ‐ Control ‐ Shift ‐ #</h:li>
+                          </h:ul></h:li>
+                        <h:li>[Conditional: If “mouse” is selected in FDP_PDC_EXT.3.1/KM, then] attempt to switch to other
+                          connected computers using the pointing device and verify that it does not succeed.</h:li>
+                        <h:li>[Conditional: If “peripheral devices using a guard” is selected in FDP_SWI_EXT.2.2, then] attempt
+                          to switch to other connected computers using the peripheral device and guard by only performing some
+                          of the steps outlined in the operational user guidance, and verify that it does not succeed.</h:li>                        
+                      </h:ol>                      
+                    </test><h:br/><h:br/>
+                    
+                    <test id="APC_Test_2-KM"><h:br/><h:br/>
+                      <h:b>Positive and Negative Keyboard and Mouse Data Flow Rules Testing</h:b><h:br/><h:br/>                      
+                      This test verifies the functionality for correct data flows of a mouse and keyboard during different power
+                      states of the selected computer.
+                      <h:ol>
+                        <h:li>Continue with the test setup from <xref to="APC_Test_1-KM"/> and for each connected computer, connect a USB sniffer
+                          between it and the TOE or open the USB analyzer software. Perform steps 2‐12 with each connected
+                          computer as the selected computer.</h:li>
+                        <h:li>Exercise the functions of the peripheral device type selected in FDP_PDC_EXT.3.1/KM and verify
+                          that the expected results are observed on the selected computer and that the expected traffic is sent and
+                          captured using the USB analyzer.<h:br/><h:br/>
+                          [Conditional: Perform steps 3‐10 if “switching can be initiated only through express user action” is selected
+                          in FDP_SWI_EXT.1.1 in the PSD PP.]</h:li>
+                        <h:li>[If “mouse” is selected in FDP_PDC_EXT.3.1/KM, then] switch the TOE to each connected
+                          computer, and use the mouse to position the mouse cursor at the center of each display. Switch the TOE
+                          back to the originally selected computer.</h:li>
+                        <h:li>[If “keyboard is selected in FDP_PDC_EXT.3.1/KM, then] use the keyboard to enter text into the
+                          text editor. [If “mouse” is selected in FDP_PDC_EXT.3.1/KM, then] use the mouse to move the cursor to
+                          the bottom right corner of the display.</h:li>
+                        <h:li>Switch to each connected computer and verify that the actions taken in Step 4 did not occur on
+                          any of the non‐selected computers.</h:li>
+                        <h:li>Switch to the originally selected computer. Continue exercising the functions of the peripheral
+                          device(s) and examine the USB protocol analyzers on each one of the non‐selected computers and verify
+                          that no traffic is sent.</h:li>
+                        <h:li>Disconnect and reconnect the TOE interface cables connected to the selected computer. Examine
+                          the USB protocol analyzers on each one of the non‐selected computers and verify that no traffic is sent.</h:li>
+                        <h:li>Reboot the selected computer. Examine the USB protocol analyzers on
+                          each one of the non-selected
+                          computers and verify that no traffic is sent.</h:li>
+                        <h:li>Enter sleep or suspend mode in the selected computer. Examine the USB protocol analyzers on
+                          each one of the non‐selected computers to verify that no traffic is sent.</h:li>
+                        <h:li>Exit sleep or suspend mode on the selected computer. Examine the USB protocol analyzers on
+                          each of the non‐selected computers to verify that no traffic is sent. Ensure that any text in the Text Editor
+                          application is deleted.</h:li>
+                        <h:li>Perform step 12 when the TOE is off and then in a failure state.</h:li>
+                        <h:li>Exercise the functions of the peripheral device type selected in FDP_PDC_EXT.3.1/KM and verify
+                          that no results are observed on the selected computer and that no traffic is captured using the USB
+                          analyzer.</h:li>
+                      </h:ol>
+                    </test><h:br/><h:br/>
+                    
+                    <test id="APC_Test_3-KM"><h:br/><h:br/>
+                      <h:b>Flow Isolation and Unidirectional Rule</h:b><h:br/><h:br/>
+                      This test verifies that the TOE properly enforces unidirectional flow and
+                      isolation.
+                      <h:ol>
+                        <h:li>Ensure the TOE and the Operational Environment are configured in accordance with the
+                          operational guidance.<h:br/><h:br/>
+                          Perform steps 2‐12 with each connected computer as the selected computer.
+                        </h:li>
+                        <h:li>Ensure the TOE is powered on and connect a display directly to the selected computer. Open a
+                          real‐time hardware information console on the selected computer.<h:br/><h:br/>
+                          [If “mouse” is selected in FDP_PDC_EXT.3.1/KM, then perform steps 3‐4]</h:li>
+                        <h:li>Connect a gaming mouse with programmable LEDs directly to the selected computer and attempt
+                          to configure the LEDs using the mouse application running on the selected computer. Verify that the
+                          mouse programmable LEDs change state.</h:li>
+                        <h:li>Disconnect the gaming mouse from the selected computer and connect it to the TOE mouse
+                          peripheral device port through the USB sniffer. Attempt to configure the LEDs using the mouse application
+                          running on the selected computer. Verify that the mouse programmable LEDs do not change state and
+                          that no traffic is sent and captured by the USB sniffer while the evaluator is not moving the mouse.<h:br/><h:br/>
+                          [If “keyboard” is selected in FDP_PDC_EXT.3.1/KM, then perform step 5]</h:li>
+                        <h:li>Connect a keyboard to the peripheral device interface through the USB sniffer. Use a keyboard
+                          emulation software application running on the selected computer to turn the keyboard Num Lock, Caps
+                          Lock, and Scroll Lock LEDs on and off. Verify that the LEDs on the keyboard do not change state and that
+                          no traffic is sent and captured by the USB sniffer.</h:li>
+                        <h:li>Power down the TOE and disconnect the peripheral interface USB cable from the TOE to the
+                          selected computer and the peripheral devices from the TOE.</h:li>
+                        <h:li>Power up the TOE and ensure the selected computer has not changed (this should have no effect
+                          on the selected computer because it was disconnected in the previous step). Reconnect the peripheral
+                          devices disconnected in step 6 to the TOE.</h:li>
+                        <h:li>[If “mouse” is selected in FDP_PDC_EXT.3.1/KM, then] check that immediately following the
+                          connection, the mouse LEDs are illuminated (indicating that the peripheral devices are powered on,
+                          although the selected computer is not connected). [If “keyboard” is selected in FDP_PDC_EXT.3.1/KM,
+                          then] check that immediately following the connection, the Num Lock, Caps Lock, and Scroll Lock keyboard
+                          LEDs are blinking momentarily and then stay off (indicating that the keyboard is powered on, although
+                          the selected computer is not connected).</h:li>
+                        <h:li>Turn the TOE off and disconnect the peripheral devices connected in step 6.</h:li>
+                        <h:li>Reconnect the first computer interface USB cable to the TOE.</h:li>
+                        <h:li>Turn on the TOE and check the computer real‐time hardware information console for the
+                          presence of the peripheral devices connected in step 6 and disconnected in step 9. The presence of the
+                          TOE peripheral devices in the information console when the peripheral devices are not connected to the
+                          TOE indicates that the TOE emulates the KM devices.</h:li>
+                        <h:li>[Conditional] If the TOE keyboard and mouse do not appear in the listed devices, repeat the
+                          following steps for both mouse and keyboard to simulate USB traffic:<h:ul>
+                            <h:li>Connect a USB generator to the TOE peripheral device interface port.</h:li>
+                            <h:li>Configure the USB generator to enumerate as a generic HID mouse/keyboard device and then
+                            to generate a random stream of mouse/keyboard report packets.</h:li>
+                            <h:li>Connect a USB sniffer device between the TOE computer interface and the USB port on the first
+                            computer to capture the USB traffic between the TOE and the first computer.</h:li>
+                            <h:li>Turn on the TOE and verify that no packets cross the TOE following
+                              the device enumeration.</h:li>
+                          </h:ul></h:li>
+                      </h:ol>
+                    </test><h:br/><h:br/>
+                    
+                    <test id="APC_Test_4-KM"><h:br/><h:br/>
+                      <h:b>No Flow between Computer Interfaces</h:b><h:br/><h:br/>
+                          [Conditional: Perform this test if “switching can be initiated only through express user action” is selected
+                          in FDP_SWI_EXT.1.1 in the PSD PP]<h:br/><h:br/>
+                          This test verifies correct data flow while the TOE is powered on or powered off.
+                      <h:ol>
+                        <h:li>Ensure the TOE and the Operational Environment are configured in accordance with the
+                          operational guidance. Connect a display directly to each connected computer. Perform steps 2‐10 for each
+                          connected computer.</h:li>
+                        <h:li>Connect a USB sniffer between a non‐selected TOE KM computer interface and its computer. Run
+                          USB protocol analyzer software on all remaining computers.</h:li>
+                        <h:li>Turn on the TOE and observe the TOE enumeration data flow in the protocol analyzer connected
+                          to the selected computer and is not in any other USB protocol analyzers or the USB sniffer.</h:li>
+                        <h:li>Ensure the TOE is switched to the first computer.</h:li>
+                        <h:li>Reboot the first computer. Verify that no USB traffic is captured on all non‐selected computer USB
+                          protocol analyzers.</h:li>
+                        <h:li>Generate intensive USB HID traffic by moving the mouse at high speed and/or holding down the
+                          keyboard space key at the same time. Verify that no new USB traffic is captured on all non‐selected
+                          computer USB protocol analyzers.</h:li>
+                        <h:li>Perform steps 8 and 9 for each TOE keyboard/mouse peripheral interface.</h:li>
+                        <h:li>Connect a USB dummy load into the TOE KM peripheral device interface. Verify that no new USB
+                          traffic is captured on all non‐selected computer USB protocol analyzers. Remove the plug after the step is
+                          completed.</h:li>
+                        <h:li>Connect a switchable 5 volt power supply with any compatible USB plug into the TOE KM peripheral
+                          device interface. Modulate the 5 volt supply (i.e., cycle on and off) manually at various speeds from
+                          approximately one cycle per five seconds to one cycle per second. Verify that no new USB traffic is
+                          captured on all non‐selected computer USB analyzers.</h:li>
+                        <h:li>Turn off the TOE. Verify that no new traffic is captured.</h:li>                                                
+                      </h:ol>
+                    </test><h:br/><h:br/>
+                    
+                    <test id="APC_Test_5-KM"><h:br/><h:br/>
+                      <h:b>No Flow between Connected Computers over Time</h:b><h:br/><h:br/>
+                      This test verifies that the TOE does not send data to different computers connected to the same interface
+                      at different times. Repeat this test for each TOE KM computer port.
+                      <h:ol>
+                        <h:li>Configure the TOE and the Operational Environment in accordance with the operational guidance.
+                          Connect an authorized peripheral device for each peripheral device type selected in
+                          FDP_PDC_EXT.3.1/KM. Connect two computers to a different display and run an instance of a text editor
+                          and USB analyzer software on each computer.</h:li>
+                        <h:li>Connect the first computer to the TOE and ensure it is selected and that no other computers are
+                          connected.</h:li>
+                        <h:li>Exercise the functions of the peripheral device type selected in FDP_PDC_EXT.3.1/KM and verify
+                          that the expected results are observed on the selected computer and that the expected traffic is sent and
+                          captured using the USB analyzer.</h:li>
+                        <h:li>Disconnect the first computer. Generate intensive USB HID traffic by moving the mouse at high
+                          speed and/or holding down the keyboard space key at the same time.</h:li>
+                        <h:li>Cease generation of the USB HID traffic, connect the second computer to the same port and ensure
+                          it is selected.</h:li>
+                        <h:li>Verify that no results from the previous use of the peripheral device are observed on the selected
+                          computer and that no traffic is sent and captured using the USB analyzer.</h:li>
+                        <h:li>Reboot the TOE and repeat step 6.</h:li>
+                        <h:li>Turn off the TOE and repeat step 6.</h:li>
+                        <h:li>Restart the TOE and repeat step 6.</h:li>
+                        <h:li>Exercise the functions of the peripheral device type selected in FDP_PDC_EXT.3.1/KM and verify
+                          that the expected results are observed on the selected computer and that the expected traffic is sent and
+                          captured using the USB analyzer.</h:li>                        
+                      </h:ol>
+                    </test>
+                  </testlist>
+                </Tests>
+              </aactivity>              
+            </f-element>
+          </f-component>
+          
+          <f-component cc-id="fdp_pdc_ext.1" name="Peripheral Device Connection">
+            <consistency-rationale>
+              This SFR is not modified by the PP‐Module. It adds keyboard/mouse devices
+              to the set of authorized devices, which are specific types of peripherals not
+              specified in the PSD PP.
+            </consistency-rationale>
+            <f-element>
+              <title>
+                There is no modification to this SFR in this PP‐Module. However, there are additions to the Peripheral
+            Device Connections (see Appendix E) associated with this SFR, modifications of the application note, and
+            additional Evaluation Activities. The application note from the PSD PP is changed to the following:
+              </title>                       
+            <note role="application">
+              The Peripheral Device Connections section is in Appendix E of both the PSD PP and
+              this PP‐Module. Keyboard and mouse peripheral device ports may be specific to
+              only one type or interchangeable between them.<h:br/><h:br/>
+              The TSF may elect to enforce rejection of unauthorized devices connected to the
+              PSD through a USB hub by considering USB hubs as unauthorized devices, even
+              though USB hubs are authorized devices. The TSF may elect to enforce rejection of
+              unauthorized non‐HID device classes of a composite device connected to a TOE
+              KM peripheral interface by considering composite devices with non‐HID device
+              classes as unauthorized devices, even though the HID device classes are
+              authorized.
+            </note>            
+            
+            <aactivity>
+              
+              <TSS/>                
+              <Guidance/>                
+              <CustomEA name="Isolation"/>
+              <Tests>
+                <testlist>
+                  <test id="PDC_Test_1-KM">
+                    The evaluator shall verify that the TOE ports properly reject unauthorized devices and devices with
+                    unauthorized protocols as per the unauthorized peripheral device connections.<h:br/><h:br/>
+                    For this test, verify device rejection through TOE user indication in accordance with the operational user
+                    guidance, an immediate cessation of traffic following device detection or enumeration, no traffic captured
+                    on the USB sniffer or analyzer software other than NAK transactions or system messages, or
+                    incompatibility of the device interface with the peripheral interface. Also verify device rejection through
+                    examination of the USB sniffer or analyzer software for no traffic captured other than NAK transactions
+                    or system messages and through examination of the real‐time hardware console for no display of new
+                    USB devices (recognized or not recognized).<h:br/><h:br/>
+                    Repeat this test for each keyboard/mouse TOE peripheral interface.<h:br/><h:br/>
+                    Perform steps 1‐6 for each of the following unauthorized devices:<h:ul>
+                      <h:li>USB audio headset</h:li>
+                      <h:li>USB camera</h:li>
+                      <h:li>USB printer</h:li>
+                      <h:li>USB user authentication device connected to a TOE keyboard/mouse
+                        peripheral interface</h:li>
+                      <h:li>USB wireless LAN dongle</h:li>
+                    </h:ul>
+                    <h:ol>
+                      <h:li>Ensure the TOE is powered off and connected to a computer. Run USB analyzer software on the
+                        connected computer and connect a USB sniffer to the TOE keyboard/mouse peripheral interface. Open
+                        the real‐time hardware information console.</h:li>
+                      <h:li>Attempt to connect the unauthorized device to the USB sniffer.</h:li>
+                      <h:li>Power on the TOE. Verify the device is rejected.</h:li>
+                      <h:li>Ensure the unauthorized device is disconnected from the USB sniffer, then attempt to connect it
+                        to the USB sniffer again.</h:li>
+                      <h:li>Verify the device is rejected.</h:li>
+                      <h:li>Repeat steps 1 through 5 with a USB hub connected between the USB device and USB sniffer and
+                        observe that the results are identical.</h:li>
+                      <h:li>Repeat steps 1‐6 with a composite device with non‐HID device classes and verify that the non‐HID
+                        functions are rejected or the entire device is rejected.</h:li>                      
+                    </h:ol>
+                  </test>
+                  <test id="PDC_Test_2-KM">
+                    The evaluator shall verify that the TOE KM ports do not reject authorized devices and devices with
+                    authorized protocols as per the authorized peripheral device connections.<h:br/><h:br/>
+                    Repeat this test for each of the following four device types:<h:ul>
+                      <h:li>Barcode reader;</h:li>
+                      <h:li>Keyboard or Keypad;</h:li>
+                      <h:li>Mouse, Touchscreen, Trackpad, or Trackball; and</h:li>
+                      <h:li>PS/2 to USB adapter (with a connected PS/2 keyboard or mouse).</h:li>
+                    </h:ul>
+                    <h:ol>
+                      <h:li>Configure the TOE and the Operational Environment in accordance with the operational guidance.
+                        Run an instance of a text editor on a connected computer.</h:li>
+                      <h:li>Ensure the TOE is powered off.</h:li>
+                      <h:li>Connect the authorized device to the TOE peripheral interface.</h:li>
+                      <h:li>Power on the TOE. Verify the TOE user indication described in the operational user guidance is not
+                        present.</h:li>
+                      <h:li>Ensure the connected computer is selected and send inputs using the authorized devices. Verify
+                        that the input is received into the text editor or on the screen of the connected computer.</h:li>
+                      <h:li>Disconnect the authorized device, and then reconnect it to the TOE KM peripheral device interface.</h:li>
+                      <h:li>Verify the TOE user indication described in the operational user guidance is not present.</h:li>
+                      <h:li>Send inputs using the authorized devices. Verify that the input is received into the text editor or
+                        on the screen of the connected computer.</h:li>                      
+                    </h:ol>
+                  </test>                  
+                </testlist>
+              </Tests>
+            </aactivity>
+            </f-element>
+          </f-component> 
+          
+          <f-component cc-id="fdp_swi_ext.2" name="PSD Switching">
+            <consistency-rationale>
+              There is no modification to this SFR in this PP‐Module. However, there are
+              additional Evaluation Activities for this SFR that are specific to keyboard and
+              mouse devices.
+            </consistency-rationale>
+            
+            <f-element>
+              <title>
+                There is no modification to this SFR in this PP‐Module. However, if selecting “peripheral devices using a
+            guard,” in FDP_SWI_EXT.2.2 in the PSD PP, there are additional Evaluation Activities defined in the
+            Supporting Document Mandatory Technical Document PP‐Module for Keyboard/Mouse Input Devices.<h:br/><h:br/>
+            A connected peripheral, such as a mouse or other pointing device, may be used for user selection of the
+            connected computer if the TOE makes sure the user has taken multiple, simultaneous express actions a
+            guard requires. An example would be if the user moved the pointing device cursor through the border
+            between computer display areas and at the same time, the user pressed a pre‐defined keyboard key or a
+            dedicated TOE button.
+              </title>
+            
+            <aactivity>
+            
+              <TSS>
+                If “peripheral devices using a guard” is selected, the evaluator shall verify that the TSS describes the
+                implementation of the guard function, and verify that multiple, simultaneous express user action is
+                required to switch between connected computers using connected peripheral devices.
+              </TSS>
+              <Guidance>
+                If “peripheral devices using a guard” is selected, the evaluator shall verify that the user guidance describes
+                the steps the user must take as required by the guard to switch between connected computers using a
+                connected peripheral pointing device.
+              </Guidance>
+              <CustomEA name="Isolation"/>
+              <Tests>
+                The evaluator shall ensure that switching is always initiated through express user action using the selected
+                mechanisms throughout testing for FDP_APC_EXT.1 above.<h:br/><h:br/>
+                Additional tests for this SFR are performed in <xref to="APC_Test_1-KM"/>.
+              </Tests>
+            </aactivity>
+            </f-element>
+          </f-component>
+        </sec:mod_fdp>
+        
+        <sec:mod_fia title="Class FIA: Identification and Authentication">
+          <f-component cc-id="fia_uau.2" name="User Authentication Before Any Action">
+            <consistency-rationale>
+              There is no change to this SFR in this PP‐Module. However, because this PP-Module
+              includes a condition that would require it to be included in the TOE
+              boundary, the SFR is treated as selection‐based when this PP‐Module is
+              claimed.
+            </consistency-rationale>
+            <description>This SFR is unchanged when the TOE claim includes this PP‐Module. However, this SFR is an optional
+            requirement in the PSD PP. This PP‐Module defines functionality that would require this SFR to be claimed
+            if a certain selection is made. Therefore, this PP‐Module re‐categorizes this optional
+            SFR as selection-based. It shall be included in the TSF if ‘configurable’ is selected in FDP_FIL_EXT.1.1/KM.</description>
+          </f-component>
+          <f-component cc-id="fia_uid.2" name="User Identification Before Any Action">
+            <consistency-rationale>
+              There is no change to this SFR in this PP‐Module. However, because this PP-Module
+              includes a condition that would require it to be included in the TOE
+              boundary, the SFR is treated as selection‐based when this PP‐Module is
+              claimed.
+            </consistency-rationale>
+            <description>This SFR is unchanged when the TOE claim includes this PP‐Module. However, this SFR is an optional
+            requirement in the PSD PP. This PP‐Module defines functionality that would require this SFR to be claimed
+            if a certain selection is made. Therefore, this PP‐Module re‐categorizes this optional
+            SFR as selection-based.<h:br/><h:br/>
+            It shall be included in the TSF if ‘configurable’ is selected in FDP_FIL_EXT.1.1/KM.</description>
+          </f-component>
+        </sec:mod_fia>
+        
+        <sec:mod_fmt title="Class FMT: Security Management">
+          <f-component cc-id="fmt_mof.1" name="Management of Security Functions Behavior">
+        <consistency-rationale>
+          There is no change to this SFR in this PP‐Module. However, because this PP-Module
+          includes a condition that would require it to be included in the TOE
+          boundary, the SFR is treated as selection‐based when this PP‐Module is
+          claimed.
+        </consistency-rationale>
+        <description>This SFR is unchanged when the TOE claim includes this PP‐Module. However, this SFR is an optional
+        requirement in the PSD PP. This PP‐Module defines functionality that would require this SFR to be claimed
+        if a certain selection is made. Therefore, this PP‐Module re‐categorizes this optional SFR
+        as selection-based.<h:br/><h:br/>
+        It shall be included in the TSF if ‘configurable’ is selected in FDP_FIL_EXT.1.1/KM.</description>
+      </f-component>
+          <f-component cc-id="fmt_smf.1" name="Specification of Management Functions">
+            <consistency-rationale>
+              There is no change to this SFR in this PP‐Module. However, because this PP-Module
+              includes a condition that would require it to be included in the TOE
+              boundary, the SFR is treated as selection‐based when this PP‐Module is
+              claimed.
+            </consistency-rationale>
+            <description>This SFR is unchanged when the TOE claim includes this PP‐Module. However, this SFR is an optional
+            requirement in the PSD PP. This PP‐Module defines functionality that would require this SFR to be claimed
+            if a certain selection is made. Therefore, this PP‐Module re‐categorizes this optional
+            SFR as selection-based.<h:br/><h:br/>
+            It shall be included in the TSF if ‘configurable’ is selected in FDP_FIL_EXT.1.1/KM.</description>
+          </f-component>
+          <f-component cc-id="fmt_smr.1" name="Security Roles">
+            <consistency-rationale>
+              There is no change to this SFR in this PP‐Module. However, because this PP-Module
+              includes a condition that would require it to be included in the TOE
+              boundary, the SFR is treated as selection‐based when this PP‐Module is
+              claimed.
+            </consistency-rationale>
+            <description>This SFR is unchanged when the TOE claim includes this PP‐Module. However, this SFR is an optional
+            requirement in the PSD PP. This PP‐Module defines functionality that would require this SFR to be claimed
+            if a certain selection is made. Therefore, this PP‐Module re‐categorizes this optional
+            SFR as selection-based.<h:br/><h:br/>
+            It shall be included in the TSF if ‘configurable’ is selected in FDP_FIL_EXT.1.1/KM.</description>
+          </f-component>
+          </sec:mod_fmt>
+        
+        <sec:mod_fpt title="Class FPT: Protection of the TSF">
+          <f-component cc-id="fpt_stm.1" name="Reliable Time Stamps">
+            <consistency-rationale>
+              There is no change to this SFR in this PP‐Module. However, because this PP-Module
+              includes a condition that would require it to be included in the TOE
+              boundary, the SFR is treated as selection‐based when this PP‐Module is
+              claimed.
+            </consistency-rationale>
+            <description>This SFR is unchanged when the TOE claim includes this PP‐Module. However, this SFR is an optional
+            requirement in the PSD PP. This PP‐Module defines functionality that would require this SFR to be claimed
+            if a certain selection is made. Therefore, this PP‐Module re‐categorizes this optional
+            SFR as selection-based.<h:br/><h:br/>
+            It shall be included in the TSF if ‘configurable’ is selected in FDP_FIL_EXT.1.1/KM.</description>
+          </f-component>
+        </sec:mod_fpt>
+      </modified-sfrs>
+      <additional-sfrs/>
+      
+      <!-- 6.1.1 Consistency of TOE Type -->
+      <con-toe>
+        The PSD PP defines the boundaries of a PSD – a device that offers a mechanism for securely connecting a
+        set of peripherals to one or more attached computers. This PP‐Module builds on this by defining
+        functional capabilities specific to keyboard and mouse input devices. One of the functions of the device
+        must be the ability for it to support keyboard and/or mouse input devices. The requirements
+        of this PP-Module
+        do not prevent a conformant TOE from implementing mandatory requirements of the PSD PP.
+      </con-toe>
+      
+      <!-- 6.1.2 Consistency of Security Problem Definition -->      
+      <con-sec-prob>This PP‐Module does not define additional threats beyond those the PSD PP defines. Therefore, there is
+        no inconsistency between this PP‐Module and the PSD with respect to the security problem definition.        
+      </con-sec-prob>      
+      
+      
+      <!-- 6.1.3 Consistency of Objectives -->
+              
+      <con-op-en>
+			This PP-Module defines no environmental security objectives because the TOE's security environment 
+			is identical to that specified by the PSD PP.
+	  </con-op-en>
+      
+      <con-mod ref="T.DATA_LEAK">
+        This threat is from the PSD PP, thus no conflict exists.
+      </con-mod>
+      <con-mod ref="T.LOGICAL_TAMPER">
+        This threat is from the PSD PP, thus no conflict exists. 
+      </con-mod>
+      <con-mod ref="T.RESIDUAL_LEAK">
+        This threat is from the PSD PP, thus no conflict exists.
+      </con-mod>
+      <con-mod ref="T.SIGNAL_LEAK">
+        This threat is from the PSD PP, thus no conflict exists.
+      </con-mod>
+      <con-mod ref="T.UNAUTHORIZED_DEVICES">
+        This threat is from the PSD PP, thus no conflict exists.
+      </con-mod>
+      <con-mod ref="T.UNINTENDED_USE">
+        This threat is from the PSD PP, thus no conflict exists.
+      </con-mod>
+      
+    </base-pp>
+    
+    <man-sfrs>
+      <section title="Class FDP: User Data Protection" id="FDP">
+        <ext-comp-def fam-id="FDP_FIL_EXT" title="Device Filtering">
+          <fam-behavior>Components in this family define the requirements for device filtering.</fam-behavior>
+        </ext-comp-def>
+        
+        <ext-comp-def fam-id="FDP_PDC_EXT" title="Peripheral Device Connection">
+          <fam-behavior>This family is defined in the PSD PP. This PP‐Module augments the extended family by adding two
+            additional components, FDP_PDC_EXT.2 and FDP_PDC_EXT.3. These new components and their impact on
+            the extended family’s component leveling are shown below; reference the PSD PP for all other definitions
+            for this family.</fam-behavior>
+        </ext-comp-def>
+        
+        <ext-comp-def fam-id="FDP_RDR_EXT" title="Re-Enumeration Device Rejection">
+          <fam-behavior>Components in this family define requirements to reject device spoofing attempts through reenumeration.</fam-behavior>
+        </ext-comp-def>
+        
+        <ext-comp-def fam-id="FDP_SWI_EXT" title="PSD Switching">
+          <fam-behavior>This family is defined in the PSD PP. This PP‐Module augments the extended family by adding one
+            additional component, FDP_SWI_EXT.3. This new component and its impact on the extended family’s
+            component leveling are shown below; reference the PSD PP for all other definitions for this family.</fam-behavior>
+        </ext-comp-def>
+        
+        <ext-comp-def fam-id="FDP_UDF_EXT" title="Unidirectional Data Flow">
+          <fam-behavior>Components in this family define unidirectional transmission of user data.</fam-behavior>
+        </ext-comp-def>
+        
+        <f-component name="Authorized Devices" cc-id="fdp_pdc_ext.2" status="invisible">
+          <comp-lev>defines the types of physical devices that the TSF will permit to
+            connect to it.</comp-lev>
+          <management>No specific management functions are identified.</management>
+          <audit>There are no auditable events foreseen.</audit>
+          <dependencies>FDP_PDC_EXT.1 Peripheral Device Connection</dependencies>
+          
+          
+          <f-element id="fdp-pdc-ext-2e1">
+            <title>The TSF shall allow connections with authorized devices as defined in
+                <assignable> devices specified in the PP or PP‐Module in which this SFR is defined</assignable>
+                and <assignable> devices specified in another PP or PP‐Module that shares a PP-Configuration
+                  with the PP or PP‐Module in which this SFR is defined</assignable> upon TOE
+                power up and connection of a peripheral device to a powered‐on TOE.</title>
+          </f-element>
+          <f-element id="fdp-pdc-ext-2e2">
+            <title>The TSF shall allow connections with authorized devices presenting authorized
+              interface protocols as defined in <assignable>devices specified in the PP or PP-Module
+                in which this SFR is defined</assignable> and <assignable>devices specified in another
+                  PP or PP‐Module that shares a PP‐Configuration with the PP or PP‐Module in
+                  which this SFR is defined</assignable> upon TOE power up and upon connection of a
+              peripheral device to a powered‐on TOE.</title>
+          </f-element>
+        </f-component>
+        
+        <f-component cc-id="fdp_pdc_ext.2" name="Authorized Devices (Keyboard/Mouse)" iteration="KM" id="fdp-pdc-ext-2-km">
+          <consistency-rationale>
+            This SFR defines the devices that are authorized by this PP‐Module. This is
+            dependent on the other PP‐Modules that are claimed in the TOE’s ST. The
+            Base‐PP is written specifically not to discuss the supported device types,
+            instead leaving it to the various PP‐Modules to define what they support.
+          </consistency-rationale>          
+          
+          <f-element id="fdp-pdc-ext-2e1-km">            
+            <title>The TSF shall allow connections with authorized devices <h:b>and functions</h:b> as defined
+              in [<h:i>Appendix E</h:i>] and <selectables>
+                <selectable>authorized devices as defined in the PP‐Module for Audio Output
+                  Devices</selectable>
+                <selectable>authorized devices as defined in the PP‐Module for User Authentication
+                  Devices</selectable>
+                <selectable>authorized devices as defined in the PP‐Module for Video/Display
+                  Devices</selectable>
+                <selectable>no other devices</selectable>
+              </selectables>
+              upon TOE power up and connection of a peripheral device to a powered-on TOE.              
+            </title>
+          </f-element>
+          
+          <f-element id="fdp-pdc-ext-2e2-km">            
+            <title>The TSF shall allow connections with authorized devices presenting authorized
+              interface protocols as defined in [<h:i>Appendix E</h:i>] and <selectables>
+                <selectable>authorized devices presenting authorized interface protocols as defined
+                  in the PP‐Module for Audio Output Devices</selectable>
+                <selectable>authorized devices presenting authorized interface protocols as defined
+                  in the PP‐Module for User Authentication Devices</selectable>
+                <selectable>authorized devices presenting authorized interface protocols as defined
+                  in the PP‐Module for Video/Display Devices</selectable>
+                <selectable>no other devices</selectable>
+              </selectables>
+              upon TOE power up and connection of a peripheral device to a powered-on TOE.              
+            </title>
+            <note role="application">
+              The TSF must claim conformance to a PP‐Configuration that includes each PP-Module
+              contained in any selections. The ST author should select all devices and
+              interfaces supported by the TOE.<h:br/><h:br/>
+              If “authorized devices presenting authorized interface protocols as defined in the
+              PP‐Module for Video/Display Devices” is selected and “USB Type‐C with
+              DisplayPort as alternate function” is selected in FDP_PDC_EXT.3.1/Vid, then touch
+              screen devices may not be used in conjunction with video devices that use USB
+              Type‐C with DisplayPort as alternate function.
+            </note>            
+            <aactivity>
+              
+              <TSS/>
+              <Guidance/>
+              <CustomEA name="Isolation"/>
+              <Tests>
+                Testing of this component is performed through evaluation of <xref to="PDC_Test_2-KM"/>.
+              </Tests>
+            </aactivity>
+          </f-element>          
+        </f-component>
+        
+        <f-component name="Authorized Connection Protocols" cc-id="fdp_pdc_ext.3" status="invisible">
+          <comp-lev>defines the physical/logical interfaces supported by the
+            TOE as well as any rules that are applicable to these interfaces.</comp-lev>
+          <management>No specific management functions are identified</management>
+          <audit>There are no auditable events foreseen.</audit>
+          <dependencies>FDP_PDC_EXT.1 Peripheral Device Connection</dependencies>
+          
+          <f-element id="fdp-pdc-ext-3e1">
+            <title>The TSF shall have interfaces for the <assignable>list of supported protocols
+              associated with physical and logical TSF interfaces</assignable> protocols.</title>
+          </f-element>
+          <f-element id="fdp-pdc-ext-3e2">
+            <title>The TSF shall apply the following rules to the supported protocols: <assignable>
+              rules defining the handling for communications over this protocol (e.g., any
+              processing that must be done by the TSF prior to transmitting it through the TOE,
+              circumstances or frequency with which the protocol is invoked)</assignable>.</title>
+          </f-element>
+        </f-component>
+        
+        <f-component cc-id="fdp_pdc_ext.3" name="Authorized Connection Protocols (Keyboard/Mouse)" iteration="KM" id="fdp-pdc-ext-3-km">
+          <consistency-rationale>
+            This SFR defines the protocols that are authorized specifically by this PP-Module
+            and the rules for handling of these protocols. This does not prevent
+            the enforcement of any PSD PP SFRs.
+          </consistency-rationale>
+          
+          <f-element id="fdp-pdc-ext-3e1-km">
+            <title>
+              The TSF shall have interfaces for the <selectables>
+                  <selectable id="keyboardsupport">USB (keyboard)</selectable>
+                  <selectable id="mousesupport">USB (mouse)</selectable>                  
+                </selectables> protocols.
+            </title>
+            
+          </f-element>
+          <f-element id="fdp-pdc-ext-3e2-km">
+            <title>
+              The TSF shall apply the following rules to the supported protocols: [<h:i>the TSF shall
+                emulate any keyboard or mouse device functions from the TOE to the connected
+                computer</h:i>].
+            </title>
+            
+            <note role="application">
+              It is expected that the ST author will make all selections in FDP_PDC_EXT.3.1/KM
+              for which the TOE has an interface; the TOE boundary should encompass the entire
+              device where possible.<h:br/><h:br/>
+              If the TOE supports multiple connected computers (as specified by selecting
+              “switching can be initiated only through express user action” in FDP_SWI_EXT.1.1
+              in the PSD PP), selections made in FDP_PDC_EXT.3.1 determine whether selection-based
+              SFRs in Appendix B must be claimed. Specifically, selecting “USB (keyboard)”
+              requires the TOE to claim FDP_RIP.1/KM and selecting both “USB (keyboard)” and
+              “USB (mouse)” requires the TOE to claim FDP_SWI_EXT.3.
+            </note>
+            
+            <aactivity>
+              
+              <TSS>
+                The evaluator shall examine the TSS and verify it describes which types of peripheral devices that the PSD
+                supports.<h:br/><h:br/>
+                The evaluator shall examine the TSS to verify that keyboard or mouse device functions are emulated from
+                the TOE to the connected computer.
+              </TSS>                
+              <Guidance/>                
+              <CustomEA name="Isolation"/>
+              <Tests/>
+            </aactivity>
+          </f-element>
+        </f-component>
+      
+      <f-component name="Unidirectional Data Flow" cc-id="fdp_udf_ext.1" status="invisible">
+        <comp-lev>requires the TSF to provide unidirectional (one‐way)
+            communications between a given pair of interface types.</comp-lev>
+          <management>No specific management functions are identified.</management>
+          <audit>There are no auditable events foreseen.</audit>
+          <dependencies>FDP_APC_EXT.1 Active PSD Connections</dependencies>  
+        
+        <f-element id="fdp-udf-ext-1e1">
+          <title>The TSF shall ensure <assignable>type of data</assignable> data transits the TOE
+                unidirectionally from the <assignable>origin point of data</assignable> interface to the
+                <assignable>destination point of data</assignable> interface.</title>
+        </f-element>
+      </f-component>  
+        
+        
+        <f-component cc-id="fdp_udf_ext.1" name="Unidirectional Data Flow" iteration="KM" id="fdp-udf-ext-1-km">
+          <consistency-rationale>
+            This SFR requires the specific types of peripheral data defined in this PP-Module
+            to flow unidirectionally. This does not prevent the enforcement of
+            any PSD PP SFRs.
+          </consistency-rationale>
+          
+          <f-element id="fdp-udf-ext-1e1-km">
+            <title>
+              The TSF shall ensure <selectables>
+                <selectable>keyboard</selectable>
+                <selectable>mouse</selectable>
+              </selectables> data transits the TOE unidirectionally from the [<h:i>TOE <selectables>
+                <selectable>keyboard</selectable>
+                <selectable>mouse</selectable>
+              </selectables></h:i>] peripheral interfaces to the [<h:i>TOE <selectables>
+                <selectable>keyboard</selectable>
+                <selectable>mouse</selectable>
+              </selectables></h:i>] interface.
+            </title>
+            
+            <note role="application">
+              Caps Lock, Num Lock, and Scroll Lock indications may be displayed by the TOE
+              while still not passing that information to the keyboard.
+            </note>
+            <aactivity>              
+              
+              <TSS>
+                The evaluator shall examine the TSS to verify that it describes if and how keyboard Caps Lock, Num Lock,
+                and Scroll Lock indications are displayed by the TOE and to verify that keyboard internal LEDs are not
+                changed by a connected computer.<h:br/><h:br/>
+                The evaluator shall examine the TSS to verify that keyboard and mouse functions are unidirectional from
+                the TOE keyboard/mouse peripheral interface to the TOE keyboard/mouse computer interface.
+              </TSS>
+              <Guidance/>
+              <CustomEA name="Isolation"/>
+              <Tests>
+                Test activities for this SFR are covered under <xref to="APC_Test_3-KM"/>.                
+              </Tests>
+            </aactivity>
+          </f-element>  
+        </f-component>        
+      </section>      
+    </man-sfrs>  
+    <opt-sfrs/>
+    
+    <sel-sfrs>
+      <section title="Class FDP: User Data Protection" id="FDP">
+        
+        <f-component cc-id="fdp_rip.1" name="Residual Information Protection (Keyboard Data)" iteration="KM" id="fdp-rip-1-km">
+          <depends on-sel="keyboardsupport"/>
+          <depends on="notisolator">
+            <external-doc ref="PSD"/>
+          </depends>          
+          
+          <consistency-rationale>
+            This SFR defines specific handling for keyboard peripheral devices. This does
+            not prevent the enforcement of any PSD PP SFRs.
+          </consistency-rationale>
+          <f-element id="fdp-rip-1e1-km">
+            <title>
+            The TSF shall ensure that any <h:b>keyboard data in volatile memory</h:b> is
+            <h:b>purged</h:b> upon <h:b>switching computers.</h:b>
+          </title>
+          <note role="application">
+            This SFR must be claimed if “switching can be initiated only through express user
+            action” is chosen as a selection for FDP_SWI_EXT.1.1 in the PSD PP and if “USB
+            (keyboard)" is chosen as a selection in FDP_PDC_EXT.3.1/KM.
+          </note>
+          <aactivity>
+            
+            <TSS>
+              The evaluator shall verify that the TSS indicates whether or not the TOE has user data
+              buffers.<h:br/><h:br/>
+              The evaluator shall verify that the TSS describes how all keyboard data stored in volatile memory is deleted
+              upon switching computers.
+            </TSS>
+            <Guidance/>
+            <CustomEA name="Isolation"/>
+            <Tests/>
+          </aactivity>
+          </f-element>
+        </f-component>
+        
+        <f-component cc-id="fdp_swi_ext.3" name="Tied Switching">
+          <depends on-sel="keyboardsupport"/>
+          <depends on-sel="mousesupport"/>
+          <depends on="notisolator">
+            <external-doc ref="PSD"/>
+          </depends>
+          
+          <consistency-rationale>
+            This SFR defines specific handling for keyboard/mouse peripheral devices.
+            This does not prevent the enforcement of any PSD PP SFRs.
+          </consistency-rationale>
+          
+          <comp-lev>requires the TSF to ensure that multiple connected peripherals are always
+            switched to the same connected computer.</comp-lev>
+          <management>No specific management functions are identified.</management>
+          <audit>There are no auditable events foreseen.</audit>
+          <dependencies>FDP_SWI_EXT.1 PSD Switching</dependencies>
+          
+          <f-element id="fdp-swi-ext-3e1">
+            <title>
+              The TSF shall ensure that [<h:i>connected keyboard and mouse peripheral devices</h:i>]
+              are always switched together to the same connected computer.
+            </title>
+            <ext-comp-def-title>
+              <title>
+                The TSF shall ensure that <assignable>two or more tied peripheral
+                  devices</assignable> are always switched together to the same connected computer.
+              </title>
+            </ext-comp-def-title>
+            <note role="application">
+              This SFR must be claimed if “switching can be initiated only through express user
+              action” is chosen as a selection for FDP_SWI_EXT.1.1 in the PSD PP and if both
+              “USB (keyboard)” and “USB (mouse)” are chosen as selections in
+              FDP_PDC_EXT.3.1/KM.
+            </note>
+            <aactivity>
+              <TSS>
+                The evaluator shall verify that the TSS does not indicate that keyboard and mouse devices may be
+                switched independently to different connected computers.
+              </TSS>
+              <Guidance>
+                The evaluator shall verify that the guidance does not describe how to switch the keyboard and mouse
+                devices independently to different connected computers.
+              </Guidance>
+              <CustomEA name="Isolation"/>
+              <Tests>
+                The evaluator shall verify that the keyboard and mouse devices are always switched together to the same
+                connected computer throughout testing in <xref to="fdp_apc_ext.1"/>.
+                Tests for this SFR are performed in <xref to="APC_Test_1-KM"/>.
+              </Tests>
+            </aactivity>
+          </f-element>
+        </f-component>
+      </section>
+    </sel-sfrs>
+    <obj-sfrs/>
+    <impl-dep-sfrs>
+      <section title="Class FDP: User Data Protection" id="FDP">
+
+        <f-component name="Device Filtering" cc-id="fdp_fil_ext.1" status="invisible">
+          <comp-lev>defines the types of physical devices that the TSF will permit to
+            connect to it.</comp-lev>
+          <management>The following actions could be considered for the management functions in FMT:
+          <h:ul><h:li>Ability to configure allowlist and denylist members.</h:li></h:ul></management>
+          <audit>The following actions should be auditable if FAU_GEN Security audit data generation is
+            included in the PP, PP-Module, functional package or ST:
+          <h:ul><h:li>Configuration of allowlist and denylist members</h:li></h:ul>
+          </audit>
+          <dependencies>FDP_PDC_EXT.1 Peripheral Device Connection</dependencies>
+          
+          <f-element id="fdp-fil-ext-1e1">
+            <title>
+              The TSF shall have <selectables>
+                <selectable>configurable</selectable>
+                <selectable>fixed</selectable>
+              </selectables> device filtering for <assignable>list of supported peripheral interface types</assignable>
+              interfaces.
+            </title>
+          </f-element>
+          
+          <f-element id="fdp-fil-ext-1e2">
+            <title>
+              The TSF shall consider all <assignable>denylist name</assignable> denylisted devices as
+              unauthorized devices for <assignable>list of supported peripheral interface types</assignable>
+              interfaces in peripheral device connections.
+            </title>
+          </f-element>
+          
+          <f-element id="fdp-fil-ext-1e3">
+            <title>
+              The TSF shall consider all <assignable>allowlist name</assignable> allowlisted devices as
+              authorized devices for peripheral device connections only if they are not on the
+              <assignable>denylist name</assignable> denylist or otherwise unauthorized.
+            </title>
+          </f-element>
+          
+        </f-component>
+        
+        <f-component cc-id="fdp_fil_ext.1" name="Device Filtering (Keyboard/Mouse)" iteration="KM" id="fdp-fil-ext-1-km">
+          <depends on="filtration"/>
+          <consistency-rationale>This SFR defines specific handling for keyboard/mouse peripheral devices.
+            This does not prevent the enforcement of any PSD PP SFRs.
+          </consistency-rationale>
+          
+          <f-element id="fdp-fil-ext-1e1-km">
+          <title>
+            The TSF shall have <selectables>
+              <selectable>configurable</selectable>
+              <selectable>fixed</selectable>
+            </selectables> device filtering for <selectables>
+              <selectable>keyboard</selectable>
+              <selectable>mouse</selectable>
+            </selectables>
+            interfaces.
+          </title>            
+            
+          </f-element>       
+        
+        <f-element id="fdp-fil-ext-1e2-km">
+          <title>
+            The TSF shall consider all [<h:i>PSD KM</h:i>] denylisted devices as
+            unauthorized devices for <selectables>
+              <selectable>keyboard</selectable>
+              <selectable>mouse</selectable>
+            </selectables>
+            interfaces in peripheral device connections.
+          </title>
+        </f-element>
+        
+        <f-element id="fdp-fil-ext-1e3-km">
+          <title>
+            The TSF shall consider all [<h:i>PSD KM</h:i>] allowlisted devices as
+            authorized devices for [<h:b><selectables>
+              <selectable>keyboard</selectable>
+              <selectable>mouse</selectable>
+            </selectables> interfaces in</h:b> peripheral device connections only if they are not on the
+            [<h:i>PSD KM</h:i>] denylist or otherwise unauthorized.
+          </title>
+          <note role="application">
+            The ST author must make the selections for the device which the TOE has: configurable,
+            fixed, or both; and keyboard, mouse, or both.
+          </note>
+          <aactivity>
+            
+            <TSS>
+              The evaluator shall examine the TSS and verify that it describes whether the PSD has configurable or fixed
+              device filtering.<h:br/><h:br/>
+              [Conditional ‐ If “configurable” is selected in FDP_FIL_EXT.1.1/KM, then:] the evaluator shall examine the
+              TSS and verify that it describes the process of configuring the TOE for allowlisting and denylisting KM
+              peripheral devices, including information on how this function is restricted to administrators. The
+              evaluator shall verify that the TSS does not allow TOE device filtering configurations that permit
+              unauthorized devices on KM interfaces.
+            </TSS>
+            <Guidance>
+              [Conditional ‐ If “configurable” is selected in FDP_FIL_EXT.1.1/KM, then:] the evaluator shall examine the
+              guidance documentation and verify that it describes the process of configuring the TOE for allowlisting
+              and denylisting KM peripheral devices and the administrative privileges required to do this.
+            </Guidance>
+            <CustomEA name="Isolation"/>
+            <Tests>
+              <testlist>
+                <test>
+                  Perform the test steps in FDP_PDC_EXT.1 with all devices on the PSD KM denylist and verify that they are
+                  rejected as expected.
+                </test><h:br/><h:br/>
+                
+                <test><h:br/><h:br/>
+                  [Conditional: Perform this only if “configurable” is selected in FDP_FIL_EXT.1.1/KM]<h:br/><h:br/>
+                  In the following steps the evaluator shall verify that allowlisted and denylisted devices are treated
+                  correctly.<h:ol>
+                    <h:li>Ensure the TOE and the Operational Environment are configured in accordance with the
+                  operational guidance.</h:li>                    
+                    <h:li>Connect to the TOE KM peripheral device interface a composite device which contains a HID class
+                  and a non‐HID class.</h:li>
+                    <h:li>Configure the TOE KM CDF to allowlist the composite device.</h:li>
+                    <h:li>Verify that the HID‐class part is accepted and that the non‐HID class part
+                      is rejected through real-time
+                  device console and USB sniffer capture, or that the entire device is rejected.</h:li>
+                    <h:li>Configure the TOE KM CDF to denylist the device.</h:li>
+                    <h:li>Verify that both the HID‐class part and the non‐HID class part is rejected through real‐time device
+                  console and USB sniffer capture.</h:li>
+                  </h:ol>                  
+                </test>
+              </testlist>
+            </Tests>
+          </aactivity>
+          
+          
+          
+        </f-element>
+        </f-component>
+        
+        <f-component cc-id="fdp_rdr_ext.1" name="Re-Enumeration Device Rejection">
+            <depends on="rejectreenumeration"/>
+          <consistency-rationale>This SFR defines specific handling for keyboard/mouse peripheral devices.
+            This does not prevent the enforcement of any PSD PP SFRs.
+          </consistency-rationale>
+          
+          <comp-lev>requires the TSF to reject re‐enumeration as an
+            unauthorized device.</comp-lev>
+          <management>No specific management functions are identified.</management>
+          <audit>There are no auditable events foreseen.</audit>
+          <dependencies>FDP_PDC_EXT.1 Peripheral Device Connection</dependencies>
+          
+          <f-element id="fdp-rdr-ext-1e1">
+            <title>
+              The TSF shall reject any device that attempts to enumerate again as a different
+              unauthorized device.
+            </title>
+            <note role="application">
+              This SFR should prevent devices that change their class from authorized to
+              unauthorized, but cannot prevent malicious devices that use an authorized HID-class.
+            </note>
+            <aactivity>
+              
+              <TSS>
+                The evaluator shall examine the TSS to verify that it describes how the TSF identifies and rejects a device
+                that attempts to enumerate again as a different device.
+              </TSS>
+              <Guidance/>
+              <CustomEA name="Isolation"/>
+              <Tests>
+                The evaluator shall use a BadUSB, programmable keyboard, or USB Rubber Ducky as a malicious USB
+                device to perform the following test:
+                <testlist>
+                  <test><h:ol>
+                  <h:li>Ensure the TOE and the Operational Environment are configured in accordance with the
+                operational guidance. Ensure the TOE is powered off and connect a USB sniffer between the TOE and a
+                computer. Open the real‐time hardware information console.</h:li>
+                  <h:li>Configure the malicious USB device as a HID‐class device and to re‐enumerate as a mass storage
+                device.</h:li>
+                  <h:li>Connect the malicious USB device to the TOE KM peripheral interface.</h:li>
+                  <h:li>Power on the TOE and activate the re‐enumeration after one minute.</h:li>
+                  <h:li>Verify device rejection per TOE guidance, the cessation of traffic passed in the USB sniffer, and the
+                absence of the device and any new devices in the information console.</h:li>
+                  <h:li>Remove the malicious USB device and reconfigure as a HID‐class device and to re‐enumerate as a
+                mass storage device.</h:li>
+                  <h:li>Connect the malicious USB device to the TOE KM peripheral interface and activate the reenumeration
+                after 1 minute.</h:li>
+                  <h:li>Verify device rejection per TOE guidance, the cessation of traffic passed in the USB sniffer, and the
+                absence of the device and any new devices in the information console.</h:li>
+                </h:ol>
+                  </test>
+                </testlist>
+              </Tests>
+            </aactivity>
+      </f-element>
+      </f-component>
+      </section>
+    </impl-dep-sfrs>
+    
+    
+  </sec:Security_Requirements>
+
+  <appendix title="Isolation Documentation and Assessment" id="iso-doc-assess">
+    The TOE does not require any additional supplementary information to describe its isolation concepts
+    beyond the requirements outlined in the ‘Isolation Documentation and Assessment’ sections in Appendix
+    D of the PSD PP. As with other PSD PP requirements, the only additional requirement is that the isolation
+    documentation also applies to the specific isolation and data flow SFRs in this PP‐module in addition to
+    the functionality required by the PSD PP.
+  </appendix>
+  
+  <appendix title="Peripheral Device Connections" id="perdevcon">
+    <section title="General">
+      This appendix expands the PSD PP Peripheral Device Connections appendix, and offers additional direction
+      on peripheral devices and interface protocols with TOEs claiming compliance with this PP‐Module. This
+      appendix is in conjunction with the PSD PP’s appendix and does not replace it.
+    </section>
+    
+    <section title="Unauthorized Peripheral Devices">
+      The following are unauthorized devices and device classes:<h:ul>
+        <h:li>USB audio input device connected to a KM peripheral interface</h:li>
+        <h:li>USB audio output device connected to a KM peripheral interface</h:li>
+        <h:li>USB camera</h:li>
+        <h:li>USB printer</h:li>
+        <h:li>USB user authentication device connected to a TOE keyboard/mouse peripheral interface</h:li>
+        <h:li>USB wireless LAN dongle</h:li>
+        <h:li>Non‐HID device classes of a composite device connected to a TOE KM peripheral interface</h:li>
+        <h:li>Any other device not specifically authorized</h:li>
+        <h:li>Any other device class not specifically authorized</h:li>
+      </h:ul>     
+    </section>
+    
+    <section title="Unauthorized Interface Protocols">
+      The following are unauthorized interface protocols:<h:ul>
+        <h:li>Any interface protocol not specifically authorized</h:li>        
+      </h:ul>
+    </section>
+    <section title="Authorized Peripheral Devices">
+      The following are authorized devices and functions:<h:ul>
+        <h:li>Barcode reader</h:li>
+        <h:li>Keyboard or keypad</h:li>
+        <h:li>Mouse, touchscreen, trackball, or trackpad</h:li>
+        <h:li>PS/2 to USB adapter</h:li>
+        <h:li>USB device identified as HID class</h:li>
+        <h:li>USB hub</h:li>
+        <h:li>HID functions of a composite device connected to a TOE KM peripheral interface</h:li>
+      </h:ul>
+    </section>
+    
+    <section title="Authorized Interface Protocols">
+      The following are authorized interface protocols:<h:ul>
+        <h:li>USB</h:li>
+      </h:ul>
+    </section>
+  </appendix> 
+  
+  <appendix title="Interactions between PP-Modules" id="interactbetmod">
+    This appendix provides any additional guidance required to address interactions between multiple
+    PP-Modules
+    when they are both contained within a PP‐Configuration.
+    <section title="PP-Module for Audio Output Devices">
+      Unauthorized devices identified in both PP‐Modules are considered unauthorized devices for the TOE as
+      per FDP_PDC_EXT.1.<h:br/><h:br/>
+      Authorized devices identified in both PP‐Modules are considered authorized devices for the TOE as per
+      the claimed iterations of FDP_PDC_EXT.2.<h:br/><h:br/>
+      Power events at a KM interface for one connected computer cannot impact power events at an analog
+      audio output interface for another connected computer and vice versa, as per FDP_APC_EXT.1. This
+      evaluation activity is tested in FDP_APC_EXT.1:3 in the PP-Module for Audio Output.<h:br/><h:br/>
+      Both PP‐Modules modify the Base‐PP SFR FDP_APC_EXT.1 in ways that are specific to their respective
+      peripheral types. The ST author should make two iterations of this SFR, FDP_APC_EXT.1/KM and
+      FDP_APC_EXT.1/AO, to show the different modifications made for each specific peripheral type.
+    </section>
+    <section title="PP-Module for User Authentication Devices">
+      Unauthorized devices identified in both PP‐Modules are considered unauthorized devices for the TOE as
+      per FDP_PDC_EXT.1.<h:br/><h:br/>
+      Authorized devices identified in both PP‐Modules are considered authorized devices for the TOE as per
+      the claimed iterations of FDP_PDC_EXT.2.<h:br/><h:br/>
+      KM functionality must be isolated from user authentication functionality and vice versa as per
+      FDP_UAI_EXT.1.<h:br/><h:br/>
+      Both PP‐Modules modify the Base‐PP SFR FDP_APC_EXT.1 in ways that are specific to their respective
+      peripheral types. The ST author should make two iterations of this SFR, FDP_APC_EXT.1/KM and
+      FDP_APC_EXT.1/UA, to show the different modifications made for each specific peripheral type.
+    </section>
+    <section title="PP-Module for Video/Display Devices">
+      Unauthorized devices identified in both PP‐Modules are considered unauthorized devices for the TOE as
+      per FDP_PDC_EXT.1.<h:br/><h:br/>
+      Authorized devices identified in both PP‐Modules are considered authorized devices for the TOE as per
+      the claimed iterations of FDP_PDC_EXT.2.<h:br/><h:br/>
+      Video devices with an interface for USB Type‐C with DisplayPort as alternate function may not be
+      connected to a KM interface, and KM devices may not be connected to a video interface for USB Type‐C
+      with DisplayPort as alternate function, even though both devices are authorized devices.<h:br/><h:br/>
+      Video devices with an interface for USB Type‐C with DisplayPort as alternate function may not be used in
+      conjunction with a touchscreen peripheral device, as per FDP_PDC_EXT.2/KM and FDP_PDC_EXT.3.1/Vid.<h:br/><h:br/>
+      KM devices may be used with a guard in conjunction with multiple video devices, as per FDP_CDS_EXT.1
+      and FDP_SWI_EXT.2.<h:br/><h:br/>
+      Both PP‐Modules modify the Base‐PP SFR FDP_APC_EXT.1 in ways that are specific to their respective
+      peripheral types. The ST author should make two iterations of this SFR, FDP_APC_EXT.1/KM and
+      FDP_APC_EXT.1/VI, to show the different modifications made for each specific peripheral type.
+    </section>
+  </appendix>    
+  
+  
+  <bibliography>    
+    <entry id="base-pp">
+      <tag>PP_PSD_V5.0 or PSD PP</tag>
+      <description>Protection Profile for Peripheral Sharing Device, Version 5.0
+      </description>    
+    </entry>
+  </bibliography>
+</Module>
